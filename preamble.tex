@@ -3,10 +3,27 @@
 \usepackage{amsthm}
 \usepackage{graphicx}
 \usepackage{parskip}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
 \graphicspath{{figures/}}
 
 \newtheorem{example}{Example}[section]
+\newtheorem{solution}{Solution}[section]
 \newtheorem{definition}{Definition}[section]
 \newtheorem{note}{Note}[section]
+
+\usepackage{tcolorbox}
+\tcolorboxenvironment{summarybox}{
+  colback=yellow!5!white,
+  colframe=yellow!75!black,
+  left=1mm,
+  right=1mm,
+  top=1mm,
+  bottom=1mm,
+  before skip=10pt,
+  after skip=10pt
+}
+\newtheorem{summarybox}{Summary}[chapter]
 
 % Custom commands
