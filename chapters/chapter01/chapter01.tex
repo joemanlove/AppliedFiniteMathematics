@@ -638,26 +638,22 @@ Find the intersection of the line $y = 3x - 1$ and the line $y = -x + 7$.
 \begin{solution}
 We graph both lines on the same axes, as shown below, and read the solution $(2, 5)$.
 \begin{center}
-\begin{tikzpicture}[scale=0.8]
+\begin{tikzpicture}[scale=1]
   \begin{axis}[
     axis lines=middle,
     xlabel={$x$},
     ylabel={$y$},
 		xlabel style={at={(axis description cs:1.05,0)},anchor=north},
     ylabel style={at={(axis description cs:0,1.05)},anchor=east},
-    xmin=-1, xmax=8,
-    ymin=-1, ymax=8,
+    xmin=-1, xmax=10,
+    ymin=-1, ymax=10,
     xtick={-1,0,...,8},
     ytick={-1,0,...,8},
-    %grid=both,
-    %major grid style={line width=0.2pt,draw=gray!50},
-    minor tick num=4,
-    %grid style={line width=0.4pt,draw=gray!80},
     samples=2,
   ]
-  \addplot[blue, ultra thick, domain=-1:8]{3*x - 1} node[right] {$y = 3x - 1$};
-  \addplot[red, ultra thick, domain=-1:8]{-x + 7} node[right] {$y = -x + 7$};
-  \addplot[mark=*] coordinates {(2,5)} node[label={above right:$(2, 5)$}] {};
+  \addplot[blue, ultra thick, domain=-1:8]{3*x - 1} node[pos =.2, label={right:$y = 3x - 1$}] {};
+  \addplot[red, ultra thick, domain=-1:8]{-x + 7} node[pos =.7, label={right:$y = -x + 7$}] {};
+  \addplot[mark=*] coordinates {(2,5)} node[label={right:$(2, 5)$}] {};
   \end{axis}
 \end{tikzpicture}
 \end{center}
@@ -788,10 +784,30 @@ The supply curve for a product is given by $y = 3.5x - 14$, and the demand curve
 \end{enumerate}
 
 The graph shows the intersection of the supply and demand functions and their point of intersection, $(8, 14)$.
+
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  \begin{axis}[
+    axis lines=middle,
+    xlabel={$x$},
+    ylabel={$y$},
+		xlabel style={at={(axis description cs:1.05,0)},anchor=north},
+    ylabel style={at={(axis description cs:0,1.05)},anchor=east},
+    xmin=-1, xmax=18,
+    ymin=-1, ymax=40,
+    xtick={0,2,...,14},
+    ytick={0,5,...,35},
+    samples=2,
+  ]
+  \addplot[blue, ultra thick, domain=-1:14]{34-2.5*x} node[pos =.7, label={right:$y = 34-2.5x$}] {};
+  \addplot[red, ultra thick, domain=-1:14]{-14+3.5*x} node[pos =.7, label={right:$y = -14+3.5x$}] {};
+  \addplot[mark=*] coordinates {(8,14)} node[label={right:$(8,14)$}] {};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
 \end{solution}
-
-%TODO Image
-
 
 \subsection{Break-Even Point}
 
@@ -832,7 +848,7 @@ The graph below shows the intersection of the revenue and cost functions and the
 \end{solution}
 
 \begin{center}
-\begin{tikzpicture}[scale=0.8]
+\begin{tikzpicture}[scale=1.0]
   \begin{axis}[
     axis lines=middle,
     xlabel={$x$},
@@ -843,14 +859,10 @@ The graph below shows the intersection of the revenue and cost functions and the
     ymin=-1, ymax=40,
     xtick={-1,0,...,8},
     ytick={0,10,...,40},
-    %grid=both,
-    %major grid style={line width=0.2pt,draw=gray!50},
-    minor tick num=4,
-    %grid style={line width=0.4pt,draw=gray!80},
     samples=2,
   ]
-  \addplot[blue, ultra thick, domain=-1:8]{5*x} node[right] {$y = 3x - 1$};
-  \addplot[red, ultra thick, domain=-1:8]{3*x + 12} node[right] {$y = -x + 7$};
+  \addplot[blue, ultra thick, domain=-1:8]{5*x} node[pos =.2, label={right:$y = 5x$}] {};
+  \addplot[red, ultra thick, domain=-1:8]{3*x + 12} node[pos =.3, yshift=4mm, label={above:$y = 3x+12$}] {};
   \addplot[mark=*] coordinates {(6,30)} node[label={below right:$(6, 30)$}] {};
   \end{axis}
 \end{tikzpicture}
