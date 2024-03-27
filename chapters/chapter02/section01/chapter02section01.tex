@@ -1,0 +1,421 @@
+\section{Introduction to Matrices}
+
+In this section, you will learn to:
+\begin{enumerate}
+    \item Add and subtract matrices.
+    \item Multiply a matrix by a scalar.
+    \item Multiply two matrices.
+\end{enumerate}
+
+A matrix is a 2-dimensional array of numbers arranged in rows and columns. Matrices provide a method of organizing, storing, and working with mathematical information. They have numerous applications and uses in the real world.
+
+\textbf(TODO: fix references here)Matrices are particularly useful in working with models based on systems of linear equations, which we'll explore in sections 2.2, 2.3, and 2.4 of this chapter. They are also used in encryption (section 2.5) and economic modeling (section 2.6).
+
+Furthermore, matrices play a crucial role in optimization problems in \textbf(TODO: fix references here) Chapter 4, such as maximizing profit or revenue and minimizing costs. They are used in business for scheduling, routing transportation and shipments, and managing inventory. Matrices are applicable in various fields where data organization and problem-solving are essential.
+
+The use of matrices has expanded with the increase in available data across different domains. They are fundamental tools for organizing data and solving problems in science fields like physics, chemistry, biology, genetics, meteorology, and economics. In computer science, matrix mathematics is foundational for animation in movies and video games.
+
+Moreover, matrices are used in analyzing network diagrams, such as social media connections on platforms like Facebook, LinkedIn, etc. The mathematics of network diagrams falls under "graph theory" and relies on matrices to organize information in graphs that depict connections and associations in a network.
+
+A matrix is a rectangular array of numbers. Matrices are useful in organizing and manipulating large amounts of data. In order to get some idea of what matrices are all about, we will look at the following example.
+
+\begin{example}
+
+
+    Fine Furniture Company makes chairs and tables at its San Jose, Hayward, and Oakland factories. The total production, in hundreds, from the three factories for the years 2014 and 2015 is listed in the table below.
+
+    \[
+        \begin{array}{lcccc}
+                            & \text{2014}   & \text{2015}                                   \\
+                            & \text{CHAIRS} & \text{TABLES} & \text{CHAIRS} & \text{TABLES} \\
+            \text{SAN JOSE} & 30            & 18            & 36            & 20            \\
+            \text{HAYWARD}  & 20            & 12            & 24            & 18            \\
+            \text{OAKLAND}  & 16            & 10            & 20            & 12            \\
+        \end{array}
+    \]
+    \begin{enumerate}
+
+
+        \item Represent the production for the years 2014 and 2015 as the matrices \( A \) and \( B \). \\
+        \item Find the difference in sales between the years 2014 and 2015. \\
+        \item The company predicts that in the year 2020 the production at these factories will be double that of the year 2014. What will the production be for the year 2020?
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    \begin{enumerate}
+
+        \item The matrices are as follows:
+              \[ A = \begin{bmatrix} 30 & 18 \\ 20 & 12 \\ 16 & 10 \end{bmatrix} \quad
+                  B = \begin{bmatrix} 36 & 20 \\ 24 & 18 \\ 20 & 12 \end{bmatrix} \]
+
+        \item We are looking for the matrix \( B - A \). When two matrices have the same number of rows and columns, they can be added or subtracted entry by entry. Therefore, we get:
+              \[ B - A = \begin{bmatrix} 36 - 30 & 20 - 18 \\ 24 - 20 & 18 - 12 \\ 20 - 16 & 12 - 10 \end{bmatrix} = \begin{bmatrix} 6 & 2 \\ 4 & 6 \\ 4 & 2 \end{bmatrix} \]
+
+        \item We would like a matrix that is twice the matrix of 2014, i.e., \( 2A \). Whenever a matrix is multiplied by a number, each entry is multiplied by the number.
+              \[ 2A = 2 \begin{bmatrix} 30 & 18 \\ 20 & 12 \\ 16 & 10 \end{bmatrix} = \begin{bmatrix} 60 & 36 \\ 40 & 24 \\ 32 & 20 \end{bmatrix} \]
+    \end{enumerate}
+\end{solution}
+
+\subsection{Vocabulary}
+
+Before we go any further, we need to familiarize ourselves with some terms that are associated with matrices.
+
+The numbers in a matrix are called the entries or the elements of a matrix.
+
+Whenever we talk about a matrix, we need to know its size or dimension. The dimension of a matrix is the number of rows and columns it has. When we say a matrix is a "3 by 4 matrix," we are saying that it has 3 rows and 4 columns. The rows are always mentioned first, and the columns second. This means that a $3 \times 4$ matrix does not have the same dimension as a $4 \times 3$ matrix.
+
+
+\[
+    A =
+    \begin{bmatrix}
+        1 & 4  & -2 & 0 \\
+        3 & -1 & 7  & 9 \\
+        6 & 2  & 0  & 5
+    \end{bmatrix}
+    \qquad
+    B =
+    \begin{bmatrix}
+        2  & 9 & 8  \\
+        -3 & 0 & 1  \\
+        6  & 5 & -2 \\
+        -4 & 7 & 8
+    \end{bmatrix}
+\]
+
+Matrix \( A \) has dimensions \( 3 \times 4 \) \quad | \quad Matrix \( B \) has dimensions \( 4 \times 3 \)
+
+A matrix that has the same number of rows as columns is called a square matrix.
+A matrix with all entries zero is called a zero matrix.
+A square matrix with 1's along the main diagonal and zeros everywhere else, is called an identity matrix.   When a square matrix is multiplied by an identity matrix of same size, the matrix remains the same.
+
+\[
+    I =
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}
+\]
+
+Matrix \( I \) is a \( 3 \times 3 \) identity matrix
+
+A matrix with only one row is called a row matrix or a row vector, and a matrix with only one column is called a column matrix or a column vector.
+Two matrices are equal if they have the same size and the corresponding entries are equal.
+We can perform arithmetic operations with matrices.  Next we will define and give examples illustrating the operations of matrix addition and subtraction, scalar multiplication, and matrix multiplication.  Note that matrix multiplication is quite different from what you would intuitively expect, so pay careful attention to the explanation.  Note also that the ability to perform matrix operations depends on the matrices involved being compatible in size, or dimensions, for that operation.  The definition of compatible dimensions is different for different operations, so note the requirements carefully for each.
+
+
+\subsection{Matrix Addition and Subtraction}
+
+If two matrices have the same size, they can be added or subtracted. The operations are performed on corresponding entries.
+
+\begin{example}
+    Given the matrices $A$, $B$, $C$, and $D$ below:
+    \[
+        A = \begin{bmatrix} 1 & 2 & 4 \\ 2 & 3 & 1 \\ 5 & 0 & 3 \end{bmatrix},\
+        B = \begin{bmatrix} 2 & -1 & 3 \\ 2 & 4 & 2 \\ 3 & 6 & 1 \end{bmatrix},\
+        C = \begin{bmatrix} 4 \\ 2 \\ 3 \end{bmatrix},\
+        D = \begin{bmatrix} -2 \\ -3 \\ 4 \end{bmatrix}
+    \]
+    Find, if possible:
+    \begin{enumerate}
+        \item $A + B$
+        \item $C - D$
+        \item $A + D$
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    \begin{itemize}
+
+
+        \item We add each element of $A$ to the corresponding entry of $B$:
+              \[
+                  A + B = \begin{bmatrix} 3 & 1 & 7 \\ 4 & 7 & 3 \\ 8 & 6 & 4 \end{bmatrix}
+              \]
+        \item We perform the subtraction entry by entry for $C - D$:
+              \[
+                  C - D = \begin{bmatrix} 6 \\ 5 \\ -1 \end{bmatrix}
+              \]
+        \item The sum $A + D$ cannot be found because the two matrices have different sizes. Two matrices can only be added or subtracted if they have the same dimension.
+    \end{itemize}
+\end{solution}
+
+\subsection{Multiplying a Matrix by a Scalar}
+
+If a matrix is multiplied by a scalar, each entry is multiplied by that scalar.
+
+\begin{example}
+    Given the matrix $A$ and $C$ in the previous example, find $2A$ and $-3C$.
+\end{example}
+
+\begin{solution}
+    \begin{itemize}
+        \item To find $2A$, we multiply each entry of matrix $A$ by 2:
+              \[
+                  2A = \begin{bmatrix} 2 & 4 & 8 \\ 4 & 6 & 2 \\ 10 & 0 & 6 \end{bmatrix}
+              \]
+        \item To find $-3C$, we multiply each entry of $C$ by $-3$:
+              \[
+                  -3C = \begin{bmatrix} -12 \\ -6 \\ -9 \end{bmatrix}
+              \]
+    \end{itemize}
+\end{solution}
+
+\subsection{Multiplication of Two Matrices}
+
+To multiply a matrix by another is not as easy as the addition, subtraction, or scalar multiplication of matrices. Because of its wide use in application problems, it is important that we learn it well. Therefore, we will try to learn the process in a step by step manner.
+
+\begin{example}
+    Given $A = \begin{bmatrix} 2 & 3 & 4 \end{bmatrix}$ and $B = \begin{bmatrix} a \\ b \\ c \end{bmatrix}$, find the product $AB$.
+\end{example}
+
+\begin{solution}
+    The product is a $1 \times 1$ matrix whose entry is obtained by multiplying the corresponding entries and then forming the sum:
+    \[
+        AB = \begin{bmatrix} 2 & 3 & 4 \end{bmatrix} \begin{bmatrix} a \\ b \\ c \end{bmatrix} = 2a + 3b + 4c
+    \]
+    Note that $AB$ is a $1 \times 1$ matrix, and its only entry is $2a + 3b + 4c$.
+\end{solution}
+
+\begin{example}
+    Given $A = \begin{bmatrix} 2 & 3 & 4 \end{bmatrix}$ and $B = \begin{bmatrix} 5 \\ 6 \\ 7 \end{bmatrix}$, find the product $AB$.
+\end{example}
+
+\begin{solution}
+    Again, we multiply the corresponding entries and add:
+    \[
+        AB = \begin{bmatrix} 2 & 3 & 4 \end{bmatrix} \begin{bmatrix} 5 \\ 6 \\ 7 \end{bmatrix} = (2 \cdot 5) + (3 \cdot 6) + (4 \cdot 7) = 10 + 18 + 28 = 56
+    \]
+\end{solution}
+
+\begin{example}
+    Given $A = \begin{bmatrix} 2 & 3 & 4 \end{bmatrix}$ and $B = \begin{bmatrix} 5 & 3 \\ 6 & 4 \\ 7 & 5 \end{bmatrix}$, find the product $AB$.
+\end{example}
+
+\begin{solution}
+    We know how to multiply a row matrix by a column matrix. To find the product $AB$, in this example, we will multiply the row matrix $A$ to both the first and second columns of matrix $B$, resulting in a $1 \times 2$ matrix:
+    \[
+        AB = \begin{bmatrix} 2 & 3 & 4 \end{bmatrix} \begin{bmatrix} 5 & 3 \\ 6 & 4 \\ 7 & 5 \end{bmatrix} = \begin{bmatrix} (2 \cdot 5) + (3 \cdot 6) + (4 \cdot 7) & (2 \cdot 3) + (3 \cdot 4) + (4 \cdot 5) \end{bmatrix} = \begin{bmatrix} 56 & 38 \end{bmatrix}
+    \]
+    We multiplied a $1 \times 3$ matrix by a matrix whose size is $3 \times 2$. So unlike addition and subtraction, it is possible to multiply two matrices with different dimensions if the number of entries in the rows of the first matrix is the same as the number of entries in the columns of the second matrix.
+\end{solution}
+
+\begin{example}
+    Given $A = \begin{bmatrix} 2 & 3 & 4 \\ 1 & 2 & 3 \end{bmatrix}$ and $B = \begin{bmatrix} 5 & 3 \\ 6 & 4 \\ 7 & 5 \end{bmatrix}$, find the product $AB$.
+\end{example}
+
+\begin{solution}
+    This time we are multiplying two rows of matrix $A$ with two columns of matrix $B$. Since the number of entries in each row of $A$ is the same as the number of entries in each column of $B$, the product is possible. We do exactly what we did in the last example. The only difference is that matrix $A$ has one more row.
+
+    We multiply the first row of matrix $A$ with the two columns of $B$, one at a time, and then repeat the process with the second row of $A$. We get:
+    \[
+        AB = \begin{bmatrix} 2 & 3 & 4 \\ 1 & 2 & 3 \end{bmatrix} \begin{bmatrix} 5 & 3 \\ 6 & 4 \\ 7 & 5 \end{bmatrix} = \begin{bmatrix} (2 \cdot 5 + 3 \cdot 6 + 4 \cdot 7) & (2 \cdot 3 + 3 \cdot 4 + 4 \cdot 5) \\ (1 \cdot 5 + 2 \cdot 6 + 3 \cdot 7) & (1 \cdot 3 + 2 \cdot 4 + 3 \cdot 5) \end{bmatrix}
+    \]
+    \[
+        AB = \begin{bmatrix} 56 & 38 \\ 38 & 26 \end{bmatrix}
+    \]
+\end{solution}
+
+\begin{example}
+    Given matrices $E = \begin{bmatrix} 1 & 2 \\ 4 & 2 \\ 3 & 1 \end{bmatrix}$, $F = \begin{bmatrix} 2 & -1 \\ 3 & 2 \end{bmatrix}$, $G = \begin{bmatrix} 4 & 1 \end{bmatrix}$, and $H = \begin{bmatrix} -3 \\ -1 \end{bmatrix}$, find the following products if possible:
+
+    \begin{enumerate}
+        \item $EF$
+        \item $FE$
+        \item $FH$
+        \item $GH$
+        \item $HG$
+    \end{enumerate}
+
+\end{example}
+
+\begin{solution}
+
+
+    \begin{enumerate}
+        \item To find $EF$, we multiply the rows of $E$ with the columns of $F$. The result is:
+              \[
+                  EF = \begin{bmatrix} 1 & 2 \\ 4 & 2 \\ 3 & 1 \end{bmatrix} \begin{bmatrix} 2 & -1 \\ 3 & 2 \end{bmatrix} = \begin{bmatrix} (1 \cdot 2 + 2 \cdot 3) & (1 \cdot -1 + 2 \cdot 2) \\ (4 \cdot 2 + 2 \cdot 3) & (4 \cdot -1 + 2 \cdot 2) \\ (3 \cdot 2 + 1 \cdot 3) & (3 \cdot -1 + 1 \cdot 2) \end{bmatrix} = \begin{bmatrix} 8 & 3 \\ 14 & 0 \\ 9 & -1 \end{bmatrix}
+              \]
+        \item Product $FE$ is not possible because $F$ has two entries in each row, while $E$ has three entries in each column.
+        \item $FH = \begin{bmatrix} 2 & -1 \\ 3 & 2 \end{bmatrix} \begin{bmatrix} -3 \\ -1 \end{bmatrix} = \begin{bmatrix} (2 \cdot -3 + -1 \cdot -1) \\ (3 \cdot -3 + 2 \cdot -1) \end{bmatrix} = \begin{bmatrix} -5 \\ -11 \end{bmatrix}$
+        \item $GH = \begin{bmatrix} 4 & 1 \end{bmatrix} \begin{bmatrix} -3 \\ -1 \end{bmatrix} = (4 \cdot -3 + 1 \cdot -1) = -13$
+        \item $HG = \begin{bmatrix} -3 \\ -1 \end{bmatrix} \begin{bmatrix} 4 & 1 \end{bmatrix} = \begin{bmatrix} (-3 \cdot 4 & -3 \cdot 1) \\ (-1 \cdot 4 & -1 \cdot 1) \end{bmatrix} = \begin{bmatrix} -12 & -3 \\ -4 & -1 \end{bmatrix}$
+    \end{enumerate}
+\end{solution}
+
+We summarize some important properties of matrix multiplication that we observed in the previous examples.
+\begin{itemize}
+    \item For the product $AB$ to exist, the number of columns of matrix $A$ must equal the number of rows of matrix $B$.
+    \item If matrix $A$ has dimensions $m \times n$ and matrix $B$ has dimensions $n \times p$, then the product $AB$ will have dimensions $m \times p$.
+    \item Matrix multiplication is not commutative; that is, in general, $AB$ does not equal $BA$.
+\end{itemize}
+
+\begin{example}
+    Given matrices $R = \begin{bmatrix} 1 & 0 & 2 \\ 2 & 1 & 5 \\ 2 & 3 & 1 \end{bmatrix}$, $S = \begin{bmatrix} 0 & -1 & 2 \\ 3 & 1 & 0 \\ 4 & 2 & 1 \end{bmatrix}$, and $T = \begin{bmatrix} -2 & 3 & 0 \\ -3 & 2 & 2 \\ -1 & 1 & 0 \end{bmatrix}$, find $2RS - 3ST$.
+\end{example}
+
+\begin{solution}
+
+    Solution: To find $2RS - 3ST$, we first compute the products $RS$ and $ST$:
+
+    \[
+        RS = \begin{bmatrix} 1 & 0 & 2 \\ 2 & 1 & 5 \\ 2 & 3 & 1 \end{bmatrix} \begin{bmatrix} 0 & -1 & 2 \\ 3 & 1 & 0 \\ 4 & 2 & 1 \end{bmatrix}
+    \]
+
+    \[
+        = \begin{bmatrix} (1 \cdot 0 + 0 \cdot 3 + 2 \cdot 4) & (1 \cdot -1 + 0 \cdot 1 + 2 \cdot 2) & (1 \cdot 2 + 0 \cdot 0 + 2 \cdot 1) \\ (2 \cdot 0 + 1 \cdot 3 + 5 \cdot 4) & (2 \cdot -1 + 1 \cdot 1 + 5 \cdot 2) & (2 \cdot 2 + 1 \cdot 0 + 5 \cdot 1) \\ (2 \cdot 0 + 3 \cdot 3 + 1 \cdot 4) & (2 \cdot -1 + 3 \cdot 1 + 1 \cdot 2) & (2 \cdot 2 + 3 \cdot 0 + 1 \cdot 1) \end{bmatrix}
+    \]
+
+    \[
+        = \begin{bmatrix} 8 & 3 & 4 \\ 23 & 9 & 9 \\ 13 & 3 & 5 \end{bmatrix}
+    \]
+
+    Next, we compute $ST$:
+
+    \[
+        ST = \begin{bmatrix} 0 & -1 & 2 \\ 3 & 1 & 0 \\ 4 & 2 & 1 \end{bmatrix} \begin{bmatrix} -2 & 3 & 0 \\ -3 & 2 & 2 \\ -1 & 1 & 0 \end{bmatrix}
+    \]
+
+    \[
+        = \begin{bmatrix} (0 \cdot -2 + -1 \cdot -3 + 2 \cdot -1) & (0 \cdot 3 + -1 \cdot 2 + 2 \cdot 1) & (0 \cdot 0 + -1 \cdot 2 + 2 \cdot 0) \\ (3 \cdot -2 + 1 \cdot -3 + 0 \cdot -1) & (3 \cdot 3 + 1 \cdot 2 + 0 \cdot 1) & (3 \cdot 0 + 1 \cdot 1 + 0 \cdot 0) \\ (4 \cdot -2 + 2 \cdot -3 + 1 \cdot -1) & (4 \cdot 3 + 2 \cdot 2 + 1 \cdot 1) & (4 \cdot 0 + 2 \cdot 1 + 1 \cdot 0) \end{bmatrix}
+    \]
+
+    \[
+        = \begin{bmatrix} 1 & 0 & -2 \\ -9 & 11 & 2 \\ -15 & 17 & 4 \end{bmatrix}
+    \]
+
+    Now we can find $2RS - 3ST$:
+
+    \[
+        2RS - 3ST = 2 \cdot \begin{bmatrix} 8 & 3 & 4 \\ 23 & 9 & 9 \\ 13 & 3 & 5 \end{bmatrix} - 3 \cdot \begin{bmatrix} 1 & 0 & -2 \\ -9 & 11 & 2 \\ -15 & 17 & 4 \end{bmatrix}
+    \]
+
+    \[
+        = \begin{bmatrix} 16 & 6 & 8 \\ 46 & 18 & 18 \\ 26 & 6 & 10 \end{bmatrix} - \begin{bmatrix} 3 & 0 & 6 \\ -27 & 33 & 6 \\ -45 & 51 & 12 \end{bmatrix}
+    \]
+
+    \[
+        = \begin{bmatrix} 13 & 6 & 14 \\ 73 & -15 & 12 \\ 71 & -45 & -2 \end{bmatrix}
+    \]
+
+    The result of $2RS - 3ST$ is a matrix with dimensions $3 \times 3$.
+
+\end{solution}
+
+\begin{example}
+    Given matrix $F = \begin{bmatrix} 2 & -1 \\ 3 & 2 \end{bmatrix}$, find $F^2$.
+\end{example}
+
+\begin{solution}
+    $F^2$ is found by multiplying matrix $F$ by itself, using matrix multiplication.
+    \[
+        F^2 = \begin{bmatrix} 2 & -1 \\ 3 & 2 \end{bmatrix} \cdot \begin{bmatrix} 2 & -1 \\ 3 & 2 \end{bmatrix} = \begin{bmatrix} 2\cdot2 + (-1)\cdot3 & 2\cdot(-1) + (-1)\cdot2 \\ 3\cdot2 + 2\cdot3 & 3\cdot(-1) + 2\cdot2 \end{bmatrix} = \begin{bmatrix} 1 & -4 \\ 12 & 1 \end{bmatrix}
+    \]
+
+    Note that $F^2$ is not found by squaring each entry of matrix $F$. The process of raising a matrix to a power, such as finding $F^2$, is only possible if the matrix is a square matrix.
+\end{solution}
+
+\subsection{Systems of Linear Equations}
+
+Using matrices to represent a system of linear equations is a powerful technique that allows for efficient solving of such systems. In this method, we define matrices as follows:
+
+\begin{itemize}
+    \item Matrix $A$ represents the coefficients of the variables in the system and is called the coefficient matrix.
+    \item Matrix $X$ is a column matrix that contains the variables of the system.
+    \item Matrix $B$ is a column matrix that contains the constants of the system.
+\end{itemize}
+
+By defining these matrices, we can represent a system of linear equations as the matrix equation $AX = B$, where $A$, $X$, and $B$ are matrices. This representation simplifies the process of solving linear systems and allows us to apply matrix operations to find the solution.
+
+In the next sections, we will delve deeper into how to use matrices to solve linear systems and explore various methods and techniques for efficient computation and analysis. Matrix representation is widely used in mathematical modeling, engineering, economics, and various other fields where systems of linear equations arise.
+
+\begin{example}
+    Verify that the system of two linear equations with two unknowns:
+    \begin{align*}
+        ax + by = h \\
+        cx + dy = k
+    \end{align*}
+    can be written as $AX = B$, where
+    \[
+        A = \begin{bmatrix}
+            a & b \\
+            c & d
+        \end{bmatrix}, \quad
+        X = \begin{bmatrix}
+            x \\
+            y
+        \end{bmatrix}, \quad
+        B = \begin{bmatrix}
+            h \\
+            k
+        \end{bmatrix}.
+    \]
+\end{example}
+
+\begin{solution}
+    If we multiply the matrices $A$ and $X$, we get
+    \[
+        AX = \begin{bmatrix}
+            a & b \\
+            c & d
+        \end{bmatrix}
+        \begin{bmatrix}
+            x \\
+            y
+        \end{bmatrix}
+        = \begin{bmatrix}
+            ax + by \\
+            cx + dy
+        \end{bmatrix}.
+    \]
+    If $AX = B$, then
+    \[
+        \begin{bmatrix}
+            ax + by \\
+            cx + dy
+        \end{bmatrix}
+        = \begin{bmatrix}
+            h \\
+            k
+        \end{bmatrix}.
+    \]
+    If two matrices are equal, then their corresponding entries are equal. It follows that
+    \begin{align*}
+        ax + by = h \\
+        cx + dy = k
+    \end{align*}
+\end{solution}
+
+
+\begin{example}
+    Express the following system as a matrix equation in the form $AX = B$.
+    \begin{align*}
+        2x + 3y - 4z & = 5 \\
+        3x + 4y - 5z & = 6 \\
+        5x - 6z      & = 7
+    \end{align*}
+\end{example}
+
+\begin{solution}
+    This system of equations can be expressed in the form $AX = B$ as shown below.
+    \[
+        \begin{bmatrix}
+            2 & 3 & -4 \\
+            3 & 4 & -5 \\
+            5 & 0 & -6 \\
+        \end{bmatrix}
+        \begin{bmatrix}
+            x \\
+            y \\
+            z \\
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            5 \\
+            6 \\
+            7 \\
+        \end{bmatrix}
+    \]
+\end{solution}

@@ -1,5 +1,4 @@
-% accessibility?
-% \DocumentMetadata{testphase=phase-III,testphase=math}
+% \DocumentMetadata{testphase={phase-III,math}}
 
 \documentclass[12pt]{book}
 
@@ -7,6 +6,8 @@
 \input{preamble.tex}
 
 \begin{document}
+
+% \tagpdfsetup{tabsorder=structure,uncompress,activate-all}
 
 \frontmatter
 \title{Applied Finite Mathematics}
@@ -18,6 +19,7 @@
 \mainmatter
 % Include chapter files
 \import{chapters/chapter01}{chapter01}
+\import{chapters/chapter02}{chapter02}
 % \include{chapters/chapter02}
 % Add more chapters as needed
 

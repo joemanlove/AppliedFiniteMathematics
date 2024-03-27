@@ -2,7 +2,7 @@
 
 import os
 
-number_of_sections = 5
+number_of_sections = 6
 
 # Define the base folder name
 base_folder_name = "section"
@@ -12,7 +12,7 @@ PARENT_DIRECTORY = os.path.basename(DIRECTORY_PATH)
 # Create 12 folders
 for i in range(number_of_sections):
     # Use f-strings to format the folder name with leading zeros
-    folder_name = f"{base_folder_name}{i:02}"
+    folder_name = f"{base_folder_name}{(i+1):02}"
     os.makedirs(folder_name)
 
     # Create a blank .tex file in each folder
