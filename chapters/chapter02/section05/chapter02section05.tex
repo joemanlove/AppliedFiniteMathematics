@@ -1,0 +1,243 @@
+\section{Application of Matrices in Cryptography}
+
+In this section, you will learn to:
+
+\begin{enumerate}
+    \item Encode a message using matrix multiplication.
+    \item Decode a coded message using the matrix inverse and matrix multiplication.
+\end{enumerate}
+
+Encryption dates back approximately 4000 years. Historical accounts indicate that the Chinese, Egyptians, Indians, and Greeks encrypted messages in some way for various purposes. One famous encryption scheme is called the Caesar cipher, also called a substitution cipher, used by Julius Caesar, involved shifting letters in the alphabet, such as replacing A by C, B by D, C by E, etc., to encode a message. Substitution ciphers are too simple in design to be considered secure today.
+
+In the middle ages, European nations began to use encryption. A variety of encryption methods were used in the US from the Revolutionary War, through the Civil War, and on into modern times.
+
+Applications of mathematical theory and methods to encryption became widespread in military usage in the 20th century. The military would encode messages before sending, and the recipient would decode the message, in order to send information about military operations in a manner that kept the information safe if the message was intercepted. In World War II, encryption played an important role, as both Allied and Axis powers sent encrypted messages and devoted significant resources to strengthening their own encryption while also trying to break the opposition’s encryption.
+
+In this section, we will examine a method of encryption that uses matrix multiplication and matrix inverses. This method, known as the Hill Algorithm, was created by Lester Hill, a mathematics professor who taught at several US colleges and also was involved with military encryption. The Hill algorithm marks the introduction of modern mathematical theory and methods to the field of cryptography.
+
+These days, the Hill Algorithm is not considered a secure encryption method; it is relatively easy to break with modern technology. However, in 1929 when it was developed, modern computing technology did not exist. This method, which we can handle easily with today’s technology, was too cumbersome to use with hand calculations. Hill devised a mechanical encryption machine to help with the mathematics; his machine relied on gears and levers but never gained widespread use. Hill’s method was considered sophisticated and powerful in its time and is one of many methods influencing techniques in use today. Other encryption methods at that time also utilized special coding machines. Alan Turing, a computer scientist pioneer in the field of artificial intelligence, invented a machine that was able to decrypt messages encrypted by the German Enigma machine, helping to turn the tide of World War II.
+
+With the advent of the computer age and internet communication, the use of encryption has become widespread in communication and in keeping private data secure; it is no longer limited to military uses. Modern encryption methods are more complicated, often combining several steps or methods to encrypt data to keep it more secure and harder to break. Some modern methods make use of matrices as part of the encryption and decryption process; other fields of mathematics such as number theory play a large role in modern cryptography.
+
+\subsection{Using Matrices for Encoding and Decoding}
+
+To use matrices in encoding and decoding secret messages, our procedure is as follows.
+
+We first convert the secret message into a string of numbers by arbitrarily assigning a number to each letter of the message. Next, we convert this string of numbers into a new set of numbers by multiplying the string by a square matrix of our choice that has an inverse. This new set of numbers represents the coded message.
+
+To decode the message, we take the string of coded numbers and multiply it by the inverse of the matrix to get the original string of numbers. Finally, by associating the numbers with their corresponding letters, we obtain the original message.
+
+In this section, we will use the correspondence shown below where letters A to Z correspond to the numbers 1 to 26, a space is represented by the number 27, and punctuation is ignored.
+
+\[
+    \begin{array}{ccccccccccccc}
+        \text{A} & \text{B} & \text{C} & \text{D} & \text{E} & \text{F} & \text{G} & \text{H} & \text{I} & \text{J} & \text{K} & \text{L} & \text{M} \\
+        \hline
+        1        & 2        & 3        & 4        & 5        & 6        & 7        & 8        & 9        & 10       & 11       & 12       & 13       \\
+    \end{array}
+\]
+
+\[
+    \begin{array}{ccccccccccccc}
+        \text{N} & \text{O} & \text{P} & \text{Q} & \text{R} & \text{S} & \text{T} & \text{U} & \text{V} & \text{W} & \text{X} & \text{Y} & \text{Z} \\
+        \hline
+        14       & 15       & 16       & 17       & 18       & 19       & 20       & 21       & 22       & 23       & 24       & 25       & 26       \\
+    \end{array}
+\]
+
+
+\begin{example}
+    Use matrix \( A \) to encode the message: ATTACK NOW!
+    \[ A = \begin{bmatrix} 1 & 2 \\ 1 & 3 \end{bmatrix} \]
+\end{example}
+
+\begin{solution}
+    We divide the letters of the message into groups of two.
+
+    \[
+        \text{AT} \quad \text{TA} \quad \text{CK} \quad \text{\_N} \quad \text{OW}
+    \]
+
+    We assign the numbers to these letters from the above table, and convert each pair of numbers into \( 2 \times 1 \) matrices. In the case where a single letter is left over on the end, a space is added to make it into a pair.
+
+    \[
+        \begin{bmatrix} A \\ T \end{bmatrix} = \begin{bmatrix} 1 \\ 20 \end{bmatrix}, \quad
+        \begin{bmatrix} T \\ A \end{bmatrix} = \begin{bmatrix} 20 \\ 1 \end{bmatrix}, \quad
+        \begin{bmatrix} C \\ K \end{bmatrix} = \begin{bmatrix} 3 \\ 11 \end{bmatrix}, \quad
+        \begin{bmatrix} - \\ N \end{bmatrix} = \begin{bmatrix} 27 \\ 14 \end{bmatrix}, \quad
+        \begin{bmatrix} O \\ W \end{bmatrix} = \begin{bmatrix} 15 \\ 23 \end{bmatrix}
+    \]
+
+    So at this stage, our message expressed as \( 2 \times 1 \) matrices is as follows.
+
+    \[
+        \begin{bmatrix} 1 \\ 20 \end{bmatrix}, \quad
+        \begin{bmatrix} 20 \\ 1 \end{bmatrix}, \quad
+        \begin{bmatrix} 3 \\ 11 \end{bmatrix}, \quad
+        \begin{bmatrix} 27 \\ 14 \end{bmatrix}, \quad
+        \begin{bmatrix} 15 \\ 23 \end{bmatrix} \quad
+    \]
+
+    Now to encode, we multiply, on the left, each matrix of our message by the matrix \( A \).
+
+    For example, the product of \( A \) with our first matrix is:
+
+    \[
+        A \cdot \begin{bmatrix} 1 \\ 20 \end{bmatrix} = \begin{bmatrix} 1 & 2 \\ 1 & 3 \end{bmatrix} \cdot \begin{bmatrix} 1 \\ 20 \end{bmatrix} = \begin{bmatrix} 41 \\ 61 \end{bmatrix}
+    \]
+
+    And the product of \( A \) with our second matrix is:
+
+    \[
+        A \cdot \begin{bmatrix} 20 \\ 1 \end{bmatrix} = \begin{bmatrix} 1 & 2 \\ 1 & 3 \end{bmatrix} \cdot \begin{bmatrix} 20 \\ 1 \end{bmatrix} = \begin{bmatrix} 22 \\ 23 \end{bmatrix}
+    \]
+
+    Multiplying matrix \( A \) by each matrix in our list, in turn, gives the desired coded message:
+
+    \[
+        \begin{bmatrix} 41 \\ 61 \end{bmatrix}, \quad
+        \begin{bmatrix} 22 \\ 23 \end{bmatrix}, \quad
+        \begin{bmatrix} 25 \\ 36 \end{bmatrix}, \quad
+        \begin{bmatrix} 55 \\ 69 \end{bmatrix}, \quad
+        \begin{bmatrix} 61 \\ 84 \end{bmatrix}
+    \]
+
+\end{solution}
+
+
+\begin{example}
+    Decode the following message that was encoded using matrix \( A = \begin{bmatrix} 1 & 2 \\ 1 & 3 \end{bmatrix} \):
+    \[
+        \begin{bmatrix} 21 \\ 26 \end{bmatrix}, \quad
+        \begin{bmatrix} 37 \\ 53 \end{bmatrix}, \quad
+        \begin{bmatrix} 45 \\ 54 \end{bmatrix}, \quad
+        \begin{bmatrix} 74 \\ 101 \end{bmatrix}, \quad
+        \begin{bmatrix} 53 \\ 69 \end{bmatrix}
+    \]
+\end{example}
+
+\begin{solution}
+    Since this message was encoded by multiplying by the matrix \( A \) in Example \ref{calculate_2x2_inverse}, we decode this message by first multiplying each matrix, on the left, by the inverse of matrix \( A \) given below.
+
+    \[ A^{-1} = \begin{bmatrix} 3 & -2 \\ -1 & 1 \end{bmatrix} \]
+
+    For example:
+    \[ \begin{bmatrix} 3 & -2 \\ -1 & 1 \end{bmatrix} \begin{bmatrix} 21 \\ 26 \end{bmatrix} = \begin{bmatrix} 11 \\ 5 \end{bmatrix} \]
+
+    By multiplying each of the matrices in our list by the matrix \( A^{-1} \), we get the following.
+    \[ \begin{bmatrix} 11 \\ 5 \end{bmatrix}, \quad\begin{bmatrix}  5 \\ 16 \end{bmatrix}, \quad \begin{bmatrix} 27 \\ 9 \end{bmatrix}, \quad\begin{bmatrix} 20 \\ 27 \end{bmatrix}, \quad \begin{bmatrix} 21 \\ 16 \end{bmatrix} \]
+
+    Finally, by associating the numbers with their corresponding letters, we obtain:
+    \[ \begin{bmatrix} K \\ E \end{bmatrix}, \quad\begin{bmatrix} E \\ P \end{bmatrix}, \quad \begin{bmatrix} \_ \\ T \end{bmatrix}, \quad\begin{bmatrix} I \\ U \end{bmatrix}, \quad \begin{bmatrix} P \\ \_ \end{bmatrix} \]
+
+    And the message reads: KEEP IT UP.
+\end{solution}
+
+Now suppose we wanted to use a \( 3 \times 3 \) matrix to encode a message, then instead of dividing the letters into groups of two, we would divide them into groups of three.
+
+\begin{example}
+    Using the matrix \( B = \begin{bmatrix} 1 & 1 & -1 \\ 1 & 0 & 1 \\ 2 & 1 & 1 \end{bmatrix} \), encode the message: ATTACK NOW!
+\end{example}
+
+\begin{solution}
+    We divide the letters of the message into groups of three.
+
+    \[
+        \text{ATT} \quad \text{ACK} \quad \text{\_NO} \quad \text{W\_\_}
+    \]
+
+    Note that since the single letter "W" was left over on the end, we added two spaces to make it into a triplet.
+
+    Now we assign the numbers their corresponding letters from the table, and convert each triplet of numbers into \( 3 \times 1 \) matrices. We get
+
+    \[
+        \begin{bmatrix} A \\ T \\ T \end{bmatrix} = \begin{bmatrix} 1 \\ 20 \\ 20 \end{bmatrix}, \quad
+        \begin{bmatrix} A \\ C \\ K \end{bmatrix} = \begin{bmatrix} 1 \\ 3 \\ 11 \end{bmatrix}, \quad
+        \begin{bmatrix} - \\ N \\ O \end{bmatrix} = \begin{bmatrix} 27 \\ 14 \\ 15 \end{bmatrix}, \quad
+        \begin{bmatrix} W \\ - \\ - \end{bmatrix} = \begin{bmatrix} 23 \\ 27 \\ 27 \end{bmatrix}
+    \]
+
+    So far we have,
+
+    \[
+        \left[ \begin{array}{c} 1 \\ 20 \\ 20 \end{array} \right], \quad
+        \left[ \begin{array}{c} 1 \\ 3 \\ 11 \end{array} \right], \quad
+        \left[ \begin{array}{c} 27 \\ 14 \\ 15 \end{array} \right], \quad
+        \left[ \begin{array}{c} 23 \\ 27 \\ 27 \end{array} \right] \quad
+    \]
+
+    We multiply, on the left, each matrix of our message by the matrix \( B \). For example,
+
+    \[
+        \begin{bmatrix} 1 & 1 & -1 \\ 1 & 0 & 1 \\ 2 & 1 & 1 \end{bmatrix}
+        \begin{bmatrix} 1 \\ 20 \\ 20 \end{bmatrix} = \begin{bmatrix} 1 \\ 21 \\ 42 \end{bmatrix}
+    \]
+
+    By multiplying each of the matrices in \( (III) \) by the matrix \( B \), we get the desired coded message as follows:
+
+    \[
+        \begin{bmatrix} 1 \\ 21 \\ 42 \end{bmatrix}, \quad
+        \begin{bmatrix} -7 \\ 12 \\ 16 \end{bmatrix}, \quad
+        \begin{bmatrix} 26 \\ 42 \\ 83 \end{bmatrix}, \quad
+        \begin{bmatrix} 23 \\ 50 \\ 100 \end{bmatrix}
+    \]
+
+    If we need to decode this message, we simply multiply the coded message by \( B^{-1} \), and associate the numbers with the corresponding letters of the alphabet.
+
+    In Example \ref{3x3_decoding} we will demonstrate how to use matrix \( B^{-1} \) to decode an encrypted message.
+\end{solution}
+
+\begin{example}\label{3x3_decoding}
+    Decode the following message that was encoded using matrix \( B = \begin{bmatrix} 1 & 1 & -1 \\ 1 & 0 & 1 \\ 2 & 1 & 1 \end{bmatrix} \):
+    \[
+        \begin{bmatrix} 11 \\ 20 \\ 43 \end{bmatrix}, \quad
+        \begin{bmatrix} 25 \\ 10 \\ 41 \end{bmatrix}, \quad
+        \begin{bmatrix} 22 \\ 14 \\ 41 \end{bmatrix}
+    \]
+\end{example}
+
+\begin{solution}
+    Since this message was encoded by multiplying by the matrix \( B \). We first determine the inverse of \( B \).
+
+    \[ B^{-1} = \begin{bmatrix} 1 & 2 & -1 \\ -1 & -3 & 2 \\ -1 & -1 & 1 \end{bmatrix} \]
+
+    To decode the message, we multiply each matrix, on the left, by \( B^{-1} \). For example,
+
+    \[ \begin{bmatrix} 1 & 2 & -1 \\ -1 & -3 & 2 \\ -1 & -1 & 1 \end{bmatrix} \begin{bmatrix} 11 \\ 20 \\ 43 \end{bmatrix} = \begin{bmatrix} 8 \\ 15 \\ 12 \end{bmatrix} \]
+
+    Multiplying each of the matrices in our list by the matrix \( B^{-1} \) gives the following:
+
+    \[
+        \begin{bmatrix} 8 \\ 15 \\ 12 \end{bmatrix}, \quad
+        \begin{bmatrix} 4 \\ 27 \\ 6 \end{bmatrix}, \quad
+        \begin{bmatrix} 9 \\ 18 \\ 5 \end{bmatrix}
+    \]
+
+    Finally, by associating the numbers with their corresponding letters, we obtain:
+
+    \[
+        \begin{bmatrix} H \\ O \\ L \end{bmatrix}, \quad
+        \begin{bmatrix} D \\ \_ \\ F \end{bmatrix}, \quad
+        \begin{bmatrix} I \\ R \\ E \end{bmatrix}
+    \]
+
+
+    The message reads: HOLD FIRE.
+\end{solution}
+
+\begin{summarybox}
+    ~\\
+    \textbf{To Encode a Message}
+    \begin{enumerate}
+        \item Divide the letters of the message into groups of two or three.
+        \item Convert each group into a string of numbers by assigning a number to each letter of the message. Remember to assign letters to blank spaces.
+        \item Convert each group of numbers into column matrices.
+        \item Convert these column matrices into a new set of column matrices by multiplying them with a compatible square matrix of your choice that has an inverse. This new set of numbers or matrices represents the coded message.
+    \end{enumerate}
+
+    \textbf{To Decode a Message}
+    \begin{enumerate}
+        \item Take the string of coded numbers and multiply it by the inverse of the matrix that was used to encode the message.
+        \item Associate the numbers with their corresponding letters.
+    \end{enumerate}
+\end{summarybox}
