@@ -1,0 +1,322 @@
+\section{Maximization Applications}
+
+In this section, you will learn to:
+\begin{enumerate}
+    \item Recognize the typical form of a linear programming problem.
+    \item Formulate maximization linear programming problems.
+    \item Graph feasibility regions for maximization linear programming problems.
+    \item Determine optimal solutions for maximization linear programming problems.
+\end{enumerate}
+
+Application problems in business, economics, and social and life sciences often ask us to make decisions on the basis of certain conditions.  The conditions or constraints  often take the form of inequalities.  In this section, we will begin to formulate, analyze, and solve such problems, at a simple level, to understand the many components of such a problem.
+
+A typical linear programming problem consists of finding an extreme value of a linear function subject to certain constraints.  We are either trying to maximize or minimize the value of this linear function, such as to maximize profit or revenue, or to minimize cost.  That is why these linear programming problems are classified as maximization or minimization problems, or just optimization problems.  The function we are trying to optimize is called an objective function, and the conditions that must be satisfied are called constraints.
+
+A typical example is to maximize profit from producing several products, subject to limitations on materials or resources needed for producing these items; the problem requires us to determine the amount of each item produced.  Another type of problem involves scheduling; we need to determine how much time to devote to each of several activities in order to maximize income from (or minimize cost of) these activities, subject to limitations on time and other resources available for each activity.
+
+In this chapter, we will work with problems that involve only two variables, and therefore, can be solved by graphing.
+
+In the next chapter, we’ll learn an algorithm to find a solution numerically.  That will provide us with a tool to solve problems with more than two variables. At that time, with a little more knowledge about linear programming, we’ll also explore the many ways these techniques are used in business and wide variety of other fields.
+
+We begin by solving a maximization problem.
+
+\begin{example}
+    Niki holds two part-time jobs, Job I and Job II. She never wants to work more than a total of 12 hours a week. She has determined that for every hour she works at Job I, she needs 2 hours of preparation time, and for every hour she works at Job II, she needs one hour of preparation time, and she cannot spend more than 16 hours for preparation.
+    If Niki makes \$40 an hour at Job I, and \$30 an hour at Job II, how many hours should she work per week at each job to maximize her income?
+\end{example}
+
+\begin{solution}
+    We start by choosing our variables.
+    Let \( x \) be the number of hours per week Niki will work at Job I, and \( y \) the number of hours per week she will work at Job II.
+
+    Now we write the objective function. Since Niki gets paid \$40 an hour at Job I, and \$30 an hour at Job II, her total income \( I \) is given by the following equation.
+    \[ I = 40x + 30y \]
+
+    Our next task is to find the constraints. The constraints based on the problem description are:
+    \[ x + y \leq 12 \]
+    \[ 2x + y \leq 16 \]
+    \[ x \geq 0, \quad y \geq 0 \]
+
+    We have formulated the problem as follows:
+    Maximize
+    \[ I = 40x + 30y \]
+    Subject to:
+    \[ x + y \leq 12 \]
+    \[ 2x + y \leq 16 \]
+    \[ x \geq 0; \quad y \geq 0 \]
+
+    To solve the problem, we graph the constraints and shade the region that satisfies all the inequality constraints. We graph the lines by plotting the x-intercept and y-intercept and use a test point to determine which portion of the plane to shade.
+
+    In this example, after graphing the lines representing the constraints and using the origin (0,0) as a test point, we find that the feasible region is the area below and to the left of both constraint lines, above the x-axis, and to the right of the y-axis.
+\end{solution}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[scale=0.75, every node/.style={scale=1.0}]
+
+        % Draw axes
+        \draw[thick, -Stealth] (0,0) -- (14,0) node[anchor=north] {$x$};
+        \draw[thick, -Stealth] (0,0) -- (0,14) node[anchor=east] {$y$};
+
+        % Draw lines
+        \draw[red, thick] (0,12) node[anchor=east] {12} -- (12,0) node[anchor=north] {12};
+        \draw[thick] (0,16) node[anchor=east] {16} -- (8,0) node[anchor=north] {8};
+
+        % Shade feasible region
+        \fill[blue, opacity=0.3] (0,0) -- (0,12) -- (4,8) -- cycle;
+        \fill[blue, opacity=0.3] (0,0) -- (4,8) -- (8,0) -- cycle;
+
+        % Label origin
+        \node[anchor=north east] at (0,0) {0};
+
+        % Point of intersection
+        \fill[black] (4,8) circle (4pt) node[anchor=south west] {\large $(4,8)$};
+
+    \end{tikzpicture}
+    \caption{The red line is $x+y=12$, the black line is $2x + y = 16$, and the blue region is the feasible region.}
+\end{figure}
+
+The shaded region where all conditions are satisfied is called the feasibility region or the feasibility polygon. The Fundamental Theorem of Linear Programming states that the maximum (or minimum) value of the objective function always takes place at the vertices of the feasibility region. Therefore, we will identify all the vertices (corner points) of the feasibility region. We call these points critical points. They are listed as $(0, 0)$, $(0, 12)$, $(4, 8)$, and $(8, 0)$.
+
+To maximize Niki's income, we will substitute these points in the objective function to see which point gives us the highest income per week. We list the results below:
+\begin{center}
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Critical Points} & \textbf{Income}          \\
+        \hline
+        $(0, 0)$                 & $40(0) + 30(0) = \$0$    \\
+        $(0, 12)$                & $40(0) + 30(12) = \$360$ \\
+        $(4, 8)$                 & $40(4) + 30(8) = \$400$  \\
+        $(8, 0)$                 & $40(8) + 30(0) = \$320$  \\
+        \hline
+    \end{tabular}
+\end{center}
+
+Clearly, the point $(4, 8)$ gives the most profit: \$400. Therefore, we conclude that Niki should work 4 hours at Job I and 8 hours at Job II.
+
+
+\begin{example} \label{3line_geometric_method_example}
+    A factory manufactures two types of gadgets, regular and premium. Each gadget requires the use of two operations, assembly and finishing, and there are at most 12 hours available for each operation. A regular gadget requires 1 hour of assembly and 2 hours of finishing, while a premium gadget needs 2 hours of assembly and 1 hour of finishing. Due to other restrictions, the company can make at most 7 gadgets a day. If a profit of \$20 is realized for each regular gadget and \$30 for a premium gadget, how many of each should be manufactured to maximize profit?
+\end{example}
+
+\begin{solution}
+    We choose our variables.
+    Let \( x \) be the number of regular gadgets manufactured each day,
+    and \( y \) be the number of premium gadgets manufactured each day.
+
+    The objective function is
+    \[ P = 20x + 30y \]
+
+    We now write the constraints. The company can make at most 7 gadgets a day, giving us:
+    \[ x + y \leq 7 \]
+
+    The regular gadget requires one hour of assembly and the premium gadget two hours, with at most 12 hours available for assembly:
+    \[ x + 2y \leq 12 \]
+
+    Similarly, for finishing, we have:
+    \[ 2x + y \leq 12 \]
+
+    The non-negativity constraints are:
+    \[ x \geq 0, \quad y \geq 0 \]
+
+    We formulate the problem as follows:
+    Maximize \( P = 20x + 30y \)
+    Subject to:
+    \[ x + y \leq 7 \]
+    \[ x + 2y \leq 12 \]
+    \[ 2x + y \leq 12 \]
+    \[ x \geq 0; \quad y \geq 0 \]
+
+    We next graph the constraints and feasibility region.
+\end{solution}
+
+% TikZ picture for the constraints and feasibility region
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[scale=1, every node/.style={scale=1}]
+
+        % Draw axes
+        \draw[thick, -Stealth] (0,0) -- (10,0) node[anchor=north] {$x$ (Regular gadgets)};
+        \draw[thick, -Stealth] (0,0) -- (0,10) node[anchor=east] {$y$ (Premium gadgets)};
+
+        % Draw constraint lines
+        \draw[red, thick] (0,7) -- (7,0) node[anchor=north] {};
+        \draw[green, thick] (0,6) -- (10,1) node[anchor=north] {};
+        \draw[blue, thick] (1,10) -- (6,0) node[anchor=north] {};
+
+        % Shade feasible region
+        \fill[purple, opacity=0.3] (0,0) -- (0,6) -- (2,5) -- (5,2) -- (6,0) -- cycle;
+
+        % Points of intersection
+        \fill[black] (0,0) circle (2pt) node[anchor=east] {$(0,0)$};
+        \fill[black] (0,6) circle (2pt) node[anchor=east] {$(0,6)$};
+        \fill[black] (6,0) circle (2pt) node[anchor=north] {$(6,0)$};
+        \fill[black] (2,5) circle (2pt) node[anchor=south west] {$(2,5)$};
+        \fill[black] (5,2) circle (2pt) node[anchor=south west] {$(5,2)$};
+        \fill[black] (4,4) circle (2pt) node[anchor=south west] {$(4,4)$};
+
+    \end{tikzpicture}
+    \caption{Feasibility region for the gadget factory optimization problem}
+\end{figure}
+
+Again, we have shaded the feasibility region, where all constraints are satisfied. Since the extreme value of the objective function always takes place at the vertices of the feasibility region, we identify all the critical points. They are listed as $(0, 0)$, $(0, 6)$, $(2, 5)$, $(5, 2)$, and $(6, 0)$. Notice, $(4, 4)$ is \textbf{not} a critical point because it is not on the edge of the critical region. To maximize profit, we will substitute these points in the objective function to see which point gives us the maximum profit each day. The results are listed below:
+\begin{center}
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Critical Point} & \textbf{Income}         \\
+        \hline
+        $(0, 0)$                & $20(0) + 30(0) = \$0$   \\
+        $(0, 6)$                & $20(0) + 30(6) = \$180$ \\
+        $(2, 5)$                & $20(2) + 30(5) = \$190$ \\
+        $(5, 2)$                & $20(5) + 30(2) = \$160$ \\
+        $(6, 0)$                & $20(6) + 30(0) = \$120$ \\
+        \hline
+    \end{tabular}
+\end{center}
+
+The point $(2, 5)$ gives the most profit, and that profit is \$190. Therefore, we conclude that we should manufacture 2 regular gadgets and 5 premium gadgets daily to obtain the maximum profit of \$190.
+
+
+So far, we have focused on "standard maximization problems" in which:
+\begin{enumerate}
+    \item The objective function is to be maximized.
+    \item All constraints are of the form $ax + by \leq c$.
+    \item All variables are constrained to be non-negative ($x \geq 0$, $y \geq 0$).
+\end{enumerate}
+
+We will next consider an example where that is not the case. Our next problem is said to have "mixed constraints" since some of the inequality constraints are of the form $ax + by \leq c$ and some are of the form $ax + by \geq c$. The non-negativity constraints are still an important requirement in any linear program.
+
+\begin{example}
+    Solve the following maximization problem graphically.
+    \begin{align*}
+        \text{Maximize} \quad P        & = 10x + 15y            \\
+        \text{Subject to:} \quad x + y & \geq 1                 \\
+        x + 2y                         & \leq 6                 \\
+        2x + y                         & \leq 6                 \\
+        x                              & \geq 0; \quad y \geq 0
+    \end{align*}
+\end{example}
+
+\begin{solution}
+    The graph is shown below.
+
+
+    % TikZ picture for the constraints and feasibility region
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[scale=1, every node/.style={scale=1}]
+
+            % Draw axes
+            \draw[thick, -Stealth] (0,0) -- (7,0) node[anchor=north] {$x$};
+            \draw[thick, -Stealth] (0,0) -- (0,7) node[anchor=east] {$y$};
+
+            % Draw constraint lines
+            \draw[red, thick] (1,0) -- (0,1) node[anchor=south] {};
+            \draw[darkgreen, thick] (6,0) -- (0,3) node[anchor=north east] {};
+            \draw[blue, thick] (3,0) -- (0,6) node[anchor=north east] {};
+
+            % Shade feasible region
+            \fill[purple, opacity=0.3] (1,0) -- (0,1) -- (0,3) -- (2,2) -- (3,0) -- cycle;
+
+            % Points of intersection
+            \fill[black] (1,0) circle (2pt) node[anchor=north] {$(1,0)$};
+            \fill[black] (0,1) circle (2pt) node[anchor=east] {$(0,1)$};
+            \fill[black] (2,2) circle (2pt) node[anchor=south west] {$(2,2)$};
+            \fill[black] (3,0) circle (2pt) node[anchor=north] {$(3,0)$};
+
+            % Objective function line (not to scale, illustrative purposes only)
+            % \draw[dashed, orange] (7,0) -- (0,7/1.5) node[anchor=south] {$P = 10x + 15y$};
+
+        \end{tikzpicture}
+        \caption{The red line is $x + y = 1$, the green line is $x + 2y = 6$ and the blue line is $2x + y = 6$.}
+    \end{figure}
+
+    The five critical points are listed in the figure above. The reader should observe that the first constraint $x + y \geq 1$ requires that the feasibility region must be bounded below by the line $x + y = 1$; the test point $(0,0)$ does not satisfy $x + y \geq 1$, so we shade the region on the opposite side of the line from the test point $(0,0)$.
+
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            Critical Point & Income                 \\
+            \hline
+            $(1, 0)$       & $10(1) + 15(0) = \$10$ \\
+            $(3, 0)$       & $10(3) + 15(0) = \$30$ \\
+            $(2, 2)$       & $10(2) + 15(2) = \$50$ \\
+            $(0, 3)$       & $10(0) + 15(3) = \$45$ \\
+            $(0,1)$        & $10(0) + 15(1) = \$15$ \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    Clearly, the point $(2, 2)$ maximizes the objective function to a maximum value of $50$. It is important to observe that if the point $(0,0)$ lies on the line for a constraint, then $(0,0)$ could not be used as a test point. We would need to select any other point that does not lie on the line to use as a test point in that situation.
+\end{solution}
+
+Finally, we address an important question: Is it possible to determine the point that gives the maximum value without calculating the value at each critical point?
+
+The answer is yes.
+
+For example \ref{3line_geometric_method_example}, we substituted the points $(0, 0)$, $(0, 6)$, $(2, 5)$, $(5, 2)$, and $(6, 0)$ in the objective function $P =  20x + 30y$, and we got the values \$0, \$180, \$190, \$160, \$120, respectively.
+Sometimes that is not the most efficient way of finding the optimum solution. Instead, we could find the optimal value by also graphing the objective function.
+
+To determine the largest $P$, we graph $P = 20x + 30y$ for any value $P$ of our choice. Let us say, we choose $P = 60$. We graph $20x + 30y = 60$.
+
+Now we move the line parallel to itself, that is, keeping the same slope at all times. Since we are moving the line parallel to itself, the slope is kept the same, and the only thing that is changing is the $P$. As we move away from the origin, the value of $P$ increases. The largest possible value of $P$ is realized when the line touches the last corner point of the feasibility region.
+
+The figure below shows the movements of the line, and the optimum solution is achieved at the point $(2, 5)$. In maximization problems, as the line is being moved away from the origin, this optimum point is the farthest critical point.
+
+% TikZ picture for the constraints and feasibility region
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[scale=1, every node/.style={scale=1}]
+
+        % Draw axes
+        \draw[thick, -Stealth] (0,0) -- (10,0) node[anchor=north] {$x$ (Regular gadgets)};
+        \draw[thick, -Stealth] (0,0) -- (0,10) node[anchor=east] {$y$ (Premium gadgets)};
+
+        % Draw constraint lines
+        \draw[red, thick] (0,7) -- (7,0) node[anchor=north] {};
+        \draw[green, thick] (0,6) -- (10,1) node[anchor=north] {};
+        \draw[blue, thick] (1,10) -- (6,0) node[anchor=north] {};
+
+        % Shade feasible region
+        \fill[purple, opacity=0.2] (0,0) -- (0,6) -- (2,5) -- (5,2) -- (6,0) -- cycle;
+
+        % Points of intersection
+        \fill[black] (0,0) circle (2pt) node[anchor=east] {$(0,0)$};
+        \fill[black] (0,6) circle (2pt) node[anchor=east] {$(0,6)$};
+        \fill[black] (6,0) circle (2pt) node[anchor=north] {$(6,0)$};
+        \fill[black] (2,5) circle (2pt) node[anchor=south west] {$(2,5)$};
+        \fill[black] (5,2) circle (2pt) node[anchor=south west] {$(5,2)$};
+        \fill[black] (4,4) circle (2pt) node[anchor=south west] {$(4,4)$};
+
+        % Draw lines parallel to the objective function
+        \draw[orange, thick] (0,6.2) -- (9.3,0);
+        \draw[orange, thick] (0,5.567) -- (8.35,0);
+        \draw[orange, thick] (0,4.4) -- (6.6,0);
+        \draw[orange, thick] (0,3.133) -- (4.7,0);
+        \draw[orange, thick] (0,.967) -- (1.45,0);
+
+    \end{tikzpicture}
+    \caption{Feasibility region for the gadget factory optimization problem with profit lines.}
+\end{figure}
+
+\begin{summarybox}
+    ~\\
+    \textbf{The Maximization Linear Programming Problems}
+    \begin{enumerate}
+        \item Write the objective function.
+        \item Write the constraints.
+              \begin{enumerate}
+                  \item For the standard maximization linear programming problems, constraints are of the form: $ax + by \leq c$.
+                  \item Since the variables are non-negative, we include the constraints: $x \geq 0$, $y \geq 0$.
+              \end{enumerate}
+        \item Graph the constraints.
+        \item Shade the feasibility region.
+        \item Find the corner points.
+        \item Determine the corner point that gives the maximum value.
+              \begin{enumerate}
+                  \item This is done by finding the value of the objective function at each corner point.
+                  \item This can also be done by moving the line associated with the objective function.
+              \end{enumerate}
+    \end{enumerate}
+
+\end{summarybox}
