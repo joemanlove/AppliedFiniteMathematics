@@ -1,0 +1,226 @@
+\section{Minimization Applications}
+
+In this section, you will learn to:
+\begin{enumerate}
+    \item Formulate minimization linear programming problems.
+    \item Graph feasibility regions for minimization linear programming problems.
+    \item Determine optimal solutions for minimization linear programming problems.
+\end{enumerate}
+
+Minimization linear programming problems are solved in much the same way as the maximization problems.
+
+For the standard minimization linear program, the constraints are of the form $ax + by \geq c$, as opposed to the form $ax + by \leq c$ for the standard maximization problem.  As a result, the feasible solution extends indefinitely to the upper right of the first quadrant, and is unbounded.   But that is not a concern, since in order to minimize the objective function, the line associated with the objective function is moved towards the origin, and the critical point that minimizes the function is closest to the origin.
+
+However, one should be aware that in the case of an unbounded feasibility region, the possibility of no optimal solution exists.
+
+\begin{example}
+    At a university, Professor Symons wishes to employ two people, John and Mary, to grade papers for his classes. John is a graduate student and can grade 20 papers per hour; John earns \$15 per hour for grading papers. Mary is a post-doctoral associate and can grade 30 papers per hour; Mary earns \$25 per hour for grading papers. Each must be employed at least one hour a week to justify their employment.
+    If Professor Symons has at least 110 papers to be graded each week, how many hours per week should he employ each person to minimize the cost?
+\end{example}
+
+\begin{solution}
+    We choose the variables as follows:
+    Let \( x \) be the number of hours per week John is employed,
+    and \( y \) be the number of hours per week Mary is employed.
+
+    The objective function is
+    \[ C = 15x + 25y \]
+
+    The constraints are that each must work at least one hour each week:
+    \[ x \geq 1 \]
+    \[ y \geq 1 \]
+
+    John can grade 20 papers per hour and Mary 30 papers per hour, with at least 110 papers to be graded per week:
+    \[ 20x + 30y \geq 110 \]
+
+    Additionally, \( x \) and \( y \) are non-negative:
+    \[ x \geq 0 \]
+    \[ y \geq 0 \]
+
+    The problem is thus formulated as:
+    Minimize \( C = 15x + 25y \)
+    Subject to:
+    \[ x \geq 1 \]
+    \[ y \geq 1 \]
+    \[ 20x + 30y \geq 110 \]
+    \[ x \geq 0 \]
+    \[ y \geq 0 \]
+
+    To solve the problem, we graph the constraints as follows:
+
+    \begin{tikzpicture}
+
+        % Draw axes
+        \draw[thick,->] (0,0) -- (6,0) node[anchor=north] {$x$};
+        \draw[thick,->] (0,0) -- (0,6) node[anchor=east] {$y$};
+
+        % Draw constraint lines
+        \draw[thick, red] (1,0) -- (1,6) node[anchor=south] {$x=1$};
+        \draw[thick, blue] (0,1) -- (6,1) node[anchor=west] {$y=1$};
+        \draw[thick, darkgreen] (5.5,0) -- (0,3.66) node[anchor=east] {$20x + 30y = 110$};
+
+        % Label points on the axes
+        \foreach \x in {1,2,3,4,5}
+        \draw (\x,0.1) -- (\x,-0.1) node[anchor=north] {};
+        \foreach \y in {1,2,3,4,5}
+        \draw (0.1,\y) -- (-0.1,\y) node[anchor=east] {};
+
+        % Shade feasible region
+        \fill[blue, opacity=0.2] (1,6) -- (6,6) -- (6,1) -- (4,1) -- (1,3) -- cycle;
+
+        % Points of intersection
+        \fill[black] (1,3) circle (2pt) node[anchor=south west] {$(1,3)$};
+        \fill[black] (4,1) circle (2pt) node[anchor=south west] {$(4,1)$};
+
+    \end{tikzpicture}
+
+
+    Again, we have shaded the feasibility region, where all constraints are satisfied. If we used test point $(0,0)$ that does not lie on any of the constraints, we observe that $(0, 0)$ does not satisfy any of the constraints $x \geq 1$, $y \geq 1$, and $20x + 30y \geq 110$. Thus, all the shading for the feasibility region lies on the opposite side of the constraint lines from the point $(0,0)$.
+
+    Alternatively, we could use test point $(4,6)$, which also does not lie on any of the constraint lines. We’d find that $(4,6)$ does satisfy all of the inequality constraints. Consequently, all the shading for the feasibility region lies on the same side of the constraint lines as the point $(4,6)$.
+
+    Since the extreme value of the objective function always takes place at the vertices of the feasibility region, we identify the two critical points, $(1, 3)$ and $(4, 1)$. To minimize cost, we will substitute these points in the objective function to see which point gives us the minimum cost each week. The results are listed below:
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            Critical points & Income                 \\
+            \hline
+            $(1, 3)$        & $15(1) + 25(3) = \$90$ \\
+            $(4, 1)$        & $15(4) + 25(1) = \$85$ \\
+            \hline
+        \end{tabular}
+    \end{center}
+    The point $(4, 1)$ gives the least cost, and that cost is \$85. Therefore, we conclude that in order to minimize grading costs, Professor Symons should employ John for 4 hours a week and Mary for 1 hour a week at a cost of \$85 per week.
+
+\end{solution}
+
+
+\begin{example}
+    Professor Hamer is on a low cholesterol diet. During lunch at the college cafeteria, he always chooses between two meals, Pasta or Tofu. The table below lists the amount of protein, carbohydrates, and vitamins each meal provides along with the amount of cholesterol he is trying to minimize. Mr. Hamer needs at least 200 grams of protein, 960 grams of carbohydrates, and 40 grams of vitamins for lunch each month. Over this time period, how many days should he have the Pasta meal, and how many days the Tofu meal so that he gets the adequate amount of protein, carbohydrates, and vitamins and at the same time minimizes his cholesterol intake?
+    \begin{center}
+        \begin{tabular}{|l|c|c|}
+            \hline
+                              & \textbf{Pasta} & \textbf{Tofu} \\
+            \hline
+            Protein (g)       & 8              & 16            \\
+            Carbohydrates (g) & 60             & 40            \\
+            Vitamin C (g)     & 2              & 2             \\
+            Cholesterol (mg)  & 60             & 50            \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+\end{example}
+
+\begin{solution}
+    We choose the variables as follows:
+    Let \( x \) be the number of days Mr. Hamer eats Pasta, and \( y \) the number of days he eats Tofu.
+
+    The objective function for minimizing cholesterol intake is
+    \[ C = 60x + 50y \]
+
+    The constraints for protein, carbohydrates, and vitamins are as follows:
+    \begin{align*}
+        8x + 16y  & \geq 200 \\
+        60x + 40y & \geq 960 \\
+        2x + 2y   & \geq 40
+    \end{align*}
+
+    Additionally, \( x \) and \( y \) are non-negative:
+    \[ x \geq 0 \]
+    \[ y \geq 0 \]
+
+    We summarize the problem as:
+    Minimize \( C = 60x + 50y \)
+    Subject to:
+    \begin{align*}
+        8x + 16y  & \geq 200 \\
+        60x + 40y & \geq 960 \\
+        2x + 2y   & \geq 40  \\
+        x         & \geq 0   \\
+        y         & \geq 0
+    \end{align*}
+
+    To solve the problem, we graph the constraints and shade the feasibility region.
+
+    \begin{tikzpicture}[scale=0.3]
+
+        % Draw axes
+        \draw[thick,->] (0,0) -- (40,0) node[anchor=north] {$x$ (Pasta days)};
+        \draw[thick,->] (0,0) -- (0,40) node[anchor=east] {$y$ (Tofu days)};
+
+        % Draw constraint lines
+        \draw[thick, red] (25,0) -- (0,12.5) node[anchor=south east] {$8x + 16y = 200$};
+        \draw[thick, blue] (16,0) -- (0,24) node[anchor=south east] {$60x + 40y = 960$};
+        \draw[thick, darkgreen] (20,0) -- (0,20) node[anchor=south east] {$2x + 2y = 40$};
+
+        % Shade feasible region
+        \fill[blue, opacity=0.2] (0,40) -- (40, 40) -- (40,0) -- (25,0) --(15,5) -- (8,12) -- (0,24) -- cycle;
+
+        % ticks on the axes
+        % with labels
+        \foreach \x in {5,10}
+        \draw (\x,.5) -- (\x,-.5) node[anchor=north] {$\x$};
+        \foreach \y in {5,10}
+        \draw (.5,\y) -- (-.5,\y) node[anchor=east] {$\y$};
+        % without
+        \foreach \x in {15,20,25,30,35}
+        \draw (\x,.5) -- (\x,-.5) node[anchor=north] {};
+        \foreach \y in {15,20,25,30,35}
+        \draw (.5,\y) -- (-.5,\y) node[anchor=east] {};
+
+        % Points of intersection
+        \fill[black] (0,24) circle (8pt) node[anchor=south west] {\large $(0,24)$};
+        \fill[black] (8,12) circle (8pt) node[anchor=south west] {\large $(8,12)$};
+        \fill[black] (15,5) circle (8pt) node[anchor=south west] {\large $(15,5)$};
+        \fill[black] (25,0) circle (8pt) node[anchor=south west] {\large $(25,0)$};
+
+    \end{tikzpicture}
+
+    We have shaded the unbounded feasibility region, where all constraints are satisfied. To minimize the objective function, we find the vertices of the feasibility region. These vertices are $(0, 24)$, $(8, 12)$, $(15, 5)$, and $(25, 0)$. To minimize cholesterol, we will substitute these points in the objective function to see which point gives us the smallest value. The results are listed below:
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            Critical points & Cholesterol                          \\
+            \hline
+            $(0, 24)$       & $60(0) + 50(24) = 1200 \, \text{mg}$ \\
+            $(8, 12)$       & $60(8) + 50(12) = 1080 \, \text{mg}$ \\
+            $(15, 5)$       & $60(15) + 50(5) = 1150 \, \text{mg}$ \\
+            $(25, 0)$       & $60(25) + 50(0) = 1500 \, \text{mg}$ \\
+            \hline
+        \end{tabular}
+    \end{center}
+    The point $(8, 12)$ gives the least cholesterol, which is 1080 mg. This states that for every 20 meals, Professor Hamer should eat Pasta for 8 days and Tofu for 12 days.
+
+\end{solution}
+
+We must be aware that in some cases, a linear program may not have an optimal solution.
+
+\begin{itemize}
+    \item A linear program can fail to have an optimal solution if there is no feasibility region. If the inequality constraints are not compatible, there may not be a region in the graph that satisfies all the constraints. If the linear program does not have a feasible solution satisfying all constraints, then it cannot have an optimal solution.
+
+    \item A linear program can fail to have an optimal solution if the feasibility region is unbounded. The two minimization linear programs we examined had unbounded feasibility regions. The feasibility region was bounded by constraints on some sides but was not entirely enclosed by the constraints. Both of the minimization problems had optimal solutions. However, if we were to consider a maximization problem with a similar unbounded feasibility region, the linear program would have no optimal solution. No matter what values of \(x\) and \(y\) were selected, we could always find other values of \(x\) and \(y\) that would produce a higher value for the objective function. In other words, if the value of the objective function can be increased without bound in a linear program with an unbounded feasible region, there is no optimal maximum solution.
+\end{itemize}
+
+Although the method of solving minimization problems is similar to that of maximization problems, we still feel that we should summarize the steps involved.
+\begin{summarybox}
+    ~\\
+    \textbf{Minimization Linear Programming Problems}
+    \begin{enumerate}
+        \item Write the objective function.
+        \item Write the constraints.
+              \begin{enumerate}
+                  \item For standard minimization linear programming problems, constraints are of the form: \(ax + by \geq c\).
+                  \item Since the variables are non-negative, include the constraints: \(x \geq 0\); \(y \geq 0\).
+              \end{enumerate}
+        \item Graph the constraints.
+        \item Shade the feasibility region.
+        \item Find the corner points.
+        \item Determine the corner point that gives the minimum value.
+              \begin{enumerate}
+                  \item This can be done by finding the value of the objective function at each corner point.
+                  \item This can also be done by moving the line associated with the objective function.
+                  \item There is the possibility that the problem has no solution.
+              \end{enumerate}
+    \end{enumerate}
+\end{summarybox}
