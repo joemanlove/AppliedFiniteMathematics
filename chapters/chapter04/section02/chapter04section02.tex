@@ -1,0 +1,375 @@
+\section{Maximization by the Simplex Method}
+In this section, you will learn to:
+\begin{enumerate}
+    \item Solve linear programming maximization problems using the Simplex Method by
+          \begin{enumerate}
+              \item Identifing and set up a linear program in standard maximization form
+              \item Converting inequality constraints to equations using slack variables
+              \item Setting up the initial simplex tableau using the objective function and slack equations
+              \item Finding the optimal simplex tableau by performing pivoting operations
+              \item Identifing the optimal solution from the optimal simplex tableau
+          \end{enumerate}
+\end{enumerate}
+
+In the last chapter, we used the geometrical method to solve linear programming problems, but the geometrical approach will not work for problems that have more than two variables. In real-life situations, linear programming problems consist of literally thousands of variables and are solved by computers. We can solve these problems algebraically, but that will not be very efficient. Suppose we were given a problem with, say, 5 variables and 10 constraints. By choosing all combinations of five equations with five unknowns, we could find all the corner points, test them for feasibility, and come up with the solution, if it exists. But the trouble is that even for a problem with so few variables, we will get more than 250 corner points, and testing each point will be very tedious. So we need a method that has a systematic algorithm and can be programmed for a computer. The method has to be efficient enough so we wouldn't have to evaluate the objective function at each corner point. We have just such a method, and it is called the simplex method.
+
+The simplex method was developed during the Second World War by Dr. George Dantzig. His linear programming models helped the Allied forces with transportation and scheduling problems. In 1979, a Soviet scientist named Leonid Khachian developed a method called the ellipsoid algorithm, which was supposed to be revolutionary, but as it turned out, it is not any better than the simplex method. In 1984, Narendra Karmarkar, a research scientist at AT\&T Bell Laboratories developed Karmarkar's algorithm, which has been proven to be four times faster than the simplex method for certain problems. But the simplex method still works the best for most problems.
+
+The simplex method uses an approach that is very efficient. It does not compute the value of the objective function at every point; instead, it begins with a corner point of the feasibility region where all the main variables are zero and then systematically moves from corner point to corner point while improving the value of the objective function at each stage. The process continues until the optimal solution is found.
+
+To learn the simplex method, we try a rather unconventional approach. We first list the algorithm, and then work a problem. We justify the reasoning behind each step during the process. A thorough justification is beyond the scope of this course.
+
+We start out with an example we solved in the last chapter by the graphical method. This will provide us with some insight into the simplex method and at the same time give us the chance to compare a few of the feasible solutions we obtained previously by the graphical method.
+
+But first, we list the algorithm for the simplex method.
+\begin{summarybox}
+    ~\\
+    \textbf{The Simplex Method}
+    Here are the steps to solve a linear programming problem using the Simplex Method:
+
+    \begin{enumerate}
+        \item \textbf{Set up the problem.}
+              \begin{itemize}
+                  \item Write the objective function and the inequality constraints.
+              \end{itemize}
+
+        \item \textbf{Convert the inequalities into equations.}
+              \begin{itemize}
+                  \item Add one slack variable for each inequality.
+              \end{itemize}
+
+        \item \textbf{Construct the initial simplex tableau.}
+              \begin{itemize}
+                  \item Write the objective function as the bottom row.
+              \end{itemize}
+
+        \item \textbf{Identify the pivot column.}
+              \begin{itemize}
+                  \item The most negative entry in the bottom row identifies the pivot column.
+              \end{itemize}
+
+        \item \textbf{Calculate the quotients.}
+              \begin{itemize}
+                  \item Divide the far-right column by the identified pivot column to find quotients.
+                  \item The smallest positive quotient identifies a row, and its corresponding element is the pivot element.
+              \end{itemize}
+
+        \item \textbf{Perform pivoting.}
+              \begin{itemize}
+                  \item Make all other entries in the pivot column zero by using the Gauss-Jordan method.
+              \end{itemize}
+
+        \item \textbf{Repeat if necessary.}
+              \begin{itemize}
+                  \item If there are still negative entries in the bottom row, go back to step 4.
+              \end{itemize}
+
+        \item \textbf{Read off your answers.}
+              \begin{itemize}
+                  \item Get the variables using the columns with 1 and 0s. All other variables are zero.
+                  \item The maximum value you are looking for appears in the bottom right-hand corner.
+              \end{itemize}
+    \end{enumerate}
+\end{summarybox}
+
+Now, we use the simplex method to solve example \ref{niki_simplex} solved geometrically in example \ref{niki_geometry}.
+
+\begin{example}\label{niki_simplex}
+    Niki holds two part-time jobs, Job I and Job II. She never wants to work more than a total of 12 hours a week. For every hour she works at Job I, she needs 2 hours of preparation time, and for every hour at Job II, she needs one hour of preparation time. She cannot spend more than 16 hours on preparation. If Niki makes \$40 an hour at Job I and \$30 an hour at Job II, how many hours should she work at each job to maximize her income?
+\end{example}
+
+\begin{solution}
+    ~\\
+    \begin{enumerate}
+        \item \textbf{Set up the problem.}
+              Write the objective function and the constraints. Since the simplex method is used for problems that consist of many variables, it is not practical to use the variables $x, y, z$ etc. We use symbols $x_1, x_2, x_3$, and so on.
+
+              Let $x_1$ = The number of hours per week Niki will work at Job I. \\
+              and $x_2$ = The number of hours per week Niki will work at Job II.
+
+              It is customary to choose the variable that is to be maximized as $Z$. The problem is formulated the same way as we did in the last chapter.
+
+              \[
+                  \text{Maximize} \quad Z = 40x_1 + 30x_2
+              \]
+
+              Subject to:
+              \begin{align*}
+                  x_1 + x_2  & \leq 12 \\
+                  2x_1 + x_2 & \leq 16 \\
+                  x_1, x_2   & \geq 0
+              \end{align*}
+
+        \item \textbf{Convert the inequalities into equations.}
+              This is done by adding one slack variable for each inequality.
+
+              For example, to convert the inequality \( x_1 + x_2 \leq 12 \) into an equation, we add a non-negative variable \( y_1 \), and we get
+              \[ x_1 + x_2 + y_1 = 12 \]
+
+              Here the variable \( y_1 \) picks up the slack, and it represents the amount by which \( x_1 + x_2 \) falls short of 12. In this problem, if Niki works fewer than 12 hours, say 10, then \( y_1 \) is 2. Later when we read off the final solution from the simplex table, the values of the slack variables will identify the unused amounts.
+
+              We rewrite the objective function \( Z = 40x_1 + 30x_2 \) as \( -40x_1 - 30x_2 + Z = 0 \).
+
+              After adding the slack variables, our problem reads
+
+              Objective function:
+              \[ -40x_1 - 30x_2 + Z = 0 \]
+
+              Subject to constraints:
+              \begin{align*}
+                  x_1 + x_2 + y_1  & = 12   \\
+                  2x_1 + x_2 + y_2 & = 16   \\
+                  x_1, x_2         & \geq 0
+              \end{align*}
+
+
+        \item \textbf{Construct the initial simplex tableau.}
+              Each inequality constraint appears in its own row. (The non-negativity constraints do not appear as rows in the simplex tableau.) Write the objective function as the bottom row.
+
+              Now that the inequalities are converted into equations, we can represent the problem into an augmented matrix called the initial simplex tableau as follows.
+
+              \[
+                  \begin{array}{c c c c c| c}
+
+                      x_1 & x_2 & y_1 & y_2 & Z & C  \\
+
+                      1   & 1   & 1   & 0   & 0 & 12 \\
+                      2   & 1   & 0   & 1   & 0 & 16 \\
+                      \hline
+                      -40 & -30 & 0   & 0   & 1 & 0  \\
+                  \end{array}
+              \]
+
+              Here the vertical line separates the left hand side of the equations from the right side. The horizontal line separates the constraints from the objective function. The right side of the equation is represented by the column \(C\).
+
+              The reader may observe that the last four columns of this matrix look like the final matrix for the solution of a system of equations. If we arbitrarily choose \(x_1 = 0\) and \(x_2 = 0\), we get
+
+              \[
+                  \begin{array}{c}
+                      \begin{array}{cccc}
+                          y_1 & y_2 & Z & C
+                      \end{array} \\
+                      \left[
+                          \begin{array}{ccc|c}
+                              1 & 0 & 0 & 12 \\
+                              0 & 1 & 0 & 16 \\
+                              0 & 0 & 1 & 0  \\
+                          \end{array}
+                          \right]
+                  \end{array}
+              \]
+
+              which reads \(y_1 = 12\), \(y_2 = 16\), \(Z = 0\).
+
+              The solution obtained by arbitrarily assigning values to some variables and then solving for the remaining variables is called the basic solution associated with the tableau. So the above solution is the basic solution associated with the initial simplex tableau. We can label the basic solution variable in the right of the last column as shown in the table below.
+
+              \[
+                  \begin{array}{c c c c c | c c}
+
+                      x_1 & x_2 & y_1 & y_2 & Z &    &     \\
+
+                      1   & 1   & 1   & 0   & 0 & 12 & y_1 \\
+                      2   & 1   & 0   & 1   & 0 & 16 & y_2 \\
+                      \hline
+                      -40 & -30 & 0   & 0   & 1 & 0  & Z   \\
+                  \end{array}
+              \]
+
+
+        \item \textbf{The most negative entry in the bottom row identifies the pivot column.}
+              The most negative entry in the bottom row is -40; therefore, the column 1 is identified.
+
+              \[
+                  \begin{array}{c c c c | c}
+
+                      x_1 & x_2 & y_1 & y_2 & Z  \\
+                      1   & 1   & 1   & 0   & 12 \\
+                      2   & 1   & 0   & 1   & 16 \\
+                      \hline
+                      -40 & -30 & 0   & 0   & 0  \\
+                  \end{array}
+              \]
+
+              \textbf{Why do we choose the most negative entry in the bottom row?}
+
+              The most negative entry in the bottom row represents the largest coefficient in the objective function; the coefficient whose entry will increase the value of the objective function the quickest.
+
+              The simplex method begins at a corner point where all the main variables, the variables that have symbols such as $x_1$, $x_2$, $x_3$, etc., are zero. It then moves from a corner point to the adjacent corner point always increasing the value of the objective function. In the case of the objective function $Z = 40x_1 + 30x_2$, it will make more sense to increase the value of $x_1$ rather than $x_2$. The variable $x_1$ represents the number of hours per week Niki works at Job I. Since Job I pays \$40 per hour as opposed to Job II which pays only \$30, the variable $x_1$ will increase the objective function by \$40 for a unit of increase in the variable $x_1$.
+
+        \item \textbf{ Calculate the quotients. The smallest quotient identifies a row.}
+              The element in the intersection of the column identified in step 4 (marked with $\uparrow$) and the row identified in this step is identified as the pivot element.
+
+              Following the algorithm, in order to calculate the quotient, we divide the entries in the far right column by the entries in column 1, excluding the entry in the bottom row.
+
+              \[
+                  \begin{array}{ccccc|ccc}
+
+                      x_1      & x_2 & y_1 & y_2 & Z &    &            &           \\
+
+                      1        & 1   & 1   & 0   & 0 & 12 &            & 12/1 = 12 \\
+                      2        & 1   & 0   & 1   & 0 & 16 & \leftarrow & 16/2 = 8  \\
+                      \hline
+                      -40      & -30 & 0   & 0   & 1 & 0  &            &           \\
+                      \uparrow &     &     &     &   &    &            &           \\
+                  \end{array}
+              \]
+
+              The smallest of the two quotients, 12 and 8, is 8. Therefore row 2 is identified. The intersection of column 1 and row 2 is the entry 2, which has been highlighted. This is our pivot element.
+
+              \textbf{Why do we find quotients, and why does the smallest quotient identify a row?}
+
+              When we choose the most negative entry in the bottom row, we are trying to increase the value of the objective function by bringing in the variable \( x_1 \). But we cannot choose any value for \( x_1 \). For instance, letting \( x_1 = 100 \) is not possible because Niki never wants to work more than 12 hours at both jobs combined: \( x_1 + x_2 \leq 12 \). Therefore, the maximum she can work is 12 hours for \( x_1 \), meaning the preparation time for Job I is two times the time spent on the job. Since she never wants to spend more than 16 hours for preparation, the maximum time she can work is \( \frac{16}{2} = 8 \) hours. Using the pivot element guarantees that we do not violate the constraints.
+
+              \textbf{Why do we identify the pivot element?}
+
+              The simplex method begins at a corner point where all the main variables, the variables that have symbols such as \( x_1, x_2, x_3 \), etc., are zero. It then moves from a corner point to the adjacent corner point always improving the value of the objective function. The value of the objective function is improved by changing the number of units of the variables. We may add the number of units of one variable, while throwing away the units of another. Pivoting allows us to do just that.
+
+              The variable whose units are being added is called the \textit{entering variable}, and the variable whose units are being replaced is called the \textit{departing variable}. The entering variable in the above table is \( x_1 \), and it was identified by the most negative entry in the bottom row. The departing variable \( y_2 \) was identified by the lowest of all quotients.
+
+        \item \textbf{Perform pivoting to make all other entries in this column zero.}
+              In Chapter \ref{chapter_matrices}, we used pivoting to obtain the row echelon form of an augmented matrix. Pivoting is a process of obtaining a \(1\) in the location of the pivot element (marked by a box below), and then making all other entries zeros in that column. We've highlighted the pivot row to make it easier to track. So now our job is to make our pivot element a \(1\) by dividing the entire second row by \(2\). The result follows.
+
+              \[
+                  \begin{array}{ccccc|c}
+                      x_1                          & x_2 & y_1 & y_2 & Z &    \\
+                      1                            & 1   & 1   & 0   & 0 & 12 \\
+                      \rowcolor{lightgray}\fbox{2} & 1   & 0   & 1   & 0 & 16 \\
+                      \hline
+                      -40                          & -30 & 0   & 0   & 1 & 0  \\
+                  \end{array}
+              \]
+
+              To obtain a zero in the entry first above the pivot element, we multiply the second row by \(-1\) and add it to row \(1\). We get
+
+              \[
+                  \begin{array}{ccccc|c}
+                      x_1                           & x_2 & y_1 & y_2  & Z &   \\
+                      0                             & 1/2 & 1   & -1/2 & 0 & 4 \\
+                      \rowcolor{lightgray} \fbox{1} & 1/2 & 0   & 1/2  & 0 & 8 \\
+                      \hline
+                      -40                           & -30 & 0   & 0    & 1 & 0 \\
+                  \end{array}
+              \]
+
+              To obtain a zero in the element below the pivot, we multiply the second row by \(40\) and add it to the last row.
+
+              \[
+                  \begin{array}{ccccc|c}
+                      x_1                           & x_2 & y_1 & y_2  & Z &     \\
+                      0                             & 1/2 & 1   & -1/2 & 0 & 4   \\
+                      \rowcolor{lightgray} \fbox{1} & 1/2 & 0   & 1/2  & 0 & 8   \\
+                      \hline
+                      0                             & -10 & 0   & 20   & 1 & 320 \\
+                  \end{array}
+              \]
+
+              %   \[
+              %     \begin{array}{ccccc|cc}
+              %         x_1 & x_2 & y_1 & y_2 & Z &     &     \\
+              %         0   & 1/2 & 1   & 1/2 & 0 & 4   & y_1 \\
+              %         1   & 1/2 & 0   & 1/2 & 0 & 8   & x_1 \\
+              %         \hline
+              %         0   & -10 & 0   & 20  & 1 & 320 & Z   \\
+              %     \end{array}
+              % \]
+
+              We now determine the basic solution associated with this tableau. By arbitrarily choosing \( x_2 = 0 \) and \( y_2 = 0 \), we obtain \( x_1 = 8 \), \( y_1 = 4 \), and \( Z = 320 \). If we write the augmented matrix, whose left side is a matrix with columns that have one \(1\) and all other entries zeros, we get the following matrix stating the same thing.
+
+
+
+              \[
+                  \begin{array}{c}
+                      \begin{array}{cccc}
+                          x_1 & y_1 & Z & C
+                      \end{array} \\
+                      \left[
+                          \begin{array}{ccc|c}
+                              1 & 0 & 0 & 4   \\
+                              0 & 1 & 0 & 8   \\
+                              0 & 0 & 1 & 320 \\
+                          \end{array}
+                          \right]
+                  \end{array}
+              \]
+
+              We can restate the solution associated with this matrix as $x_1 = 8$, $x_2 = 0$, $y_1 = 4$, $y_2 = 0$, and $z = 320$. At this stage, it reads that if Niki works 8 hours at Job I and no hours at Job II, her profit $z$ will be \$320. Recall from Example 1 in Section 3.1 that $(8, 0)$ was one of our corner points. Here $y_1 = 4$ and $y_2 = 0$ mean that she will be left with 4 hours of working time and no preparation time.
+        \item \textbf{When there are no more negative entries in the bottom row, we are finished; otherwise, we start again from step 4.}
+              Since there is still a negative entry, $-10$, in the bottom row, we need to begin, again, from step 4. This time we will not repeat the details of every step; instead, we will identify the column and row that give us the pivot element, and highlight the pivot element. The result is as follows.
+
+              \[
+                  \begin{array}{ccccc|ccc}
+
+                      x_1 & x_2      & y_1 & y_2  & Z &     &            &              \\
+
+                      0   & 1/2      & 1   & -1/2 & 0 & 4   & \leftarrow & 4/(1/2) = 8  \\
+                      1   & 1/2      & 0   & 1/2  & 0 & 8   &            & 8/(1/2) = 16 \\
+                      \cline{1-6}
+                      0   & -10      & 0   & 20   & 1 & 320 &            &              \\
+                          & \uparrow &     &      &   &     &            &
+                  \end{array}
+              \]
+              % \[
+              % \text{Quotients: } \frac{4}{\frac{1}{2}} = 8, \quad \frac{8}{\frac{1}{2}} = 16
+              % \]
+
+              We make the pivot element 1 by multiplying row 1 by 2, and we get
+
+              \[
+                  \begin{array}{ccccc|c}
+
+                      x_1                   & x_2      & y_1 & y_2 & Z &     \\
+
+                      \rowcolor{lightgray}0 & \fbox{1} & 2   & -1  & 0 & 8   \\
+                      1                     & 1/2      & 0   & 1/2 & 0 & 8   \\
+                      \hline
+                      0                     & -10      & 0   & 20  & 1 & 320 \\
+                  \end{array}
+              \]
+
+              Now to make all other entries as zeros in this column, we first multiply row 1 by \(-\frac{1}{2}\) and add it to row 2, and then multiply row 1 by 10 and add it to the bottom row.
+
+              \[
+                  \begin{array}{ccccc|c}
+                      x_1 & x_2 & y_1 & y_2 & Z &     \\
+                      0   & 1   & 2   & -1  & 0 & 8   \\
+                      1   & 0   & -1  & 1   & 0 & 4   \\
+                      \hline
+                      0   & 0   & 20  & 10  & 1 & 400 \\
+                  \end{array}
+              \]
+
+              We no longer have negative entries in the bottom row, therefore we are finished.
+
+              \textbf{Why are we finished when there are no negative entries in the bottom row?}
+
+              The answer lies in the bottom row. The bottom row corresponds to the equation:
+              \[
+                  0x_1 + 0x_2 + 20y_1 + 10y_2 + Z = 400 \quad \text{or} \quad Z = 400 - 20y_1 - 10y_2
+              \]
+              Since all variables are non-negative, the highest value \(Z\) can ever achieve is 400, and that will happen only when \(y_1\) and \(y_2\) are zero.
+
+        \item \textbf{Read off your answers.}
+              We now read off our answers, that is, we determine the basic solution associated with the final simplex tableau. Again, we look at the columns that have a \(1\) and all other entries zeros. Since the columns labeled \(y_1\) and \(y_2\) are not such columns, we arbitrarily choose \(y_1 = 0\), and \(y_2 = 0\), and we get
+
+
+              \[
+                  \begin{array}{c}
+                      \begin{array}{cccc}
+                          x_1 & x_2 & Z & C
+                      \end{array} \\
+                      \left[
+                          \begin{array}{ccc|c}
+                              0 & 1 & 0 & 8   \\
+                              1 & 0 & 0 & 4   \\
+                              0 & 0 & 1 & 400 \\
+                          \end{array}
+                          \right]
+                  \end{array}
+              \]
+
+
+              The matrix reads \(x_2 = 8\), \(x_1 = 4\), and \(Z = 400\).
+
+              The final solution says that if Niki works 4 hours at Job I and 8 hours at Job II, she will maximize her income to \$400. Since both slack variables are zero, it means that she would have used up all the working time, as well as the preparation time, and none will be left.
+    \end{enumerate}
+\end{solution}

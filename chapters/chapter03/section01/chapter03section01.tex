@@ -16,11 +16,11 @@ A typical example is to maximize profit from producing several products, subject
 
 In this chapter, we will work with problems that involve only two variables, and therefore, can be solved by graphing.
 
-In the next chapter, we’ll learn an algorithm to find a solution numerically.  That will provide us with a tool to solve problems with more than two variables. At that time, with a little more knowledge about linear programming, we’ll also explore the many ways these techniques are used in business and wide variety of other fields.
+In the next chapter, we'll learn an algorithm to find a solution numerically.  That will provide us with a tool to solve problems with more than two variables. At that time, with a little more knowledge about linear programming, we’ll also explore the many ways these techniques are used in business and wide variety of other fields.
 
 We begin by solving a maximization problem.
 
-\begin{example}
+\begin{example}\label{niki_geometry}
     Niki holds two part-time jobs, Job I and Job II. She never wants to work more than a total of 12 hours a week. She has determined that for every hour she works at Job I, she needs 2 hours of preparation time, and for every hour she works at Job II, she needs one hour of preparation time, and she cannot spend more than 16 hours for preparation.
     If Niki makes \$40 an hour at Job I, and \$30 an hour at Job II, how many hours should she work per week at each job to maximize her income?
 \end{example}
@@ -50,7 +50,7 @@ We begin by solving a maximization problem.
     In this example, after graphing the lines representing the constraints and using the origin (0,0) as a test point, we find that the feasible region is the area below and to the left of both constraint lines, above the x-axis, and to the right of the y-axis.
 \end{solution}
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
     \begin{tikzpicture}[scale=0.75, every node/.style={scale=1.0}]
 
@@ -131,7 +131,7 @@ Clearly, the point $(4, 8)$ gives the most profit: \$400. Therefore, we conclude
 \end{solution}
 
 % TikZ picture for the constraints and feasibility region
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
     \begin{tikzpicture}[scale=1, every node/.style={scale=1}]
 
@@ -202,7 +202,7 @@ We will next consider an example where that is not the case. Our next problem is
 
 
     % TikZ picture for the constraints and feasibility region
-    \begin{figure}[h!]
+    \begin{figure}[ht!]
         \centering
         \begin{tikzpicture}[scale=1, every node/.style={scale=1}]
 
@@ -264,7 +264,7 @@ Now we move the line parallel to itself, that is, keeping the same slope at all 
 The figure below shows the movements of the line, and the optimum solution is achieved at the point $(2, 5)$. In maximization problems, as the line is being moved away from the origin, this optimum point is the farthest critical point.
 
 % TikZ picture for the constraints and feasibility region
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
     \begin{tikzpicture}[scale=1, every node/.style={scale=1}]
 
