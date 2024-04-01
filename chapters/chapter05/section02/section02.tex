@@ -1,0 +1,102 @@
+\section{Graphing Exponential Functions}
+
+In this section, you will:
+\begin{enumerate}
+    \item examine properties of exponential functions
+    \item examine graphs of exponential functions
+\end{enumerate}
+
+
+An exponential function can be written in forms \(f(x) = ab^x = a(1 + r)^x = ae^{kx}\):
+\begin{itemize}
+    \item \(a\) is the initial value because \(f(0) = a\).
+    \item In the growth and decay models that we examine in this finite math textbook, \(a > 0\).
+    \item \(b\) is often called the growth factor. We restrict \(b\) to be positive (\(b > 0\)) because even roots of negative numbers are undefined. We want the function to be defined for all values of \(x\), but \(b^x\) would be undefined for some values of \(x\) if \(b<0\).
+    \item \(r\) is called the growth or decay rate. In the formula for the functions, we use \(r\) in decimal form, but in the context of a problem we usually state \(r\) as a percent.
+    \item \(k\) is called the continuous growth rate or continuous decay rate.
+\end{itemize}
+
+\subsection{Properties of Exponential Growth Functions}
+
+\begin{itemize}
+    \item The function \(y = f(x) = ab^x\) represents growth if \(b > 1\) and \(a > 0\).
+    \item The growth rate \(r\) is positive when \(b>1\). Because \(b = 1 + r > 1\), then \(r = b - 1 > 0\).
+    \item The function \(y = f(x) = ae^{kx}\) represents growth if \(k > 0\) and \(a > 0\).
+    \item The function is an increasing function; \(y\) increases as \(x\) increases.
+\end{itemize}
+
+\begin{center}
+    \begin{tikzpicture}[scale=1, transform shape]
+        % Axes
+        \draw[->] (-3,0) -- (3,0) node[right] {$x$};
+        \draw[->] (0,-1) -- (0,4) node[above] {$y$};
+
+        % Exponential curve
+        \draw[domain=-3:2, smooth, variable=\x, thick] plot ({\x}, {0.5*exp(\x)});
+
+        % Point (0,a)
+        \node[label={above:$(0,a)$}] at (0,0.5) {};
+
+        % Labels for the equation (placed at top right)
+        \node[align=left] at (-3,2) {
+            $y = ab^x = a(1+r)^x = ae^{kx}$\\
+            $a>0$\\
+            $b>1, r>0, k>0$
+        };
+
+    \end{tikzpicture}
+\end{center}
+
+There are some properties the reader should notice:
+\begin{itemize}
+    \item \textbf{Domain:} All real numbers can be input to an exponential function. Mathematicians would write $\{x \in \mathbb{R}\}$ or simply $\mathbb{R}$.
+    \item \textbf{Range:} If $a>0$, the range is the set of all positive real numbers. Mathematicians would write $\{x \in \mathbb{R}: x>0\}$.
+    \item The graph is always above the $x$ axis.
+    \item \textbf{Horizontal Asymptote:} when $b > 1$, the horizontal asymptote is the negative $x$ axis, as $x$ becomes large negative. Using mathematical notation: as $x \to -\infty$, then $y \to 0$.
+    \item The vertical intercept is the point $(0,a)$ on the $y$-axis.
+    \item There is no horizontal intercept because the function does not cross the $x$-axis.
+\end{itemize}
+
+\subsection{Properties of Exponential Decay Functions}
+\begin{itemize}
+    \item The function $y=f(x) = ab^x$ represents decay if $0 < b < 1$ and $a > 0$.
+    \item The growth rate $r$ is negative when $0 < b < 1$. Because $b = 1 + r < 1$, then $r = b - 1 < 0$.
+    \item The function $y=f(x) = ae^{kx}$ represents decay if $k < 0$ and $a > 0$.
+    \item The function is a decreasing function; $y$ decreases as $x$ increases.
+    \item \textbf{Domain:} All real numbers can be input to an exponential function. Mathematicians would write $\{x \in \mathbb{R}\}$ or simply $\mathbb{R}$.
+    \item \textbf{Range:} If $a>0$, the range is the set of all positive real numbers. Mathematicians would write $\{x \in \mathbb{R}: x>0\}$.
+    \item \textbf{Horizontal Asymptote:} when $b < 1$, the horizontal asymptote is the positive $x$ axis as $x$ becomes large positive. Using mathematical notation: as $x \to \infty$, then $y \to 0$.
+    \item The vertical intercept is the point $(0,a)$ on the $y$-axis. There is no horizontal intercept because the function does not cross the $x$-axis.
+\end{itemize}
+
+The graphs for exponential growth and decay functions are displayed below for comparison.
+
+\begin{tikzpicture}[scale=1, transform shape]
+    % Axes
+    \draw[->] (-3,0) -- (3,0) node[right] {$x$};
+    \draw[->] (0,-1) -- (0,4) node[above] {$y$};
+
+    % Exponential curve
+    \draw[domain=-2:3, smooth, variable=\x, thick] plot ({\x}, {0.5*exp(-\x)});
+
+    % Point (0,a)
+    \node[label={above:$(0,a)$}] at (0,0.5) {};
+
+    % Labels for the equation (placed at top right)
+    \node[align=left] at (3.5,2) {
+        $y = ab^x = a(1+r)^x = ae^{kx}$\\
+        $a>0$\\
+        $b>1, r>0, k>0$
+    };
+
+\end{tikzpicture}
+
+
+
+
+
+
+
+
+
+

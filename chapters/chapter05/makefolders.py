@@ -2,7 +2,7 @@
 
 import os
 
-number_of_sections = 3
+number_of_sections = 5
 
 # Define the base folder name
 base_folder_name = "section"
@@ -16,7 +16,7 @@ for i in range(number_of_sections):
     os.makedirs(folder_name)
 
     # Create a blank .tex file in each folder
-    with open(os.path.join(folder_name, f"{PARENT_DIRECTORY}{folder_name}.tex"), "w") as tex_file:
+    with open(os.path.join(folder_name, f"{folder_name}.tex"), "w") as tex_file:
         pass
 
 print("Folders and blank .tex files created successfully!")
