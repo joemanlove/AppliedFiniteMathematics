@@ -5,3 +5,307 @@ In this section, you will:
     \item Review strategies for solving equations arising from exponential formulas.
     \item Solve application problems involving exponential functions and logarithmic functions.
 \end{enumerate}
+
+\subsection{Strategies for Solving Equations That Contain Exponents}
+
+When solving application problems that involve exponential and logarithmic functions, we need to pay close attention to the position of the variable in the equation to determine the proper way solve the equation we investigate solving equations that contain exponents.
+
+Suppose we have an equation in the form: \[ \text{value} = \text{coefficient}(\text{base})^{\text{exponent}} \]
+We consider four strategies for solving the equation:
+
+
+\begin{itemize}
+    \item If the coefficient, base, and exponent are all known, we only need to evaluate the expression for \(\text{coefficient}(\text{base})^{\text{exponent}}\) to evaluate its value.
+
+    \item If the variable is the coefficient, evaluate the expression for \((\text{base})^{\text{exponent}}\). Then it becomes a linear equation which we solve by dividing to isolate the variable.
+
+    \item If the variable is in the exponent, use logarithms to solve the equation.
+
+    \item If the variable is not in the exponent, but is in the base, use roots to solve the equation.
+\end{itemize}
+
+\begin{example}
+    Suppose that a stock's price is rising at the rate of 7\% per year, and that it continues to increase at this rate. If the value of one share of this stock is \$43 now, find the value of one share of this stock three years from now.
+\end{example}
+
+\begin{solution}
+    Let \( y \) be the value of the stock after \( t \) years: \( y = ab^t \).
+
+    The problem tells us that \( a = 43 \) and \( r = 0.07 \), so \( b = 1 + r = 1 + 0.07 = 1.07 \).
+
+    Therefore, function \( y \) is \( 43(1.07)^t \).
+
+    In this case we know that \( t = 3 \) years, and we need to evaluate \( y \) when \( t = 3 \).
+
+    At the end of 3 years, the value of this one share of this stock will be
+
+    \[ y = 43(1.07)^3 = \$52.68 \]
+\end{solution}
+
+\begin{example}
+    The value of a new car depreciates (decreases) after it is purchased. Suppose that the value of the car depreciates according to an exponential decay model. Suppose that the value of the car is \$12000 at the end of 5 years and that its value has been decreasing at the rate of 9\% per year. Find the value of the car when it was new.
+\end{example}
+
+\begin{solution}
+    Let \( y \) be the value of the car after \( t \) years: \( y = ab^t \).
+
+    Given \( r = -0.09 \) and \( b = 1 + r = 1 + (-0.09) = 0.91 \).
+
+    The function is \( y = a(0.91)^t \).
+
+    For \( t = 5 \), and \( y = 12000 \); substituting these values gives \( 12000 = a(0.91)^5 \).
+
+    Solve for \( a \):
+
+    First, evaluate \( (0.91)^5 \) and then solve the resulting linear equation to find \( a \).
+
+    \[ 12000 = a(.624) \]
+    \[ a = \frac{12000}{0.624} = \$19,230.77 \]
+
+    The car's value was \$19,230.77 when it was new.
+\end{solution}
+
+
+\begin{example} \label{example_deer_population}
+    A national park has a population of 5000 deer in the year \the\year. Conservationists are concerned because the deer population is decreasing at the rate of 7\% per year. If the population continues to decrease at this rate, how long will it take until the population is only 3000 deer?
+\end{example}
+\begin{solution}
+
+    Let \( y \) be the number of deer in the national park \( t \) years after the year \the\year: \( y = ab^t \).
+
+    Given \( r = -0.07 \) and \( b = 1 + r = 1 + (-0.07) = 0.93 \), the initial population is \( a = 5000 \).
+
+    The exponential decay function is \( y = 5000(0.93)^t \).
+
+    To find when the population will be 3000, substitute \( y = 3000 \):
+
+    \[ 3000 = 5000(0.93)^t \]
+
+    Next, divide both sides by 5000 to isolate the exponential expression:
+
+    \[ \frac{3000}{5000} = (0.93)^t \]
+
+    \[ 0.6 = 0.93^t \]
+
+    Rewrite the equation in logarithmic form; then use the change of base formula to evaluate.
+
+    \[ t = \log_{0.93}(0.6) \]
+
+    \[ t = \frac{\ln(0.6)}{\ln(0.93)} \approx 7.039 \text{ years} \]
+
+    After \( 7.039 \) years, there are 3000 deer.
+\end{solution}
+
+In Example \ref{example_deer_population}, we needed to state the answer to several decimal places of precision to remain accurate. Evaluating the original function using a rounded value of \( t = 7 \) years gives a value that is close to 3000, but not exactly 3000.
+
+\[ y = 5000(0.93)^7 = 3008.5 \text{ deer} \]
+
+However using \( t = 7.039 \) years produces a value of 3000 for the population of deer
+
+\[ y = 5000(0.93)^{7.039} = 3000.0016 \approx 3000 \text{ deer} \]
+
+\begin{example}
+    A video posted on YouTube initially had 80 views as soon as it was posted. The total number of views to date has been increasing exponentially according to the exponential growth function \( y = 80e^{0.2t} \), where \( t \) represents time measured in days since the video was posted. How many days does it take until 2500 people have viewed this video?
+\end{example}
+
+\begin{solution}
+    Let \( y \) be the total number of views \( t \) days after the video is initially posted. We are given that the exponential growth function is \( y = 80e^{0.2t} \) and we want to find the value of \( t \) for which \( y = 2500 \). Substitute \( y = 2500 \) into the equation and use natural log to solve for \( t \).
+
+    First, divide both sides of the equation by 80 to isolate the exponential term:
+    \[ \frac{2500}{80} = e^{0.2t} \]
+
+    This simplifies to:
+    \[ 31.25 = e^{0.2t} \]
+
+    Taking the natural logarithm of both sides gives us:
+    \[ 0.2t = \ln(31.25) \]
+
+    Dividing both sides by 0.2 to solve for \( t \) yields:
+    \[ t = \frac{\ln(31.25)}{0.2} \]
+
+    Using a calculator, we find that:
+    \[ t \approx \frac{3.442}{0.2} \approx 17.2 \text{ days} \]
+
+    Thus, the video will have 2500 total views approximately 17 days after it was posted.
+\end{solution}
+
+\begin{example}
+    A statistician creates a website to analyze sports statistics. His business plan states that his goal is to accumulate 50,000 followers by the end of 2 years (24 months from now). He hopes that if he achieves this goal his site will be purchased by a sports news outlet. The initial user base of people signed up as a result of pre-launch advertising is 400 people. Find the monthly growth rate needed if the user base is to accumulate to 50,000 users at the end of 24 months.
+\end{example}
+
+\begin{solution}
+    Let \( y \) be the total user base \( t \) months after the site is launched.
+
+    The growth function for this site is \( y = 400(1+r)^t \).
+
+    We don’t know the growth rate \( r \). We do know that when \( t = 24 \) months, then \( y = 50000 \).
+
+    Substitute the values of \( y \) and \( t \); then we need to solve for \( r \).
+
+    \[ \frac{50000}{400} = (1+r)^{24} \]
+
+    Divide both sides by 400 to isolate \( (1+r)^{24} \) on one side of the equation
+
+    \[ 125 = (1+r)^{24} \]
+
+    Because the variable in this equation is in the base, we use roots:
+
+    \[ \sqrt[24]{125} = 1+r \]
+
+    \[ 125^{1/24} = 1+r \]
+
+    \[ 1.2228 \approx 1+r \]
+
+    \[ r \approx 0.2228 \]
+
+    The website’s user base needs to increase at the rate of 22.28\% per month in order to accumulate 50,000 users by the end of 24 months.
+\end{solution}
+
+\begin{example}
+    A fact sheet on caffeine dependence from Johns Hopkins Medical Center states that the half-life of caffeine in the body is between 4 and 6 hours. Assuming that the typical half-life of caffeine in the body is 5 hours for the average person and that a typical cup of coffee has 120 mg of caffeine.
+    \begin{enumerate}
+        \item Write the decay function.
+        \item Find the hourly rate at which caffeine leaves the body.
+        \item How long does it take until only 20 mg of caffeine is still in the body?
+    \end{enumerate}
+\end{example}
+
+\begin{solution} ~
+    \begin{enumerate}
+        \item Let $y$ be the total amount of caffeine in the body $t$ hours after drinking the coffee. Exponential decay function $y = ab^t$ models this situation. The initial amount of caffeine is $a = 120$.
+
+              We don't know $b$ or $t$, but we know that the half-life of caffeine in the body is 5 hours. This tells us that when $t = 5$, then there is half the initial amount of caffeine remaining in the body.
+              \[ y = 120b^t \]
+              \[ \frac{1}{2}(120) = 120b^5 \]
+              \[ 60 = 120b^5 \]
+
+              Divide both sides by 120 to isolate the expression $b^5$ that contains the variable.
+              \[ \frac{60}{120} = b^5 \]
+              \[ 0.5 = b^5 \]
+
+              The variable is in the base and the exponent is a number. Use roots to solve for $b$:
+              \[ b = \sqrt[5]{0.5} \]
+              \[ b \approx 0.87 \]
+
+              We can now write the decay function for the amount of caffeine (in mg.) remaining in the body $t$ hours after drinking a cup of coffee with 120 mg of caffeine
+              \[ y = f(t) = 120(0.87)^t \]
+
+        \item Use $b = 1 + r$ to find the decay rate $r$. Because $b = 0.87$ and the amount of caffeine in the body is decreasing over time, the value of $r$ will be negative.
+              \[ 0.87 = 1 + r \]
+              \[ r = -0.13 \]
+
+              The decay rate is 13\%; the amount of caffeine in the body decreases by 13\% per hour.
+
+        \item To find the time at which only 20 mg of caffeine remains in the body, substitute $y = 20$ and solve for the corresponding value of $t$.
+              \[ 20 = 120(0.87)^t \]
+
+              Divide both sides by 120 to isolate the exponential expression.
+              \[ \frac{20}{120} = (0.87)^t \]
+              \[ 0.1667 = (0.87)^t \]
+
+              Rewrite the expression in logarithmic form and then use the change of base formula to evaluate.
+              \[ t = \log_{0.87}(0.1667) \]
+              \[ t = \frac{\ln(0.1667)}{\ln(0.87)} \]
+              \[ t \approx 12.9 \text{ hours} \]
+
+              After 12.9 hours, 20 mg of caffeine remains in the body.
+    \end{enumerate}
+\end{solution}
+
+\subsection{Expressing Exponential Functions in Different Forms}
+
+Now that we’ve developed our equation solving skills, we revisit the question of expressing exponential functions equivalently in the forms $y = ab^t$ and $y = ae^{kt}$.
+
+We’ve already determined that if given the form $y = ae^{kt}$, it is straightforward to find $b$.
+
+\begin{example}
+    For the following examples, assume $t$ is measured in years.
+    \begin{enumerate}
+        \item Express $y = 3500 e^{0.25t}$ in form $y = ab^t$ and find the annual percentage growth rate.
+        \item Express $y = 28000 e^{-0.32t}$ in form $y = ab^t$ and find the annual percentage decay rate.
+    \end{enumerate}
+\end{example}
+
+\begin{solution}~
+    \begin{enumerate}
+        \item To express the function in the form \(y = ab^t\):
+              We start with the equation
+              \[ y = ab^t. \]
+              This can also be written as
+              \[ y = a(e^{kt}) \quad \text{where} \quad e^{kt} = b. \]
+              Thus,
+              \[ e^k = b. \]
+              For this example,
+              \[ b = e^{0.25} \approx 1.284. \]
+              We rewrite the growth function as
+              \[ y = 3500(1.284)^t. \]
+              To find \(r\), recall that
+              \[ b = 1+r. \]
+              So,
+              \[ 1.284 = 1+r \]
+              which gives us
+              \[ r = 0.284. \]
+              The continuous growth rate is \(k = 0.25\) and the annual percentage growth rate is 28.4\%.
+
+        \item To express \(y = 28000 e^{-0.32t}\) in the form \(y = ab^t\):
+              We start with the equation
+              \[ y = ab^t. \]
+              This can also be written as
+              \[ y = a(e^{kt}) \quad \text{where} \quad e^{kt} = b. \]
+              Thus,
+              \[ e^k = b. \]
+              For this example,
+              \[ b = e^{-0.32} \approx 0.7261. \]
+              We rewrite the decay function as
+              \[ y = 28000(0.7261)^t. \]
+              To find \(r\), recall that
+              \[ b = 1+r. \]
+              So,
+              \[ 0.7261 = 1+r \]
+              which gives us
+              \[ r = -0.2739. \]
+              The continuous decay rate is \(k = -0.32\) and the annual percentage decay rate is 27.39\%.
+    \end{enumerate}
+    In the sentence, we omit the negative sign when stating the annual percentage decay rate because we have used the word "decay" to indicate that \(r\) is negative.
+\end{solution}
+
+\begin{example}
+    Express the following:
+    \begin{enumerate}
+        \item \( y = 4200 (1.078)^t \) in the form \( y = ae^{kt} \)
+        \item \( y = 150 (0.73)^t \) in the form \( y = ae^{kt} \)
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    \begin{enumerate}
+        \item To express \( y = 4200 (1.078)^t \) in the form \( y = ae^{kt} \):
+              Start with the equation \[ y = ae^{kt} \] which can also be written as \[ y = ab^t. \] We need to find the constant \( k \) such that \[ e^k = b. \] Given \( b = 1.078 \), we have \[ e^k = 1.078. \] Therefore, \[ k = \ln(1.078) \approx 0.0751. \] We rewrite the growth function as \[ y = 4200 e^{0.0751t}. \]
+
+        \item To express \( y = 150 (0.73)^t \) in the form \( y = ae^{kt} \):
+              Start with the equation \[ y = ae^{kt} \] which can also be written as \[ y = ab^t. \] Here, we need to find the constant \( k \) such that \[ e^k = b. \] Given \( b = 0.73 \), we have \[ e^k = 0.73. \] Therefore, \[ k = \ln(0.73) \approx -0.3147. \] We rewrite the decay function as \[ y = 150 e^{-0.3147t}. \]
+    \end{enumerate}
+\end{solution}
+
+\begin{example}
+    Suppose that Vinh invests \$10000 in an investment earning 5\% per year. He wants to know how long it will take his investment to accumulate to \$12000, and how long it would take to accumulate to \$15000.
+\end{example}
+
+\begin{solution}
+    We start by writing the exponential growth function that models the value of this investment as a function of the time since the \$10000 is initially invested
+    \[ y = 10000(1.05)^t \]
+    We divide both sides by 10000 to isolate the exponential expression on one side.
+    \[ \frac{y}{10000} = 1.05^t \]
+    Next we take the natural logarithm of both sides of the equation.
+    \[ \ln(1.05^t) =\left( \frac{y}{10000} \right) \]
+    Use the exponent property of logarithms to get the power out of the logarithm
+    \[ t \ln(1.05)= \ln\left( \frac{y}{10000} \right) \]
+    Dividing both sides by \( \ln(1.05) \)
+    \[ t = \frac{\ln\left( \frac{y}{10000} \right)}{\ln(1.05)} \]
+
+    To find the number of years until the value of this investment is \$12000, we substitute \( y = 12000 \) into \( y \) and evaluate to find \( t \):
+    \[ t  = \frac{\ln\left( \frac{12000}{10000} \right)}{\ln(1.05)} = \frac{\ln(1.2)}{\ln(1.05)} \approx 3.74 \text{ years} \]
+
+    To find the number of years until the value of this investment is \$15000, we substitute \( y = 15000 \) into \( y \) and evaluate to find \( t \):
+    \[ t = \frac{\ln\left( \frac{15000}{10000} \right)}{\ln(1.05)} = \frac{\ln(1.5)}{\ln(1.05)} \approx 8.31 \text{ years} \]
+\end{solution}
