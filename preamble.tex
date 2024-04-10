@@ -3,6 +3,7 @@
 \usepackage{amsthm}
 \usepackage{graphicx}
 \usepackage{parskip}
+\usepackage[most]{tcolorbox}
 \usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
 % \usepackage{tagpdf}
 
@@ -24,17 +25,48 @@
 \newtheorem{definition}{Definition}[section]
 \newtheorem{note}{Note}[section]
 
-\usepackage{tcolorbox}
-\tcolorboxenvironment{summarybox}{
+% \usepackage{tcolorbox}
+% \tcolorboxenvironment{summarybox}{
+%     colback=yellow!5!white,
+%     colframe=yellow!75!black,
+%     left=1mm,
+%     right=1mm,
+%     top=1mm,
+%     bottom=1mm,
+%     before skip=10pt,
+%     after skip=10pt
+% }
+% \newtheorem{summarybox}{Summary}[section]
+
+% \newtheorem{summarythm}{Summary}[section]
+
+% \newtcolorbox[auto counter,number within=section]{summarybox}[2][]{% #1 is optional, #2 is mandatory (the title)
+%     colback=yellow!5!white,
+%     colframe=yellow!75!black,
+%     fonttitle=\bfseries,
+%     title=Summary~\thesection.\arabic{summarythm}:~#2,
+%     left=1mm,
+%     right=1mm,
+%     top=1mm,
+%     bottom=1mm,
+%     before skip=10pt,
+%     after skip=10pt,
+%     #1
+% }
+
+\newcounter{summarybox}
+\numberwithin{summarybox}{section} % Make the summarybox counter reset with each new section
+
+\newtcolorbox{summarybox}[1]{% Accept one argument for the title
     colback=yellow!5!white,
     colframe=yellow!75!black,
+    fonttitle=\bfseries,
+    title=Summary~\thesection.\arabic{summarybox}:~#1,
     left=1mm,
     right=1mm,
     top=1mm,
     bottom=1mm,
     before skip=10pt,
-    after skip=10pt
+    after skip=10pt,
+    code={\refstepcounter{summarybox}} % Increment summarybox counter
 }
-\newtheorem{summarybox}{Summary}[section]
-
-% Custom commands

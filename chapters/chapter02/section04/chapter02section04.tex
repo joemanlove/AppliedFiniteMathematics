@@ -431,17 +431,15 @@ Consider the following example.
 
 We remind the reader that not every system of equations can be solved by the matrix inverse method.  Although the Gauss-Jordan method works for every situation, the matrix inverse method works only in cases where the inverse of the square matrix exists.  In such cases the system has a unique solution.
 
-\begin{summarybox}
-    ~\\
-    \textbf{The Method for Finding the Inverse of a Matrix}
+\begin{summarybox}{Finding the Inverse of a Matrix}
     \begin{enumerate}
         \item Write the augmented matrix $[ A | I_n ]$.
         \item Write the augmented matrix in step 1 in reduced row echelon form.
         \item If the reduced row echelon form in step 2 is $[ I_n | B]$, then $B$ is the inverse of $A$.
         \item If the left side of the row reduced echelon is not an identity matrix, the inverse does not exist.
     \end{enumerate}
-
-    \textbf{The Method for Solving a System of Equations When a Unique Solution Exists}
+\end{summarybox}
+\begin{summarybox}{Solving a System of Equations When a Unique Solution Exists}
     \begin{enumerate}
         \item Express the system in the matrix equation $AX = B$.
         \item To solve the equation $AX = B$, multiply both sides by $A^{-1}$:

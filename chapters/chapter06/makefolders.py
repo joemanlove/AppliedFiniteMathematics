@@ -2,7 +2,7 @@
 
 import os
 
-number_of_sections = 5
+number_of_sections = 7
 
 # Define the base folder name
 base_folder_name = "section"
