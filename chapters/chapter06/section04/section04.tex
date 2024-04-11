@@ -1,0 +1,118 @@
+\section{Present Value of an Annuity and Installment Payment}
+
+In this section, you will learn to:
+\begin{enumerate}
+    \item Find the present value of an annuity.
+    \item Find the amount of installment payment on a loan.
+\end{enumerate}
+
+In Section \ref{section_compound_interest}, we learned to find the future value of a lump sum, and in Section \ref{section_annuities}, we learned to find the future value of an annuity.  With these two concepts in hand, we will now learn to amortize a loan, and to find the present value of an annuity.
+
+The present value of an annuity is the amount of money we would need now in order to be able to make the payments in the annuity in the future. In other word, the present value is the value now of a future stream of payments.
+
+We start by breaking this down step by step to understand the concept of the present value of an annuity. After that, the examples provide a more efficient way to do the calculations by working with concepts and calculations we have already explored in Sections 6.2 and 6.3.
+
+Suppose Carlos owns a small business and employs an assistant manager to help him run the business.  Assume it is January 1 now.  Carlos plans to pay his assistant manager a \$1000 bonus at the end of this year and another \$1000 bonus at the end of the following year. Carlos’ business had good profits this year so he wants to put the money for his assistant’s future bonuses into a savings account now.  The money he puts in now will earn interest at the rate of 4\% per year compounded annually while in the savings account.
+
+How much money should Carlos put into the savings account now so that he will be able to withdraw \$1000 one year from now and another \$1000 two years from now?
+
+At first, this sounds like a sinking fund.  But it is different.  In a sinking fund, we put money into the fund with periodic payments to save to accumulate to a specified lump sum that is the future value at the end of a specified time period.
+
+In this case we want to put a lump sum into the savings account now, so that lump sum is our principal, P.  Then we want to withdraw that amount as a series of period payments; in this case the withdrawals are an annuity with \$1000 payments at the end of each of two years.
+
+We need to determine the amount we need in the account now, the present value, to be able to make withdraw the periodic payments later.
+
+We use the compound interest formula from Section \ref{section_compound_interest} with \( r = 0.04 \) and \( n = 1 \) for annual compounding to determine the present value of each payment of \$1000.
+
+Consider the first payment of \$1000 at the end of year 1. Let \( P_1 \) be its present value
+
+\[ \$1000 = P(1.04)^1 \quad \text{so} \quad P_1=\$961.54 \]
+
+Now consider the second payment of \$1000 at the end of year 2. Let \(P_2\) be its present value
+
+\[ \$1000 = P(1.04)^2 \quad \text{so} \quad P_2=\$924.56 \]
+
+To make the \$1000 payments at the specified times in the future, the amount that Carlos needs to deposit now is the present value.
+
+The calculation above was useful to illustrate the meaning of the present value of an annuity.
+
+But it is not an efficient way to calculate the present value. If we were to have a large number of annuity payments, the step-by-step calculation would be long and tedious.
+
+Example \ref{example_lottery_winnings} investigates and develops an efficient way to calculate the present value of an annuity, by relating the future (accumulated) value of an annuity and its present value.
+
+\begin{example}\label{example_lottery_winnings}
+    Suppose you have won a lottery that pays \$1,000 per month for the next 20 years. But, you prefer to have the entire amount now. If the interest rate is 8\%, how much will you accept?
+\end{example}
+
+\begin{solution}
+    This classic present value problem needs our complete attention because the rationalization we use to solve this problem will be used again in the problems to follow.
+
+    Consider, for argument purposes, that two people Mr. Cash, and Mr. Credit have won the same lottery of \$1,000 per month for the next 20 years. Mr. Credit is happy with his \$1,000 monthly payment, but Mr. Cash wants to have the entire amount now.
+
+    Our job is to determine how much Mr. Cash should get. We reason as follows:
+
+    If Mr. Cash accepts \$P dollars, then the \$P dollars deposited at 8\% for 20 years should yield the same amount as the \$1,000 monthly payments for 20 years. In other words, we are comparing the future values for both Mr. Cash and Mr. Credit, and we would like the future values to equal.
+
+    Since Mr. Cash is receiving a lump sum of x dollars, its future value is given by the lump sum formula we studied in Section 6.2, and it is
+    \[ A = P(1 + 0.08/12)^{240} \]
+
+    Since Mr. Credit is receiving a sequence of payments, or an annuity, of \$1,000 per month, its future value is given by the annuity formula we learned in Section 6.3. This value is
+    \[ A = \frac{\$1,000[(1 + 0.08/12)^{240} - 1]}{0.08/12} \]
+
+    The only way Mr. Cash will agree to the payment he receives is if these two future values are equal. So we set them equal and solve for the unknown.
+
+    \[ P(1 + 0.08/12)^{240} = \frac{\$1,000[(1 + 0.08/12)^{240} - 1]}{0.08/12} \]
+    \[ P(4.9268) = \$1,000(589.02041) \]
+    \[ P = \frac{\$589,020.41}{4.9268} \]
+    \[ P = \$119,554.36 \]
+
+    The present value of an ordinary annuity of \$1,000 each month for 20 years at 8\% is \$119,554.36.
+
+    The reader should also note that if Mr. Cash takes his lump sum of P = \$119,554.36 and invests it at 8\% compounded monthly, he will have an accumulated value of A=\$589,020.41 in 20 years.
+\end{solution}
+
+\subsection{Installment Payment on a Loan}
+
+If a person or business needs to buy or pay for something now (a car, a home, college tuition, equipment for a business) but does not have the money, they can borrow the money as a loan. They receive the loan amount called the principal (or present value) now and are obligated to pay back the principal in the future over a stated amount of time (term of the loan), as regular periodic payments with interest.
+
+Example \ref{example_car_payments} examines how to calculate the loan payment, using reasoning similar to Example \ref{example_lottery_winnings}.
+
+\begin{example}\label{example_car_payments}
+    Find the monthly payment for a car costing \$15,000 if the loan is amortized over five years at an interest rate of 9\%.
+\end{example}
+
+\begin{solution}
+    Consider the scenario where Mr. Cash pays cash and Mr. Credit wishes to make monthly payments. We are to determine the monthly payment amount for Mr. Credit.
+
+    Since Mr. Cash is paying a lump sum of \$15,000, his future value is given by the lump sum formula:
+    \[ A = P(1 + r/n)^{nt} = \$15,000(1 + .09/12)^{60} = \$15,000(1.5657)\]
+
+    For Mr. Credit to make a sequence of payments, or an annuity, of m dollars per month, and its future value is given by the annuity formula:
+    \[ A = m\left[\frac{(1 + r/n)^{nt} - 1}{r/n}\right] = m\left[\frac{(1 + .09/12)^{12(5)} - 1}{.09/12}\right] = m(75.4241)\]
+
+    Setting the two future values equal and solving for m, we find the monthly payment m:
+    \[ \$15,000(1.5657) = m(75.4241) \]
+    \[ m = \frac{\$15,000 \cdot 1.5657}{75.4241} = \$311.38 \]
+
+    Therefore, the monthly payment needed to repay the loan is \$311.38 for five years.
+\end{solution}
+
+
+\begin{summarybox}{Present Value of an Annuity}
+    If a payment of \( m \) dollars is made in an account \( n \) times a year at an interest \( r \), then the present value \( P \) of the annuity after \( t \) years is
+
+    \[
+        P(1 + r/n)^{nt} = \frac{m[(1 + r/n)^{nt} - 1]}{r/n}
+    \]
+\end{summarybox}
+\begin{summarybox}{Present Value of an Annuity}
+    When used for a loan, the amount \( P \) is the loan amount, and \( m \) is the periodic payment needed to repay the loan over a term of \( t \) years with \( n \) payments per year at an interest \( r \).
+
+    \[
+        P(1 + r/n)^{nt} = \frac{m[(1 + r/n)^{nt} - 1]}{r/n}
+    \]
+
+\end{summarybox}
+
+Note that the formula assumes that the payment period is the same as the compounding period. If these are not the same, then this formula does not apply.
+
