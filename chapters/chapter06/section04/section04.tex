@@ -98,7 +98,7 @@ Example \ref{example_car_payments} examines how to calculate the loan payment, u
 \end{solution}
 
 
-\begin{summarybox}{Present Value of an Annuity}
+\begin{summarybox}{Present Value of an Annuity}\label{summary_annuity_present_value}
     If a payment of \( m \) dollars is made in an account \( n \) times a year at an interest \( r \), then the present value \( P \) of the annuity after \( t \) years is
 
     \[
@@ -116,3 +116,36 @@ Example \ref{example_car_payments} examines how to calculate the loan payment, u
 
 Note that the formula assumes that the payment period is the same as the compounding period. If these are not the same, then this formula does not apply.
 
+\subsection{Alternate Formula to find Present Value of an Annuity}
+Finally, we note that many finite mathematics and finance books develop the formula for the present value of an annuity differently.
+
+Instead of using the formula:
+\[
+    P\left(1 + \frac{r}{n}\right)^{nt} = \frac{m[(1 +\frac{r}{n})^{nt} - 1]}{\frac{r}{n}}
+\]
+
+and solving for the present value \( P \) after substituting the numerical values for the other items in the formula, many textbooks first solve the formula for \( P \) in order to develop a new formula for the present value. Then the numerical information can be substituted into the present value formula and evaluated, without needing to solve algebraically for \( P \).
+
+Starting with Summary \ref{summary_annuity_present_value}:
+\[
+    P\left(1 + \frac{r}{n}\right)^{nt} = \frac{m[(1 + \frac{r}{n})^{nt} - 1]}{\frac{r}{n}}
+\]
+
+Divide both sides by \((1+\frac{r}{n})^{nt}\) to isolate \( P \),
+\[
+    P = m\frac{\left[(1 + \frac{r}{n})^{nt} - 1\right]}{\frac{r}{n}}\cdot\frac{1}{(1 + \frac{r}{n})^{nt}}
+\]
+simplify to arrive at
+\begin{summarybox}{Present Value of an Annuity (Alternate Formula)}\label{summary_alternate_annuity_present_value}
+    \[
+        P = m\frac{\left[1- (1 + \frac{r}{n})^{-nt}]\right]}{\frac{r}{n}}
+    \]
+\end{summarybox}
+
+The authors of this book believe that it is easier to use the formula in Sumamry \ref{summary_annuity_present_value} and solve for \( P \) or \( m \) as needed. In this approach there are fewer formulas to understand, and many students find it easier to learn. In the problems the rest of this chapter, when a problem requires the calculation of the present value of an annuity, formula in Sumamry \ref{summary_annuity_present_value} will be used.
+
+However, some people prefer formula in Summary \ref{summary_alternate_annuity_present_value}, and it is mathematically correct to use that method. Note that if you choose to use formula in Summary \ref{summary_alternate_annuity_present_value}, you need to be careful with the negative exponents in the formula. And if you needed to find the periodic payment, you would still need to do the algebra to solve for the value of \( m \).
+
+It would be a good idea to check with your instructor to see if he or she has a preference. In fact, you can usually tell your instructor’s preference by noting how he or she explains and demonstrates these types of problems in class.
+
+\end{document}
