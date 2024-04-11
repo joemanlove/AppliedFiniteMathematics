@@ -1,0 +1,211 @@
+\section{Annuities and Sinking Funds}
+
+In this section, you will learn to:
+\begin{enumerate}
+    \item Find the future value of an annuity.
+    \item Find the amount of payments to a sinking fund.
+\end{enumerate}
+
+\subsection{Ordinary Annuity}
+
+In the first two sections of this chapter, we examined problems where an amount of money was deposited lump sum in an account and was left there for the entire time period. Now we will do problems where timely payments are made in an account. When a sequence of payments of some fixed amount are made in an account at equal intervals of time, we call that an annuity. And this is the subject of this section.
+
+To develop a formula to find the value of an annuity, we will need to recall the formula for the sum of a geometric series.
+
+A geometric series is of the form: $a + ax + ax^2 + ax^3 + \ldots + ax^n$.
+
+In a geometric series, each subsequent term is obtained by multiplying the preceding term by a number, called the common ratio. A geometric series is completely determined by knowing its first term, the common ratio, and the number of terms.
+
+The following are some examples of geometric series:
+\begin{itemize}
+    \item $3 + 6 + 12 + 24 + 48$ has first term $a = 3$ and common ratio $x = 2$.
+    \item $2 + 6 + 18 + 54 + 162$ has first term $a = 2$ and common ratio $x = 3$.
+    \item $37 + 3.7 + .37 + .037 + .0037$ has first term $a = 35$ and common ratio $x = 0.1$.
+\end{itemize}
+
+In your algebra class, you developed a formula for finding the sum of a geometric series. You probably used $r$ as the symbol for the ratio, but we are using $x$ because $r$ is the symbol we have been using for the interest rate.
+
+The formula for the sum of a geometric series with first term $a$ and common ratio $x$ is:
+\[
+    S = a\left(\frac{1 - x^n}{1 - x}\right)
+\]
+
+We will use this formula to find the value of an annuity.
+
+Consider the following example.
+
+\begin{example}\label{example_500_annuity}
+    If at the end of each month a deposit of \$500 is made in an account that pays 8\% compounded monthly, what will the final amount be after five years?
+\end{example}
+
+\begin{solution}
+    There are 60 deposits made in this account. The first payment stays in the account for 59 months, the second payment for 58 months, the third for 57 months, and so on.
+
+    The first payment of \$500 will accumulate to an amount of
+    \[
+        \$500\left(1 + \frac{0.08}{12}\right)^{59}.
+    \]
+    The second payment of \$500 will accumulate to an amount of
+    \[
+        \$500\left(1 + \frac{0.08}{12}\right)^{58}.
+    \]
+    The third payment will accumulate to
+    \[
+        \$500\left(1 + \frac{0.08}{12}\right)^{57}.
+    \]
+
+    And so on...
+
+    Finally, the next to last (59th) payment will accumulate to
+    \[
+        \$500(1 + \frac{0.08}{12})^{1}
+    \].
+    The last payment is taken out the same time it is made, and will not earn any interest.
+
+    To find the total amount in five years, we need to add the accumulated value of these sixty payments.
+
+    In other words, we need to find the sum of the following series:
+    \[
+        \$500\left(1 + \frac{0.08}{12}\right)^{59} + \$500\left(1 + \frac{0.08}{12}\right)^{58} + \$500\left(1 + \frac{0.08}{12}\right)^{57} + \ldots + \$500
+    \]
+
+    Written backwards, we have
+    \[
+        \$500 + \$500\left(1 + \frac{0.08}{12}\right) + \$500\left(1 + \frac{0.08}{12}\right)^2 + \ldots + \$500\left(1 + \frac{0.08}{12}\right)^{59}
+    \]
+
+
+    This is a geometric series with \( a = \$500 \), \( r = (1 + \frac{0.08}{12}) \), and \( n = 59 \). The sum is
+    \[ \$500\left(\frac{(1 + \frac{0.08}{12})^{60} - 1}{\frac{0.08}{12}}\right) \]
+    \[ = \$500(73.47686) \]
+    \[ = \$36738.43 \]
+\end{solution}
+
+When the payments are made at the end of each period rather than at the beginning, we call it an ordinary annuity.
+
+\begin{summarybox}{Future Value of an Ordinary Annuity}
+
+    If a payment of $m$ dollars is made in an account $n$ times a year at an interest rate $r$, then the final amount $A$ after $t$ years is given by:
+    \[
+        A = \frac{m \left[ \left(1 + \frac{r}{n}\right)^{nt} - 1 \right]}{\frac{r}{n}}
+    \]
+\end{summarybox}
+The future value is also called the accumulated value. Note that the formula assumes that the payment period is the same as the compounding period.  If these are not the same, then this formula does not apply
+
+\begin{example}
+    Tanya deposits \$300 at the end of each quarter in her savings account. If the account earns 5.75\% compounded quarterly, how much money will she have in 4 years?
+\end{example}
+
+\begin{solution}
+    The future value of this annuity can be found using the above formula.
+    \begin{align*}
+        A & = \$300\left(\frac{(1 + \frac{0.0575}{4})^{4 \cdot 4} - 1}{\frac{0.0575}{4}}\right) \\
+        A & = \$300(17.8463)                                                                    \\
+        A & = \$5353.89
+    \end{align*}
+    If Tanya deposits \$300 into a savings account earning 5.75\% compounded quarterly for 4 years, then at the end of 4 years she will have \$5,353.89.
+\end{solution}
+
+\begin{example}
+    Robert needs \$5,000 in three years. How much should he deposit each month in an account that pays 8\% compounded monthly in order to achieve his goal?
+\end{example}
+
+\begin{solution}
+    If Robert saves \( m \) dollars per month, after three years he will have
+    \[ m\left(\frac{(1+\frac{0.08}{12})^{36}-1}{\frac{0.08}{12}}\right) \]
+    But we'd like this amount to be \$5,000. Therefore,
+    \[ m\left(\frac{(1+\frac{0.08}{12})^{36}-1}{\frac{0.08}{12}}\right) = \$5000 \]
+    \[ m (40.5356) = \$5000 \]
+    \[ m = \frac{\$5000}{40.5356} = \$123.35 \]
+    Robert needs to deposit \$123.35 at the end of each month for 3 years into an account paying 8\% compounded monthly in order to have \$5,000 at the end of 5 years.
+\end{solution}
+
+\subsection{Sinking Funds}
+
+When a business deposits money at regular intervals into an account in order to save for a future purchase of equipment, the savings fund is referred to as a "sinking fund". Calculating the sinking fund deposit uses the same method as the previous problem.
+
+
+\begin{example}
+    A business needs \$450,000 in five years. How much should be deposited each quarter in a sinking fund that earns 9\% compounded quarterly to have this amount in five years?
+\end{example}
+
+\begin{solution}
+    Again, suppose that \( m \) dollars are deposited each quarter in the sinking fund. After five years, the future value of the fund should be \$450,000. This suggests the following relationship:
+    \[ m \left[ \frac{(1 + \frac{0.09}{4})^{20} - 1}{\frac{0.09}{4}} \right] = \$450,000 \]
+    \[ m (24.9115) = 450,000 \]
+    \[ m = \frac{450000}{24.9115} = \$18,063.93 \]
+    The business needs to deposit \$18,063.93 at the end of each quarter for 5 years into a sinking fund earning interest of 9\% compounded quarterly in order to have \$450,000 at the end of 5 years.
+\end{solution}
+
+\subsection{Annuities Due}
+
+If the payment is made at the beginning of each period, rather than at the end, we call it an annuity due. The formula for the annuity due can be derived in a similar manner. Reconsider Example \ref{example_500_annuity}, with the change that the deposits are made at the beginning of each month.
+
+\begin{example}
+    If at the beginning of each month a deposit of \$500 is made in an account that pays 8\% compounded monthly, what will the final amount be after five years?
+\end{example}
+
+\begin{solution}
+    There are 60 deposits made in this account. The first payment stays in the account for 60 months, the second payment for 59 months, the third for 58 months, and so on.
+
+    The first payment of \$500 will accumulate to an amount of
+    \[
+        \$500\left(1 + \frac{0.08}{12}\right)^{59}.
+    \]
+    The second payment of \$500 will accumulate to an amount of
+    \[
+        \$500\left(1 + \frac{0.08}{12}\right)^{58}.
+    \]
+    The third payment will accumulate to
+    \[
+        \$500\left(1 + \frac{0.08}{12}\right)^{57}.
+    \]
+
+    And so on...
+
+    Finally, the last (60th) payment will accumulate a month's interest to
+    \[
+        \$500\left(1 + \frac{0.08}{12}\right)^{1}
+    \].
+
+    To find the total amount in five years, we need to find the sum of the series:
+    In other words, we need to find the sum of the following series:
+    \[
+        \$500\left(1 + \frac{0.08}{12}\right)^{60} + \$500\left(1 + \frac{0.08}{12}\right)^{58} + \$500\left(1 + \frac{0.08}{12}\right)^{57} + \ldots + \$500\left(1 + \frac{0.08}{12}\right)^{1}
+    \]
+
+    Written backwards, we have
+    \[
+        \$500\left(1 + \frac{0.08}{12}\right) + \$500\left(1 + \frac{0.08}{12}\right)^2 + \ldots + \$500\left(1 + \frac{0.08}{12}\right)^{60}
+    \]
+    This isn't a geometric series, but if we add \$500 to the front of the series and subtract it from the back we haven't changed the value, but we'll have a geometric series.
+    \[
+        \$500 + \$500\left(1 + \frac{0.08}{12}\right) + \$500\left(1 + \frac{0.08}{12}\right)^2 + \ldots + \$500\left(1 + \frac{0.08}{12}\right)^{60} - \$500
+    \]
+    Except for the last term, we have a geometric series with \( a = \$500 \), \( r = (1 + .08/12) \), and \( n = 60 \). Therefore the sum is
+    \[
+        A = \frac{\$500[(1 + .08/12)^{61} - 1]}{.08/12} - \$500
+    \]
+    \[
+        A = \$500(74.9667) - \$500
+    \]
+    \[
+        A = \$37483.35 - \$500
+    \]
+    \[
+        A = \$36983.35
+    \]
+\end{solution}
+
+So, in the case of an annuity due, to find the future value, we increase the number of periods $n$ by 1, and subtract one payment.
+
+\begin{summarybox}{Future Value of an Annuity Due}
+
+    If a payment of $m$ dollars is made in an account $n$ times a year (at the beginning of each month) at an interest rate $r$, then the final amount $A$ after $t$ years is given by:
+    \[
+        A = \frac{m \left[ \left(1 + \frac{r}{n}\right)^{nt+1} - 1 \right]}{\frac{r}{n}}-m
+    \]
+\end{summarybox}
+
+Most of the problems we are going to do in this chapter involve ordinary annuities, therefore, we will down play the significance of the last formula for the annuity due.  We mentioned the formula for the annuity due only for completeness.
+
