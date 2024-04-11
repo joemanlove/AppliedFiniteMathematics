@@ -1,0 +1,263 @@
+\section{6.2 Compound Interest}
+
+In this section you will learn to:
+\begin{enumerate}
+    \item Find the future value of a lump-sum.
+    \item Find the present value of a lump-sum.
+    \item Find the effective interest rate.
+\end{enumerate}
+
+\subsection{Compound Interest}
+In the last section, we examined problems involving simple interest. Simple interest is generally charged when the lending period is short and often less than a year. When the money is loaned or borrowed for a longer time period, if the interest is paid (or charged) not only on the principal, but also on the past interest, then we say the interest is compounded.
+
+Suppose we deposit \$200 in an account that pays 8\% interest. At the end of one year, we will have \$200 + \$200(0.08) = \$200(1 + .08) = \$216.
+
+Now suppose we put this amount, \$216, in the same account. After another year, we will have \$216 + \$216(0.08) = \$216(1 + .08) = \$233.28.
+
+An initial deposit of \$200 has accumulated to \$233.28 in two years. Further note that had it been simple interest, this amount would have accumulated to only \$232. The reason the amount is slightly higher is because the interest (\$16) we earned the first year, was put back into the account. And this \$16 amount itself earned interest of \$16(0.08) = \$1.28, thus resulting in the increase. So we have earned interest on the principal as well as on the past interest, and that is why we call it compound interest.
+
+Now suppose we leave this amount, \$233.28, in the bank for another year, the final amount will be \$233.28 + \$233.28(0.08) = \$233.28(1 + .08) = \$251.94.
+
+Now let us look at the mathematical part of this problem so that we can devise an easier way to solve these problems. After one year, we had \$200(1 + .08) = \$216.
+After two years, $\$216 = \$200(1 + .08)^2$.
+But \$216 = \$200(1 + .08), therefore, the above expression becomes
+\[ \$200(1+.08)(1+.08) = \$200(1+.08)^2=\$233.28 \]
+
+After three years, we get
+\[ \$233.28(1+.08) = \$200(1+.08)(1+.08)(1+.08) \]
+which can be written as
+\[ \$200(1 + .08)^3 = \$251.94 \]
+
+Suppose we are asked to find the total amount at the end of 5 years, we will get
+\[ 200(1 + .08)^5 = \$293.87 \]
+
+We summarize the compound interest calculations as follows:
+\begin{center}
+    \begin{tabular}{lll}
+        \hline
+        The original amount          & \$200              & = \$200    \\
+        The amount after one year    & \$200(1 + .08)     & = \$216    \\
+        The amount after two years   & $\$200(1 + .08)^2$ & = \$233.28 \\
+        The amount after three years & $\$200(1 + .08)^3$ & = \$251.94 \\
+        The amount after five years  & $\$200(1 + .08)^5$ & = \$293.87 \\
+        The amount after t years     & $\$200(1 + .08)^t$ &            \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection{Compounding Periods}
+
+Banks often compound interest more than one time a year. Consider a bank that pays 8\% interest but compounds it four times a year, or quarterly. This means that every quarter the bank will pay an interest equal to one-fourth of 8\%, or 2\%.
+
+Now if we deposit \$200 in the bank, after one quarter we will have \$200(1 + .08/4) or \$204. After two quarters, we will have $\$200(1 + .08/4)^2$ or \$208.08. After one year, we will have $\$200(1 + .08/4)^4$ or \$216.49. After three years, we will have $\$200(1 + .08/4)^12$ or \$253.65, etc.
+
+\begin{center}
+    \begin{tabular}{lcr}
+        \hline
+        The original amount           & \$200                                      & = \$200    \\
+        The amount after one quarter  & $\$200\left(1 + \frac{.08}{4}\right)$      & = \$204    \\
+        The amount after two quarters & $\$200\left(1 + \frac{.08}{4}\right)^2$    & = \$208.08 \\
+        The amount after one year     & $\$200\left(1 + \frac{.08}{4}\right)^4$    & = \$216.49 \\
+        The amount after two years    & $\$200\left(1 + \frac{.08}{4}\right)^8$    & = \$234.31 \\
+        The amount after three years  & $\$200\left(1 + \frac{.08}{4}\right)^{12}$ & = \$253.65 \\
+        The amount after five years   & $\$200\left(1 + \frac{.08}{4}\right)^{20}$ & = \$297.19 \\
+        The amount after t years      & $\$200\left(1 + \frac{.08}{4}\right)^{4t}$ &            \\
+        \hline
+    \end{tabular}
+\end{center}
+
+The general formula for compound interest is given by the
+\begin{summarybox}{Compound Interest Formula}
+    \[ A = P\left(1 + \frac{r}{n}\right)^{nt} \]
+    where $P$ is the principal amount, $r$ is the annual interest rate, $n$ is the number of times interest is compounded per year, and $t$ is the time in years.
+\end{summarybox}
+
+\begin{example}
+    If \$3500 is invested at 9\% compounded monthly, what will the future value be in four years?
+\end{example}
+\begin{solution}
+    Clearly an interest of \( \frac{0.09}{12} \) is paid every month for four years. The interest is compounded \( 4 \cdot 12 = 48 \) times over the four-year period. We get
+    \[ A = \$3500 \left(1 + \frac{.09}{12}\right)^{48} = \$3500(1.0075)^{48} = \$5009.92 \]
+    \$3500 invested at 9\% compounded monthly will accumulate to \$5009.92 in four years.
+\end{solution}
+
+\begin{example}
+    How much should be invested in an account paying 9\% compounded daily for it to accumulate to \$5,000 in five years?
+\end{example}
+\begin{solution}
+    We know the future value, but need to find the principal.
+    \[ \$5000 = P \left(1 + \frac{.09}{365}\right)^{365 (5)} \]
+    \[ \$5000 = P(1.568225) \]
+    \[ P = \$3188.32 \]
+    \$3188.32 invested in an account paying 9\% compounded daily will accumulate to \$5,000 in five years.
+\end{solution}
+
+\begin{example}
+    If \$4,000 is invested at 4\% compounded annually, how long will it take to accumulate to \$6,000?
+\end{example}
+\begin{solution}
+    \( n = 1 \) because annual compounding means compounding only once per year.
+    The formula simplifies to \( A = (1+r)^t \) when \( n = 1 \).
+    \[ \$6000 = \$4000(1.04)^t \]
+    Dividing by 4000 yields
+    \[ \frac{6000}{4000} = (1.04)^t \]
+    \[ 1.5 = 1.04^t \]
+
+    We use logarithms to solve for the value of \( t \) because the variable \( t \) is in the exponent.
+
+    \[ \log(1.5) = \log(1.04^t) \]
+    Using the Exponent Rule for logarithms we can take the power down
+    \[ \log(1.5) = t\log(1.04) \]
+    then solve for \( t \) by dividing:
+    \[ t = \frac{\ln(1.5)}{\ln(1.04)} \approx 10.33 \text{ years} \]
+
+    It takes about 10 years and 4 months for \$4000 to accumulate to \$6000 if invested at 4\% interest, compounded annually.
+\end{solution}
+
+\begin{example}
+    If \$5,000 is invested now for 6 years what interest rate compounded quarterly is needed to obtain an accumulated value of \$8,000.
+\end{example}
+\begin{solution}
+    We have \( n = 4 \) for quarterly compounding.
+    \begin{align*}
+        \$8,000 & = \$5,000 \left(1 + \frac{r}{4}\right)^{4 \cdot 6} \\
+        \$8,000 & = \$5,000 \left(1 + \frac{r}{4}\right)^{24}        \\
+        1.6     & = \left(1 + \frac{r}{4}\right)^{24}
+    \end{align*}
+
+    We use roots to solve for \( r \) because the variable \( r \) is in the base, whereas the exponent is a known number.
+    \begin{align*}
+        \sqrt[24]{1.6}     & = 1 + \frac{r}{4} \\
+        1.6^{\frac{1}{24}} & = 1 + \frac{r}{4}
+    \end{align*}
+
+    Evaluating the left side of the equation gives
+    \begin{align*}
+        1.0197765 & = 1 + \frac{r}{4}       \\
+        0.0197765 & = \frac{r}{4}           \\
+        r         & = 4(0.0197765) = 0.0791
+    \end{align*}
+
+    An interest rate of 7.91\% is needed in order for \$5,000 invested now to accumulate to \$8,000 at the end of 6 years, with interest compounded quarterly.
+\end{solution}
+
+\subsection{Effective Interest Rate}
+Banks are required to state their interest rate in terms of an “effective yield” or “effective interest rate”, for comparison purposes. The effective rate is also called the Annual Percentage Yield (APY) or Annual Percentage Rate (APR).
+
+The effective rate is the interest rate compounded annually would be equivalent to the stated rate and compounding periods. The next example shows how to calculate the effective rate. To examine several investments to see which has the best rate, we find and compare the effective rate for each investment.
+
+Example \ref{example_effective_interest_rate} illustrates how to calculate the effective rate.
+
+\begin{example} \label{example_effective_interest_rate}
+    If Bank A pays 7.2\% interest compounded monthly, what is the effective interest rate? If Bank B pays 7.25\% interest compounded semiannually, what is the effective interest rate? Which bank pays more interest?
+\end{example}
+\begin{solution}
+    Bank A: Suppose we deposit \$1 in this bank and leave it for a year, we will get
+    \[
+        r_{effective} = \left(1 + \frac{0.072}{12}\right)^{12} = 1.0744
+    \]
+    \[
+        r_{effective} = 1.0744 - 1 = 0.0744
+    \]
+    We earned interest of \$1.0744 - \$1.00 = \$0.0744 on an investment of \$1.
+
+    The effective interest rate is 7.44\%, often referred to as the APY or APR.
+
+    Bank B: The effective rate is calculated as
+    \[
+        r_{effective} = \left(1 + \frac{0.0725}{2}\right)^{2} - 1 = .0738
+    \]
+    The effective interest rate is 7.38\%.
+
+    Bank A pays slightly higher interest, with an effective rate of 7.44\%, compared to Bank B with effective rate 7.38\%.
+\end{solution}
+
+
+\subsection{Continuous Compounding}
+
+Interest can be compounded yearly, semiannually, quarterly, monthly, and daily. Using the same calculation methods, we could compound every hour, every minute, and even every second. As the compounding period gets shorter and shorter, we move toward the concept of continuous compounding.
+
+But what do we mean when we say the interest is compounded continuously, and how do we compute such amounts? When interest is compounded "infinitely many times", we say that the interest is compounded continuously. Our next objective is to derive a formula to model continuous compounding.
+
+Suppose we put \$1 in an account that pays 100\% interest. If the interest is compounded once a year, the total amount after one year will be \$1(1 + 1) = \$2. If the interest is compounded semiannually, in one year we will have $\$1(1 + \frac{1}{2})^2 = \$2.25$. If the interest is compounded quarterly, in one year we will have $\$1(1 + \frac{1}{4})^4 = \$2.44$. If the interest is compounded monthly, in one year we will have $\$1(1 + \frac{1}{12})^{12} = \$2.61$. If the interest is compounded daily, in one year we will have $\$1(1 + \frac{1}{365})^{365} = \$2.71$.
+
+We show the results as follows:
+
+\begin{center}
+    \begin{tabular}{|l|l|l|}
+        \hline
+        Frequency of compounding & Formula                                  & Total amount     \\
+        \hline
+        Annually                 & $\$1(1 + 1)$                             & \$2              \\
+        Semiannually             & $\$1(1 + \frac{1}{2})^2$                 & \$2.25           \\
+        Quarterly                & $\$1(1 + \frac{1}{4})^4  $               & \$2.44140625     \\
+        Monthly                  & $\$1(1 + \frac{1}{12})^{12}$             & \$2.61303529     \\
+        Daily                    & $\$1(1 + \frac{1}{365})^{365}$           & \$2.71456748     \\
+        Hourly                   & $\$1(1 + \frac{1}{8760})^{8760}$         & \$2.71812699     \\
+        Every minute             & $\$1(1 + \frac{1}{525600})^{525600}$     & \$2.71827922     \\
+        Every Second             & $\$1(1 + \frac{1}{31536000})^{31536000}$ & \$2.71828247     \\
+        Continuously             & $\$1(2.718281828...)$                    & \$2.718281828... \\
+        \hline
+    \end{tabular}
+\end{center}
+
+We have noticed that the \$1 we invested does not grow without bound. It starts to stabilize to an irrational number 2.718281828... given the name "e" after the great mathematician Euler. In mathematics, we say that as $n$ becomes infinitely large, the expression equals $e$. Therefore, it is natural that the number $e$ plays a part in continuous compounding.
+
+It can be shown that as $n$ becomes infinitely large, the expression
+
+\[ \lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n = e \]
+
+Therefore, it follows that if we invest \$P at an interest rate $r$ per year, compounded continuously, after $t$ years the final amount will be given by
+
+\begin{summarybox}{Continous Compounding}
+    \[ A = P \cdot e^{rt} \]
+
+    with $P$ the principal, $r$ the interest rate, $t$ the time in years, and $A$ the value after compounding for those $t$ years
+\end{summarybox}
+
+
+\begin{example}
+    \$3500 is invested at 9\% compounded continuously. Find the future value in 4 years.
+\end{example}
+\begin{solution}
+    Using the formula for the continuous compounding, we get $A = Pe^{rt}$.
+    \begin{align*}
+        A & = \$3500e^{0.09 (4)} \\
+        A & = \$3500e^{0.36}     \\
+        A & = \$5016.65
+    \end{align*}
+\end{solution}
+
+\begin{example}
+    If an amount is invested at 7\% compounded continuously, what is the effective interest rate?
+\end{example}
+\begin{solution}
+    If we deposit \$1 in the bank at 7\% compounded continuously for one year, and subtract that \$1 from the final amount, we get the effective interest rate in decimals.
+    \begin{align*}
+        r_{effective} & = 1e^{0.07} - 1                       \\
+        r_{effective} & = 1.0725 - 1                          \\
+        r_{effective} & = 0.0725 \quad \text{or} \quad 7.25\%
+    \end{align*}
+\end{solution}
+
+\begin{example}
+    If an amount is invested at 7\% compounded continuously, how long will it take to double?
+\end{example}
+\begin{solution}
+    We use the model: \( Pe^{0.07t} = A \).
+
+    We don’t know the initial value of the principal but we do know that the accumulated value is double (twice) the principal.
+
+    \begin{align*}
+        Pe^{0.07t}           & = 2P                  \\
+        \frac{Pe^{0.07t}}{P} & = \frac{2P}{P}        \\
+        e^{0.07t}            & = 2                   \\
+        0.07t                & = \ln(2)              \\
+        t                    & = \frac{\ln(2)}{0.07} \\
+        t                    & = 9.9 \text{ years}
+    \end{align*}
+
+    It takes 9.9 years for money to double if invested at 7\% continuous interest.
+\end{solution}
+
+% TODO: I left out a bunch of bullshit about the law of 70 here. Might not be a terrible idea to put it in?
