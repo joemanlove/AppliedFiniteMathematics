@@ -1,0 +1,89 @@
+\section{Classification of Finance Problems}
+
+In this section, you will review the concepts of Chapter \ref{chapter_mathematics_of_finance} to:
+\begin{enumerate}
+    \item re-examine the types of financial problems and classify them.
+    \item re-examine the vocabulary words used in describing financial calculations
+\end{enumerate}
+
+We'd like to remind the reader that the hardest part of solving a finance problem is determining the category it falls into. So in this section, we will emphasize the classification of problems rather than finding the actual solution. We suggest that the student read each problem carefully and look for the word or words that may give clues to the kind of problem that is presented. For instance, students often fail to distinguish a lump-sum problem from an annuity. Since the payments are made each period, an annuity problem contains words such as each, every, per, etc. One should also be aware that in the case of a lump-sum, only a single deposit is made, while in an annuity numerous deposits are made at equal spaced time intervals. To help interpret the vocabulary used in the problems, we include a glossary at the end of this section.
+
+Students often confuse the present value with the future value. For example, if a car costs \$15,000, then this is its present value. Surely, you cannot convince the dealer to accept \$15,000 in some future time, say, in five years. Recall how we found the installment payment for that car. We assumed that two people, Mr. Cash and Mr. Credit, were buying two identical cars both costing \$15,000 each. To settle the argument that both people should pay exactly the same amount, we put Mr. Cash's cash of \$15,000 in the bank as a lump-sum and Mr. Credit's monthly payments of $x$ dollars each as an annuity. Then we make sure that the future values of these two accounts are equal. As you remember, at an interest rate of 9\%
+
+The future value of Mr. Cash's lump-sum was \[\$15,000\left(1 + \frac{0.09}{12}\right)^{60}.\] The future value of Mr. Credit's annuity was \[\frac{m\left[\left(1+\frac{0.09}{12}\right)^{60}-1\right]}{\frac{0.09}{12}}.\]
+
+To solve the problem, we set the two expressions equal and solve for m.
+The present value of an annuity is found in exactly the same way.  For example, suppose Mr. Credit is told that he can buy a particular car for \$311.38 a month for five years, and Mr. Cash wants to know how much he needs to pay.  We are finding the present value of the annuity of \$311.38 per month, which is the same as finding the price of the car.  This time our unknown quantity is the price of the car.  Now suppose the price of the car is P, then
+
+the future value of Mr. Cash's lump-sum is \[ P\left(1 + \frac{0.09}{12}\right)^{60},\] and the future value of Mr. Credit's annuity is \[\frac{\$311.38\left[\left(1 + \frac{0.09}{12}\right)^{60} - 1\right]}{\frac{0.09}{12}} .\]
+
+Setting them equal we get,
+
+\[
+    P\left(1 + \frac{0.09}{12}\right)^{60} = \frac{\$311.38\left[\left(1 + \frac{0.09}{12}\right)^{60} - 1\right]}{\frac{0.09}{12}}
+\]
+
+\[
+    P(1.5657) = (\$311.38)(75.4241)
+\]
+
+\[
+    P(1.5657) = \$23,485.57
+\]
+
+\[
+    P = \$15,000.04
+\]
+
+\subsection{Classification of Problems and Equations for Solutions}
+
+We now list six problems that form a basis for all finance problems. Further, we classify these problems and give an equation for the solution.
+
+
+\begin{example}
+    If \$2,000 is invested at 7\% compounded quarterly, what will the final amount be in 5 years?
+\end{example}
+\begin{solution}
+    This is about the future (accumulated) value of a lump-sum. The future value can be calculated using the formula for compound interest:
+    \[ FV = A = \$2000\left(1 + \frac{0.07}{4}\right)^{4 \cdot 5} \]
+\end{solution}
+
+\begin{example}
+    How much should be invested at 8\% compounded yearly, for the final amount to be \$5,000 in five years?
+\end{example}
+\begin{solution}
+    This is about the present value of a lump-sum. The present value required for the future value of \$5,000 can be calculated as:
+    \[ PV(1 + 0.08)^{5} = \$5,000 \]
+\end{solution}
+
+\begin{example}
+    If \$200 is invested each month at 8.5\% compounded monthly, what will the final amount be in 4 years?
+\end{example}
+\begin{solution}
+    The future value of an annuity formula is used in this case:
+    \[ FV = A = \frac{\$200 \left[\left(1 + \frac{0.085}{12}\right)^{12 \times 4} - 1\right]}{\frac{0.085}{12}} \]
+\end{solution}
+
+\begin{example}
+    How much should be invested each month at 9\% for it to accumulate to \$8,000 in three years?
+\end{example}
+\begin{solution}
+    This is a sinking fund payment problem where the formula is:
+    \[ m \frac{\left[\left(1 + \frac{0.09}{12}\right)^{12 \cdot 3} - 1\right]}{\frac{0.09}{12}} = \$8,000 \]
+\end{solution}
+
+\begin{example}
+    Keith has won a lottery paying him \$2,000 per month for the next 10 years. He'd rather have the entire sum now. If the interest rate is 7.6\%, how much should he receive?
+\end{example}
+\begin{solution}
+    This is about the present value of an annuity. The present value of an annuity is calculated with:
+    \[ PV\left(1 + \frac{0.076}{12}\right)^{12 \cdot 10} = \frac{\$2,000 \left[\left(1 + \frac{0.076}{12}\right)^{12 \cdot 10} - 1\right]}{\frac{0.076}{12}} \]
+\end{solution}
+
+\begin{example}
+    Mr. A has just donated \$25,000 to his alma mater. Mr. B would like to donate an equivalent amount, but would like to pay by monthly payments over a five year period. If the interest rate is 8.2\%, determine the size of the monthly payment?
+\end{example}
+\begin{solution}
+    The monthly payment can be found using the formula for the present value of an annuity due to the installment payment plan:
+    \[ m\frac{\left[(1 + \frac{0.082}{12})^{60} - 1\right]}{\frac{0.082}{12}} = \$25,000\left(1 + \frac{0.082}{12}\right)^{60} \]
+\end{solution}
