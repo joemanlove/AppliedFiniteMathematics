@@ -1,0 +1,138 @@
+\section{Combinations Involving Several Sets}
+
+In this section, you will learn to:
+\begin{enumerate}
+    \item Count the number of items selected from more than one set.
+    \item Count the number of items selected when there are restrictions on the selections.
+\end{enumerate}
+
+So far, we have solved the basic combination problem of \( r \) objects chosen from \( n \) different objects. Now we will consider certain variations of this problem.
+
+\begin{example}
+    How many five-person committees consisting of 2 faculty members and 3 students can be chosen from a total of 4 faculty members and 4 students?
+\end{example}
+\begin{solution}
+    We list 4 faculty members and 4 students as follows:
+    \[ F_1F_2F_3F_4S_1S_2S_3S_4 \]
+
+    Since we want 5-person committees consisting of 2 faculty members and 3 students, we'll first form all possible two-faculty committees and all possible three-student committees. Clearly there are \( 4C2 = 6 \) two-faculty committees, and \( 4C3 = 4 \) three-student committees, we list them as follows:
+
+    2-Faculty Committees
+    \begin{itemize}
+        \item \( F_1F_2 \)
+        \item \( F_1F_3 \)
+        \item \( F_1F_4 \)
+        \item \( F_2F_3 \)
+        \item \( F_2F_4 \)
+        \item \( F_3F_4 \)
+    \end{itemize}
+
+    3-Student Committees
+    \begin{itemize}
+        \item \( S_1S_2S_3 \)
+        \item \( S_1S_2S_4 \)
+        \item \( S_1S_3S_4 \)
+        \item \( S_2S_3S_4 \)
+    \end{itemize}
+
+    For every 2-faculty committee there are four 3-student committees that can be chosen to make a 5-person committee. If we choose \( F_1F_2 \) as our 2-faculty committee, then we can choose any of \( S_1S_2S_3 \), \( S_1S_2S_4 \), \( S_1S_3S_4 \), or \( S_2S_3S_4 \) as our 3-student committees. As a result, we get
+
+    \[ \boxed{F_1F_2}S_1S_2S_3,~ \boxed{F_1F_2}S_1S_2S_4,~  \boxed{F_1F_2}S_1S_3S_4 ,~  \boxed{F_1F_2}S_2S_3S_4 \]
+
+    Similarly, if we choose \( F_1F_3 \) as our 2-faculty committee, then, again, we can choose any of \( S_1S_2S_3 \), \( S_1S_2S_4 \), \( S_1S_3S_4 \), or \( S_2S_3S_4 \) as our 3-student committees.
+
+    \[ \boxed{F_1F_3}S_1S_2S_3,~ \boxed{F_1F_3}S_1S_2S_4,~  \boxed{F_1F_3}S_1S_3S_4 ,~  \boxed{F_1F_3}S_2S_3S_4 \]
+
+    And so on.
+
+    Since there are six 2-faculty committees, and for every 2-faculty committee there are four 3-student committees, there are altogether \( 6 \cdot 4 = 24 \) five-person committees.
+
+    In essence, we are applying the multiplication axiom to the different combinations.
+\end{solution}
+
+\begin{example}
+    A club consists of 4 freshmen, 5 sophomores, 5 juniors, and 6 seniors. How many ways can a committee of 4 people be chosen that includes:
+    \begin{enumerate}
+        \item One student from each class?
+        \item All juniors?
+        \item Two freshmen and 2 seniors?
+        \item No freshmen?
+        \item At least three seniors?
+    \end{enumerate}
+\end{example}
+\begin{solution}
+    \begin{enumerate}
+        \item Applying the multiplication axiom to the combinations involved, we get
+              \[ (4C1)(5C1)(5C1)(6C1) = 600 \]
+        \item We are choosing all 4 members from the 5 juniors, and none from the others.
+              \[ 5C4 = 5 \]
+        \item \( 4C2 \cdot 6C2 = 90 \)
+        \item Since we don't want any freshmen on the committee, we need to choose all members from the remaining 16. That is
+              \[ 16C4 = 1820 \]
+        \item Of the 4 people on the committee, we want at least three seniors. This can be done in two ways. We could have three seniors, and one non-senior, or all four seniors.
+              \[ (6C3)(14C1) + 6C4 = 295 \]
+    \end{enumerate}
+\end{solution}
+
+\begin{example}
+    How many five-letter word sequences consisting of 2 vowels and 3 consonants can be formed from the letters of the word INTRODUCE?
+\end{example}
+\begin{solution}
+    First we select a group of five letters consisting of 2 vowels and 3 consonants. Since there are 4 vowels and 5 consonants, we have
+    \[
+        (4C2)(5C3)
+    \]
+    Since our next task is to make word sequences out of these letters, we multiply these by \(5!\):
+    \[
+        (4C2)(5C3)(5!) = 7200.
+    \]
+\end{solution}
+
+
+\subsection{A Standard Deck of 52 Playing Cards}\label{subsection_standard_deck}
+
+As in the previous example, many examples and homework problems in this book refer to a standard deck of 52 playing cards. Before we end this section, we take a minute to describe a standard deck of playing cards, as some readers may not be familiar with this.
+
+A standard deck of 52 playing cards has 4 suits with 13 cards in each suit. The suits are diamonds (\diamonds), hearts (\hearts), spades (\spades), and clubs (\clubs). Each suit is associated with a color, either black (\spades, \clubs) or red (\diamonds, \hearts).
+
+Each suit contains 13 denominations (or values) for cards: the nine numbers 2, 3, 4, ..., 10 and Jack(J), Queen (Q), King (K), Ace (A).
+
+The Jack, Queen and King are called "face cards" because they have pictures on them. Therefore a standard deck has 12 face cards: (3 values JQK) x (4 suits {\hearts} {\diamonds} {\spades} {\clubs}). There are two Jacks in profile (\hearts, \spades) and two Jacks in full face (\diamonds, \clubs), the Jacks in profile are sometimes refered to as the one-eyed Jacks.
+
+We can visualize the 52 cards by the following display
+
+\begin{center}
+    \begin{tabular}{l l l}
+        \textbf{Suit}        & \textbf{Color} & \textbf{Values (Denominations)} \\
+        {\diamonds} Diamonds & Red            & 2 3 4 5 6 7 8 9 10 J Q K A      \\
+        {\hearts} Hearts     & Red            & 2 3 4 5 6 7 8 9 10 J Q K A      \\
+        {\spades} Spades     & Black          & 2 3 4 5 6 7 8 9 10 J Q K A      \\
+        {\clubs} Clubs       & Black          & 2 3 4 5 6 7 8 9 10 J Q K A      \\
+    \end{tabular}
+\end{center}
+
+
+\begin{example}
+    A standard deck of playing cards has 52 cards consisting of 4 suits with 13 cards in each. In how many different ways can a 5-card hand consisting of four cards of one suit and one of another be drawn?
+\end{example}
+\begin{solution}
+    We will do the problem using the following steps.
+    \begin{enumerate}
+        \item Select a suit.
+        \item Select four cards from this suit.
+        \item Select another suit.
+        \item Select a card from that suit.
+    \end{enumerate}
+    Applying the multiplication axiom, we have
+    \begin{center}
+        \begin{tabular}{lr}
+            Ways of selecting the first suit         & $4C1$  \\
+            Ways of selecting 4 cards from this suit & $13C4$ \\
+            Ways of selecting the next suit          & $3C1$  \\
+            Ways of selecting a card from that suit  & $13C1$ \\
+        \end{tabular}
+    \end{center}
+    \[
+        (4C1) \cdot (13C4) \cdot (3C1) \cdot (13C1) = 11,540.
+    \]
+\end{solution}
