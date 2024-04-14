@@ -1,0 +1,190 @@
+\section{Combinations}
+
+In this section, you will learn to:
+\begin{enumerate}
+    \item Count the number of combinations of \( r \) out of \( n \) items (selections without regard to arrangement).
+    \item Use factorials to perform calculations involving combinations.
+\end{enumerate}
+
+Suppose we have a set of three letters \{A, B, C\}, and we are asked to make two-letter word sequences. We have the following six permutations:
+\[ AB \quad BA \quad BC \quad CB \quad AC \quad CA \]
+
+Now suppose we have a group of three people \{A, B, C\} as Alex, Blake, and Cam, respectively, and we are asked to form committees of two people each. This time we have only three committees, namely:
+\[ AB \quad BC \quad AC \]
+
+When forming committees, the order is not important because the committee that has Alex and Blake is no different than the committee that has Blake and Alex. As a result, we have only three committees and not six.
+
+Forming word sequences is an example of permutations, while forming committees is an example of combinations - the topic of this section.
+
+Permutations are those arrangements where order is important, while combinations are those arrangements where order is not significant. From now on, this is how we will tell permutations and combinations apart.
+
+In the above example, there were six permutations, but only three combinations.
+
+Just as the symbol \( nPr \) represents the number of permutations of \( n \) objects taken \( r \) at a time, \( nCr \) represents the number of combinations of \( n \) objects taken \( r \) at a time.
+
+So in the above example, \( 3P2 = 6 \), and \( 3C2 = 3 \).
+
+Our next goal is to determine the relationship between the number of combinations and the number of permutations in a given situation.
+
+In the above example, if we knew that there were three combinations, we could have found the number of permutations by multiplying this number by \( 2! \). That is because each combination consists of two letters, and that makes \( 2! \) permutations.
+
+\begin{example}
+    Given the set of letters $\{A, B, C, D\}$. Write the number of combinations of three letters, and then from these combinations determine the number of permutations.
+\end{example}
+
+\begin{solution}
+    We have the following four combinations.
+
+    \[
+        \text{ABC, BCD, CDA, BDA}
+    \]
+
+    Since every combination has three letters, there are $3!$ permutations for every combination. We list them below.
+
+    \[
+        \begin{aligned}
+             & \text{ABC} \quad \text{ACB} \quad \text{BAC} \quad \text{BCA} \quad \text{CAB} \quad \text{CBA} \\
+             & \text{BCD} \quad \text{BDC} \quad \text{CBD} \quad \text{CDB} \quad \text{DBC} \quad \text{DCB} \\
+             & \text{CDA} \quad \text{CAD} \quad \text{DCA} \quad \text{DAC} \quad \text{ACD} \quad \text{ADC} \\
+             & \text{BDA} \quad \text{BAD} \quad \text{DBA} \quad \text{DAB} \quad \text{ABD} \quad \text{ADB}
+        \end{aligned}
+    \]
+\end{solution}
+
+The number of permutations are \(3!\) times the number of combinations; that is
+\[
+    4P3 = 3! \cdot 4C3
+\]
+or
+\[
+    4C3 = \frac{4P3}{3!}
+\]
+In general, \[ nCr = \frac{nPr}{r!} \]
+
+Since
+\[
+    nPr = \frac{n!}{(n-r)!}
+\]
+We have,
+\[
+    nCr = \frac{n!}{(n-r)! \cdot r!}
+\]
+
+\begin{summarybox}{Combinations}
+    A combination of a set of elements is an arrangement where each element is used once, and order is not important. The number of combinations of $n$ objects taken $r$ at a time is given by
+    \[
+        nCr = \frac{n!}{(n-r)! \cdot r!}
+    \]
+    where $n$ and $r$ are natural numbers.
+\end{summarybox}
+
+\begin{example}
+    Compute:
+    \begin{enumerate}
+        \item $5C3$
+        \item $7C3$
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    We use the above formula.
+    \begin{enumerate}
+        \item \(5C3 = \frac{5!}{(5-3)!3!} = \frac{5!}{2!3!} = 10 \)
+        \item \(7C3 = \frac{7!}{(7-3)!3!} = \frac{7!}{4!3!} = 35 \)
+    \end{enumerate}
+\end{solution}
+
+\begin{example}
+    In how many different ways can a student select to answer five questions from a test that has seven questions, if the order of the selection is not important?
+\end{example}
+\begin{solution}
+    Since the order is not important, it is a combination problem, and the answer is
+    \[ 7C5 = 21. \]
+\end{solution}
+
+\begin{example}
+    How many line segments can be drawn by connecting any two of the six points that lie on the circumference of a circle?
+\end{example}
+\begin{solution}
+    Since the line that goes from point A to point B is same as the one that goes from B to A, this is a combination problem.
+    It is a combination of 6 objects taken 2 at a time. Therefore, the answer is
+    \[ 6C2 = \frac{6!}{4!2!} = 15. \]
+\end{solution}
+
+\begin{example}
+    There are ten people at a party. If they all shake hands, how many hand-shakes are possible?
+\end{example}
+\begin{solution}
+    Note that between any two people there is only one hand shake. Therefore, we have
+    \[ 10C2 = 45 \text{ hand-shakes.} \]
+\end{solution}
+
+\begin{example}
+    The shopping area of a town is in the shape of square that is 5 blocks by 5 blocks. How many different routes can a taxi driver take to go from one corner of the shopping area to the opposite cater-corner?
+\end{example}
+\begin{solution}
+    Let us suppose the taxi driver drives from the point A, the lower left hand corner, to the point B, the upper right hand corner as shown in the figure below.
+
+    \begin{center}
+        \begin{tikzpicture}
+            % Draw the grid
+            \draw[step=1cm,black,thin] (0,0) grid (5,5);
+
+            % Label the corners
+            \node at (-0.5,0) {A};
+            \node at (5.5,5) {B};
+        \end{tikzpicture}
+    \end{center}
+
+    To reach his destination, he has to travel ten blocks; five horizontal, and five vertical. So if out of the ten blocks he chooses any five horizontal, the other five will have to be the vertical blocks, and vice versa.
+
+    Therefore, all he has to do is to choose 5 out of ten to be the horizontal blocks
+
+    The answer is \( 10C5 \), or 252.
+
+    Alternately, the problem can be solved by permutations with similar elements. The taxi driver's route consists of five horizontal and five vertical blocks. If we call a horizontal block \( H \), and a vertical block \( V \), then one possible route may be as follows.
+
+    \[
+        \text{HHHHHVVVVV}
+    \]
+
+    Clearly there are
+    \[
+        \frac{10!}{5! \cdot 5!} = 252
+    \]
+    permutations.
+
+    Further note that by definition
+    \[
+        10C5 = \frac{10!}{5! \cdot 5!} \text{.}
+    \]
+
+\end{solution}
+
+\begin{example}
+    If a coin is tossed six times, in how many ways can it fall four heads and two tails?
+\end{example}
+\begin{solution}
+    First, we solve this problem using techniques from \ref{subsection_permutations_with_similar_elements} - permutations with similar elements.
+
+    We need 4 heads and 2 tails, that is we need to find all the rearrangements of HHHHTT. Since there are 4 Hs and 2 Ts. The number of permutations is given by \[\frac{6!}{4!2!} = 15.\]
+
+    Now we solve this problem using combinations.
+
+    Suppose we have six spots to put the coins on. If we choose any four spots for heads, the other two will automatically be tails. So the problem is simply
+
+    \[6C4 = 15.\]
+
+    Incidentally, we could have easily chosen the two tails, instead. In that case, we would have gotten
+
+    \[6C2 = 15.\]
+
+    Further observe that by definition
+
+    \[6C4 = \frac{6!}{2!4!} \text{ and } 6C2 = \frac{6!}{4!2!}\]
+\end{solution}
+
+\begin{note}
+    It is true that,
+    \[nCr = \frac{n!}{r!(n-r)!} = \frac{n!}{(n-r)!(r)!} = nC(n-r)\]
+\end{note}
