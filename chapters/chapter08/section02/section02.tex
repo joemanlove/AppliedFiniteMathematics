@@ -1,0 +1,218 @@
+\section{Mutually Exclusive Events and the Addition Rule}
+
+In this section, you will learn to:
+\begin{enumerate}
+    \item Define compound events using union, intersection, and complement.
+    \item Identify mutually exclusive events
+    \item Use the Addition Rule to calculate probability for unions of events.
+\end{enumerate}
+
+In Chapter \ref{chapter_sets_and_counting}, we learned to find the union, intersection, and complement of a set. We will now use these set operations to describe events.
+
+The \textbf{union} of two events \(E\) and \(F\), \(E \cup F\), is the set of outcomes that are in \(E\) or in \(F\) or in both.
+
+The \textbf{intersection} of two events \(E\) and \(F\), \(E \cap F\), is the set of outcomes that are in both \(E\) and \(F\).
+
+The \textbf{complement} of an event \(E\), denoted by \(\overline{E}\), is the set of outcomes in the sample space \(S\) that are not in \(E\). It is worth noting that \(P(\overline{E}) = 1 - P(E)\).
+
+\begin{summarybox}{The Complement Rule}
+    If \(E^c\) is the Complement of Event \(E\), then
+    \[ P(E^c) = 1 - P(E) \]
+\end{summarybox}
+
+
+This follows from the fact that if the sample space has \(n\) elements and \(E\) has \(k\) elements, then \(\overline{E}\) has \(n - k\) elements. Therefore,
+\[
+    P\left(\overline{E}\right) = \frac{n - k}{n} = 1 - \frac{k}{n} = 1 - P(E).
+\]
+
+Of particular interest to us are the events whose outcomes do not overlap. We call these events mutually exclusive.
+
+Two events \(E\) and \(F\) are said to be \textbf{mutually exclusive} if they do not intersect: \(E \cap F = \emptyset\).
+
+Next we'll determine whether a given pair of events are mutually exclusive.
+
+\begin{example}
+    A card is drawn from a standard deck. Determine whether the pair of events given below is mutually exclusive.
+    \[ E = \{\text{The card drawn is an Ace}\} \]
+    \[ F = \{\text{The card drawn is a heart}\} \]
+\end{example}
+\begin{solution}
+    Clearly the ace of hearts belongs to both sets. That is
+    \[ E \cap F = \{A\hearts\} \neq \emptyset. \]
+    Therefore, the events E and F are not mutually exclusive.
+\end{solution}
+
+\begin{example}
+    Two dice are rolled. Determine whether the pair of events given below is mutually exclusive.
+    \[ G = \{\text{The sum of the faces is six}\} \]
+    \[ H = \{\text{One die shows a four}\} \]
+\end{example}
+\begin{solution}
+    For clarity, we list the elements of both sets.
+    \[ G = \{(1,5), (2,4), (3,3), (4,2), (5,1)\} \]
+    \[ H = \{(2,4), (4,2)\} \]
+    Clearly, \( G \cap H = \{(2,4), (4,2)\} \neq \emptyset. \)
+    Therefore, the two sets are not mutually exclusive.
+\end{solution}
+
+\begin{example}
+    A committee consists of three members. Determine whether the following pair of events are mutually exclusive.
+    \[ M = \{\text{The committee has at least one faculty member}\} \]
+    \[ N = \{\text{The committee consists only of students}\} \]
+\end{example}
+\begin{solution}
+    Although the answer may be clear, we list both the sets.
+    \[ M = \{\text{FFF, FFS, FSF, FSS, SFF, SFS, SSF}\} \]
+    \[ N = \{\text{SSS}\} \]
+    Clearly,
+    \[ M \cap N = \emptyset \]
+    Therefore, events M and N are mutually exclusive.
+\end{solution}
+
+We will now consider problems that involve the union of two events.
+
+Given two events, \( E \) and \( F \), then finding the probability of \( E \cup F \) is the same as finding the probability that \( E \) will happen, or \( F \) will happen, or both will happen.
+
+\begin{example}\label{example_probability_union_dice_roll}
+    If a die is rolled, what is the probability of obtaining an even number or a number greater than four?
+\end{example}
+\begin{solution}
+    Let \( E \) be the event that the number shown on the die is an even number, and let \( F \) be the event that the number shown is greater than four.
+
+    The sample space \( S \) is \{1, 2, 3, 4, 5, 6\}. The event \( E = \{2, 4, 6\} \), and event \( F = \{5, 6\} \).
+
+    We need to find \( P(E \cup F) \).
+
+    Since \( P(E) = \frac{3}{6} \), and \( P(F) = \frac{2}{6} \), a student may say \( P(E \cup F) = \frac{3}{6} + \frac{2}{6} \). This will be incorrect because the element 6, which is in both \( E \) and \( F \) has been counted twice, once as an element of \( E \) and once as an element of \( F \). In other words, the set \( E \cup F \) has only four elements and not five: set \( E \cup F = \{2,4,5,6\} \)
+
+    Therefore, \( P(E \cup F) = \frac{4}{6} \) and not \( \frac{5}{6} \).
+\end{solution}
+
+This can be illustrated by a Venn diagram. We'll use the Venn Diagram to re-examine Example \ref{example_probability_union_dice_roll} and derive a probability rule that we can use to calculate probabilities for unions of events.
+
+The sample space \( S \), the events \( E \) and \( F \), and \( E \cap F \) are listed below.
+
+\[ S = \{1, 2, 3, 4, 5, 6\}, \quad E = \{2, 4, 6\}, \quad F = \{5, 6\}, \quad E \cap F = \{6\}. \]
+
+\begin{center}
+    \begin{venndiagram2sets}[
+            labelA=\(E\),
+            labelB=\(F\),
+            labelAB={\{6\}},
+            labelOnlyA={\{2,4\}},
+            labelOnlyB={\{5\}},
+            % showframe = false
+        ]
+        \setpostvennhook{
+            \node[below left] at (venn top right) {S};
+            \node[above left] at (venn bottom right) {\{3,1\}};
+        }
+    \end{venndiagram2sets}
+\end{center}
+
+
+Finding the probability of \( E \cup F \) is the same as finding the probability that \( E \) will happen, or \( F \) will happen, or both will happen.
+
+If we count the number of elements \( \#(E) \) in \( E \), and add to it the number of elements \( \#(F) \) in \( F \), the points in both \( E \) and \( F \) are counted twice, once as elements of \( E \) and once as elements of \( F \). Now if we subtract from the sum, \( \#(E) + \#(F) \), the number \( \#(E \cap F) \), we remove the duplicity and get the correct answer. So as a rule,
+
+\[ \#(E \cup F) = \#(E) + \#(F) - \#(E \cap F) \]
+
+By dividing the entire equation by \( \#(S) \), we get
+
+\[ \frac{\#(E \cup F)}{\#(S)} = \frac{\#(E)}{\#(S)} + \frac{\#(F)}{\#(S)} - \frac{\#(E \cap F)}{\#(S)} \]
+
+Since the probability of an event is the number of elements in that event divided by the number of all possible outcomes, we have
+
+\[ P(E \cup F) = P(E) + P(F) - P(E \cap F) \]
+
+Applying the above for Example \ref{example_probability_union_dice_roll}, we get
+
+\[ P(E \cup F) = \frac{3}{6} + \frac{2}{6} - \frac{1}{6} = \frac{4}{6} \]
+
+This is because, when we add \( P(E) \) and \( P(F) \), we have added \( P(E \cap F) \) twice. Therefore, we must subtract \( P(E \cap F) \), once.
+
+This gives us the general formula, called the \textbf{Addition Rule}, for finding the probability of the union of two events. Because event \( E \cup F \) is the event that \( E \) will happen, OR \( F \) will happen, OR both will happen, we sometimes call this the \textbf{Addition Rule for OR Events}. It states
+
+\begin{summarybox}{Addition Rule}
+
+    \[ P(E \cup F) = P(E) + P(F) - P(E \cap F) \]
+
+    If, and only if, two events \( E \) and \( F \) are mutually exclusive, then \( E \cap F = \emptyset \) and \( P(E \cap F) = 0 \), and we get
+
+    \[ P(E \cup F) = P(E) + P(F) \]
+\end{summarybox}
+
+\begin{example}
+    If a card is drawn from a deck, use the addition rule to find the probability of obtaining an ace or a heart.
+\end{example}
+\begin{solution}
+    Let \( A \) be the event that the card is an ace, and \( H \) the event that it is a heart.
+    Since there are four aces, and thirteen hearts in the deck,
+    \[ P(A) = \frac{4}{52} \text{ and } P(\hearts) = \frac{13}{52}. \]
+
+    Furthermore, since the intersection of two events consists of only one card, \(A\hearts\), we now have:
+    \[ P(A \cap \hearts) = \frac{1}{52} \]
+
+    We need to find \( P(A \cup \hearts) \):
+    \[ P(A \cup \hearts) = P(A) + P(\hearts) - P(A \cap \hearts) \]
+    \[ = \frac{4}{52} + \frac{13}{52} - \frac{1}{52} = \frac{16}{52}. \]
+\end{solution}
+
+
+\begin{example}
+    Two dice are rolled, and the events F and T are as follows:
+    F = \{The sum of the dice is four\} and T = \{At least one die shows a three\}
+    Find \( P(F \cup T) \).
+\end{example}
+\begin{solution}
+    We list F and T, and \( F \cap T \) as follows:
+    \[
+        F = \{(1, 3), (2, 2), (3, 1)\} \]
+    \[
+        T = \{(3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (1, 3), (2, 3), (4, 3), (5, 3), (6, 3)\}
+    \]
+    \[
+        F \cap T = \{(1, 3), (3, 1)\}
+    \]
+    Since \( P(F \cup T) = P(F) + P(T) - P(F \cap T) \)
+    We have \( P(F \cup T) = 3/36 + 11/36 - 2/36 = 12/36 \).
+\end{solution}
+
+\begin{example}
+    Dr. T is seeking a mathematics instructor's position at the best community college in California, Columbia College. Their employment depends on two conditions: whether the board approves the position, and whether the hiring committee selects them. There is an 80\% chance that the board will approve the position, and there is a 70\% chance that the hiring committee will select them. If there is a 90\% chance that at least one of the two conditions, the board approval or their selection, will be met, what is the probability that Dr. T will be hired?
+\end{example}
+\begin{solution}
+    Let A be the event that the board approves the position, and S be the event that Dr. T gets selected. We have,
+    \[
+        P(A) = .80, \quad P(S) = .70, \quad P(A \cup S) = .90
+    \]
+    We need to find, \( P(A \cap S) \).
+    The addition formula states that,
+    \[
+        P(A \cup S) = P(A) + P(S) - P(A \cap S)
+    \]
+    Substituting the known values, we get
+    \[
+        .90 = .80 + .70 - P(A \cap S)
+    \]
+    Therefore, \( P(A \cap S) = .60 \).
+\end{solution}
+
+\begin{example}
+    The probability that this weekend will be cold is 0.6, the probability that it will be rainy is 0.7, and the probability that it will be both cold and rainy is 0.5. What is the probability that it will be neither cold nor rainy?
+\end{example}
+\begin{solution}
+    Let \( C \) be the event that the weekend will be cold, and \( R \) be the event that it will be rainy. We are given that
+    \[
+        P(C) = 0.6, \quad P(R) = 0.7, \quad P(C \cap R) = 0.5
+    \]
+    First we find \( P(C \cup R) \) using the Addition Rule.
+    \[
+        P(C \cup R) = P(C) + P(R) - P(C \cap R) = 0.6 + 0.7 - 0.5 = 0.8
+    \]
+    Then we find \( P(\overline{(C \cup R)}) \) using the Complement Rule.
+    \[
+        P(\overline{(C \cup R)}) = 1 - P(C \cup R) = 1 - 0.8 = 0.2
+    \]
+\end{solution}
