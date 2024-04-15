@@ -1,0 +1,115 @@
+\section{Binomial Theorem}
+
+In this section, you will learn to:
+\begin{enumerate}
+    \item find the coefficients of a binomial expansion such as \((x+y)^n\) quickly and accurately
+\end{enumerate}
+
+We end this chapter with one more application of combinations. Combinations are used in determining the coefficients of a binomial expansion such as $(x + y)^n$.  Expanding a binomial expression by multiplying it out is a very tedious task, and is not practiced. Instead, a formula known as the Binomial Theorem is utilized to determine such an expansion. Before we introduce the Binomial Theorem, however, consider the following expansions.
+
+
+\begin{align*}
+    (x+y)^2 & = x^2 + 2xy + y^2                                            \\
+    (x+y)^3 & = x^3 + 3x^2y + 3xy^2 + y^3                                  \\
+    (x+y)^4 & = x^4 + 4x^3y + 6x^2y^2 + 4xy^3 + y^4                        \\
+    (x+y)^5 & = x^5 + 5x^4y + 10x^3y^2 + 10x^2y^3 + 5xy^4 + y^5            \\
+    (x+y)^6 & = x^6 + 6x^5y + 15x^4y^2 + 20x^3y^3 + 15x^2y^4 + 6xy^5 + y^6
+\end{align*}
+
+We make the following observations.
+
+\begin{enumerate}
+    \item There are \( n + 1 \) terms in the expansion \( (x + y)^n \).
+    \item The sum of the powers of \( x \) and \( y \) is \( n \).
+    \item The powers of \( x \) begin with \( n \) and decrease by one with each successive term. The powers of \( y \) begin with \( 0 \) and increase by one with each successive term.
+\end{enumerate}
+
+Suppose we want to expand \( (x + y)^3 \). We first write the expansion without the coefficients. We temporarily substitute a blank in place of the coefficients.
+
+\[
+    (x+y)^3 = \underbar{~~~~~}x^3 + \underbar{~~~~~}x^2y + \underbar{~~~~~}xy^2 + \underbar{~~~~~}y^3 \tag{I}
+\]
+
+Our next job is to replace each of the blanks in equation (I) with the corresponding coefficients that belong to this expansion. Clearly,
+\[
+    (x+y)^3= (x+y)(x+y)(x+y)
+\]
+If we multiply the right side and do not collect terms, we get the following.
+\[
+    xxx + xxy + xyx + xyy + yxx + yyx + yxy + yyy
+\]
+Each product in the above expansion is the result of multiplying three variables by picking one from each of the factors \((x+y)(x+y)(x+y)\). For example, the product \(xxy\) is gotten by choosing \(x\) from the first factor, \(x\) from the second factor, and \(y\) from the third factor. There are three such products that simplify to \(x^2y\), namely \(xxy\), \(xyx\), and \(yxx\). These products take place when we choose an \(x\) from two of the factors and choose a \(y\) from the other factor. Clearly this can be done in \(3C2\), or \(3\) ways. Therefore, the coefficient of the term \(x^2y\) is \(3\). The coefficients of the other terms are obtained in a similar manner.
+
+We now replace the blanks with the coefficients in equation (I), and we get
+\[
+    (x+y)^3= x^3+3x^2y+3xy^2+y^3
+\]
+
+\begin{example}
+    Find the coefficient of the term \( x^2y^5 \) in the expansion \( (x + y)^7 \).
+\end{example}
+\begin{solution}
+    The expansion \( (x + y)^7 \) is \( (x + y)(x + y)(x + y)(x + y)(x + y)(x + y)(x + y) \).
+    In multiplying the right side, each product is gotten by picking an \( x \) or \( y \) from each of the seven factors \( (x + y) \).
+    The term \( x^2y^5 \) is obtained by choosing an \( x \) from two of the factors and a \( y \) from the other five factors. This can be done in \( 7C2 \), or 21 ways.
+    Therefore, the coefficient of the term \( x^2y^5 \) is 21.
+\end{solution}
+
+\begin{example}
+    Expand \( (x + y)^7 \).
+\end{example}
+\begin{solution}
+    We first write the expansion without the coefficients.
+    \[ (x+y)^7 = \underline{~~~~}x^7 + \underline{~~~~}x^6y + \underline{~~~~}x^5y^2 + \underline{~~~~}x^4y^3 + \underline{~~~~}x^3y^4 + \underline{~~~~}x^2y^5 + \underline{~~~~}xy^6 + \underline{~~~~}y^7
+    \]
+    Now we determine the coefficient of each term as we did in Example 1.
+    \begin{itemize}
+        \item The coefficient of the term \( x^7 \) is \( 7C7 \) or \( 7C0 \) which equals 1.
+        \item The coefficient of the term \( x^6y \) is \( 7C6 \) or \( 7C1 \) which equals 7.
+        \item The coefficient of the term \( x^5y^2 \) is \( 7C5 \) or \( 7C2 \) which equals 21.
+        \item The coefficient of the term \( x^4y^3 \) is \( 7C4 \) or \( 7C3 \) which equals 35,
+        \item and so on.
+    \end{itemize}
+    Substituting, we get:
+    \[ (x+y)^7 = x^7+7x^6y+21x^5y^2+35x^4y^3+35x^3y^4+21x^2y^5+7xy^6+y^7 \]
+\end{solution}
+
+\begin{summarybox}{Binomial Theorem}
+    \[
+        (x + y)^n = \binom{n}{0}x^n + \binom{n}{1}x^{n-1}y + \binom{n}{2}x^{n-2}y^2 + \cdots + \binom{n}{n-1}xy^{n-1} + \binom{n}{n}y^n
+    \]
+\end{summarybox}
+
+\begin{example}
+    Expand \( (3a-2b)^4 \).
+\end{example}
+\begin{solution}
+    If we let \( x = 3a \) and \( y = -2b \), and apply the Binomial Theorem, we get
+    % \begin{align*}
+    %     (3a-2b)^4 & = 4C0(3a)^4 + 4C1(3a)^3(-2b) + 4C2(3a)^2(-2b)^2  \\
+    %               & \quad + 4C3(3a)(-2b)^3 + 4C4(-2b)^4              \\
+    %               & = (1)(81a^4) + (4)(27a^3)(-2b) + (6)(9a^2)(4b^2) \\
+    %               & \quad + (4)(3a)(-8b^3) + (1)(16b^4)              \\
+    %               & = 81a^4 - 216a^3b + 216a^2b^2 - 96a^3b^3 + 16b^4
+    % \end{align*}
+    \[(3a-2b)^4\]
+    \[
+        = 4C0(3a)^4 + 4C1(3a)^3(-2b) + 4C2(3a)^2(-2b)^2 + 4C3(3a)(-2b)^3 + 4C4(-2b)^4
+    \]
+    \[
+        = 1(81a^4) + 4(27a^3)(-2b) + 6(9a^2)(4b^2) + 4(3a)(-8b^3) + 1(16b^4)
+    \]
+    \[
+        = 81a^4 - 216a^3b + 216a^2b^2 - 96a^3b + 16b^4
+    \]
+\end{solution}
+
+\begin{example}
+    Find the fifth term of the expansion \( (3a-2b)^7 \).
+\end{example}
+\begin{solution}
+    The Binomial theorem tells us that in the \( r \)-th term of an expansion, the exponent of the \( y \) term is always one less than \( r \), and the coefficient of the term is \( nC_{r-1} \). Thus, for \( n = 7 \) and \( r - 1 = 5 - 1 = 4 \), so the coefficient is \( 7C4 = 35 \). Therefore, the fifth term is
+    \[
+        (7C4)(3a)^{7-4}(-2b)^4 = 35(27a^3)(16b^4) = 15120 a^3 b^4
+    \]
+\end{solution}
