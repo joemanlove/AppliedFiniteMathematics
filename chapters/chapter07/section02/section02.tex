@@ -76,14 +76,14 @@ If, in the previous example, we add the shoes to the outfit, we have the followi
             \tikzstyle{level 1}=[level distance=2cm, sibling distance=9cm]
             \tikzstyle{level 2}=[level distance=2cm, sibling distance=3cm]
             \tikzstyle{level 3}=[level distance=2cm, sibling distance=1.5cm]
-            \tikzstyle{bag} = [text width=4em, text centered]
+            \tikzstyle{pause} = [text width=4em, text centered]
             \tikzstyle{end} = []
 
-            \node [bag] {$\cdot$}
+            \node [pause] {$\cdot$}
             child {
-                    node [bag] {$b_1$}
+                    node [pause] {$b_1$}
                     child {
-                            node [bag] {$b_1s_1$}
+                            node [pause] {$b_1s_1$}
                             child {
                                     node [end] {$b_1s_1p_1$}
                                     edge from parent
@@ -95,10 +95,10 @@ If, in the previous example, we add the shoes to the outfit, we have the followi
                                     node [right] {$p_2$}
                                 }
                             edge from parent
-                            node [above] {$s_1$}
+                            node [left] {$s_1$}
                         }
                     child {
-                            node [bag] {$b_1s_2$}
+                            node [pause] {$b_1s_2$}
                             child {
                                     node [end] {$b_1s_2p_1$}
                                     edge from parent
@@ -113,7 +113,7 @@ If, in the previous example, we add the shoes to the outfit, we have the followi
                             node [right] {$s_2$}
                         }
                     child {
-                            node [bag] {$b_1s_3$}
+                            node [pause] {$b_1s_3$}
                             child {
                                     node [end] {$b_1s_3p_1$}
                                     edge from parent
@@ -131,9 +131,9 @@ If, in the previous example, we add the shoes to the outfit, we have the followi
                     node [above] {$b_1$}
                 }
             child {
-                    node [bag] {$b_2$}
+                    node [pause] {$b_2$}
                     child {
-                            node [bag] {$b_2s_1$}
+                            node [pause] {$b_2s_1$}
                             child {
                                     node [end] {$b_2s_1p_1$}
                                     edge from parent
@@ -145,10 +145,10 @@ If, in the previous example, we add the shoes to the outfit, we have the followi
                                     node [right] {$p_2$}
                                 }
                             edge from parent
-                            node [above] {$s_1$}
+                            node [left] {$s_1$}
                         }
                     child {
-                            node [bag] {$b_2s_2$}
+                            node [pause] {$b_2s_2$}
                             child {
                                     node [end] {$b_2s_2p_1$}
                                     edge from parent
@@ -163,7 +163,7 @@ If, in the previous example, we add the shoes to the outfit, we have the followi
                             node [right] {$s_2$}
                         }
                     child {
-                            node [bag] {$b_2s_3$}
+                            node [pause] {$b_2s_3$}
                             child {
                                     node [end] {$b_2s_3p_1$}
                                     edge from parent
