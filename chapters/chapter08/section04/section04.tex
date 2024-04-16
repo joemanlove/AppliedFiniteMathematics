@@ -1,0 +1,65 @@
+\section{Conditional Probability}
+In this section, you will learn to:
+\begin{enumerate}
+    \item recognize situations involving conditional probability
+    \item calculate conditional probabilities
+\end{enumerate}
+
+Suppose a friend asks you the probability that it will snow today. If you are in Boston, Massachusetts in the winter, the probability of snow today might be quite substantial. If you are in Columbia, California in summer, the probability of snow today is very tiny; this probability is pretty much 0.
+
+Let $A$ be the event that it will snow today, $B$ be the event that today you are in Boston in wintertime, and $C$ be the event that today you are in Columbia in summertime.
+
+Because the probability of snow is affected by the location and time of year, we can’t just write $P(A)$ for the probability of snow. We need to indicate the other information we know – location and time of year. We need to use conditional probability. The event we are interested in is event $A$ for snow. The other event is called the condition, representing location and time of year in this case.
+
+We represent conditional probability using a vertical line $|$ that means “if”, or “given that”, or “if we know that”. The event of interest appears on the left of the $|$. The condition appears on the right side of the $|$.
+
+The probability it will snow given that you are in Boston in the winter is represented by $P(A|B)$. In this case, the condition is $B$.
+The probability that it will snow given that you are in Columbia in the summer is represented by $P(A|C)$. In this case, the condition is $C$.
+
+Now, let’s examine a situation where we can calculate some probabilities. Suppose you and a friend play a game that involves choosing a single card from a well-shuffled deck. Your friend deals you one card, face down, from the deck and offers you the following deal: If the card is a king, he will pay you \$5; otherwise, you pay him \$1. Should you play the game?
+
+You reason in the following manner. Since there are four kings in the deck, the probability of obtaining a king is $4/52$ or $1/13$. So, the probability of not obtaining a king is $12/13$. This implies that the ratio of your winning to losing is $1$ to $12$, while the payoff ratio is only $1$ to $5$. Therefore, you determine that you should not play.
+
+But consider the following scenario. While your friend was dealing the card, you happened to get a glance of it and noticed that the card was a face card. Should you, now, play the game?
+
+Since there are 12 face cards in the deck, the total elements in the sample space are no longer 52, but just 12. This means the chance of obtaining a king is $4/12$ or $1/3$. So your chance of winning is $1/3$ and of losing $2/3$. This makes your winning to losing ratio $1$ to $2$ which fares much better with the payoff ratio of $1$ to $5$. This time, you determine that you should play.
+
+In the second part of the above example, we were finding the probability of obtaining a king knowing that a face card had shown. This is an example of conditional probability. Whenever we are finding the probability of an event $E$ under the condition that another event $F$ has happened, we are finding conditional probability.
+
+The symbol $P(E | F)$ denotes the problem of finding the probability of $E$ given that $F$ has occurred. We read $P(E | F)$ as "the probability of $E$, given $F$."
+
+\begin{example}
+    One six sided die is rolled once.
+    \begin{enumerate}
+        \item Find the probability that the result is even.
+        \item Find the probability that the result is even given that the result is greater than three.
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    The sample space is \( S = \{1,2,3,4,5,6\} \)
+
+    Let event \( E \) be that the result is even and \( T \) be that the result is greater than 3.
+    \begin{enumerate}
+        \item \( P(E) = \frac{3}{6} \) because \( E = \{2,4,6\} \)
+        \item Because \( T = \{4,5,6\} \), we know that 1, 2, 3 cannot occur; only outcomes 4, 5, 6 are possible. Therefore, of the values in \( E \), only 4, 6 are possible. Therefore, \( P(E|T) = \frac{2}{3} \)
+    \end{enumerate}
+\end{solution}
+
+\begin{example}
+    A fair coin is tossed twice.
+    \begin{enumerate}
+        \item Find the probability that the result is two heads.
+        \item Find the probability that the result is two heads given that at least one head is obtained.
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    The sample space is \( S = \{\text{HH}, \text{HT}, \text{TH}, \text{TT}\} \)
+
+    Let event \( E \) be that the two heads are obtained and \( F \) be at least one head is obtained
+    \begin{enumerate}
+        \item \( P(E) = \frac{1}{4} \) because \( E = \{\text{HH}\} \) and the sample space \( S \) has 4 outcomes.
+        \item \( F = \{\text{HH}, \text{HT}, \text{TH}\} \). Since at least one head was obtained, TT did not occur. We are interested in the probability event \( E = \{\text{HH}\} \) out of the 3 outcomes in the reduced sample space \( F \). Therefore, \( P(E|F) = \frac{1}{3} \)
+    \end{enumerate}
+\end{solution}
