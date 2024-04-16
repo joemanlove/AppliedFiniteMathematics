@@ -1,4 +1,4 @@
-\section{Conditional Probability}
+\section{Conditional Probability}\label{section_conditional_probability}
 In this section, you will learn to:
 \begin{enumerate}
     \item recognize situations involving conditional probability
@@ -16,17 +16,40 @@ We represent conditional probability using a vertical line $|$ that means “if�
 The probability it will snow given that you are in Boston in the winter is represented by $P(A|B)$. In this case, the condition is $B$.
 The probability that it will snow given that you are in Columbia in the summer is represented by $P(A|C)$. In this case, the condition is $C$.
 
-Now, let’s examine a situation where we can calculate some probabilities. Suppose you and a friend play a game that involves choosing a single card from a well-shuffled deck. Your friend deals you one card, face down, from the deck and offers you the following deal: If the card is a king, he will pay you \$5; otherwise, you pay him \$1. Should you play the game?
+Now, let’s examine a situation where we can calculate some probabilities.
+\begin{example}\label{example_conditional_probability_cards_part_1}
+    Suppose you and a friend play a game that involves choosing a single card from a well-shuffled deck. Your friend deals you one card, face down, from the deck and offers you the following deal: If the card is a king, he will pay you \$5; otherwise, you pay him \$1. Should you play the game?
+\end{example}
+\begin{solution}
+    You reason in the following manner. Since there are four kings in the deck, the probability of obtaining a king is $4/52$ or $1/13$. So, the probability of not obtaining a king is $12/13$. This implies that the ratio of your winning to losing is $1$ to $12$, while the payoff ratio is only $1$ to $5$. Therefore, you determine that you should not play.
+\end{solution}
+But consider the following scenario.
+\begin{example}\label{example_conditional_probability_cards_part_2}
+    While your friend was dealing the card in example \ref{example_conditional_probability_cards_part_1}, you happened to get a glance of it and noticed that the card was a face card. Should you, now, play the game?
+\end{example}
 
-You reason in the following manner. Since there are four kings in the deck, the probability of obtaining a king is $4/52$ or $1/13$. So, the probability of not obtaining a king is $12/13$. This implies that the ratio of your winning to losing is $1$ to $12$, while the payoff ratio is only $1$ to $5$. Therefore, you determine that you should not play.
-
-But consider the following scenario. While your friend was dealing the card, you happened to get a glance of it and noticed that the card was a face card. Should you, now, play the game?
-
-Since there are 12 face cards in the deck, the total elements in the sample space are no longer 52, but just 12. This means the chance of obtaining a king is $4/12$ or $1/3$. So your chance of winning is $1/3$ and of losing $2/3$. This makes your winning to losing ratio $1$ to $2$ which fares much better with the payoff ratio of $1$ to $5$. This time, you determine that you should play.
+\begin{solution}
+    Since there are 12 face cards in the deck, the total elements in the sample space are no longer 52, but just 12. This means the chance of obtaining a king is $4/12$ or $1/3$. So your chance of winning is $1/3$ and of losing $2/3$. This makes your winning to losing ratio $1$ to $2$ which fares much better with the payoff ratio of $1$ to $5$. This time, you determine that you should play.
+\end{solution}
 
 In the second part of the above example, we were finding the probability of obtaining a king knowing that a face card had shown. This is an example of conditional probability. Whenever we are finding the probability of an event $E$ under the condition that another event $F$ has happened, we are finding conditional probability.
 
 The symbol $P(E | F)$ denotes the problem of finding the probability of $E$ given that $F$ has occurred. We read $P(E | F)$ as "the probability of $E$, given $F$."
+
+\begin{example} A person flips a coin three times. Find the conditional probability of getting two heads and one tail given that the first flip is a head.
+\end{example}
+\begin{solution}
+    Let event \( E \) be that the person gets two heads and one tail, and \( F \) that the first flip is a head.
+
+    First, we define the sample space for flipping a coin three times as follows.
+    \[ S = \{HHH, HHT, HTH, HTT, THH, THT, TTH, TTT\} \]
+
+    Since we know the first flip is a head, our possibilities narrow down to four outcomes: \( HHH, HHT, HTH, \) and \( HTT \).
+
+    Among the four, \( HHT \) and \( HTH \) represent two heads and one tail.
+
+    Therefore, \( P(E | F) = \frac{2}{4} \) or \( \frac{1}{2} \).
+\end{solution}
 
 \begin{example}
     One six sided die is rolled once.
@@ -61,5 +84,194 @@ The symbol $P(E | F)$ denotes the problem of finding the probability of $E$ give
     \begin{enumerate}
         \item \( P(E) = \frac{1}{4} \) because \( E = \{\text{HH}\} \) and the sample space \( S \) has 4 outcomes.
         \item \( F = \{\text{HH}, \text{HT}, \text{TH}\} \). Since at least one head was obtained, TT did not occur. We are interested in the probability event \( E = \{\text{HH}\} \) out of the 3 outcomes in the reduced sample space \( F \). Therefore, \( P(E|F) = \frac{1}{3} \)
+    \end{enumerate}
+\end{solution}
+
+Let us now develop a formula for the conditional probability \(P(E | F)\).
+
+Suppose an experiment consists of \(n\) equally likely events. Further suppose that there are \(m\) elements in \(F\), and \(c\) elements in \(E \cap F\), as shown in the following Venn diagram.
+
+
+\begin{center}
+    \begin{venndiagram2sets}[
+            labelA=\(E\),
+            labelB=\(F\),
+            labelAB={c},
+            labelOnlyA={},
+            labelOnlyB={m-c},
+            % showframe = false
+        ]
+        \setpostvennhook{
+            \node[below left] at (venn top right) {S};
+            \node[above left] at (venn bottom right) {n};
+        }
+    \end{venndiagram2sets}
+\end{center}
+
+If the event \(F\) has occurred, the set of all possible outcomes is no longer the entire sample space, but instead, the subset \(F\). Therefore, we only look at the set \(F\) and at nothing outside of \(F\). Since \(F\) has \(m\) elements, the denominator in the calculation of \(P(E | F)\) is \(m\). We may think that the numerator for our conditional probability is the number of elements in \(E\). But clearly we cannot consider the elements of \(E\) that are not in \(F\). We can only count the elements of \(E\) that are in \(F\), that is, the elements in \(E \cap F\). Therefore,
+
+\[
+    P(E | F) = \frac{c}{m}
+\]
+
+Dividing both the numerator and the denominator by \(n\), we get
+
+\[
+    P(E | F) = \frac{c/n}{m/n}
+\]
+
+But \(c/n = P(E \cap F)\) and \(m/n = P(F)\).
+
+Substituting, we derive the following formula for \(P(E | F)\):
+
+\begin{summarybox}{Conditional Probability Rule}
+
+    For two events $E$ and $F$, the probability of ``$E$ Given $F$'' is
+    \[
+        P(E | F) = \frac{P(E \cap F)}{P(F)}
+    \]
+\end{summarybox}
+
+\begin{example}
+    A single die is rolled. Use the above formula to find the conditional probability of obtaining an even number given that a number greater than three has shown.
+\end{example}
+
+\begin{solution}
+    Let \( E \) be the event that an even number shows, and \( F \) be the event that a number greater than three shows. We want \( P(E | F) \).
+
+    \( E = \{2, 4, 6\} \) and \( F = \{4, 5, 6\} \). Which implies, \( E \cap F = \{4, 6\} \)
+
+    Therefore, \( P(F) = \frac{3}{6} \), and \( P(E \cap F) = \frac{2}{6} \)
+
+    \[ P(E | F) = \frac{P(E \cap F)}{P(F)} = \frac{2/6}{3/6} = \frac{2}{3} \].
+\end{solution}
+
+\begin{example}
+    The following table shows the distribution of students and faculty at a community college who take public transportation and the ones who drive to school arriving before 9am. The events are abbreviated \(S\), \(F\), \(T\), and \(D\). Find the following probabilities:
+    \begin{enumerate}
+        \item \(P(D | S)\)
+        \item \(P(F | D)\)
+        \item \(P(S | T)\)
+    \end{enumerate}
+\end{example}
+
+% Create a table for the distribution
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|l|c|c|c|}
+        \hline
+                                  & Student (S) & Faculty (F) & Total \\
+        \hline
+        Public Transportation (T) & 8           & 13          & 21    \\
+        Drive (D)                 & 39          & 40          & 79    \\
+        Total                     & 47          & 53          &       \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{solution}
+    Conditional probabilities can often be found directly from a contingency table. If the condition corresponds to only one row or only one column in the table, then you can ignore the rest of the table and read the conditional probability directly from the row or column indicated by the condition.
+
+    \begin{enumerate}
+        \item The condition is event \(S\); we can look at only the "Student" column of the table and ignore the rest: \( P(D | S) = \frac{39}{47} \).
+        \item The condition is event \(D\); we can look at only the "Drive" row of the table and ignore the rest: \( P(F | D) = \frac{40}{79}\).
+        \item The condition is event \(T\); we can look at only the "Public Transportation" row of the table and ignore the rest: \( P(S | T) = \frac{8}{21} \).
+    \end{enumerate}
+
+    Alternatively, we can use the conditional probability formula \[P(E | F) = \frac{P(E \cap F)}{P(F)}.\]
+
+    \begin{enumerate}
+        \item \[P(D | M) = \frac{P(D \cap M)}{P(M)} = \frac{39/100}{47/100} = \frac{39}{47}\]
+        \item \[P(F | D) = \frac{P(F \cap D)}{P(D)} = \frac{40/100}{79/100} = \frac{40}{79}\]
+        \item \[P(M | T) = \frac{P(M \cap T)}{P(T)} = \frac{8/100}{21/100} = \frac{8}{21}\]
+    \end{enumerate}
+\end{solution}
+
+\begin{example}
+    Given \( P(E) = 0.5 \), \( P(F) = 0.7 \), and \( P(E \cap F) = 0.3 \). Find the following:
+    \begin{enumerate}
+        \item \( P(E | F) \)
+        \item \( P(F | E) \)
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    We use the conditional probability formula.
+    \begin{enumerate}
+        \item \[ P(E | F) = \frac{P(E \cap F)}{P(F)} = \frac{0.3}{0.7} = \frac{3}{7} \]
+        \item \[ P(F | E) = \frac{P(E \cap F)}{P(E)} = \frac{0.3}{0.5} = \frac{3}{5} \]
+    \end{enumerate}
+\end{solution}
+
+\begin{example}
+    \( E \) and \( F \) are mutually exclusive events such that \( P(E) = 0.4 \), \( P(F) = 0.9 \). Find \( P(E | F) \).
+\end{example}
+
+\begin{solution}
+    \( E \) and \( F \) are mutually exclusive, so \( P(E \cap F) = 0 \).
+    Therefore \[ P(E | F) = \frac{P(E \cap F)}{P(F)} = \frac{0}{0.9} = 0. \]
+\end{solution}
+
+\begin{example}
+    Given \( P(F | E) = 0.5 \), and \( P(E \cap F) = 0.3 \). Find \( P(E) \).
+\end{example}
+
+\begin{solution}
+    Using the conditional probability formula \( P(F | E) = \frac{P(E \cap F)}{P(E)} \), we get
+    \begin{align*}
+        P(F | E)   & = \frac{P(E \cap F)}{P(E)} \\
+        \quad 0.5  & = \frac{0.3}{P(E)}         \\
+        \quad P(E) & = \frac{0.3}{0.5}          \\
+        \quad P(E) & = \frac{3}{5}
+    \end{align*}
+\end{solution}
+
+\begin{example}
+    In a series of three coin flips, find the conditional probability of flipping two heads and one tail, given that there have been at least two heads.
+\end{example}
+\begin{solution}
+    Let event \( E \) be that the person flips two heads and one tail, and let \( F \) be the probability that there have been at least two heads. We want \( P(E | F) \).
+
+    We list the sample space along with the events \( E \) and \( F \).
+
+    \[
+        S = \{HHH, HHT, HTH, HTT, THH, THT, TTH, TTT\}
+    \]
+    \[
+        E = \{HHT, HTH, THH\}
+    \]
+    \[
+        F = \{HHH, HHT, HTH, THH\}
+    \]
+    \[
+        E \cap F = \{HHT, HTH, THH\}
+    \]
+
+    Therefore, \( P(F) = 4/8 \), and \( P(E \cap F) = 3/8 \), and
+
+    \[
+        P(E | F) = \frac{P(E \cap F)}{P(F)} = \frac{3/8}{4/8} = \frac{3}{4}.
+    \]
+\end{solution}
+
+\begin{example}
+    At a community college 65\% of the students subscribe to Amazon Prime, 50\% subscribe to Netflix, and 20\% subscribe to both. If a student is chosen at random, find the following probabilities:
+    \begin{enumerate}
+        \item the student subscribes to Amazon Prime given that he subscribes to Netflix
+        \item the student subscribes to Netflix given that he subscribes to Amazon Prime
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    Let \( A \) be the event that the student subscribes to Amazon Prime, and \( N \) be the event that the student subscribes to Netflix. First identify the probabilities and events given in the problem.
+    \begin{align*}
+        P(A)        & = 0.65 \\
+        P(N)        & = 0.50 \\
+        P(A \cap N) & = 0.20
+    \end{align*}
+    Then use the conditional probability rule:
+    \begin{enumerate}
+        \item \[ P(A | N) = \frac{P(A \cap N)}{P(N)} = \frac{0.20}{0.50} = \frac{2}{5} \]
+        \item \[ P(N | A) = \frac{P(A \cap N)}{P(A)} = \frac{0.20}{0.65} = \frac{4}{13} \]
     \end{enumerate}
 \end{solution}
