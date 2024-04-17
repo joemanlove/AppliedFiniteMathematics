@@ -1,0 +1,115 @@
+\section{9.3 Expected Value}\label{section_expected_value}
+
+In this section you will learn to:
+\begin{enumerate}
+    \item find the expected value of a discrete probability distribution
+    \item interpret expected value as a long-run average
+\end{enumerate}
+
+\begin{definition}
+    An expected gain or loss in a game of chance is called \textbf{Expected Value}.
+\end{definition}
+The concept of expected value is closely related to a weighted average. Consider the following situations:
+
+\begin{enumerate}
+    \item Suppose you and your friend play a game that consists of rolling a die. Your friend offers you the following deal: If the die shows any number from 1 to 5, he will pay you the face value of the die in dollars; that is, if the die shows a 4, he will pay you \$4. But if the die shows a 6, you will have to pay him \$18.
+
+          Before you play the game you decide to find the expected value. You analyze as follows. Since a die will show a number from 1 to 6, with an equal probability of $1/6$, your chance of winning \$1 is $1/6$, winning \$2 is $1/6$, and so on up to the face value of 5. But if the die shows a 6, you will lose \$18. You write the expected value.
+          \[
+              E = \$1\left(\frac{1}{6}\right) + \$2\left(\frac{1}{6}\right) + \$3\left(\frac{1}{6}\right) + \$4\left(\frac{1}{6}\right) + \$5\left(\frac{1}{6}\right) - \$18\left(\frac{1}{6}\right) = -\$0.50
+          \]
+          This means that every time you play this game, you can expect to lose 50 cents. In other words, if you play this game 100 times, theoretically you will lose \$50. Obviously, it is not to your interest to play.
+
+    \item Suppose of the ten quizzes you took in a course, on eight quizzes you scored 80, and on two you scored 90. You wish to find the average of the ten quizzes.
+          \[
+              A = \frac{(80)(8) + (90)(2)}{10} = \frac{80 \times 8 + 90 \times 2}{10} = 82
+          \]
+          It should be observed that it would be incorrect to take the average of 80 and 90 because you scored 80 on eight quizzes, and 90 on only two of them. Therefore, you take a "weighted average" of 80 and 90. That is, the average of 8 parts of 80 and 2 parts of 90, which is 82.
+\end{enumerate}
+
+In the first situation, to find the expected value, we multiplied each payoff by the probability of its occurrence, and then added up the amounts calculated for all possible cases. In the second example, if we consider our test score a payoff, we did the same. This leads us to the following
+
+\begin{summarybox}{Expected Value}
+    If an experiment $X$ has the following probability distribution,
+    \[
+        \begin{tabular}{|l|c|c|c|c|c|}
+            \hline
+            Payoff      & \( x_1 \)    & \( x_2 \)    & \( x_3 \)    & \ldots & \( x_n \)    \\
+            \hline
+            Probability & \( p(x_1) \) & \( p(x_2) \) & \( p(x_3) \) & \ldots & \( p(x_n) \) \\
+            \hline
+        \end{tabular}
+    \]
+    then the \textbf{expected value} of the experiment is
+    \[
+        E(X) = x_1p(x_1) + x_2p(x_2) + x_3p(x_3) + \ldots + x_np(x_n)
+    \]
+\end{summarybox}
+
+\begin{example}
+    In a town, \(10\%\) of the families have three children, \(60\%\) of the families have two children, \(20\%\) of the families have one child, and \(10\%\) of the families have no children. What is the expected number of children to a family?
+\end{example}
+
+\begin{solution}
+    We list the information in the following table:
+    \begin{center}
+        \begin{tabular}{cc}
+            \hline
+            Number of children & Probability \\
+            \hline
+            3                  & .10         \\
+            2                  & .60         \\
+            1                  & .20         \\
+            0                  & .10         \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    The expected value is given by \( E = x_1p(x_1) + x_2p(x_2) + x_3p(x_3) + x_4p(x_4) \), so
+
+    \[ E = 3(.10) + 2(.60) + 1(.20) + 0(.10) = 1.7 \]
+
+    So on average, there are \( 1.7 \) children to a family.
+\end{solution}
+
+\begin{example}
+    To sell an average house, a real estate broker spends \$1200 for advertisement expenses. If the house sells in three months, the broker makes \$8000. Otherwise, the broker loses the listing. If there is a 40\% chance that the house will sell in three months, what is the expected payoff for the real estate broker?
+\end{example}
+
+\begin{solution}
+    The broker makes \$8000 with a probability of .40, but he loses \$1200 whether the house sells or not.
+
+    \begin{align*}
+        E & = (\$8000)(.40) - (\$1200) \\
+          & = \$3200 - \$1200          \\
+          & = \$2000.
+    \end{align*}
+
+    Alternatively, the broker makes (\$8000 - \$1200) with a probability of .40, but loses \$1200 with a probability of .60. Therefore,
+
+    \begin{align*}
+        E & = (\$6800)(.40) - (\$1200)(.60) \\
+          & = \$2720 - \$720                \\
+          & = \$2000.
+    \end{align*}
+\end{solution}
+
+\begin{example}
+    In a town, the attendance at a football game depends on the weather. On a sunny day the attendance is 60,000, on a cold day the attendance is 40,000, and on a stormy day the attendance is 30,000. If for the next football season, the weatherman has predicted that 30\% of the days will be sunny, 50\% of the days will be cold, and 20\% days will be stormy, what is the expected attendance for a single game?
+\end{example}
+
+\begin{solution}
+    Using the expected value formula, we get
+    \[ E = (60,000)(.30) + (40,000)(.50) + (30,000)(.20) = 44,000. \]
+\end{solution}
+
+\begin{example}
+    A lottery consists of choosing 6 numbers from a total of 51 numbers. The person who matches all six numbers wins \$2 million. If the lottery ticket costs \$1, what is the expected payoff?
+\end{example}
+
+\begin{solution}
+    Since there are \( 51C6 = 18,009,460 \) combinations of six numbers from a total of 51 numbers, the chance of choosing the winning number is 1 out of $18,009,460$.
+    So the expected payoff is:
+    \[ E = (\$2,000,000)\left( \frac{1}{18,009,460} \right) - \$1 = -\$0.89 \]
+    This means that every time a person spends \$1 to buy a ticket, he or she can expect to lose 89 cents.
+\end{solution}
