@@ -1,0 +1,470 @@
+\section{Absorbing Markov Chains}
+
+In this section, you will learn to:
+\begin{enumerate}
+    \item Identify absorbing states and absorbing Markov chains.
+    \item Solve and interpret absorbing Markov chains.
+\end{enumerate}
+
+In this section, we will study a type of Markov chain in which when a certain state is reached, it is impossible to leave that state. Such states are called absorbing states, and a Markov Chain that has at least one such state is called an Absorbing Markov chain.
+
+Suppose you have the following transition matrix.
+
+\[
+    \begin{array}{c|ccc}
+            & S_1 & S_2 & S_3 \\
+        \hline
+        S_1 & .1  & .3  & .6  \\
+        S_2 & 0   & 1   & 0   \\
+        S_3 & .3  & .2  & .5  \\
+    \end{array}
+\]
+
+The state $S_2$ is an absorbing state because the probability of moving from state $S_2$ to state $S_2$ is 1, which means that if you are in state $S_2$, you will remain in state $S_2$. This is the way to identify an absorbing state: if the probability $p_{ii}$ in row $i$ and column $i$ is 1, then state $S_i$ is an absorbing state.
+
+\begin{example}
+    Consider transition matrices A, B, C for Markov chains shown below. Which of the following Markov chains have an absorbing state?
+
+    \[
+        A = \begin{bmatrix}
+            .3 & .7 & 0  \\
+            0  & 1  & 0  \\
+            .2 & .3 & .5 \\
+        \end{bmatrix}, \quad
+        B = \begin{bmatrix}
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            1 & 0 & 0 \\
+        \end{bmatrix}, \quad
+        C = \begin{bmatrix}
+            .1 & .3 & .4 & .2 \\
+            0  & .2 & .1 & .7 \\
+            0  & 0  & 1  & 0  \\
+            0  & 0  & 0  & 1  \\
+        \end{bmatrix}
+    \]
+\end{example}
+
+\begin{solution}
+    The transition table for matrix $A$ is given by
+    \[
+        \begin{array}{c|ccc}
+                & S_1 & S_2 & S_3 \\
+            \hline
+            S_1 & .3  & .7  & 0   \\
+            S_2 & 0   & 1   & 0   \\
+            S_3 & .2  & .3  & .5  \\
+        \end{array}
+    \]
+    so matrix \( A \) has state \( S_2 \) as an absorbing state since the state can only transition to itself and has no outbound transitions to other states. The transition probability from \( S_2 \) to \( S_2 \) is 1.
+
+    The transition table for matrix $B$ is given by
+    \[
+        \begin{array}{c|ccc}
+                & S_1 & S_2 & S_3 \\
+            \hline
+            S_1 & 0   & 1   & 0   \\
+            S_2 & 0   & 0   & 1   \\
+            S_3 & 1   & 0   & 0   \\
+        \end{array}
+    \]
+
+    Matrix \( B \) does not have any absorbing states. It has cyclic transitions with no state leading to itself.
+
+    The transition table for matrix $C$ is given by
+    \[
+        \begin{array}{c|cccc}
+                & S_1 & S_2 & S_3 & S_4 \\
+            \hline
+            S_1 & .1  & .3  & .4  & .2  \\
+            S_2 & 0   & .2  & .1  & .7  \\
+            S_3 & 0   & 0   & 1   & 0   \\
+            S_4 & 0   & 0   & 0   & 1   \\
+        \end{array}
+    \]
+
+    Matrix \( C \) has two absorbing states, \( S_3 \) and \( S_4 \). From state \( S_3 \), you can only remain in state \( S_3 \), and never transition to any other states. Similarly, from state \( S_4 \), you can only remain in state \( S_4 \), and never transition to any other states.
+\end{solution}
+
+We summarize how to identify absorbing states.
+
+\begin{definition}
+    A state \(S\) is an \textbf{absorbing state} in a Markov chain in the transition matrix if:
+    \begin{itemize}
+        \item The row for state \(S\) has one 1 and all other entries are 0 \textbf{AND}
+        \item The entry that is 1 is on the main diagonal (row \(=\) column for that entry), indicating that we can never leave that state once it is entered.
+    \end{itemize}
+\end{definition}
+
+Next, we define an absorbing Markov Chain
+
+\begin{definition}
+    A Markov chain is an absorbing Markov Chain if:
+    \begin{itemize}
+        \item It has at least one absorbing state \textbf{AND}
+        \item From any non-absorbing state in the Markov chain, it is possible to eventually move to some absorbing state (in one or more transitions).
+    \end{itemize}
+\end{definition}
+
+\begin{example}
+    Consider transition matrices \( C \) and \( D \) for Markov chains shown below. Which of the following Markov chains is an absorbing Markov Chain?
+
+    \[
+        C = \begin{bmatrix}
+            .1 & .3 & .4 & .2 \\
+            0  & .2 & .1 & .7 \\
+            0  & 0  & 1  & 0  \\
+            0  & 0  & 0  & 1  \\
+        \end{bmatrix}, \quad
+        D = \begin{bmatrix}
+            1  & 0  & 0  & 0  & 0  \\
+            0  & 1  & 0  & 0  & 0  \\
+            .2 & .2 & .2 & .2 & .2 \\
+            0  & 0  & 0  & .3 & .7 \\
+            0  & 0  & 0  & .6 & .4 \\
+        \end{bmatrix}
+    \]
+\end{example}
+
+\begin{solution}
+    Matrix \( C \) is an absorbing Markov Chain but \( D \) is not an absorbing Markov chain.
+
+    Matrix \( C \) has two absorbing states, \( S_3 \) and \( S_4 \), and it is possible to get to state \( S_3 \) and \( S_4 \) from \( S_1 \) and \( S_2 \).
+
+    Matrix \( D \) is not an absorbing Markov chain. It has two absorbing states, \( S_1 \) and \( S_2 \), but it is never possible to get to either of those absorbing states from either \( S_4 \) or \( S_5 \). If you are in state \( S_4 \) or \( S_5 \), you always remain transitioning between states \( S_4 \) or \( S_5 \) and can never get absorbed into either state \( S_1 \) or \( S_2 \).
+\end{solution}
+
+
+
+
+
+In the remainder of this section, we’ll examine absorbing Markov chains with two classic problems: the random drunkard’s walk problem and the gambler's ruin problem.  And finally we’ll conclude with an absorbing Markov model applied to a real world situation.
+
+\subsection{Drunkard's Random Walk}
+
+\begin{example}
+    A man walks along a three-block portion of Main St. His house is at one end of the three-block section. A bar is at the other end of the three-block section. Each time he reaches a corner he randomly either goes forward one block or turns around and goes back one block. If he reaches home or the bar, he stays there. The four states are Home (\(H\)), Corner 1 (\(C_1\)), Corner 2 (\(C_2\)) and Bar (\(B\)). Write the transition matrix and identify the absorbing states. Find the probabilities of ending up in each absorbing state depending on the initial state.
+\end{example}
+
+\begin{solution}
+    The transition matrix is written below.
+
+    \[
+        T = \begin{bmatrix}
+            1  & 0  & 0  & 0  \\
+            .5 & 0  & .5 & 0  \\
+            0  & .5 & 0  & .5 \\
+            0  & 0  & 0  & 1  \\
+        \end{bmatrix}
+    \]
+
+    Home and the Bar are absorbing states. If the man arrives home, he does not leave. If the man arrives at the bar, he does not leave. Since it is possible to reach home or the bar from each of the other two corners on his walk, this is an absorbing Markov chain.
+
+    We can raise the transition matrix \( T \) to a high power, \( n \). Once we find a power \( T^n \) that remains stable, it will tell us the probability of ending up in each absorbing state depending on the initial state.
+
+    \[
+        T^{90} = T^{91} = \begin{bmatrix}
+            1           & 0 & 0 & 0           \\
+            \frac{2}{3} & 0 & 0 & \frac{1}{3} \\
+            \frac{1}{3} & 0 & 0 & \frac{2}{3} \\
+            0           & 0 & 0 & 1           \\
+        \end{bmatrix}
+    \]
+
+    \( T^{91} = T^{90} \); the matrix does not change as we continue to examine higher powers. We see that in the long-run, the Markov chain must end up in an absorbing state. In the long run, the man must eventually end up at either his home or the bar.
+
+    The second row tells us that if the man is at corner $C_1$, then there is a $\frac{2}{3}$ chance he will end up at home and a $\frac{1}{3}$ chance he will end up at the bar. The third row tells us that if the man is at corner $C_2$, then there is a $\frac{1}{3}$ chance he will end up at home and a $\frac{2}{3}$ chance he will end up at the bar. Once he reaches home or the bar, he never leaves that absorbing state.
+
+    Note that while the matrix $T^n$ for sufficiently large $n$ has become stable and is not changing, it does not represent an equilibrium matrix. The rows are not all identical, as we found in the regular Markov chains that reached an equilibrium.
+
+    We can write a smaller “solution matrix” by retaining only rows that relate to the non-absorbing states and retaining only the columns that relate to the absorbing states. Then the solution matrix will have rows $C_1$ and $C_2$, and columns H and B.
+
+    The solution matrix is
+    \[
+        S= \begin{bmatrix}
+            2/3 & 1/3 \\
+            1/3 & 2/3 \\
+        \end{bmatrix}
+    \]
+    For clarity, we convert to a table
+    \begin{center}
+        \begin{tabular}{c|cc}
+                  & H   & B   \\
+            \hline
+            $C_1$ & 2/3 & 1/3 \\
+            $C_2$ & 1/3 & 2/3 \\
+        \end{tabular}
+    \end{center}
+
+    The first row of the solution matrix shows that if the man is at corner $C_1$, then there is a $2/3$ chance he will end up at home and a $1/3$ chance he will end up at the bar.
+
+    The second row of the solution matrix shows that if the man is at corner $C_2$, then there is a $1/3$ chance he will end up at home and a $2/3$ chance he will end up at the bar.
+
+    The solution matrix does not show that eventually there is $0$ probability of ending up in $C_1$ or $C_2$, or that if you start in an absorbing state $H$ or $B$, you stay there. The smaller solution matrix assumes that we understand these outcomes and does not include that information.
+
+
+
+\end{solution}
+
+The next example is another classic example of an absorbing Markov chain. In the next example, we examine more of the mathematical details behind the concept of the solution matrix.
+
+\subsection{Gambler's Ruin Problem}
+
+\begin{example}\label{example_gamblers_ruin}
+    A gambler has \$3,000, and she decides to gamble \$1,000 at a time at a Blackjack table in a casino in Las Vegas. She has told herself that she will continue playing until she goes broke or has \$5,000. Her probability of winning at Black Jack is .40.  Write the transition matrix, identify the absorbing states, find the solution matrix, and determine the probability that the gambler will be financially ruined at a stage when she has \$2,000.
+\end{example}
+
+Clearly, the states 0 and \$5,000 are the absorbing states. This makes sense because as soon as the gambler reaches 0, she is financially ruined, and the game is over. Similarly, if the gambler reaches \$5,000, she has promised herself to quit, and again, the game is over. The reader should note that \( p_{00} = 1 \) and \( p_{55} = 1 \).
+
+Since the gambler bets only \$1,000 at a time, she can raise or lower her money only by \$1,000 at a time. In other words, if she has \$2,000 now, after the next bet she can have \$3,000 with a probability of 0.40 and \$1,000 with a probability of 0.60.
+\begin{center}
+    \begin{tabular}{c|cccccc}
+           & 0   & 1K  & 2K  & 3K  & 4K  & 5K  \\
+        \hline
+        0  & 1   & 0   & 0   & 0   & 0   & 0   \\
+        1K & .60 & 0   & .40 & 0   & 0   & 0   \\
+        2K & 0   & .60 & 0   & .40 & 0   & 0   \\
+        3K & 0   & 0   & .60 & 0   & .40 & 0   \\
+        4K & 0   & 0   & 0   & .60 & 0   & .40 \\
+        5K & 0   & 0   & 0   & 0   & 0   & 1
+    \end{tabular}
+\end{center}
+so
+\[
+    T= \begin{bmatrix}
+        1   & 0   & 0   & 0   & 0   & 0   \\
+        .60 & 0   & .40 & 0   & 0   & 0   \\
+        0   & .60 & 0   & .40 & 0   & 0   \\
+        0   & 0   & .60 & 0   & .40 & 0   \\
+        0   & 0   & 0   & .60 & 0   & .40 \\
+        0   & 0   & 0   & 0   & 0   & 1
+    \end{bmatrix}
+\]
+
+To find the probability that the gambler will be financially ruined at a stage when she has \$2,000, we can compute the entries of the solution matrix for the non-absorbing states, which will give us the desired probabilities.
+\[
+    % T^\infty= \begin{bmatrix}
+    %     1               & 0 & 0 & 0 & 0 & 0               \\
+    %     \frac{195}{211} & 0 & 0 & 0 & 0 & \frac{16}{211}  \\
+    %     \frac{171}{211} & 0 & 0 & 0 & 0 & \frac{40}{211}  \\
+    %     \frac{135}{211} & 0 & 0 & 0 & 0 & \frac{76}{211}  \\
+    %     \frac{81}{211}  & 0 & 0 & 0 & 0 & \frac{130}{211} \\
+    %     0               & 0 & 0 & 0 & 0 & 1
+    % \end{bmatrix}
+    T^\infty= \begin{bmatrix}
+        1       & 0 & 0 & 0 & 0 & 0       \\
+        195/211 & 0 & 0 & 0 & 0 & 16/211  \\
+        171/211 & 0 & 0 & 0 & 0 & 40/211  \\
+        135/211 & 0 & 0 & 0 & 0 & 76/211  \\
+        81/211  & 0 & 0 & 0 & 0 & 130/211 \\
+        0       & 0 & 0 & 0 & 0 & 1
+    \end{bmatrix}
+\]
+so
+\begin{center}
+    % Solution matrix after absorbing states are determined
+    % \begin{tabular}{c|cccccc}
+    %        & 0                 & 1K & 2K & 3K & 4K & 5K                \\
+    %     \hline
+    %     0  & 1                 & 0  & 0  & 0  & 0  & 0                 \\
+    %     1K & $\frac{195}{211}$ & 0  & 0  & 0  & 0  & $\frac{16}{211}$  \\
+    %     2K & $\frac{171}{211}$ & 0  & 0  & 0  & 0  & $\frac{40}{211}$  \\
+    %     3K & $\frac{135}{211}$ & 0  & 0  & 0  & 0  & $\frac{76}{211}$  \\
+    %     4K & $\frac{81}{211}$  & 0  & 0  & 0  & 0  & $\frac{130}{211}$ \\
+    %     5K & 0                 & 0  & 0  & 0  & 0  & 1
+    % \end{tabular}
+    \begin{tabular}{c|cccccc}
+           & 0         & 1K & 2K & 3K & 4K & 5K        \\
+        \hline
+        0  & 1         & 0  & 0  & 0  & 0  & 0         \\
+        1K & $195/211$ & 0  & 0  & 0  & 0  & $16/211$  \\
+        2K & $171/211$ & 0  & 0  & 0  & 0  & $40/211$  \\
+        3K & $135/211$ & 0  & 0  & 0  & 0  & $76/211$  \\
+        4K & $81/211$  & 0  & 0  & 0  & 0  & $130/211$ \\
+        5K & 0         & 0  & 0  & 0  & 0  & 1
+    \end{tabular}
+
+\end{center}
+
+The solution table is often written in the following form, where the non-absorbing states are written as rows on the side, and the absorbing states as columns on the top.
+
+\begin{center}
+    % \begin{tabular}{c|cc}
+    %        & 0                 & 5K                \\
+    %     \hline
+    %     1K & $\frac{195}{211}$ & $\frac{16}{211}$  \\
+    %     2K & $\frac{171}{211}$ & $\frac{40}{211}$  \\
+    %     3K & $\frac{135}{211}$ & $\frac{76}{211}$  \\
+    %     4K & $\frac{81}{211} $ & $\frac{130}{211}$ \\
+    % \end{tabular}
+    \begin{tabular}{c|cc}
+           & 0         & 5K        \\
+        \hline
+        1K & $195/211$ & $16/211$  \\
+        2K & $171/211$ & $40/211$  \\
+        3K & $135/211$ & $76/211$  \\
+        4K & $81/211$  & $130/211$ \\
+    \end{tabular}
+\end{center}
+
+The table lists the probabilities of getting absorbed in state 0 or state 5K starting from any of the four non-absorbing states. For example, if at any instance the gambler has \$3,000, then her probability of financial ruin is 135/211 and her probability reaching 5K is 76/211.
+
+
+\begin{example}
+    Solve the Gambler's Ruin Problem of Example \ref{example_gamblers_ruin} without raising the matrix to higher powers, and determine the number of bets the gambler makes before the game is over.
+\end{example}
+
+\begin{solution}
+    In solving absorbing states, it is often convenient to rearrange the matrix so that the rows and columns corresponding to the absorbing states are listed first. This is called the \textbf{Canonical form}. The transition matrix of Example \ref{example_gamblers_ruin} in the canonical form is listed below.
+
+    \begin{center}
+        \begin{tabular}{c|cc|cccc}
+               & 0   & 5K  & 1K  & 2K  & 3K  & 4K  \\
+            \hline
+            0  & 1   & 0   & 0   & 0   & 0   & 0   \\
+            5K & 0   & 1   & 0   & 0   & 0   & 0   \\
+            \hline
+            1K & .60 & 0   & 0   & .40 & 0   & 0   \\
+            2K & 0   & 0   & .60 & 0   & .40 & 0   \\
+            3K & 0   & 0   & 0   & .60 & 0   & .40 \\
+            4K & 0   & .40 & 0   & 0   & 0   & .60 \\
+        \end{tabular}
+    \end{center}
+
+    The canonical form divides the transition matrix into four sub-matrices as listed below.
+
+    \begin{center}
+        \begin{tabular}{c|cc}
+                          & Absorbing & Non-absorbing \\
+            \hline
+            Absorbing     & $I_k$     & 0             \\
+            Non-absorbing & $A$       & $B$           \\
+        \end{tabular}
+    \end{center}
+
+    The matrix \( F = (I_n - B)^{-1} \) is called the \textbf{fundamental matrix} for the absorbing Markov chain, where \( I_n \) is an identity matrix of the same size as \( B \). The \( i,j \)-th entry of this matrix tells us the average number of times the process is in the non-absorbing state \( j \) before absorption if it started in the non-absorbing state \( i \).
+
+
+    \[
+        F = (I_n - B)^{-1} \text{ for our problem is listed below.}
+    \]
+    \[
+        \begin{array}{c|cccc}
+            \text{}   & \text{1K} & \text{2K} & \text{3K} & \text{4K} \\
+            \hline
+            \text{1K} & 1.54      & .90       & .47       & .19       \\
+            \text{2K} & 1.35      & 2.25      & 1.18      & .47       \\
+            \text{3K} & 1.07      & 1.78      & 2.25      & .90       \\
+            \text{4K} & .64       & 1.07      & 1.35      & 1.54      \\
+        \end{array}
+    \]
+
+    The Fundamental matrix \( F \) helps us determine the average number of games played before absorption.
+
+    According to the matrix, the entry 1.78 in the row 3, column 2 position says that the gambler will  play the game 1.78 times before she goes from \$3K to \$2K.  The entry  2.25 in row 3, column 3 says that if the gambler now has \$3K, she will have \$3K on the average 2.25 times before the game is over.
+
+    We now address the question of how many bets will she have to make before she is absorbed, if the gambler begins with \$3K?
+
+    If we add the number of games the gambler plays in each non-absorbing state, we get the average number of games before absorption from that state. Therefore, if the gambler starts with \$3K, the average number of Black Jack games she will play before absorption is
+
+    \[ 1.07 + 1.78 + 2.25 + .90 = 6.0 \]
+
+    That is, we expect the gambler will either have \$5,000 or nothing on the 7th bet.
+
+    Lastly, we find the solution matrix without raising the transition matrix to higher powers. The matrix $FA$ gives us the solution matrix.
+    \[
+        FA = \begin{bmatrix}
+            1.54 & .90  & .47  & .19  \\
+            1.35 & 2.25 & 1.18 & .47  \\
+            1.07 & 1.78 & 2.25 & .90  \\
+            .64  & 1.07 & 1.35 & 1.54 \\
+        \end{bmatrix}
+        \begin{bmatrix}
+            .6 & 0  \\
+            0  & 0  \\
+            0  & 0  \\
+            0  & .4
+        \end{bmatrix}=
+        \begin{bmatrix}
+            .92 & .08 \\
+            .81 & .19 \\
+            .64 & .36 \\
+            .38 & .62
+        \end{bmatrix}
+    \]
+    which is the same as the following matrix we obtained by raising the transition matrix to higher powers.
+
+    \[ \begin{tabular}{c|cc}
+               & 0       & 5K      \\
+            \hline
+            1K & 195/211 & 16/211  \\
+            2K & 171/211 & 40/211  \\
+            3K & 135/211 & 76/211  \\
+            4K & 81/211  & 130/211
+        \end{tabular}
+    \]
+
+\end{solution}
+
+\begin{example}
+    At a professional school, students need to take and pass an English writing/speech class in order to get their professional degree. Students must take the class during the first quarter that they enroll.  If they do not pass the class they take it again in the second semester.  If they fail twice, they are not permitted to retake it again, and so would be unable to earn their degree.
+
+    Students can be in one of 4 states: passed the class (P), enrolled in the class for the first time (C), retaking the class (R) or failed twice and can not retake (F).  Experience shows 70\% of students taking the class for the first time pass and 80\% of students taking the class for the second time pass. Write the transition matrix and identify the absorbing states. Find the probability of being absorbed eventually in each of the absorbing states.
+\end{example}
+\begin{solution}
+    The absorbing states are P (pass) and F (fail repeatedly and can not retake). The transition table is shown below.
+
+    \[
+        \begin{tabular}{c|cccc}
+              & P  & C & R  & F  \\
+            \hline
+            P & 1  & 0 & 0  & 0  \\
+            C & .7 & 0 & .3 & 0  \\
+            R & .8 & 0 & 0  & .2 \\
+            F & 0  & 0 & 0  & 1  \\
+        \end{tabular}
+    \]
+\end{solution}
+
+If we raise the transition matrix $T$ to a high power, we find that it remains stable and gives us the long-term probabilities of ending up in each of the absorbing states.
+
+\[
+    \begin{tabular}{c|cccc}
+          & P   & C & R & F   \\
+        \hline
+        P & 1   & 0 & 0 & 0   \\
+        C & .94 & 0 & 0 & .06 \\
+        R & .8  & 0 & 0 & .2  \\
+        F & 0   & 0 & 0 & 1   \\
+    \end{tabular}
+\]
+
+Of students currently taking the class for the first time, 94\% will eventually pass. 6\% will eventually fail twice and be unable to earn their degree. Of students currently taking the class for the second time time, 80\% will eventually pass. 20\% will eventually fail twice and be unable to earn their degree. The solution table contains the same information in abbreviated form
+
+\[
+    \begin{tabular}{c|cc}
+          & P   & F   \\
+        \hline
+        C & .94 & .06 \\
+        R & .8  & .2
+    \end{tabular}
+\]
+
+Note that in this particular problem, we don’t need to raise T to a “very high” power.  If we find $T^2$, we see that it is actually equal to Tn for higher powers $n$.  Tn becomes stable after two transitions; this makes sense in this problem because after taking the class twice, the student must have passed or is not permitted to retake it any longer.  Therefore the probabilities should not change any more after two transitions; by the end of two transitions, every student has reached an absorbing state.
+
+
+\begin{summarybox}{Absorbing Markov Chains}
+    \begin{enumerate}
+        \item A Markov chain is an absorbing Markov chain if it has at least one absorbing state and from any non-absorbing state in the Markov chain, it is possible to eventually move to some absorbing state (in one or more transitions). A state \(i\) is an absorbing state if once the system reaches state \(i\), it stays in that state; that is, \(p_{ii} = 1\).
+        \item If a transition matrix \(T\) for an absorbing Markov chain is raised to higher powers, it reaches an absorbing state called the solution matrix and stays there. The \(i, j\)-th entry of this matrix gives the probability of absorption in state \(j\) while starting in state \(i\).
+        \item Alternately, the solution matrix can be found in the following manner.
+              \begin{enumerate}
+                  \item Express the transition matrix in the canonical form as below.
+                        \[ T = \begin{bmatrix} I_n & 0 \\ A & B \end{bmatrix} \]
+                        where \(I_n\) is an identity matrix, and \(0\) is a matrix of all zeros.
+                  \item The fundamental matrix \(F = (I - B)^{-1}\). The fundamental matrix helps us find the number of games played before absorption.
+                  \item \(FA\) is the solution matrix, whose \(i, j\)-th entry gives the probability of absorption in state \(j\) while starting in state \(i\).
+              \end{enumerate}
+        \item The sum of the entries of a row of the fundamental matrix gives us the expected number of steps before absorption for the non-absorbing state associated with that row.
+    \end{enumerate}
+\end{summarybox}
