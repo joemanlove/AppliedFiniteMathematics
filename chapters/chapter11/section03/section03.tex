@@ -1,0 +1,94 @@
+\section{Reduction by Dominance}
+
+In this section, you will learn to:
+\begin{enumerate}
+    \item reduce by dominance.
+\end{enumerate}
+
+Sometimes an $m\times n$ game matrix can be reduced to a $2\times 2$ matrix by deleting certain rows and columns.  A row can be deleted if there exists another row that will produce a payoff of an equal or better value.  Similarly, a column can be deleted if there is another column that will produce a payoff of an equal or better value for the column player.  The row or column that produces a better payoff for its corresponding player is said to dominate the row or column with the lesser payoff.
+
+\begin{example}
+    For the following game, determine the optimal strategy for both the row player and the column player, and find the value of the game.
+    \[ G = \begin{bmatrix} -2 & 6 & 4 \\ -1 & -2 & -3 \\ 1 & 2 & -2 \end{bmatrix} \]
+\end{example}
+\begin{solution}
+    We first look for a saddle point and determine that none exist. Next, we try to reduce the matrix to a \(2 \times 2\) matrix by eliminating the dominated row.
+
+    Since every entry in row 3 is larger than the corresponding entry in row 2, row 3 dominates row 2. Therefore, a rational row player will never play row 2, and we eliminate row 2. We get
+    \[ \begin{bmatrix} -2 & 6 & 4 \\ 1 & 2 & -2 \end{bmatrix} \]
+
+    Now we try to eliminate a column. Remember that the game matrix represents the payoffs for the row player and not the column player; therefore, the larger the number in the column, the smaller the payoff for the column player.
+
+    The column player will never play column 2, because it is dominated by column 3. Therefore, we eliminate column 2 and get the modified matrix, \(M\),
+    \[ M = \begin{bmatrix} -2 & 4 \\ 1 & -2 \end{bmatrix} \]
+
+    To find the optimal strategy for both the row player and the column player, we use the method learned in Section \ref{section_nonstrictly_determined_games}.
+
+    Let the row player's strategy be \( R = \begin{bmatrix} r & 1-r \end{bmatrix} \), and the column player's strategy be
+
+    \[ C = \begin{bmatrix} c \\ 1-c \end{bmatrix} \].
+
+    To find the optimal strategy for the row player, we, first, find the product RM as below.
+
+    \[ \begin{bmatrix} r & 1-r \end{bmatrix}
+        \begin{bmatrix} 1 & -2 \\ 1 & 2 \end{bmatrix} =
+        \begin{bmatrix} -3r + 1 & 6r - 2 \end{bmatrix} \]
+
+    By setting the entries equal, we get
+
+    \[ -3r + 1 = 6r - 2 \]
+
+    or
+
+    \[ r = \frac{1}{3}. \]
+
+    Therefore, the optimal strategy for the row player is \( \begin{bmatrix} 1/3 & 2/3 \end{bmatrix} \), but relative to the original game matrix it is \( \begin{bmatrix} 1/3 & 0 & 2/3 \end{bmatrix} \).
+
+    To find the optimal strategy for the column player, we, first, find the following product.
+    \[
+        \begin{bmatrix}
+            -2 & 4  \\
+            1  & -2
+        \end{bmatrix}
+        \begin{bmatrix}
+            c \\
+            1 - c
+        \end{bmatrix} =
+        \begin{bmatrix}
+            -6c + 4 \\
+            3c - 2
+        \end{bmatrix}
+    \]
+    We set the entries in the product matrix equal to each other, and we get,
+    \[
+        -6c + 4 = 3c - 2
+    \]
+    or
+    \[
+        c = 2/3
+    \]
+    Therefore, the optimal strategy for the column player is \( \begin{bmatrix} 2/3 \\ 1/3 \end{bmatrix} \), but relative to the original game matrix, the strategy for the column player is \( \begin{bmatrix} 2/3 \\ 0 \\ 1/3 \end{bmatrix} \).
+
+    To find the expected value, \( V \), of the game, we have two choices: either to find the product of matrices \( R \), \( M \) and \( C \), or multiply the optimal strategies relative to the original matrix to the original matrix. We choose the first, and get
+    \[
+        V = \begin{bmatrix} 1/3 & 2/3 \end{bmatrix}
+        \begin{bmatrix}
+            -2 & 4  \\
+            1  & -2
+        \end{bmatrix}
+        \begin{bmatrix} 2/3 \\ 1/3 \end{bmatrix}
+    \]
+    \[ V = 0 \]
+    Therefore, if both players play their optimal strategy, the value of the game is zero. In other words, the game is fair.
+
+\end{solution}
+
+We summarize as follows:
+
+\begin{summarybox}{Reduction by Dominance}
+    \begin{enumerate}
+        \item Sometimes an \( m \times n \) game matrix can be reduced to a \( 2 \times 2 \) matrix by deleting \textit{dominated} rows and columns.
+        \item A row is called a \textit{dominated row} if there exists another row that will produce a payoff of an equal or better value. That happens when there exists a row whose every entry is larger than the corresponding entry of the dominated row.
+        \item A column is called a \textit{dominated column} if there exists another column that will produce a payoff of an equal or better value. This happens when there exists a column whose every entry is smaller than the corresponding entry of the dominated row.
+    \end{enumerate}
+\end{summarybox}
