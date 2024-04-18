@@ -1,0 +1,230 @@
+\section{Miscellaneous Application Problems}
+
+In this section, you will learn to apply concepts of compound interest for savings and annuities to:
+
+\begin{enumerate}
+    \item Find the outstanding balance, partway through the term of a loan, of the future payments still remaining on the loan.
+    \item Perform financial calculations in situations involving several stages of savings and/or annuities.
+    \item Find the fair market value of a bond.
+    \item Construct an amortization schedule for a loan.
+\end{enumerate}
+
+We have already developed the tools to solve most finance problems. Now we use these tools to solve some application problems.
+
+\subsection{Outstanding Balance on a Loan}
+
+One of the most common problems deals with finding the balance owed at a given time during the life of a loan. Suppose a person buys a house and amortizes the loan over 30 years, but decides to sell the house a few years later. At the time of the sale, he is obligated to pay off his lender; therefore, he needs to know the balance he owes. Since most long-term loans are paid off prematurely, we are often confronted with this problem.
+
+To find the outstanding balance of a loan at a specified time, we need to find the present value P of all future payments that have not yet been paid. In this case, $t$ does not represent the entire term of the loan. Instead:
+\begin{itemize}
+    \item $t$ represents the time that still remains on the loan
+    \item $nt$ represents the total number of future payments.
+\end{itemize}
+
+\begin{example}\label{example_house_payoff}
+    Mr. Jackson bought his house in \the\numexpr\year-20\relax, and financed the loan for 30 years at an interest rate of 7.8\%. His monthly payment was \$1260. In \the\year, Mr. Jackson decides to pay off the loan. Find the balance of the loan he still owes.
+\end{example}
+
+\begin{solution}
+    The reader should note that the original amount of the loan is not mentioned in the problem. That is because we don't need to know that to find the balance.
+
+    The original loan was for 30 years. 20 years have past so there are \(10 = 30 - 20\) years still remaining. \(12(10) = 120\) payments still remain to be paid on this loan.
+
+    As for the bank or lender is concerned, Mr. Jackson is obligated to pay \$1260 each month for 10 more years; he still owes a total of 120 payments. But since Mr. Jackson wants to pay it all off now, we need to find the present value \( P \) at the time of repayment of the remaining 10 years of payments of \$1260 each month.
+
+    Using the formula we get for the present value of an annuity, we get
+    \[ P\left(1 + \frac{0.078}{12}\right)^{120} = \$1260 \left[ \frac{(1+\frac{0.078}{12})^{120}-1}{\frac{0.078}{12}} \right] \]
+    \[ P (2.17597) = \$227957.85 \]
+    \[ P = \$104761.48 \]
+\end{solution}
+
+\begin{summarybox}{Finding the Outstanding Balance of a Loan}
+
+    If a loan has a payment of \( m \) dollars made \( n \) times a year at an interest \( r \), then the outstanding value of the loan when there are \( t \) years still remaining on the loan is given by \( P \):
+
+    \[
+        P\left(1 + \frac{r}{n}\right)^{nt} = \frac{m\left[(1 + \frac{r}{n})^{nt} - 1\right]}{\frac{r}{n}}
+    \]
+
+    Note that \( t \) is not the original term of the loan but instead \( t \) is the amount of time still remaining in the future \( nt \) is the number of payments still remaining in the future.
+
+\end{summarybox}
+
+Note that there are other methods to find the outstanding balance on a loan, but the method illustrated above is the easiest.
+
+One alternate method would be to use an amortization schedule, as illustrated toward the end of this section. An amortization schedule shows the payments, interest, and outstanding balance step by step after each loan payment. An amortization schedule is tedious to calculate by hand but can be easily constructed using spreadsheet software.
+
+Another way to find the outstanding balance, which we will not illustrate here, is to find the difference $A - B$, where:
+\begin{itemize}
+    \item $A$ is the original loan amount (principal) accumulated to the date on which we want to find the outstanding balance (using compound interest formula).
+    \item $B$ is the accumulated value of all payments that have been made as of the date on which we want to find the outstanding balance (using formula for the accumulated value of an annuity).
+\end{itemize}
+In this case, we would need to do a compound interest calculation and an annuity calculation; then, we need to find the difference between them. Three calculations are needed instead of one.
+
+It is a mathematically acceptable way to calculate the outstanding balance. However, it is strongly recommended that students use the method explained in the box above and illustrated in Example \ref{example_house_payoff}, as it is much simpler.
+
+
+\subsection{Problems Involving Multiple Stages of Savings and/or Annuities}
+
+\begin{enumerate}
+    \item Suppose a baby, Aisha, is born and her grandparents invest \$5000 in a college fund. The money remains invested for 18 years until Aisha enters college, and then is withdrawn in equal semiannual payments over the 4 years that Aisha expects to need to finish college. The college investment fund earns 5\% interest compounded semiannually. How much money can Aisha withdraw from the account every six months while she is in college?
+    \item Aisha graduates college and starts a job. She saves \$1000 each quarter, depositing it into a retirement savings account. Suppose that Aisha saves for 30 years and then retires. At retirement she wants to withdraw money as an annuity that pays a constant amount every month for 25 years. During the savings phase, the retirement account earns 6\% interest compounded quarterly. During the annuity payout phase, the retirement account earns 4.8\% interest compounded monthly. Calculate Aisha’s monthly retirement annuity payout.
+\end{enumerate}
+
+These problems appear complicated. But each can be broken down into two smaller problems involving compound interest on savings or involving annuities. Often the problem involves a savings period followed by an annuity period; the accumulated value from the first part of the problem may become a present value in the second part. Read each problem carefully to determine what is needed.
+
+\begin{example}
+    Suppose a baby, Aisha, is born and her grandparents invest \$8000 in a college fund. The money remains invested for 18 years until Aisha enters college, and then is withdrawn in equal semiannual payments over the 4 years that Aisha expects to attend college. The college investment fund earns 5\% interest compounded semiannually. How much money can Aisha withdraw from the account every six months while she is in college?
+\end{example}
+
+\begin{solution}~
+
+    \textbf{Part 1: Accumulation of College Savings:} Find the accumulated value at the end of 18 years of a sum of \$8000 invested at 5\% compounded semiannually.
+    \[ A = \$8000\left(1 + \frac{0.05}{2}\right)^{2 (18)} = \$8000(1.025)^{36} = \$8000(2.432535) = \$19460.28 \]
+
+    \textbf{Part 2: Semiannual annuity payout from savings to put toward college expenses.} Find the amount of the semiannual payout for four years using the accumulated savings from part 1 of the problem with an interest rate of 5\% compounded semiannually.
+    \[ A = \$19460.28 \] in Part 1 is the accumulated value at the end of the savings period. This becomes the present value \( P = \$19460.28 \) when calculating the semiannual payments in Part 2.
+    \[ \$19460.28 \left( 1 + \frac{0.05}{2} \right)^{2(4)} = \frac{m\left[\left(1+\frac{0.05}{2}\right)^{2 (4)}-1\right]}{\left(\frac{0.05}{2}\right)} \]
+    \[ \$23710.46 = m(8.73612) \]
+    \[ m = \$2714.07 \]
+
+    Aisha will be able to withdraw \$2714.07 semiannually for her college expenses.
+\end{solution}
+
+\begin{example}
+    Aisha graduates college and starts a job. She saves \$1000 each quarter, depositing it into a retirement savings account. Suppose that Aisha saves for 30 years and then retires. At retirement she wants to withdraw money as an annuity that pays a constant amount every month for 25 years. During the savings phase, the retirement account earns 6\% interest compounded quarterly. During the annuity payout phase, the retirement account earns 4.8\% interest compounded monthly. Calculate Aisha’s monthly retirement annuity payout.
+\end{example}
+
+\begin{solution}~
+
+    \textbf{Part 1: Accumulation of Retirement Savings:} Find the accumulated value at the end of 30 years of \$1000 deposited at the end of each quarter into a retirement savings account earning 6\% interest compounded quarterly.
+    \[ A = \frac{\$1000\left[\left(1 + \frac{0.06}{4}\right)^{4 (30)} - 1\right]}{\left(\frac{0.06}{4}\right)} \]
+    \[ A = \$331288.19 \]
+
+    \textbf{Part 2: Monthly retirement annuity payout:} Find the amount of the monthly annuity payments for 25 years using the accumulated savings from part 1 of the problem with an interest rate of 4.8\% compounded monthly.
+    \[ A = \$331288.19 \] in Part 1 is the accumulated value at the end of the savings period. This amount will become the present value \( P = \$331288.19 \) when calculating the monthly retirement annuity payments in Part 2.
+    \[
+        \$331288.19\left(1 + \frac{0.048}{12}\right)^{12 \cdot 25} = \frac{m\left[\left(1 + \frac{0.048}{12}\right)^{12 \cdot 25} - 1\right]}{\frac{0.048}{12}}
+    \]
+    \[\$1097285.90 = m(578.04483) \]
+    \[ m = \$1898.27 \]
+
+    Aisha will have a monthly retirement annuity income of \$1898.27 when she retires.
+\end{solution}
+
+\subsection{Fair Market Value of a Bond}
+
+Whenever a business, and for that matter the U. S. government, needs to raise money it does it by selling bonds.  A bond is a certificate of promise that states the terms of the agreement.  Usually the business sells bonds for the face amount of \$1,000 each for a stated term, a period of time ending at a specified maturity date.
+
+The person who buys the bond, the bondholder, pays \$1,000 to buy the bond.
+
+The bondholder is promised two things: First that he will get his \$1,000 back at the maturity date, and second that he will receive a fixed amount of interest every six months.
+
+As the market interest rates change, the price of the bond starts to fluctuate.  The bonds are bought and sold in the market at their fair market value.
+
+The interest rate a bond pays is fixed, but if the market interest rate goes up, the value of the bond drops since the money invested in the bond could earn more if invested elsewhere.  When the value of the bond drops, we say it is trading at a discount.
+
+On the other hand, if the market interest rate drops, the value of the bond goes up since the bond now yields a higher return than the market interest rate, and we say it is trading at a premium.
+
+
+\begin{example}
+    The Orange Computer Company needs to raise money to expand. It issues a 10-year \$1,000 bond that pays \$30 every six months. If the current market interest rate is 7\%, what is the fair market value of the bond?
+\end{example}
+
+\begin{solution}
+    The bond certificate promises us two things – An amount of \$1,000 to be paid in 10 years, and a semi-annual payment of \$30 for ten years. Therefore, to find the fair market value of the bond, we need to find the present value of the lump sum of \$1,000 we are to receive in 10 years, as well as, the present value of the \$30 semi-annual payments for the 10 years.
+
+    We will let \( P_1 \) be the present value of the (face amount of \$1,000
+    \[ P_1 \left( 1 + \frac{0.07}{2} \right)^{20} = \$1,000 \]
+    Since the interest is paid twice a year, the interest is compounded twice a year and \( n = 2(10)=20 \)
+    \[ P_1 (1.9898) = \$1,000 \]
+    \[ P_1 = \$502.56 \]
+
+    We will let \( P_2 \) be the present value of the \$30 semi-annual payments is
+    \[ P_2 \left( 1 + \frac{0.07}{2} \right)^{20} = \$30\left[\frac{\left(1+\frac{0.07}{2}\right)^{20}-1}{\left(\frac{0.07}{2}\right)}\right] \]
+    \[ P_2 (1.9898) = 848.39 \]
+    \[ P_2 = \$426.37 \]
+
+    The present value of the lump-sum \$1,000 = \$502.56
+    The present value of the \$30 semi-annual payments = \$426.37
+    The fair market value of the bond is \( P = P_1 + P_2 = \$502.56 + \$426.37 = \$928.93 \)
+
+    Note that because the market interest rate of 7\% is higher than the bond’s implied interest rate of 6\% implied by the semiannual payments, the bond is selling at a discount; its fair market value of \$928.93 is less than its face value of \$1000.
+\end{solution}
+
+\begin{example}
+    A state issues a 15 year \$1000 bond that pays \$25 every six months. If the current market interest rate is 4\%, what is the fair market value of the bond?
+\end{example}
+
+\begin{solution}
+    The bond certificate promises two things – an amount of \$1,000 to be paid in 15 years, and semi-annual payments of \$25 for 15 years. To find the fair market value of the bond, we find the present value of the \$1,000 face value we are to receive in 15 years and add it to the present value of the \$25 semi-annual payments for the 15 years. In this example, \( n = 2(15)=30 \).
+
+    We will let \( P_1 \) be the present value of the lump-sum \$1,000
+    \[ P_1(1 + 0.04/2)^{30} = \$1,000 \]
+    \[ P_1 = \$552.07 \]
+
+    We will let \( P_2 \) be the present value of the \$25 semi-annual payments is
+    \[ P_2 (1 + 0.04/2)^{30} = \$25\left[\frac{(1 + 0.04/2)^{30} - 1}{(0.04/2)}\right] \]
+    \[ P_2 (1.18114) = \$1014.20 \]
+    \[ P_2 = \$559.90 \]
+
+    The present value of the lump-sum \$1,000 = \$552.07
+    The present value of the \$25 semi-annual payments = \$559.90
+    Therefore, the fair market value of the bond is
+    \[ P = P_1+P_2 = \$552.07 + \$559.90 = \$1111.97 \]
+
+    Because the market interest rate of 4\% is lower than the interest rate of 5\% implied by the semiannual payments, the bond is selling at a premium: the fair market value of \$1,111.97 is more than the face value of \$1,000.
+\end{solution}
+
+\begin{summarybox}{Fair Market Value of a Bond}
+    To Find the Fair Market Value of a Bond, first find the present value of the face amount \( A \) that is payable at the maturity date:
+    \[ A = P_1\left(1 + \frac{r}{n}\right)^{nt}\]
+    Solve to find $P_1$.
+
+    Then find the present value of the semiannually payments of \( Sm \) over the term of the bond:
+    \[ P_2\left(1 + \frac{r}{n}\right)^{nt} = \frac{m\left[(1 + \frac{r}{n})^{nt} - 1\right]}{r/n}\]
+    Solve to find $P_2$.
+    The fair market value (or present value or price or current value) of the bond is the sum of the present values calculated above:
+    \[ P = P_1 + P_2 \]
+\end{summarybox}
+
+\subsection{Amortization Schedule for a Loan}
+
+An amortization schedule is a table that lists all payments on a loan, splits them into the portion devoted to interest and the portion that is applied to repay principal, and calculates the outstanding balance on the loan after each payment is made.
+
+\begin{example}
+    An amount of \$500 is borrowed for 6 months at a rate of 12\%. Make an amortization schedule showing the monthly payment, the monthly interest on the outstanding balance, the portion of the payment contributing toward reducing the debt, and the outstanding balance.
+\end{example}
+\begin{solution}
+    The reader can verify that the monthly payment is \$86.27.
+
+    The first month, the outstanding balance is \$500, and therefore, the monthly interest on the outstanding balance is
+    \[
+        (\text{outstanding balance})(\text{monthly interest rate}) = (\$500)(0.12/12) = \$5
+    \]
+    This means, the first month, out of the \$86.27 payment, \$5 goes toward the interest and the remaining \$81.27 toward the balance leaving a new balance of \$500 - \$81.27 = \$418.73.
+
+    Similarly, the second month, the outstanding balance is \$418.73, and the monthly interest on the outstanding balance is \$4.19. Again, out of the \$86.27 payment, \$4.19 goes toward the interest and the remaining \$82.08 toward the balance leaving a new balance of \$418.73 - \$82.08 = \$336.65. The process continues in the table below.
+
+    \begin{center}
+        \begin{tabular}{ccccc}
+            \hline
+            Payment \# & Payment & Interest & Debt Payment & Balance  \\
+            \hline
+            1          & \$86.27 & \$5      & \$81.27      & \$418.73 \\
+            2          & \$86.27 & \$4.19   & \$82.08      & \$336.65 \\
+            3          & \$86.27 & \$3.37   & \$82.90      & \$253.75 \\
+            4          & \$86.27 & \$2.54   & \$83.73      & \$170.02 \\
+            5          & \$86.27 & \$1.70   & \$84.57      & \$85.45  \\
+            6          & \$86.27 & \$0.85   & \$85.42      & \$0.03   \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    Note that the last balance of 3 cents is due to error in rounding off.
+\end{solution}
+
+
+An amortization schedule is usually lengthy and tedious to calculate by hand. For example, an amortization schedule for a 30-year mortgage loan with monthly payments would have $(12)(30)=360$ rows of calculations in the amortization schedule table. A car loan with 5 years of monthly payments would have $12(5)=60$ rows of calculations in the amortization schedule table. However, it would be straightforward to use a spreadsheet application on a computer or write a little code to do these repetitive calculations.
+
+Most of the other applications in this section's problem set are reasonably straightforward and can be solved by taking a little extra care in interpreting them. And remember, there is often more than one way to solve a problem.

@@ -1,0 +1,396 @@
+\section{Introduction to Markov Chains}\label{section_markov_chains}
+
+In this section, you will learn to:
+\begin{enumerate}
+    \item Write transition matrices for Markov Chain problems.
+    \item Use the transition matrix and the initial state vector to find the state vector that gives the distribution after a specified number of transitions.
+\end{enumerate}
+
+We will now study stochastic processes, experiments in which the outcomes of events depend on the previous outcomes; stochastic processes involve random outcomes that can be described by probabilities. Such a process or experiment is called a Markov Chain or Markov process. The process was first studied by a Russian mathematician named Andrei A. Markov in the early 1900s.
+
+About 600 cities worldwide have bike share programs. Typically, a person pays a fee to join a program and can borrow a bicycle from any bike share station and then can return it to the same or another system. Each day, the distribution of bikes at the stations changes, as the bikes get returned to different stations from where they are borrowed.
+
+For simplicity, let’s consider a very simple bike share program with only 3 stations: A, B, C. Suppose that all bicycles must be returned to the station at the end of the day, so that each day there is a time, let’s say midnight, that all bikes are at some station, and we can examine all the stations at this time of day, every day. We want to model the movement of bikes from midnight of a given day to midnight of the next day. We find that over a 1-day period:
+
+\begin{itemize}
+    \item Of the bikes borrowed from station A, 30\% are returned to station A, 50\% end up at station B, and 20\% end up at station C.
+    \item Of the bikes borrowed from station B, 10\% end up at station A, 60\% have been returned to station B, and 30\% end up at station C.
+    \item Of the bikes borrowed from station C, 10\% end up at station A, 10\% end up at station B, and 80\% are returned to station C.
+\end{itemize}
+
+We can draw an arrow diagram to show this. The arrows indicate the station where the bicycle was started, called its initial state, and the stations at which it might be located one day later, called the terminal states. The numbers on the arrows show the probability for being in each of the indicated terminal states.
+
+\begin{center}
+    \begin{tikzpicture}[shorten >=2pt,node distance=6cm,on grid,auto, scale=.9]
+        \node[state] at (0,0) (A) {A};
+        \node[state] at (4,0) (B) {B};
+        \node[state] at (2,-3) (C) {C};
+
+        \path[thick, ->]
+        (A) edge [loop left] node {0.3} (A)
+        edge [bend right=50] node[below left] {0.2} (C)
+        edge [bend left=50] node {0.5} (B)
+        (B) edge [loop right=60] node {0.6} (B)
+        edge [bend left=50] node {0.1} (C)
+        edge [bend left=15] node [above] {0.3} (A)
+        (C) edge [loop below] node {0.8} (C)
+        edge [bend right=15] node[below left] {0.1} (A)
+        edge [bend left=15] node[below right] {0.1} (B);
+    \end{tikzpicture}
+\end{center}
+
+Because our bike share example is simple and only has 3 stations, the arrow diagram, also called a directed graph, helps us visualize the information. But if we had an example with 10, 20, or more bike share stations, the diagram would become so complicated that it would be difficult to understand the information in the diagram.
+
+We can use a \textbf{transition table} to organize the information (you may not need this step in the future),
+\begin{center}
+    \begin{tabular}{c|ccc}
+          & A   & B   & C   \\
+        \hline
+        A & 0.3 & 0.5 & 0.2 \\
+        B & 0.1 & 0.6 & 0.3 \\
+        C & 0.1 & 0.1 & 0.8 \\
+    \end{tabular}
+\end{center}
+
+We'll use the transition table to make a \textbf{transition matrix}. Each row in the matrix represents an initial state. Each column represents a terminal state. We will assign the rows in order to stations A, B, C, and the columns in the same order to stations A, B, C. Therefore the matrix must be a square matrix, with the same number of rows as columns. The entry in row 2 column 3, for example, would show the probability that a bike that is initially at station B will be at station C one day later: that entry is $0.30$, which is the probability in the diagram for the arrow that points from B to C. We use this the letter \( T \) for transition matrix.
+
+\[
+    T = \begin{bmatrix}
+        0.3 & 0.5 & 0.2 \\
+        0.1 & 0.6 & 0.3 \\
+        0.1 & 0.1 & 0.8 \\
+    \end{bmatrix}
+\]
+
+Looking at the first row that represents bikes initially at station A, we see that 30\% of the bikes borrowed from station A are returned to station A, 50\% end up at station B, and 20\% end up at station C, after one day.
+
+We note some properties of the transition matrix:
+\begin{itemize}
+    \item \( t_{ij} \) represents the entry in row \( i \) column \( j \)
+    \item \( t_{ij} \) = the probability of moving from state represented by row \( i \) to the state represented by row \( j \) in a single transition
+    \item \( t_{ij} \) is a conditional probability which we can write as:
+          \[ t_{ij} = P(\text{next state is the state in column } j \mid\text{current state is the state in row } i) \]
+    \item Each row adds to 1
+    \item All entries are between 0 and 1, inclusive because they are probabilities.
+    \item The transition matrix represents change over one transition period; in this example one transition is a fixed unit of time of one day.
+\end{itemize}
+
+\begin{example}\label{example_ISP_transition_matrix}
+    A city is served by two internet service providers (ISPs), Crocks and Xminity.
+    \begin{itemize}
+        \item Due to their aggressive sales tactics, each year 40\% of Crocks customers switch to Xminity; the other 60\% of Crocks customers stay with Crocks.
+        \item On the other hand, 30\% of the Xminity customers switch to Crocks.
+    \end{itemize}
+    The two states in this example are Crocks and Xminity. Express the information above as a transition matrix which displays the probabilities of going from one state into another state.
+\end{example}
+\begin{solution}
+    The transition table is:
+    \begin{center}
+        \begin{tabular}{c|cc}
+                    & Crocks & Xminity \\
+            \hline
+            Crocks  & .60    & .40     \\
+            Xminity & .30    & .70     \\
+        \end{tabular}
+    \end{center}
+
+    so the transition matrix is given by
+
+    \[
+        T = \begin{bmatrix}
+            .60 & .40 \\
+            .30 & .70
+        \end{bmatrix}
+    \]
+\end{solution}
+As previously noted, the reader should observe that a transition matrix is always a square matrix because all possible states must have both rows and columns.  All entries in a transition matrix are non-negative as they represent probabilities. And, since all possible outcomes are considered in the Markov process, the sum of the row entries is always 1.
+
+With a larger transition matrix, the ideas in Example \ref{example_ISP_transition_matrix} could be expanded to represent a market with more than 2 ISPs.  The concepts of brand loyalty and switching between brands demonstrated in the ISPs example apply to many types of products, such as cell phone carriers, brands of regular purchases such as food or laundry detergent, brands major purchases such as cars or appliances, airlines that travelers choose when booking flights, or hotels chains that travelers choose to stay in.
+
+The transition matrix shows the probabilities for transitions between states at two consecutive times.  We need a way to represent the distribution among the states at a particular point in time. To do this we use a row matrix called a state vector.  The state vector is a row matrix that has only one row; it has one column for each state.  The entries show the distribution by state at a given point in time.  All entries are between 0 and 1 inclusive, and the sum of the entries is 1.
+
+For the bike share example with 3 bike share stations, the state vector is a $1\times3$ matrix with
+1 row and 3 columns.  Suppose that when we start observing our bike share program,
+30\% of the bikes are at station A, 45\% of the bikes are at station B, and 25\% are at station C.
+
+The initial state vector is
+\[
+    V_0 = \begin{bmatrix}
+        0.3 & 0.45 & 0.25
+    \end{bmatrix}
+\]
+
+The subscript 0 indicates that this is the initial distribution, before any transitions occur.
+If we want to determine the distribution after one transition, we’ll need to find a new state vector that we’ll call $V_1$.  The subscript 1 indicates this is the distribution after 1 transition has occurred.
+
+We find $V_1$ by multiplying $V_0$ by the transition matrix $T$, as follows:
+$V_1= V_0T $. Readers may wonder why we're multiplying the vector on the left hand side of the matrix instead of the right hand side as is usual. This notation is essentially traditional.
+
+\[
+    V_{1} = V_{0}T
+\]
+\[
+    = \begin{bmatrix}
+        0.30 & 0.45 & 0.25
+    \end{bmatrix}
+    \begin{bmatrix}
+        0.3 & 0.5 & 0.2 \\
+        0.1 & 0.6 & 0.3 \\
+        0.1 & 0.1 & 0.8
+    \end{bmatrix}
+\]
+\[
+    = \begin{bmatrix}
+        (0.30)(0.3) & + & (0.45)(0.1) & + & (0.25)(0.1) \\
+        (0.30)(0.5) & + & (0.45)(0.6) & + & (0.25)(0.1) \\
+        (0.30)(0.2) & + & (0.45)(0.3) & + & (0.25)(0.8)
+    \end{bmatrix}
+\]
+\[
+    = \begin{bmatrix}
+        0.16 & 0.445 & 0.395
+    \end{bmatrix}
+\]
+
+After 1 day (1 transition), 16\% of the bikes are at station A, 44.5\% are at station B and  39.5\% are at station C.
+
+We showed the step by step work for the matrix multiplication above.  In the future, we’ll generally use technology to perform any necessary matrix multiplications, rather than showing the step by step work
+
+Suppose now that we want to know the distribution of bicycles at the stations after two days. We need to find $V_2$, the state vector after two transitions.  To find $V_2$ , we multiply the state vector after one transition $V_1$ by the transition matrix $T$.
+
+\[
+    V_{2} = V_{1}T = \begin{bmatrix} .16 & .445 & .395 \end{bmatrix}
+    \begin{bmatrix}
+        0.3 & 0.5 & 0.2 \\
+        0.1 & 0.6 & 0.3 \\
+        0.1 & 0.1 & 0.8
+    \end{bmatrix}
+    = \begin{bmatrix} .132 & .3865 & .4815 \end{bmatrix}
+\]
+We note that \( V_{1} = V_{0}T \), so \( V_{2} = V_{1}T = (V_{0}T)T = V_{0}T^2 \)
+
+This gives an equivalent method to calculate the distribution of bicycles on day 2:
+\[
+    V_2 = V_0T^2 = \begin{bmatrix}
+        0.30 & 0.45 & 0.25
+    \end{bmatrix}
+    \begin{bmatrix}
+        0.3 & 0.5 & 0.2 \\
+        0.1 & 0.6 & 0.3 \\
+        0.1 & 0.1 & 0.8
+    \end{bmatrix}^2
+\]
+\[
+    = \begin{bmatrix}
+        0.30 & 0.45 & 0.25
+    \end{bmatrix}
+    \begin{bmatrix}
+        0.16 & 0.47 & 0.37 \\
+        0.12 & 0.44 & 0.44 \\
+        0.12 & 0.19 & 0.69
+    \end{bmatrix}
+\]
+\[
+    = V_2 = V_0T^2 = \begin{bmatrix}
+        .132 & .3865 & .4815
+    \end{bmatrix}
+\]
+
+After 2 days (2 transitions), 13.2\% of the bikes are at station A, 38.65\% are at station B and 48.15\% are at station C.
+
+We need to examine the following: What is the meaning of the entries in the matrix \( T^2 \)?
+
+\[
+    T^2 = TT =
+    \begin{bmatrix}
+        0.3 & 0.5 & 0.2 \\
+        0.1 & 0.6 & 0.3 \\
+        0.1 & 0.1 & 0.8 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        0.3 & 0.5 & 0.2 \\
+        0.1 & 0.6 & 0.3 \\
+        0.1 & 0.1 & 0.8 \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        0.16 & 0.47 & 0.37 \\
+        0.12 & 0.44 & 0.44 \\
+        0.12 & 0.19 & 0.69 \\
+    \end{bmatrix}
+\]
+
+The entries in \( T^2 \) tell us the probability of a bike being at a particular station after two transitions, given its initial station.
+
+\begin{itemize}
+    \item Entry \( t_{13} \) in row 1 column 3 tells us that a bike that is initially borrowed from station A has a probability of 0.37 of being in station C after two transitions.
+    \item Entry \( t_{32} \) in row 3 column 2 tells us that a bike that is initially borrowed from station C has a probability of 0.19 of being in station B after two transitions.
+\end{itemize}
+
+Similarly, if we raise transition matrix \( T \) to the \( n \)th power, the entries in \( T^n \) tells us the probability of a bike being at a particular station after \( n \) transitions, given its initial station.
+
+And if we multiply the initial state vector \( V_0 \) by \( T^n \), the resulting row matrix \( V_n=V_0T^n \) is the distribution of bicycles after \( n \) transitions.
+
+\begin{example}
+    Refer to Example \ref{example_ISP_transition_matrix} for the transition matrix for market shares for subscribers to two ISPs.
+    \begin{enumerate}
+        \item Suppose that today 1/4 of customers subscribe to Crocks and 3/4 of customers subscribe to Xminity. After 1 year, what percent subscribe to each company?
+        \item Suppose instead that today 80\% of customers subscribe to Crocks and 20\% subscribe to Xminity. After 1 year, what percent subscribe to each company?
+    \end{enumerate}
+\end{example}
+
+\begin{solution} ~
+
+    \begin{enumerate}
+        \item The initial distribution given by the initial state vector is a 1x2 matrix
+              \[ V_0 = \left[\frac{1}{4} \quad \frac{3}{4}\right] = \begin{bmatrix} .25 & .75 \end{bmatrix} \]
+              and the transition matrix is
+              \[ T = \begin{bmatrix} .60 & .40 \\ .30 & .70 \end{bmatrix} \]
+              After 1 year, the distribution of customers is
+              \[ V_1 = V_0T = \begin{bmatrix} .25 & .75 \end{bmatrix} \begin{bmatrix} .60 & .40 \\ .30 & .70 \end{bmatrix} = \begin{bmatrix} .375 & .625 \end{bmatrix} \]
+              After 1 year, 37.5\% of customers subscribe to Crocks and 62.5\% to Xminity.
+        \item The initial distribution given by the initial state vector \( V_0 = \begin{bmatrix} .8 & .2 \end{bmatrix} \). Then
+              \[ V_1 = V_0T = \begin{bmatrix} .8 & .2 \end{bmatrix} \begin{bmatrix} .60 & .40 \\ .30 & .70 \end{bmatrix} = \begin{bmatrix} .54 & .46 \end{bmatrix} \]
+              In this case, after 1 year, 54\% of customers subscribe to Crocks and 46\% to Xminity.
+
+    \end{enumerate}
+    Note that the distribution after one transition depends on the initial distribution; the distributions are different because of the different initial state vectors.
+\end{solution}
+
+\begin{example} \label{example_walk_bike_transition_matrix}
+    Professor Symons either walks to school, or he rides his bicycle.  If he walks to school one day, then the next day, he will walk or cycle with equal probability.  But if he bicycles one day, then the probability that he will walk the next day is $1/4$.  Express this information in a transition matrix.
+\end{example}
+\begin{solution} We obtain the following transition matrix by properly placing the row and column entries.  Note that if, for example, Professor Symons bicycles one day, then the probability that he will walk the next day is $1/4$, and therefore, the probability that he will bicycle the next day is $3/4$. So the transition table is:
+    \begin{center}
+        \begin{tabular}{c|cc}
+                    & Walk & Bicycle \\
+            \hline
+            Walk    & 1/2  & 1/2     \\
+            Bicycle & 1/4  & 3/4     \\
+        \end{tabular}
+    \end{center}
+
+    so the transition matrix is given by
+
+    \[
+        T = \begin{bmatrix}
+            .5  & .5  \\
+            .25 & .75
+        \end{bmatrix}
+    \]
+\end{solution}
+
+\begin{example}\label{example_walk_bike_transition_matrix2}
+    In Example \ref{example_walk_bike_transition_matrix}, if it is assumed that the initial day is Monday, write a matrix that gives probabilities of a transition from Monday to Wednesday.
+\end{example}
+
+\begin{solution}
+    If today is Monday, then Wednesday is two days from now, representing two transitions. We need to find the square, \( T^2 \), of the original transition matrix \( T \), using matrix multiplication.
+    \[ T = \begin{bmatrix} 1/2 & 1/2 \\ 1/4 & 3/4 \end{bmatrix} \]
+    \[ T^2 = TT = \begin{bmatrix} 1/2 & 1/2 \\ 1/4 & 3/4 \end{bmatrix} \times \begin{bmatrix} 1/2 & 1/2 \\ 1/4 & 3/4 \end{bmatrix} \]
+    \[ = \begin{bmatrix} 1/4+1/8 & 1/4+3/8 \\ 1/8+3/16 & 1/8+9/16 \end{bmatrix} \]
+    \[ = \begin{bmatrix} 3/8 & 5/8 \\ 5/16 & 11/16 \end{bmatrix} \]
+    Recall that we do not obtain \( T^2 \) by squaring each entry in matrix \( T \), but obtain \( T^2 \) by multiplying matrix \( T \) by itself using matrix multiplication.
+    We represent the results in the following table.
+    \begin{center}
+        \begin{tabular}{cc|cc}
+                   &         & \multicolumn{2}{c}{Wednesday}           \\
+                   &         & Walk                          & Bicycle \\
+            \hline
+            Monday & Walk    & 3/8                           & 5/8     \\
+                   & Bicycle & 5/16                          & 11/16   \\
+        \end{tabular}
+    \end{center}
+
+
+    We interpret the probabilities from the matrix \( T^2 \) as follows:
+    \[ P(\text{Walked Wednesday }| \text{ Walked Monday}) = 3/8 \]
+    \[ P(\text{Bicycled Wednesday }| \text{ Walked Monday}) = 5/8 \]
+    \[ P(\text{Walked Wednesday }| \text{ Bicycled Monday}) = 5/16 \]
+    \[ P(\text{Bicycled Wednesday }| \text{ Bicycled Monday}) = 11/16. \]
+\end{solution}
+
+\begin{example}\label{example_walk_bike_transition_matrix3_and_4}
+    The transition matrix for Example \ref{example_walk_bike_transition_matrix} is given below.
+
+    \[
+        T = \begin{bmatrix}
+            .5  & .5  \\
+            .25 & .75
+        \end{bmatrix}
+    \]
+
+    Write the transition matrix from
+    \begin{enumerate}
+        \item Monday to Thursday
+        \item Monday to Friday
+    \end{enumerate}
+\end{example}
+
+\begin{solution}~
+    \begin{enumerate}
+        \item In writing a transition matrix from Monday to Thursday, we are moving from one state to another in three steps. That is, we need to compute \(T^3\).
+
+              \[
+                  T^3 =
+                  \begin{bmatrix}
+                      11/32 & 21/32 \\
+                      21/64 & 43/64 \\
+                  \end{bmatrix}
+              \]
+        \item To find the transition matrix from Monday to Friday, we are moving from one state to another in four steps. Therefore, we compute \(T^4\).
+
+              \[
+                  T^4 =
+                  \begin{bmatrix}
+                      43/128 & 85/128  \\
+                      85/256 & 171/256 \\
+                  \end{bmatrix}
+              \]
+    \end{enumerate}
+
+    It is important that the student is able to interpret the above matrix correctly. For example, the entry $85/128$, states that if Professor Symons walked to school on Monday, then there is $85/128$ probability that he will bicycle to school on Friday.
+\end{solution}
+
+There are certain Markov chains that tend to stabilize in the long run. We will examine these more deeply later in this chapter. The transition matrix we have used in the above example is just such a Markov chain.  The next example deals with the long term trend or steady-state situation for that matrix.
+
+\begin{example}\label{example_walk_bike_transition_matrix_infinity}
+    Suppose Professor Symons continues to walk and bicycle according to the transition matrix given in Example \ref{example_walk_bike_transition_matrix}. In the long run, how often will he walk to school, and how often will he bicycle?
+\end{example}
+
+\begin{solution}
+    If we examine higher powers of the transition matrix \( T \), we will find that it stabilizes.
+
+    \[ T^5 = \begin{bmatrix}
+            .333984 & .666015 \\
+            .333007 & .666992
+        \end{bmatrix}, \quad
+        T^{10} = \begin{bmatrix}
+            .33333397 & .66666603 \\
+            .33333301 & .66666698
+        \end{bmatrix}, \]
+
+    And
+
+    \[ T^{20} = \begin{bmatrix}
+            1/3 & 2/3 \\
+            1/3 & 2/3
+        \end{bmatrix}, \quad
+        T^n = \begin{bmatrix}
+            1/3 & 2/3 \\
+            1/3 & 2/3
+        \end{bmatrix} \quad \text{for} \quad n > 20. \]
+
+    The matrix shows that in the long run, Professor Symons will walk to school \( 1/3 \) of the time and bicycle \( 2/3 \) of the time.
+
+    When this happens, we say that the system is in steady-state or state of equilibrium. In this situation, all row vectors are equal. If the original matrix is an \( n \) by \( n \) matrix, we get \( n \) row vectors that are all the same. We call this vector a fixed probability vector or the equilibrium vector \( E \). In the above problem, the fixed probability vector \( E \) is \( [1/3 \quad 2/3] \). Furthermore, if the equilibrium vector \( E \) is multiplied by the original matrix \( T \), the result is the equilibrium vector \( E \). That is,
+
+    \[ ET = E, \quad \text{or} \quad \begin{bmatrix}
+            1/3 & 2/3
+        \end{bmatrix} \begin{bmatrix}
+            1/2 & 1/2 \\
+            1/4 & 3/4
+        \end{bmatrix} = \begin{bmatrix}
+            1/3 & 2/3
+        \end{bmatrix}. \]
+\end{solution}

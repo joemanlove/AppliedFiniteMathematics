@@ -1,0 +1,382 @@
+\section{Exponential Growth and Decay Models}
+
+In this section, you will learn to:
+\begin{enumerate}
+    \item Recognize and model exponential growth and decay.
+    \item Compare linear and exponential growth.
+    \item Distinguish between exponential and power functions.
+\end{enumerate}
+
+\subsection{Comparing Exponential and Linear Growth}
+
+Consider two social media sites that are expanding the number of users they have:
+\begin{itemize}
+    \item Site A has 10,000 users and expands by adding 1,500 new users each month.
+    \item Site B has 10,000 users and expands by increasing the number of users by 10\% each month.
+\end{itemize}
+
+The number of users for Site A can be modeled as linear growth. The number of users increases by a constant number, 1500, each month. If \( x \) represents the number of months that have passed and \( y \) is the number of users, the number of users after \( x \) months is given by \( y = 10000 + 1500x \).
+
+For Site B, the user base expands by a constant percent each month, rather than by a constant number. Growth that occurs at a constant percent each unit of time is called exponential growth.
+
+We can compare the growth for each site by examining the number of users for the first 12 months. The table shows the calculations for the first 4 months only, but the same calculation process is used to complete the remaining months.
+
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Month & Users at Site A      & Users at Site B                                   \\
+        \hline
+        0     & 10000                & 10000                                             \\
+        \hline
+        1     & 10000 + 1500 = 11500 & \( 10000 + 10\% \text{ of } 10000 \)              \\
+              &                      & \( = 10000 + 0.10(10000) = 10000(1.10) = 11000 \) \\
+        \hline
+        2     & 11500 + 1500 = 13000 & \( 11000 + 10\% \text{ of } 11000 \)              \\
+              &                      & \( = 11000 + 0.10(11000) = 11000(1.10) = 12100 \) \\
+        \hline
+        3     & 13000 + 1500 = 14500 & \( 12100 + 10\% \text{ of } 12100 \)              \\
+              &                      & \( = 12100 + 0.10(12100) = 12100(1.10) = 13310 \) \\
+        \hline
+        4     & 14500 + 1500 = 16000 & \( 13310 + 10\% \text{ of } 13310 \)              \\
+              &                      & \( = 13310 + 0.10(13310) = 13310(1.10) = 14641 \) \\
+        \hline
+        5     & 17500                & 16105                                             \\
+        \hline
+        6     & 19000                & 17716                                             \\
+        \hline
+        7     & 20500                & 19487                                             \\
+        \hline
+        8     & 22000                & 21436                                             \\
+        \hline
+        9     & 23500                & 23579                                             \\
+        \hline
+        10    & 25000                & 25937                                             \\
+        \hline
+        11    & 26500                & 28531                                             \\
+        \hline
+        12    & 28000                & 31384                                             \\
+        \hline
+    \end{tabular}
+\end{center}
+
+For Site B, we can re-express the calculations to observe the patterns and develop a formula for the number of users after \( x \) months:
+\begin{align*}
+    \text{Month 1: } & y = 10000(1.1) = 11000                                    \\
+    \text{Month 2: } & y = 11000(1.1) = 10000(1.1)(1.1) = 10000(1.1)^2 = 12100   \\
+    \text{Month 3: } & y = 12100(1.1) = 10000(1.1)^2(1.1) = 10000(1.1)^3 = 13310 \\
+    \text{Month 4: } & y = 13310(1.1) = 10000(1.1)^3(1.1) = 10000(1.1)^4 = 14641 \\
+\end{align*}
+
+By observing the patterns in the calculations for months 2, 3, and 4, we can generalize the formula. After \( x \) months, the number of users \( y \) is given by the function \( y = 10000(1.1)^x \).
+
+\subsection{Using Exponential Functions to Model Growth and Decay}
+
+In exponential growth, the value of the dependent variable \( y \) increases at a constant percentage rate as the value of the independent variable \( x \) (or \( t \)) increases. Examples of exponential growth functions include:
+\begin{itemize}
+    \item The number of residents of a city or nation that grows at a constant percent rate.
+    \item The amount of money in a bank account that earns interest if money is deposited at a single point in time and left in the bank to compound without any withdrawals.
+\end{itemize}
+
+In exponential decay, the value of the dependent variable \( y \) decreases at a constant percentage rate as the value of the independent variable \( x \) (or \( t \)) increases. Examples of exponential decay functions include:
+\begin{itemize}
+    \item Value of a car or equipment that depreciates at a constant percent rate over time.
+    \item The amount a drug that still remains in the body as time passes after it is ingested.
+    \item The amount of radioactive material remaining over time as a radioactive substance decays.
+\end{itemize}
+
+Exponential functions often model quantities as a function of time; thus, we often use the letter \( t \) as the independent variable instead of \( x \).
+
+\begin{summarybox}{Exponential Growth}
+    \begin{enumerate}
+        \item Quantity grows by a constant percent per unit of time.
+        \item \( y = ab^x \)
+        \item \( a \) is a positive number representing the initial value of the function when \( x = 0 \).
+        \item \( b \) is a real number that is greater than 1: \( b > 1 \).
+        \item The growth rate \( r \) is a positive number, \( r > 0 \) where \( b = 1 + r \) (so that \( r = b - 1 \)).
+    \end{enumerate}
+\end{summarybox}
+\begin{summarybox}{Exponential Decay}
+    \begin{enumerate}
+        \item Quantity decreases by a constant percent per unit of time.
+        \item \( y = ab^x \)
+        \item \( a \) is a positive number representing the initial value of the function when \( x = 0 \).
+        \item \( b \) is a real number that is between 0 and 1: \( 0 < b < 1 \).
+        \item The decay rate \( r \) is a negative number, \( r < 0 \) where \( b = 1 + r \) (so that \( r = b - 1 \)).
+    \end{enumerate}
+\end{summarybox}
+
+In general, the domain of exponential functions is the set of all real numbers. The range of an exponential growth or decay function is the set of all positive real numbers.
+
+In most applications, the independent variable \( x \) or \( t \) represents time. When the independent variable represents time, we may choose to restrict the domain so that the independent variable can have only non-negative values for the application to make sense. If we restrict the domain, then the range is also restricted.
+\begin{itemize}
+    \item For an exponential growth function \( y = ab^x \) with \( b > 1 \) and \( a > 0 \), if we restrict the domain so that \( x \geq 0 \), then the range is \( y \geq a \).
+    \item For an exponential decay function \( y = ab^x \) with \( 0 < b < 1 \) and \( a > 0 \), if we restrict the domain so that \( x \geq 0 \), then the range is \( 0 < y \leq a \).
+\end{itemize}
+
+\begin{example}\label{example_linear_vs_exponential_growth}
+    Consider the growth models for social media sites A and B, where \( x \) = number of months since the site was started and \( y \) = number of users.
+    The number of users for Site A follows the linear growth model:
+    \[ y = 10000 + 1500x. \]
+    The number of users for Site B follows the exponential growth model:
+    \[ y = 10000 \cdot (1.1)^x \]
+    For each site, use the function to calculate the number of users at the end of the first year, to verify the values in the table. Then use the functions to predict the number of users after 30 months.
+\end{example}
+
+\begin{solution}
+    Since \( x \) is measured in months, then \( x = 12 \) at the end of one year.
+
+    \textbf{Linear Growth Model:}
+    When \( x = 12 \) months, then \( y = 10000 + 1500(12) = 28000 \) users.
+    When \( x = 30 \) months, then \( y = 10000 + 1500(30) = 55000 \) users.
+
+    \textbf{Exponential Growth Model:}
+    When \( x = 12 \) months, then \( y = 10000 \cdot (1.1)^{12} \) = 31384 users. % Use actual calculation if necessary
+    When \( x = 30 \) months, then \( y = 10000 \cdot (1.1)^{30} \) = 174494 users. % Use actual calculation if necessary
+\end{solution}
+
+We see that as \( x \), the number of months, gets larger, the exponential growth function grows larger faster than the linear function (even though in the initial stages the linear function grew faster). This is an important characteristic of exponential growth: exponential growth functions always grow faster and larger in the long run than linear growth functions.
+
+It is helpful to use function notation, writing \( y = f(x) = ab^x \), to specify the value of \( x \) at which the function is evaluated.
+
+\begin{example}
+    A forest has a population of 2000 squirrels that is increasing at the rate of 3\% per year. Let \( t \) be the number of years and \( y = f(t) \) the number of squirrels at time \( t \).
+
+    \begin{enumerate}
+        \item Find the exponential growth function that models the number of squirrels in the forest at the end of \( t \) years.
+        \item Use the function to find the number of squirrels after 5 years and after 10 years.
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    \begin{enumerate} The exponential decay function is \( y = g(t) = ab^t \), , where the initial population \( a = 2000 \) squirrels, and the growth rate \( r = 3\% = 0.03 \) per year, hence \( b = 1 + r = 1.03 \).
+        \item The exponential growth function is \( y = f(t) = 2000(1.03^t) \)
+        \item After 5 years, the population is \( y = f(5) = 2000(1.03^5) \approx 2315.25 \) squirrels. After 10 years, the population is \( y = f(10) = 2000(1.03^{10}) \approx 2691.70 \) squirrels.
+    \end{enumerate}
+\end{solution}
+
+
+
+\begin{example}
+    A large lake has a population of 1000 frogs. Unfortunately, the frog population is decreasing at the rate of 5\% per year. Let \( t \) represent the number of years and \( y = g(t) \) the number of frogs in the lake at time \( t \).
+    \begin{enumerate}
+        \item Find the exponential decay function that models the frog population.
+        \item Calculate the population size after 10 years.
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    The exponential decay function is \( y = g(t) = ab^t \), where \( a = 1000 \) is the initial population of frogs, and the decay rate is 5\% per year, which translates to \( r = -0.05 \). Therefore, \( b = 1 + r = 0.95 \).
+    \begin{enumerate}
+        \item The function modeling the frog population is \( y = g(t) = 1000(0.95)^t \).
+        \item After 10 years, the population is \( y = g(10) = 1000(0.95)^{10} \approx 599 \) frogs, showing a significant decrease due to the yearly decline.
+    \end{enumerate}
+\end{solution}
+
+\begin{example}\label{example_exponential_growth_of_bacteria}
+    A bacteria population is described by the function \( y = f(t) = 100(2^t) \), where \( t \) is the time in hours, and \( y \) is the number of bacteria.
+    \begin{enumerate}
+        \item What is the initial population?
+        \item What is change after the first hour?
+        \item How long does it take for the population to reach 800 bacteria?
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    ~\\
+    \begin{enumerate}
+        \item The initial population is \( y = f(0) = 100(2^0) = 100 \) bacteria, as \( a = 100 \) in the function \( f(t) \).
+        \item After one hour, the population doubles to \( y = f(1) = 100(2^1) = 200 \) bacteria.
+        \item To find when the population reaches 800, solve \( 800 = 100(2^t) \):
+              \begin{align*}
+                  800           & = 100(2^t) \\
+                  8             & = 2^t      \\
+                  2^3           & = 2^t      \\
+                  \Rightarrow t & = 3.
+              \end{align*}
+              It takes 3 hours for the population to grow to 800 bacteria.
+    \end{enumerate}
+
+\end{solution}
+
+Important notes about Example \ref{example_exponential_growth_of_bacteria}:
+
+\begin{enumerate}
+    \item In solving \( 8 = 2t \), we "knew" that \( t \) is 3. But we usually cannot know the value of the variable just by looking at the equation. Later, we will use logarithms to solve equations that have the variable in the exponent.
+
+    \item To solve \( 800 = 100(2^t) \), we divided both sides by 100 to isolate the exponential expression \( 2^t \). We cannot multiply 100 by 2. Even if we write it as \( 800 = 100(2)t \), which is equivalent, we still cannot multiply 100 by 2. The exponent applies only to the quantity immediately before it, so the exponent \( t \) applies only to the base of 2.
+\end{enumerate}
+
+\subsection{Comparing Linear, Exponential, and Power Functions}
+
+To identify the type of function from its formula, we need to carefully note the position that the variable occupies in the formula.
+
+\begin{summarybox}{Comparing Functions}
+    \begin{itemize}
+        \item A \textbf{linear function} can be written in the form \( y = ax + b \). As we studied in Chapter \ref{chapter_linear_functions}, there are other forms in which linear equations can be written, but linear functions can all be rearranged to have the form \( y = mx + b \).
+        \item An \textbf{exponential function} has the form \( y = ab^x \), where the variable \( x \) is in the exponent. The base \( b \) is a positive number:
+              \begin{itemize}
+                  \item If \( b > 1 \), the function represents exponential growth.
+                  \item If \( 0 < b < 1 \), the function represents exponential decay.
+              \end{itemize}
+        \item A \textbf{power function} has the form \( y = cx^p \), where the variable \( x \) is in the base. The exponent \( p \) is a non-zero number.
+
+    \end{itemize}
+\end{summarybox}
+
+We compare three functions:
+\begin{itemize}
+    \item linear function \( y = f(x) = 2x \)
+    \item exponential function \( y = g(x) = 2^x \)
+    \item power function \( y = h(x) = x^2 \)
+\end{itemize}
+
+\begin{center}
+    \begin{tabular}{c|c|c|c}
+        \( x \) & \( f(x) = 2x \) & \( g(x) = 2^x \) & \( h(x) = x^2 \) \\
+        \hline
+        0       & 0               & 1                & 0                \\
+        1       & 2               & 2                & 1                \\
+        2       & 4               & 4                & 4                \\
+        3       & 6               & 8                & 9                \\
+        4       & 8               & 16               & 16               \\
+        5       & 10              & 32               & 25               \\
+        6       & 12              & 64               & 36               \\
+        10      & 20              & 1024             & 100              \\
+        %         & Linear                           & Exponential                     & Power                               \\
+        % \hline
+        %         & \( y = mx + b \)                 & \( y = ab^x \)                  & \( y = cx^p \)                      \\
+        % \hline
+        %         & all terms are first degree       & base is a number \( b>0 \)      & variable is in the base             \\
+        %         & \( m \) is slope                 & the variable is in the exponent & exponent is a number \( p \neq 0 \) \\
+        %         & \( b \) is the \( y \) intercept &                                 &                                     \\
+        % \hline
+        %         &                                  &                                 &                                     \\
+        %         &                                  &                                 &                                     \\
+        %         &                                  &                                 &                                     \\
+    \end{tabular}
+\end{center}
+
+For the functions in the previous table: the linear function \( y = f(x) = 2x \), the exponential function \( y = g(x) = 2^x \), and the power function \( y = h(x) = x^2 \), if we restrict the domain to \( x \geq 0 \) only, then all these functions are growth functions. When \( x \geq 0 \), the value of \( y \) increases as the value of \( x \) increases.
+
+The exponential growth function grows larger faster than the linear and power functions as \( x \) gets large. This is always true of exponential growth functions as \( x \) gets large enough.
+
+Notice that for equal intervals of change in \(x\)
+\begin{itemize}
+    \item with a linear function \(y\) increases by addition of a constant amount.
+    \item with an exponential function, \(y\) is mulitplied by a constant amount.
+    \item with a power function neither of these is true.
+\end{itemize}
+
+\begin{example}
+    Classify the functions below as exponential, linear, or power functions.
+    \begin{enumerate}
+        \item[\textbf{a.}] \( y = 10x^3 \)
+        \item[\textbf{b.}] \( y = 1000 - 30x \)
+        \item[\textbf{c.}] \( y = 1000(1.05^x) \)
+        \item[\textbf{d.}] \( y = 500(0.75^x) \)
+        \item[\textbf{e.}] \( y = 10\sqrt[3]{x} = x^{1/3} \)
+        \item[\textbf{f.}] \( y = 5x - 1 \)
+        \item[\textbf{g.}] \( y = \frac{6}{x^2} = 6x^{-2} \)
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    The exponential functions are
+    \begin{itemize}
+        \item[\textbf{c.}] \( y = 1000(1.05^x) \) The variable is in the exponent; the base is the number \( b = 1.05 \).
+        \item[\textbf{d.}] \( y = 500(0.75^x) \) The variable is in the exponent; the base is the number \( b = 0.75 \).
+    \end{itemize}
+
+    The linear functions are
+    \begin{itemize}
+        \item[\textbf{b.}] \( y = 1000 - 30x \)
+        \item[\textbf{f.}] \( y = 5x - 1 \)
+    \end{itemize}
+
+    The power functions are
+    \begin{itemize}
+        \item[\textbf{a.}] \( y = 10x^3 \) The variable is the base; the exponent is a fixed number, \( p = 3 \).
+        \item[\textbf{e.}] \( y = 10\sqrt[3]{x} = 10x^{1/3} \) The variable is the base; the exponent is a number, \( p = 1/3 \).
+        \item[\textbf{g.}] \( y = \frac{6}{x^2} = 6x^{-2} \) The variable is the base; the exponent is a number, \( p = -2 \).
+    \end{itemize}
+\end{solution}
+
+\subsection{The Natural Base}
+
+The number \( e \) is often used as the base of an exponential function and is called the natural base. It is approximately \( 2.71828 \) and is an irrational number with an infinite never repeating decimal expansion. The reader may be familiar with another famous irrational number, \( \pi\). Section \ref{subsection_continuous_compounding} shows how the value of \( e \) enters the world of finance and why this number is mathematically important.
+
+When \( e \) is the base in an exponential growth or decay function, it is referred to as continuous growth or continuous decay. We will use \( e \) in Chapter \ref{chapter_mathematics_of_finance} in financial calculations when we examine interest that compounds continuously.
+
+Any exponential function can be written in the form \( y = ae^{kx} \), where \( k \) is called the continuous growth or decay rate:
+\begin{itemize}
+    \item If \( k > 0 \), the function represents exponential growth.
+    \item If \( k < 0 \), the function represents exponential decay.
+\end{itemize}
+The initial value \( a \) is the starting amount of whatever is growing or decaying.
+
+We can rewrite the function in the form \( y = ab^x \), where \( b = e^k \).
+
+In general, if we know one form of the equation, we can find the other forms. For now, we have not yet covered the skills to find \( k \) when we know \( b \). After we learn about logarithms later in this chapter, we will find \( k \) using the natural logarithm: \( k = \ln(b) \).
+
+The table below summarizes the forms of exponential growth and decay functions.
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+                                                 & \(\boldsymbol{y = ab^x}\) & \(\boldsymbol{y = a(1+r)^x}\) & \(\boldsymbol{y = ae^{kx}}, \boldsymbol{k \neq 0}\) \\
+        \hline
+        Initial value                            & \(a>0\)                   & \(a>0\)                       & \(a>0\)                                             \\
+        \hline
+        Relationship between \(b\), \(r\), \(k\) & \(b > 0\)                 & \(b=1+ r\)                    & \(b = e^k\) and \(k = \ln b\)                       \\
+        \hline
+        Growth                                   & \(b > 1\)                 & \(r > 0\)                     & \(k > 0\)                                           \\
+        \hline
+        Decay                                    & \(0 < b < 1\)             & \(r < 0\)                     & \(k < 0\)                                           \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\begin{example}
+    The value of houses in a city are increasing at a continuous growth rate of \(6\%\) per year. For a house that currently costs \( \$400,000 \):
+    \begin{enumerate}
+        \item Write the exponential growth function in the form \( y = ae^{kx} \).
+        \item What would be the value of this house 4 years from now?
+        \item Rewrite the exponential growth function in the form \( y = ab^x \).
+        \item Find and interpret \( r \).
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    ~\\
+    \begin{enumerate}
+        \item The initial value of the house is \( a = \$400,000 \). The problem states that the continuous growth rate is \( 6\% \) per year, so \( k = 0.06 \). The growth function is: \( y = 400000e^{0.06x} \).
+
+        \item After 4 years, the value of the house is \( y = 400000e^{0.06(4)} \approx \$508,500 \).
+
+        \item To rewrite \( y = 400000e^{0.06x} \) in the form \( y = ab^x \), we use the fact that \( b = e^k \). Therefore, \( b = e^{0.06} \approx 1.061836547 \approx 1.0618 \) and the function becomes \( y = 400000(1.0618)^x \).
+
+        \item To find \( r \), we use the fact that \( b = 1 + r \). Given \( b = 1.0618 \), we solve \( 1 + r = 1.0618 \) which gives \( r = 0.0618 \). The value of the house is increasing at an annual rate of \( 6.18\% \).
+    \end{enumerate}
+\end{solution}
+
+\begin{example}
+    Suppose that the value of a certain model of new car decreases at a continuous decay rate of \(8\%\) per year. For a car that costs \( \$20,000 \) when new:
+    \begin{enumerate}
+        \item Write the exponential decay function in the form \( y = ae^{kx} \).
+        \item What would be the value of this car 5 years from now?
+        \item Rewrite the exponential decay function in the form \( y = ab^x \).
+        \item Find and interpret \( r \).
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    \begin{enumerate}
+        \item The initial value of the car is \( a = \$20,000 \). The problem states that the continuous decay rate is \( 8\% \) per year, so \( k = -0.08 \). The decay function is: \( y = 20000e^{-0.08x} \).
+
+        \item After 5 years, the value of the car is \( y = 20000e^{-0.08(5)} \approx \$13,406.40 \).
+
+        \item To rewrite \( y = 20000e^{-0.08x} \) in the form \( y = ab^x \), we use the fact that \( b = e^k \). Therefore, \( b = e^{-0.08} \approx 0.9231163464 \approx 0.9231 \) and the function becomes \( y = 20000(0.9231)^x \).
+
+        \item To find \( r \), we use the fact that \( b = 1 + r \). Given \( b = 0.9231 \), we solve \( 1 + r = 0.9231 \) which gives \( r = -0.0769 \). The value of the car is decreasing at an annual rate of \( 7.69\% \).
+    \end{enumerate}
+\end{solution}

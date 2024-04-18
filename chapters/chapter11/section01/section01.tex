@@ -1,0 +1,80 @@
+\section{Strictly Determined Games}
+
+In this section, you will learn to:
+\begin{enumerate}
+    \item tell if a game is strictly determined.
+    \item find the optimal strategy for strictly determined games.
+    \item determine the value of a strictly determined game.
+\end{enumerate}
+
+Game theory is one of the newest branches of mathematics. It first came to light when a brilliant mathematician named Dr. John von Neumann co-authored a book titled \textit{Theory of Games and Economic Behavior} with Dr. Morgenstern. Since then, it has played an important role in decision making in business, economics, social sciences, and other fields.
+
+In this chapter, we will study games that involve only two players. In these games, since a win for one person is a loss for the other, we refer to them as two-person zero-sum games. Although the games we will study here are fairly simple, they will provide us with an understanding of how games work and how they are applied in practical situations. We begin with an example.
+
+\begin{example}
+    Robert and Carol decide to play a game using a dime and a quarter. Each chooses one of the two coins, puts it in their hand and closes their fist. At a given signal, they simultaneously open their fists. If the sum of the coins is less than 35 cents, Robert gets both coins, otherwise, Carol gets both coins. Write the matrix for the game, determine the optimal strategies for each player, and find the expected payoff for Robert.
+\end{example}
+
+\begin{solution}
+    Suppose Robert is the row player, that is, he plays the rows, and Carol is a column player. The following matrix depicts all four cases and their corresponding payoffs for Robert, with a negative value indicating a loss for Robert and a win for Carol.
+
+    \[
+        \begin{array}{cc|cc}
+                          &                & \text{Carol} &                \\
+                          &                & \text{Dime}  & \text{Quarter} \\
+            \hline
+            \text{Robert} & \text{Dime}    & 10           & -10            \\
+                          & \text{Quarter} & -25          & 25             \\
+        \end{array}
+    \]
+
+    The best strategy for Robert is to always show a quarter because this way the worst he can do is lose ten cents. And, the best strategy for Carol is to always show a quarter because that way the worst she can do is to lose ten cents. If they both follow their optimal strategies, Robert will lose ten cents each time. Therefore, the value of the game is negative ten cents for Robert.
+\end{solution}
+
+In the above example, since there is only one fixed optimal strategy for each player, regardless of their opponent's strategy, we say the game possesses a \textbf{pure strategy} and is \textbf{strictly determined}.
+
+Next, we formulate a method to find the optimal strategy for each player and the value of the game.  The method involves considering the worst scenario for each player.
+
+To consider the worst situation, the row player considers the minimum value in each row, and the column player considers the maximum value in each column.  Note that the maximum value really represents a minimum value for the column player because the game matrix depicts the payoffs for the row player.   We list the method below.
+
+\begin{summarybox}{Finding the Optimal Strategy and the Value for Strictly Determined Games}
+    \begin{enumerate}
+        \item Put an asterisk (*) next to the minimum entry in each row.
+        \item Put a box around the maximum entry in each column.
+        \item The entry that has both an asterisk and a box represents the value of the game and is called a saddle point.
+        \item The row that is associated with the saddle point represents the best strategy for the row player, and the column that is associated with the saddle point represents the best strategy for the column player.
+        \item A game matrix can have more than one saddle point, but all saddle points have the same value.
+        \item If no saddle point exists, the game is not strictly determined. Non-strictly determined games are the subject of the next section.
+    \end{enumerate}
+\end{summarybox}
+
+\begin{example}
+    Find the saddle points and optimal strategies for the following game.
+    \[
+        \begin{array}{c|cc}
+                              & \text{Column Player} &    \\
+            \hline
+            \text{Row Player} & -25                  & 10 \\
+                              & 10                   & 50 \\
+        \end{array}
+    \]
+\end{example}
+
+\begin{solution}
+    We find the saddle point by placing an asterisk next to the minimum entry in each row, and by putting a box around the maximum entry in each column as shown below.
+
+    \[
+        \begin{array}{c|cc}
+                              & \text{Column Player} &           \\
+            \hline
+            \text{Row Player} & -25\text{*}          & 10        \\
+                              & \fbox{10\text{*}}    & \fbox{50} \\
+        \end{array}
+    \]
+
+    Since the second row, first column entry, which happens to be 10, has both an asterisk and a box, it is a saddle point. This implies that the value of the game is 10, and the optimal strategy for the row player is to always play row 2, and the optimal strategy for the column player is to always play column 1. If both players play their optimal strategies, the row player will win 10 units each time.
+
+    The row player's strategy is written as $\begin{bmatrix} 0 & 1 \end{bmatrix}$ indicating that he will play row 1 with a probability of 0 and row 2 with a probability of 1.
+
+    Similarly, the column player's strategy is written as $\begin{bmatrix} 1 \\ 0 \end{bmatrix}$ implying that he will play column 1 with a probability of 1, and column 2 with a probability of 0.
+\end{solution}

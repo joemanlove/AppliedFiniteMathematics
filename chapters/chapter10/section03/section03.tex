@@ -1,0 +1,381 @@
+\section{Regular Markov Chains}
+
+In this section, you will learn to:
+\begin{enumerate}
+    \item Identify Regular Markov Chains, which have an equilibrium or steady state in the long run.
+    \item Find the long term equilibrium for a Regular Markov Chain.
+\end{enumerate}
+
+At the end of Section \ref{section_markov_chains}, we examined the transition matrix \( T \) for Professor Symons walking and biking to work Examples \ref{example_walk_bike_transition_matrix}, \ref{example_walk_bike_transition_matrix3_and_4}, \ref{example_walk_bike_transition_matrix_infinity}. As we calculated higher and higher powers of \( T \), the matrix started to stabilize, and finally, it reached its steady-state or state of equilibrium. When that happened, all the row vectors became the same, and we called one such row vector a fixed probability vector or an equilibrium vector \( E \). Furthermore, we discovered that \( ET = E \).
+
+In this section, we wish to answer the following four questions:
+\begin{enumerate}
+    \item Does every Markov chain reach a state of equilibrium? Is there a way to determine if a Markov chain reaches a state of equilibrium?
+    \item Does the product of an equilibrium vector and its transition matrix always equal the equilibrium vector? That is, does \( ET = E \)?
+    \item Can the equilibrium vector \( E \) be found without raising the matrix to higher powers?
+    \item Does the long-term market share distribution for a Markov chain depend on the initial market share?
+\end{enumerate}
+
+\subsection{Does every Markov chain reach the state of equilibrium?}
+
+No. Some Markov chains reach a state of equilibrium, but some do not. Some Markov chain transitions do not settle down to a fixed or equilibrium pattern. Therefore, we'd like to have a way to identify Markov chains that do reach a state of equilibrium.
+
+One type of Markov chains that do reach a state of equilibrium are called regular Markov chains.
+\begin{definition}
+    A Markov chain is said to be a \textbf{regular Markov chain} if some power of its transition matrix \( T \) has only positive entries.
+\end{definition}
+
+To determine if a Markov chain is regular, we examine its transition matrix \( T \) and powers, \( T^n \), of the transition matrix. If we find any power \( n \) for which \( T^n \) has only positive entries (no zero entries), then we know the Markov chain is regular and is guaranteed to reach a state of equilibrium in the long run.
+
+Fortunately, we don't have to examine too many powers of the transition matrix \( T \) to determine if a Markov chain is regular; we use technology, calculators, or computers to do the calculations. There is a theorem that says that if an \( n \times n \) transition matrix represents \( n \) states, then we need only examine powers \( T^m \) up to \( m = (n-1)^2 + 1 \).
+
+If some power of the transition matrix \( T^m \) is going to have only positive entries, then that will occur for some power \( m \leq (n-1)^2 + 1 \).
+
+For example, if \( T \) is a \( 3 \times 3 \) transition matrix, then \( m = (n-1)^2 + 1 = (3-1)^2 + 1 = 5 \).
+
+\begin{itemize}
+    \item If we examine \( T \), \( T^2 \), \( T^3 \), \( T^4 \), and \( T^5 \), and find that any of those matrices have only positive entries, then we know \( T \) is regular.
+    \item If, however, \( T \), \( T^2 \), \( T^3 \), \( T^4 \), and \( T^5 \) all have at least one zero entry and none of them have all positive entries, then we can stop checking. All higher powers of \( T \) will also have at least one zero entry, and \( T \) will not be regular.
+\end{itemize}
+
+\begin{example}
+    Determine whether the following Markov chains are regular.
+
+    \begin{enumerate}
+        \item \( A = \begin{bmatrix}
+                  0  & 1  \\
+                  .4 & .6
+              \end{bmatrix} \)
+
+        \item \( B = \begin{bmatrix}
+                  1  & 0  \\
+                  .3 & .7
+              \end{bmatrix} \)
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    \begin{enumerate}
+        \item The transition matrix \( A \) does not have all positive entries. But it is a regular Markov chain because
+              \[ A^2 = \begin{bmatrix}
+                      .4  & .6  \\
+                      .24 & .76
+                  \end{bmatrix} \]
+              has only positive entries.
+
+        \item The matrix \( B \) is not a regular Markov chain because every power of \( B \) has an entry \( 0 \) in the first row, second column position.
+              \[ B = \begin{bmatrix}
+                      1  & 0  \\
+                      .3 & .7
+                  \end{bmatrix}, \quad B^2 = \begin{bmatrix}
+                      1  & 0  \\
+                      .3 & .7
+                  \end{bmatrix} \begin{bmatrix}
+                      1  & 0  \\
+                      .3 & .7
+                  \end{bmatrix} = \begin{bmatrix}
+                      1   & 0   \\
+                      .51 & .49
+                  \end{bmatrix} \]
+
+              Since \( B \) is a \( 2 \times 2 \) matrix, \( m = (2-1)^{2+1} = 2 \). We’ve examined \( B \) and \( B^2 \), and discovered that neither has all positive entries. We don’t need to examine any higher powers of \( B \); \( B \) is not a regular Markov chain.
+
+              In fact, we can show that all \( 2 \times 2 \) matrices that have a zero in the first row, second column position are not regular. Consider the following matrix \( M \).
+              \[ M = \begin{bmatrix}
+                      a & 0 \\
+                      b & c
+                  \end{bmatrix} \]
+
+              \[ M^2 = \begin{bmatrix}
+                      a & 0 \\
+                      b & c
+                  \end{bmatrix} \begin{bmatrix}
+                      a & 0 \\
+                      b & c
+                  \end{bmatrix} = \begin{bmatrix}
+                      a^2     & 0         \\
+                      ab + bc & b^2 + c^2
+                  \end{bmatrix} \]
+
+              Observe that the first row, second column entry, \( a \cdot 0 + 0 \cdot c \), will always be zero, regardless of what power we raise the matrix to.
+    \end{enumerate}
+\end{solution}
+
+
+
+
+\subsection{Does the product of an equilibrium vector and its transition matrix always equal the equilibrium vector?}
+
+In more mathematical notation this question amounts to ``does $ET = E$?''. At this point, the reader may have already guessed that the answer is yes if the transition matrix is a regular Markov chain.  We try to illustrate with the following example (\ref{example_ISP_transition_matrix}) from Section \ref{section_markov_chains}.
+
+A city is served by two ISPs, Crocks and Xminity. Due to their aggressive sales tactics, each year \( 40\% \) of Crocks customers switch to Xminity; the other \( 60\% \) of Crocks customers stay with Crocks. On the other hand, \( 30\% \) of the Xminity customers switch to Crocks and \( 70\% \) of Xminity customers stay with Xminity.
+
+The transition table is given below.
+
+\[
+    \begin{array}{c|cc}
+                       & \text{Crocks} & \text{Xminity} \\
+        \hline
+        \text{Crocks}  & 0.60          & 0.40           \\
+        \text{Xminity} & 0.30          & 0.70           \\
+    \end{array}
+\]
+
+If the initial market share for Crocks is \( 20\% \) and for Xminity is \( 80\% \), we'd like to know the long term market share for each company.
+
+Let matrix \( T \) denote the transition matrix for this Markov chain, and \( V_0 \) denote the matrix that represents the initial market share. Then \( V_0 \) and \( T \) are as follows:
+
+\[
+    V_0 = \begin{bmatrix}
+        0.20 & 0.80 \\
+    \end{bmatrix}
+    \quad \text{and} \quad
+    T = \begin{bmatrix}
+        0.60 & 0.40 \\
+        0.30 & 0.70 \\
+    \end{bmatrix}
+\]
+
+Since each year people switch according to the transition matrix \( T \), after one year the distribution for each company is as follows:
+
+\[
+    V_1 = V_0 \cdot T = \begin{bmatrix}
+        0.20 & 0.80 \\
+    \end{bmatrix} \cdot \begin{bmatrix}
+        0.60 & 0.40 \\
+        0.30 & 0.70 \\
+    \end{bmatrix} = \begin{bmatrix}
+        0.36 & 0.64 \\
+    \end{bmatrix}
+\]
+
+After two years, the market share for each company is
+
+\[
+    V_2 = V_1 \cdot T = \begin{bmatrix}
+        0.36 & 0.64 \\
+    \end{bmatrix} \cdot \begin{bmatrix}
+        0.60 & 0.40 \\
+        0.30 & 0.70 \\
+    \end{bmatrix} = \begin{bmatrix}
+        0.408 & 0.592 \\
+    \end{bmatrix}
+\]
+
+After three years the distribution is
+
+\[
+    V_3 = V_2 \cdot T = \begin{bmatrix}
+        0.408 & 0.592 \\
+    \end{bmatrix} \cdot \begin{bmatrix}
+        0.60 & 0.40 \\
+        0.30 & 0.70 \\
+    \end{bmatrix} = \begin{bmatrix}
+        0.4224 & 0.5776 \\
+    \end{bmatrix}
+\]
+
+
+After 20 years the market share are given by \( V_{20} = V_0 T^{20}  = \begin{bmatrix}
+    3/7 & 4/7
+\end{bmatrix} \).
+
+After 21 years, \( V_{21} = V_{20} T^{21}  = \begin{bmatrix}
+    3/7 & 4/7
+\end{bmatrix}\) ; market shares are stable and did not change.
+
+The market share after 20 years has stabilized to \( \begin{bmatrix}
+    3/7 & 4/7
+\end{bmatrix} \). This means that
+
+\[
+    \begin{bmatrix}
+        3/7 & 4/7
+    \end{bmatrix}
+    \begin{bmatrix}
+        .60 & .40 \\
+        .30 & .70
+    \end{bmatrix} = \begin{bmatrix}
+        3/7 & 4/7
+    \end{bmatrix}
+\]
+
+Once the market share reaches an equilibrium state, it stays the same, that is, \( ET = E \).
+
+This helps us answer the next question.
+
+\subsection{Can the equilibrium vector E be found without raising the transition matrix T to large powers?}
+
+The answer to the second question provides us with a way to find the equilibrium vector $E$. The answer lies in the fact that $ET = E$. Since we have the matrix $T$, we can determine E from the statement $ET = E$.
+
+Suppose \(E=\begin{bmatrix} e & 1-e \end{bmatrix}\), then \(ET=E\) gives us
+\[
+    \begin{bmatrix}
+        e & 1-e
+    \end{bmatrix}
+    \begin{bmatrix}
+        .60 & .40 \\
+        .30 & .70
+    \end{bmatrix} = \begin{bmatrix}
+        e & 1-e
+    \end{bmatrix}
+\]
+
+\[
+    \begin{bmatrix}
+        (.60)e + .30(1-e) & (.40)e + .70(1-e)
+    \end{bmatrix} = \begin{bmatrix}
+        e & 1-e
+    \end{bmatrix}
+\]
+
+\[
+    \begin{bmatrix}
+        .30e + .30 & -.30e + .70
+    \end{bmatrix} = \begin{bmatrix}
+        e & 1-e
+    \end{bmatrix}
+\]
+
+Solving the system we get \( .30e + .30 = e \) which simplifies to \( e = 3/7 \).
+
+Therefore, \( E=\begin{bmatrix} 3/7 & 4/7 \end{bmatrix} \).
+
+As a result of our work in questions 2 and 3, we see that we have a choice of methods to find the equilibrium vector.
+
+\subsubsection*{Method 1: We can determine if the transition matrix \( T \) is regular. If \( T \) is regular, we know there is an equilibrium and we can use technology to find a high power of \( T \).}
+\begin{itemize}
+    \item For the question of what is a sufficiently high power of \( T \), there is no “exact” answer.
+    \item  Select a “high power”, such as \( n = 30 \), \( n = 50 \), or \( n = 98 \). Evaluate \( T^n \) on your calculator or with a computer. Check if \( T^{n+1} = T^n \). If \( T^{n+1} = T^n \) and all the rows of \( T^n \) are the same, then we’ve found the equilibrium. The equilibrium vector is one row of \( T^n \). But if you did not find equilibrium yet for a regular Markov chain, try using a higher power of \( T \).
+\end{itemize}
+
+\subsubsection*{Method 2: We can solve the matrix equation \( ET = E \).}
+\begin{itemize}
+    \item The disadvantage of this method is that it is a bit harder, especially if the transition matrix is larger than \( 2 \times 2 \). However, it’s not as hard as it seems if \( T \) is not too large a matrix, because we can use the methods we learned in Chapter \ref{chapter_matrices} to solve the system of linear equations rather than doing the algebra by hand.
+    \item The advantage of solving \( ET = E \) as in Method 2 is that it can be used with matrices that are not regular. If a matrix is regular, it is guaranteed to have an equilibrium solution. If a matrix is not regular, then it may or may not have an equilibrium solution, and solving \( ET = E \) will allow us to prove that it has an equilibrium solution even if the matrix is not regular. (In mathematics, we say that being a regular matrix is a “sufficient” condition for having an equilibrium but is not a necessary condition.)
+\end{itemize}
+
+\subsection{Does the long term market share for a Markov chain depend on the initial market share?}
+
+We will show that the final market share distribution for a Markov chain does not depend upon the initial market share.   In fact, one does not even need to know the initial market share distribution to find the long term distribution. Furthermore, the final market share distribution can be found by simply raising the transition matrix to higher powers.
+
+Consider the initial market share \( V_0=\begin{bmatrix} .20 & .80 \end{bmatrix} \) and the transition matrix from our ISP example above (originaly Example \ref{example_ISP_transition_matrix})
+\[
+    T=     \begin{bmatrix}
+        .60 & .40 \\
+        .30 & .70
+    \end{bmatrix}
+\]
+
+Recall we found \(T^n\), for very large \(n\), to be
+\[
+    \begin{bmatrix}
+        3/7 & 4/7 \\
+        3/7 & 4/7
+    \end{bmatrix}.
+\]
+
+Using our calculators, we can easily verify that for sufficiently large \(n\) (we used \(n = 30\)),
+\[
+    V_0T^n=
+    \begin{bmatrix}
+        .20 & .80
+    \end{bmatrix}
+    \begin{bmatrix}
+        3/7 & 4/7 \\
+        3/7 & 4/7
+    \end{bmatrix} = \begin{bmatrix}
+        3/7 & 4/7
+    \end{bmatrix}.
+\]
+
+No matter what the initial market share, the product is \(\begin{bmatrix}
+    3/7 & 4/7
+\end{bmatrix}\).
+If instead the initial share is \(W_0=\begin{bmatrix}
+    .10 & .90
+\end{bmatrix}\), then for sufficiently large \(n\)
+\[
+    W_0T^n=
+    \begin{bmatrix}
+        .10 & .90
+    \end{bmatrix}
+    \begin{bmatrix}
+        3/7 & 4/7 \\
+        3/7 & 4/7
+    \end{bmatrix} = \begin{bmatrix}
+        3/7 & 4/7
+    \end{bmatrix}.
+\]
+
+For any distribution \(A = \begin{bmatrix}
+    a & 1-a
+\end{bmatrix}\), for example,
+\[
+    \begin{bmatrix}
+        a & 1-a
+    \end{bmatrix}
+    \begin{bmatrix}
+        3/7 & 4/7 \\
+        3/7 & 4/7
+    \end{bmatrix} = \begin{bmatrix}
+        3/7(a) + 3/7(1-a) & 4/7(a) + 4/7(1-a)
+    \end{bmatrix}
+\]
+\[
+    = \begin{bmatrix}
+        3/7 & 4/7
+    \end{bmatrix}.
+\]
+
+It makes sense; the entry \(3/7(a) + 3/7(1-a)\), for example, will always equal \(3/7\).
+
+
+\begin{example}
+    Three companies, A, B, and C, compete against each other. The transition matrix \( T \) for people switching each month among them is given by the following transition table.
+
+    \[
+        \begin{array}{c|ccc}
+                             & \text{Company A} & \text{Company B} & \text{Company C} \\
+            \hline
+            \text{Company A} & .1               & .3               & .6               \\
+            \text{Company B} & .6               & .2               & .2               \\
+            \text{Company C} & .1               & .3               & .6               \\
+        \end{array}
+    \]
+
+    If the initial market share for the companies A, B, and C is \( \left[ .25 \ .35 \ .40 \right] \), what is the long term distribution?
+\end{example}
+
+\begin{solution}
+    Since the long term market share does not depend on the initial market share, we can simply find the transition matrix and raise the transition matrix to a large power and get the distribution.
+    \[
+        T = \begin{bmatrix}
+            0.1 & 0.3 & 0.6 \\
+            0.6 & 0.2 & 0.2 \\
+            0.1 & 0.3 & 0.6 \\
+        \end{bmatrix}
+    \]
+    \[
+        T^{20} = \left[ \begin{array}{ccc}
+                13/55 & 3/11 & 27/55 \\
+                13/55 & 3/11 & 27/55 \\
+                13/55 & 3/11 & 27/55 \\
+            \end{array} \right]
+    \]
+
+    In the long term, Company A has \( \frac{13}{55} \) (about \( 23.64\% \)) of the market share, Company B has \( \frac{3}{11} \) (about \( 27.27\% \)) of the market share, and Company C has \( \frac{27}{55} \) (about \( 49.09\% \)) of the market share.
+\end{solution}
+
+\begin{summarybox}{Regular Markov Chains}
+
+    A Markov chain is said to be a \textbf{Regular Markov chain} if some power of it has only positive entries.
+
+    Let \( T \) be a transition matrix for a regular Markov chain.
+    \begin{enumerate}
+        \item As we take higher powers of \( T \), \( T^n \), as \( n \) becomes large, approaches a state of equilibrium.
+        \item If \( V_0 \) is any distribution vector, and \( E \) an equilibrium vector, then \( V_0T^n \to E \) as \(n\to\infty\).
+        \item Each row of the equilibrium matrix \( T^\infty \) is a unique equilibrium vector \( E \) such that \( ET = E \).
+        \item The equilibrium distribution vector \( E \) can be found by letting \( ET = E \).
+    \end{enumerate}
+\end{summarybox}

@@ -1,9 +1,13 @@
+% \DocumentMetadata{testphase={phase-III,math}}
+
 \documentclass[12pt]{book}
 
 % Preamble with package includes, custom commands, etc.
 \input{preamble.tex}
 
 \begin{document}
+
+% \tagpdfsetup{tabsorder=structure,uncompress,activate-all}
 
 \frontmatter
 \title{Applied Finite Mathematics}
@@ -14,8 +18,18 @@
 
 \mainmatter
 % Include chapter files
-\include{chapters/chapter01/chapter01}
-% \include{chapters/chapter02}
+\import{chapters/chapter01}{chapter01}
+\import{chapters/chapter02}{chapter02}
+\import{chapters/chapter03}{chapter03}
+\import{chapters/chapter04}{chapter04}
+\import{chapters/chapter05}{chapter05}
+\import{chapters/chapter06}{chapter06}
+\import{chapters/chapter07}{chapter07}
+\import{chapters/chapter08}{chapter08}
+\import{chapters/chapter09}{chapter09}
+\import{chapters/chapter10}{chapter10}
+\import{chapters/chapter11}{chapter11}
+
 % Add more chapters as needed
 
 \backmatter

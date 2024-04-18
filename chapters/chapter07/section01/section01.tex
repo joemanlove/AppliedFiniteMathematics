@@ -1,0 +1,325 @@
+\section{Sets}
+
+In this section, you will learn to:
+\begin{enumerate}
+    \item Use set notation to represent unions, intersections, and complements of sets.
+    \item Use Venn diagrams to solve counting problems.
+\end{enumerate}
+
+\subsection{Introduction to Sets}
+
+In this section, we will familiarize ourselves with set operations and notations, so that we can apply these concepts to both counting and probability problems. We begin by defining some terms.
+
+A set is a collection of objects, and its members are called the elements of the set. We name the set by using capital letters and enclose its members in braces. Suppose we need to list the members of the chess club. We use the following set notation:
+
+\[ C = \{ \text{Ken, Bob, Tran, Shanti, Eric} \} \]
+
+\subsection{Empty Set, Set Equality, Subsets}
+
+A set that has no members is called an empty set. The empty set is denoted by the symbol $\emptyset$.
+
+Two sets are equal if they have the same elements.
+
+A set $A$ is a subset of a set $B$ if every member of $A$ is also a member of $B$. Suppose $C = \{ \text{Al, Bob, Chris, David, Ed} \}$ and $A = \{ \text{Bob, David} \}$. Then $A$ is a subset of $C$, written as $A \subseteq C$.
+
+Every set is a subset of itself, and the empty set is a subset of every set.
+
+\subsection{Union of Two Sets}
+
+Let $A$ and $B$ be two sets, then the union of $A$ and $B$, written as $A \cup B$, is the set of all elements that are either in $A$ or in $B$, or in both $A$ and $B$.
+
+\subsection{Intersection of Two Sets}
+
+Let $A$ and $B$ be two sets, then the intersection of $A$ and $B$, written as $A \cap B$, is the set of all elements that are common to both sets $A$ and $B$.
+
+A universal set $U$ is the set consisting of all elements under consideration.
+
+\subsection{Complement of a Set, Disjoint Sets}
+
+Let $A$ be any set, then the complement of set $A$, written as $\overline{A}$, is the set consisting of elements in the universal set $U$ that are not in $A$. This can also be written as $U-A$, which is said ``$U$ less $A$''.
+
+Two sets $A$ and $B$ are called disjoint sets if their intersection is an empty set. Clearly, a set and its complement are disjoint; however, two sets can be disjoint and not be complements.
+
+
+\begin{example}
+    List all the subsets of the set of primary colors $\{red, yellow, blue\}$.
+\end{example}
+\begin{solution}
+    The subsets are $\emptyset$, $\{red\}$, $\{yellow\}$, $\{blue\}$, $\{red, yellow\}$, $\{red, blue\}$, $\{yellow, blue\}$, $\{red, yellow, blue\}$.
+
+    Note that the empty set is a subset of every set, and a set is a subset of itself.
+\end{solution}
+
+\begin{example}
+    Let $F = \{Aikman, Jackson, Rice, Sanders, Young\}$, and let $B = \{Griffey, Jackson, Sanders, Thomas\}$. Find the intersection of the sets $F$ and $B$.
+\end{example}
+\begin{solution}
+    The intersection of the two sets is the set whose elements belong to both sets. Therefore, $F \cap B = \{Jackson, Sanders\}$
+\end{solution}
+
+\begin{example}
+    Find the union of the sets $F and B$ given as follows.
+    \[F = \{Aikman, Jackson, Rice, Sanders, Young\}\]
+
+    \[B = \{Griffey, Jackson, Sanders, Thomas\}\]
+
+\end{example}
+\begin{solution}
+    The union of two sets is the set whose elements are either in $A$ or in $B$ or in both $A$ and $B$. Observe that when writing the union of two sets, the repetitions are avoided.
+    \[
+        F \cup B = \{Aikman, Griffey, Jackson, Rice, Sanders, Thomas, Young\}
+    \]
+\end{solution}
+
+\begin{example}
+    Let the universal set $U = \{red, orange, yellow, green, blue, indigo, violet\}$ and $P = \{red, yellow, blue\}$. Find the complement of $P$.
+\end{example}
+\begin{solution}
+    The complement of a set $P$ is the set consisting of elements in the universal set $U$ that are not in $P$. Therefore,
+    \[
+        \overline{P} = \{orange, green, indigo, violet\}
+    \]
+    To achieve a better understanding, suppose that the universal set U represents the colors of the spectrum, and $P$ represents those colors of the spectrum that are not primary colors.
+\end{solution}
+
+\begin{example}
+    Let the universal set \( U = \{ red, orange, yellow, green, blue, indigo, violet \} \) and \( P = \{ \text{red, yellow, blue} \} \). Find a set \( R \) so that \( R \) is not the complement of \( P \) but \( R \) and \( P \) are disjoint.
+\end{example}
+\begin{solution}
+    \( R = \{ \text{orange, green} \} \) and \( P = \{ \text{red, yellow, blue} \} \) are disjoint because the intersection of the two sets is the empty set. The sets have no elements in common. However, they are not complements because their union \( P \cup R = \{ \text{red, yellow, blue, orange, green} \} \) is not equal to the universal set \( U \).
+\end{solution}
+
+\begin{example}
+    Let \( U = \{ \text{red, orange, yellow, green, blue, indigo, violet} \} \), \( P = \{ \text{red, yellow, blue} \} \), \( Q = \{ \text{red, green} \} \), and \( R = \{ \text{orange, green, indigo} \} \). Find \( \overline{P \cup Q} \cap \overline{R} \).
+\end{example}
+\begin{solution}
+    We do the problems in steps:
+    \[
+        \begin{aligned}
+            P \cup Q                              & = \{ \text{red, yellow, blue, green} \}  \\
+            \overline{P \cup Q}                   & = \{ \text{orange, indigo, violet} \}    \\
+            \overline{R}                          & = \{ \text{red, yellow, blue, violet} \} \\
+            \overline{P \cup Q} \cap \overline{R} & = \{ \text{violet} \}
+        \end{aligned}
+    \]
+\end{solution}
+
+\subsection{Venn Diagrams}
+
+We now use Venn diagrams to illustrate the relationships between sets. In the late 1800s, an English logician named John Venn developed a method to represent relationships between sets. He represented these relationships using diagrams, which are now known as Venn diagrams.
+
+A Venn diagram represents a set as the interior of a circle. Often two or more circles are enclosed in a rectangle where the rectangle represents the universal set. To visualize an intersection or union of a set is easy. In this section, we will mainly use Venn diagrams to sort various populations and count objects.
+
+\begin{example}\label{example_venn_2_sets}
+    Suppose a survey of car enthusiasts showed that over a certain time period, 30 drove cars with automatic transmissions, 20 drove cars with standard transmissions, and 12 drove cars of both types. If everyone in the survey drove cars with one of these transmissions, how many people participated in the survey?
+\end{example}
+\begin{solution}
+    We will use Venn diagrams to solve this problem.
+
+    Let the set \( A \) represent those car enthusiasts who drove cars with automatic transmissions, and set \( S \) represent the car enthusiasts who drove the cars with standard transmissions. Now we use Venn diagrams to sort out the information given in this problem.
+
+    Since 12 people drove both cars, we place the number 12 in the region common to both sets. $x$ represents the number of people who only drove cars with automatic transmissions. Similarly, $y$ represents the number of drivers who only drove cars with standard transmissions.
+
+    % Venn diagram for two sets with labeled parts
+    \begin{center}
+        \begin{venndiagram2sets}[
+                labelA=\(A\),
+                labelB=\(B\),
+                labelAB={12},
+                labelOnlyA={x},
+                labelOnlyB={y},
+                showframe = false
+            ]
+        \end{venndiagram2sets}
+    \end{center}
+
+
+
+    Because 30 people drove cars with automatic transmissions, the circle \( A \) must contain 30 elements. This means that \( x + 12 = 30 \), or \( x = 18 \).
+
+    Similarly, since 20 people drove cars with standard transmissions, the circle \( S \) must contain 20 elements.
+
+    Thus, \( y + 12 = 20 \) which in turn makes \( y = 8 \).
+    \begin{center}
+        \begin{venndiagram2sets}[
+                labelA=\(A\),
+                labelB=\(B\),
+                labelAB={12},
+                labelOnlyA={18},
+                labelOnlyB={8},
+                showframe = false
+            ]
+        \end{venndiagram2sets}
+    \end{center}
+
+
+    Now that all the information is sorted out, it is easy to read from the diagram that 18 people drove cars with automatic transmissions only, 12 people drove both types of cars, and 8 drove cars with standard transmissions only.
+
+    Therefore, \( 18 + 12 + 8 = 38 \) people took part in the survey.
+\end{solution}
+
+\begin{example}
+    A survey of 100 people in California indicates that 60 people have visited Disneyland, 15 have visited Knott's Berry Farm, and 6 have visited both. How many people have visited neither place?
+\end{example}
+\begin{solution}
+    The problem is similar to the one in Example \ref{example_venn_2_sets}. Let the set \( D \) represent the people who have visited Disneyland, and \( K \) the set of people who have visited Knott's Berry Farm.
+
+    \begin{center}
+        \begin{venndiagram2sets}[
+                labelA=\(D\),
+                labelB=\(K\),
+                labelAB={6},
+                labelOnlyA={x},
+                labelOnlyB={y},
+                % showframe = false
+            ]
+            \setpostvennhook{
+                \node[below left] at (venn top right) {z};
+            }
+        \end{venndiagram2sets}
+    \end{center}
+
+    We fill the three regions associated with the sets \( D \) and \( K \) in the same manner as before. The number $x$ represents the number of people that have been to Disneyland, but not Knotts. We know the total number of people who have been to Disneyland is 60, so $x + 6 = 60$. This means $x$ must be 54. Similar reasoning will help us find that $y = 9$.
+
+    \begin{center}
+        \begin{venndiagram2sets}[
+                labelA=\(D\),
+                labelB=\(K\),
+                labelAB={6},
+                labelOnlyA={54},
+                labelOnlyB={9},
+                % showframe = false
+            ]
+            \setpostvennhook{
+                \node[below left] at (venn top right) {z};
+            }
+        \end{venndiagram2sets}
+    \end{center}
+
+
+    Since 100 people participated in the survey, the rectangle representing the universal set \( U \) must contain 100 objects. Let \( z \) represent those people in the universal set that are neither in the set \( D \) nor in \( K \). This means \( 54 + 6 + 9 + z = 100 \), or \( z = 31 \).
+
+    Therefore, there are 31 people in the survey who have visited neither place.
+    \begin{center}
+        \begin{venndiagram2sets}[
+                labelA=\(D\),
+                labelB=\(K\),
+                labelAB={6},
+                labelOnlyA={54},
+                labelOnlyB={9},
+                % showframe = false
+            ]
+            \setpostvennhook{
+                \node[below left] at (venn top right) {31};
+            }
+        \end{venndiagram2sets}
+    \end{center}
+\end{solution}
+
+\begin{example}
+    A survey of 100 exercise-conscious people resulted in the following information:
+    \begin{itemize}
+        \item 50 jog, 30 swim, and 35 cycle
+        \item 14 jog and swim
+        \item 7 swim and cycle
+        \item 9 jog and cycle
+        \item 3 people take part in all three activities
+    \end{itemize}
+    \begin{enumerate}
+        \item How many jog but do not swim or cycle?
+        \item How many take part in only one of the activities?
+        \item How many do not take part in any of these activities?
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    Let \( J \) represent the set of people who jog, \( S \) the set of people who swim, and \( C \) who cycle.
+
+    In using Venn diagrams, our ultimate aim is to assign a number to each region. We always begin by first assigning the number to the innermost region and then working our way out.
+
+    We’ll show the solution step by step. As you practice working out such problems, you will find that with practice you will not need to draw multiple copies of the diagram.
+
+
+    \begin{center}
+        \begin{venndiagram3sets}[
+                labelA=\(J\),
+                labelB=\(S\),
+                labelC=\(C\),
+                labelABC={3},
+                labelOnlyAB={x},
+                labelOnlyBC={z},
+                labelOnlyAC={y},
+                labelOnlyA={a},
+                labelOnlyB={b},
+                labelOnlyC={c},
+                % showframe = false
+            ]
+            \setpostvennhook{
+                \node[below left] at (venn top right) {U};
+                \node[above left] at (venn bottom right) {d};
+                % \node[below right] at (venn bottom left) {II};
+            }
+        \end{venndiagram3sets}
+    \end{center}
+
+    We place a 3 in the innermost region because it represents the number of people who participate in all three activities. Next, we label the regions we don't know about. Now, we compute \( x \), \( y \), and \( z \).
+
+    Since 14 people jog and swim, \( x + 3 = 14 \), or \( x = 11 \).
+    The fact that 9 people jog and cycle results in \( y + 3 = 9 \), or \( y = 6 \).
+    Since 7 people swim and cycle, \( z + 3 = 7 \), or \( z = 4 \).
+
+    Updating our Venn diagram
+
+    \begin{center}
+        \begin{venndiagram3sets}[
+                labelA=\(J\),
+                labelB=\(S\),
+                labelC=\(C\),
+                labelABC={3},
+                labelOnlyAB={11},
+                labelOnlyBC={4},
+                labelOnlyAC={6},
+                labelOnlyA={a},
+                labelOnlyB={b},
+                labelOnlyC={c},
+                % showframe = false
+            ]
+            \setpostvennhook{
+                \node[below left] at (venn top right) {U};
+                \node[above left] at (venn bottom right) {d};
+                % \node[below right] at (venn bottom left) {II};
+            }
+        \end{venndiagram3sets}
+    \end{center}
+
+    Now we proceed to find the unknowns \( a \), \( b \), and \( c \), as shown in Figure IV. Since 50 people jog, \( a + 11 + 6 + 3 = 50 \), or \( a = 30 \). 30 people swim, therefore, \( b + 11 + 4 + 3 = 30 \), or \( b = 12 \). 35 people cycle, therefore, \( c + 6 + 4 + 3 = 35 \), or \( c = 22 \). By adding all the entries in all three sets, we get a sum of 88. Since 100 people were surveyed, the number, $d$, inside the universal set but outside of all three sets is given by $100 -d = 88$, or $d = 12$. Finally we put all the information in our diagram, all the information is sorted out, and the questions can readily be answered.
+
+    \begin{center}
+        \begin{venndiagram3sets}[
+                labelA=\(J\),
+                labelB=\(S\),
+                labelC=\(C\),
+                labelABC={3},
+                labelOnlyAB={11},
+                labelOnlyBC={4},
+                labelOnlyAC={6},
+                labelOnlyA={30},
+                labelOnlyB={12},
+                labelOnlyC={22},
+                % showframe = false
+            ]
+            \setpostvennhook{
+                \node[below left] at (venn top right) {U};
+                \node[above left] at (venn bottom right) {12};
+                % \node[below right] at (venn bottom left) {II};
+            }
+        \end{venndiagram3sets}
+    \end{center}
+
+    \begin{enumerate}
+        \item The number of people who jog but do not swim or cycle is 30.
+        \item The number who take part in only one of these activities is 30 + 12 + 22 = 64.
+        \item The number of people who do not take part in any of these activities is 12.
+    \end{enumerate}
+
+\end{solution}

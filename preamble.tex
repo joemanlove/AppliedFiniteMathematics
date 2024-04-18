@@ -2,29 +2,56 @@
 \usepackage{amsfonts}
 \usepackage{amsthm}
 \usepackage{graphicx}
+\usepackage{venndiagram}
 \usepackage{parskip}
+\usepackage[most]{tcolorbox}
+
+\usepackage{enumerate}
+
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
+% TODO Fix the fact that the references to figures don't jump to the correct spot
+% \usepackage[all]{hypcap}
+% \usepackage{caption}
+
+\usepackage[table]{xcolor}
+
+\usepackage{import}
+
 \usepackage{tikz}
 \usetikzlibrary{calc, decorations.pathreplacing}
+\usetikzlibrary{arrows.meta}
+\definecolor{darkgreen}{RGB}{38, 112, 7}
+\usetikzlibrary{trees}
+\usetikzlibrary{automata,positioning}
+
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.17}
-\graphicspath{{figures/}}
+%\graphicspath{{figures/}}
 
 \newtheorem{example}{Example}[section]
 \newtheorem{solution}{Solution}[section]
 \newtheorem{definition}{Definition}[section]
 \newtheorem{note}{Note}[section]
 
-\usepackage{tcolorbox}
-\tcolorboxenvironment{summarybox}{
-  colback=yellow!5!white,
-  colframe=yellow!75!black,
-  left=1mm,
-  right=1mm,
-  top=1mm,
-  bottom=1mm,
-  before skip=10pt,
-  after skip=10pt
-}
-\newtheorem{summarybox}{Summary}[chapter]
 
-% Custom commands
+\newcounter{summarybox}
+\numberwithin{summarybox}{section} % Make the summarybox counter reset with each new section
+
+\newtcolorbox{summarybox}[1]{% Accept one argument for the title
+    colback=yellow!5!white,
+    colframe=yellow!75!black,
+    fonttitle=\bfseries,
+    title=Summary~\thesection.\arabic{summarybox}:~#1,
+    left=1mm,
+    right=1mm,
+    top=1mm,
+    bottom=1mm,
+    before skip=10pt,
+    after skip=10pt,
+    code={\refstepcounter{summarybox}} % Increment summarybox counter
+}
+
+\newcommand{\hearts}{{\color{red}\ensuremath\heartsuit}}
+\newcommand{\diamonds}{{\color{red}\ensuremath\diamondsuit}}
+\newcommand{\spades}{\ensuremath\spadesuit}
+\newcommand{\clubs}{\ensuremath\clubsuit}

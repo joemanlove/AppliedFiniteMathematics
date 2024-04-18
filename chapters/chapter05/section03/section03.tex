@@ -1,0 +1,207 @@
+\section{Logarithms and Logarithmic Functions}
+
+In this section, you will learn:
+
+\begin{itemize}
+    \item The definition of a logarithmic function as the inverse of the exponential function.
+    \item How to write equivalent logarithmic and exponential expressions.
+    \item The definition of common logarithms and natural logarithms.
+    \item Properties of logarithms and the Log Rules.
+\end{itemize}
+
+\subsection{Define the Logarithm}
+Suppose that a population of 50 flies is expected to double every week, leading to a function of the form \( f(x) = 50 \cdot (2)^x \), where \( x \) represents the number of weeks that have passed. When will this population reach 500? Trying to solve this problem leads to \( 500 = 50 \cdot (2)^x \). Dividing both sides by 50 to isolate the exponential leads to \( 10 = 2^x \).
+
+While we have set up exponential models and used them to make predictions, you may have noticed that solving exponential equations has not yet been mentioned. The reason is simple: none of the algebraic tools discussed so far are sufficient to solve exponential equations. Consider the equation \( 2^x = 10 \) above. We know that \( 2^3 = 8 \) and \( 2^4 = 16 \), so it is clear that \( x \) must be some value between 3 and 4 since \( g(x) = 2^x \) is increasing. We could use technology to create a table of values or graph to better estimate the solution, but we would like to find an algebraic way to solve the equation.
+
+We need an inverse operation to exponentiation in order to solve for the variable if the variable is in the exponent. As we learned in algebra class, the inverse function for an exponential function is a logarithmic function. We also learned that an exponential function has an inverse function, because each output ($y$) value corresponds to only one input ($x$) value. The name given to this property was “one-to-one”.
+
+\begin{definition}
+    The \textbf{logarithm} (base \( b \)), written \( \log_b(x) \), is the inverse of the exponential function (base \( b \)), \( b^x \).
+    \[
+        y = \log_b(x) \quad \Leftrightarrow \quad b^y = x
+    \]
+\end{definition}
+
+\subsubsection*{Some Notes}
+\begin{itemize}
+    \item In general, \( b^a = c \) is called an \textbf{exponential equation} and is equivalent to the \textbf{logarithmic equation} \( \log_b(c) = a \).
+    \item The base \( b \) must be positive: \( b>0 \)
+    \item Since the logarithm and exponential are inverses, it follows that:
+          \[
+              \log_b(b^x) = x \quad \text{and} \quad b^{\log_b(x)} = x
+          \]
+    \item Since $\log$ is a function, it is most correctly written as $\log_b (c)$, using parentheses to denote function evaluation, just as we would with $f(c)$. However, when the input is a single variable or number, it is common to see the parentheses dropped and the expression written as $\log_b c$.
+\end{itemize}
+
+\begin{example}
+    Write these exponential equations as logarithmic equations:
+    \begin{enumerate}
+        \item $2^3 = 8$
+        \item $5^2 = 25$
+        \item $10^{-3} = \frac{1}{1000}$
+    \end{enumerate}
+\end{example}
+\begin{solution} ~
+
+    \begin{enumerate}
+        \item $2^3 = 8$ can be written as a logarithmic equation as $\log_2(8) = 3$
+        \item $5^2 = 25$ can be written as a logarithmic equation as $\log_5(25) = 2$
+        \item $10^{-3} = \frac{1}{1000}$ can be written as a logarithmic equation as $\log_{10}\left( \frac{1}{1000} \right) = -3$
+    \end{enumerate}
+\end{solution}
+
+\begin{example}
+    Write these logarithmic equations as exponential equations:
+    \begin{enumerate}
+        \item $\log_6 (\sqrt{6}) = \frac{1}{2}$
+        \item $\log_3 (9) = 2$
+    \end{enumerate}
+\end{example}
+\begin{solution} ~
+
+    \begin{enumerate}
+        \item $\log_6 (\sqrt{6}) = \frac{1}{2}$ can be written as an exponential equation as $6^{\frac{1}{2}} = \sqrt{6}$
+        \item $\log_3 (9) = 2$ can be written as an exponential equation as $3^2 = 9$
+    \end{enumerate}
+\end{solution}
+
+By establishing the relationship between exponential and logarithmic functions, we can now solve basic logarithmic and exponential equations by rewriting.
+
+\begin{example}
+    Solve $\log_4(x) = 2$ for x.
+\end{example}
+\begin{solution}
+    By rewriting this expression as an exponential, $4^2 = x$, so $x = 16$.
+\end{solution}
+
+\begin{example}
+    Solve $2^x = 10$ for x.
+\end{example}
+\begin{solution}
+    By rewriting this expression as a logarithm, we get $x = \log_2(10)$. Using a computer utility we find $x \approx 3.32192809489$.
+
+    While this does define a solution, you may find it somewhat unsatisfying since it is difficult to compare this expression to the decimal estimate we made earlier. Also, giving an exact expression for a solution is not always useful—often we really need a decimal approximation to the solution. Luckily, this is a task that calculators and computers are quite adept at. Unfortunately for us, most calculators will only evaluate logarithms of two bases: base 10 and base $e$. Computer utilities such as \href{https://www.desmos.com/calculator}{Desmos} and \href{https://www.wolframalpha.com/}{Wolfram Alpha} compute such things nicely. Please note, even with many decimal places computers and calculators are providing estimates.
+\end{solution}
+
+\subsection{Natural and Base 10 Logarithms}
+\begin{definition}
+    The \textbf{natural} logarithm is the logarithm with $e$ as the base ($log_e(x)$). It is often written as $ln(x)$.
+\end{definition}
+\begin{definition}
+    The \textbf{base 10} (or common) logarithm is the logarithm with $10$ as the base ($log_10(x)$). It is often written as $log(x)$.
+\end{definition}
+
+\begin{example}
+    Evaluate $\log(1000)$ using the definition of the common log.
+\end{example}
+\begin{solution}
+    The table shows values of the common log:
+
+    \begin{center}
+        \begin{tabular}{ c c c }
+            \textbf{number} & \textbf{number as exponential} & $\log(\textbf{number})$ \\
+            1000            & $10^3$                         & 3                       \\
+            100             & $10^2$                         & 2                       \\
+            10              & $10^1$                         & 1                       \\
+            1               & $10^0$                         & 0                       \\
+            0.1             & $10^{-1}$                      & -1                      \\
+            0.01            & $10^{-2}$                      & -2                      \\
+            0.001           & $10^{-3}$                      & -3                      \\
+        \end{tabular}
+    \end{center}
+
+    To evaluate $\log(1000)$, we can say
+
+    \[ x = \log(1000) \]
+
+    Then rewrite the equation in exponential form using the common log base of 10
+
+    \[ 10^x = 1000 \]
+
+    From this, we might recognize that 1000 is the cube of 10, so
+
+    \[ x = 3. \]
+
+    Alternatively, we can use the inverse property of logs to write
+
+    \[ \log_{10}(10^3) = 3 \]
+\end{solution}
+
+\begin{example}
+    Evaluate $\log(1/1,000,000)$
+\end{example}
+\begin{solution}
+    To evaluate $\log(1/1,000,000)$, we can say
+
+    \[ x = \log(1/1,000,000) = \log(1/10^6) = \log(10^{-6}) \]
+
+    Then rewrite the equation in exponential form:
+
+    \[ 10^x = 10^{-6} \]
+
+    Therefore $x = -6$.
+
+    Alternatively, we can use the inverse property of logs to find the answer:
+
+    \[ \log_{10}(10^{-6}) = -6 \]
+\end{solution}
+
+\begin{example}
+    Evaluate
+    \begin{enumerate}
+        \item $\ln e^5$
+        \item $\ln \sqrt{e}$.
+    \end{enumerate}
+\end{example}
+\begin{solution}~
+
+    \begin{enumerate}
+
+        \item To evaluate $\ln e^5$, we can say
+              \[ x = \ln e^5 \]
+              Then rewrite into exponential form using the natural log base of $e$
+              \[ e^x = e^5 \]
+              Therefore $x = 5$
+
+              Alternatively, we can use the inverse property of logs to write $\ln(e^5) = 5$
+
+        \item To evaluate $\ln \sqrt{e}$, we recall that roots are represented by fractional exponents
+              \[ x = \ln \sqrt{e} = \ln (e^{1/2}) \]
+              Then rewrite into exponential form using the natural log base of $e$
+              \[ e^x = e^{1/2} \]
+              Therefore $x = 1/2$
+
+              Alternatively, we can use the inverse property of logs to write $\ln(e^{1/2}) = 1/2$
+    \end{enumerate}
+\end{solution}
+
+\begin{example}
+    Evaluate the following using your calculator or computer:
+
+    \begin{enumerate}
+        \item $\log 500$
+        \item $\ln 500$
+    \end{enumerate}
+\end{example}
+\begin{solution}~
+
+    \begin{enumerate}
+        \item $\log 500 \approx 2.69897$
+        \item $\ln 500 \approx 6.214608$
+    \end{enumerate}
+\end{solution}
+
+
+\subsection{Properties of Logarithms}
+
+\begin{summarybox}~
+
+    \begin{enumerate}
+        \item \textbf{Exponent Property}: $$\log_b(A^p) = p\log_b(A)$$
+        \item \textbf{Product Property}: $$\log_b(AC) = \log_b(A) + \log_b(C)$$
+        \item \textbf{Quotient Property}: $$\log_b\left(\frac{A}{C}\right) = \log_b(A) - \log_b(C)$$
+    \end{enumerate}
+\end{summarybox}
+
+% TODO add some examples of using log rules here

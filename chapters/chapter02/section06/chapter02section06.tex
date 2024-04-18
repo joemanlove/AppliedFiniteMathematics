@@ -1,0 +1,330 @@
+\section{Applications – Leontief Models}
+In this section you will learn
+\begin{enumerate}
+    \item Application of matrices to model closed economic systems
+    \item Application of matrices to model open economic systems
+\end{enumerate}
+
+In the 1930s, Wassily Wassilyevich Leontief (holder of one of the greatest names ever) used matrices to model economic systems. His models, often referred to as the input-output models, divide the economy into sectors where each sector produces goods and services not only for itself but also for other sectors. These sectors are dependent on each other, and the total input always equals the total output. In 1973, he won the Nobel Prize in Economics for his work in this field. In this section, we look at both the closed and the open models that he developed.
+
+\subsection{The Closed Model}
+As an example of the closed model, we look at a very simple economy, where there are only three sectors: food, shelter, and clothing.
+
+
+\begin{example} \label{input_output_matrix}
+    We assume that in a village there is a farmer, carpenter, and a tailor, who provide the three essential goods: food, shelter, and clothing. Suppose the farmer himself consumes \(40\%\) of the food he produces, and gives \(40\%\) to the carpenter, and \(20\%\) to the tailor. Thirty percent of the carpenter's production is consumed by himself, \(40\%\) by the farmer, and \(30\%\) by the carpenter. Fifty percent of the tailor's production is used by himself, \(30\%\) by the farmer, and \(20\%\) by the tailor. Write the matrix that describes this closed model.
+\end{example}
+
+\begin{solution}
+    The table below describes the above information.
+
+    \begin{center}
+        \begin{tabular}{lccc}
+            \hline
+                                & Proportion produced & Proportion produced & Proportion produced \\
+                                & by the farmer       & by the carpenter    & by the tailor       \\
+            \hline
+            The proportion used & .40                 & .40                 & .30                 \\
+            by the farmer       &                     &                     &                     \\
+            The proportion used & .40                 & .30                 & .20                 \\
+            by the carpenter    &                     &                     &                     \\
+            The proportion used & .20                 & .30                 & .50                 \\
+            by the tailor       &                     &                     &                     \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    In matrix form, it can be written as follows.
+    \[ A = \begin{bmatrix}
+            .40 & .40 & .30 \\
+            .40 & .30 & .20 \\
+            .20 & .30 & .50
+        \end{bmatrix} \]
+
+    This matrix is called the input-output matrix. It is important that we read the matrix correctly. For example, the entry \( A_{23} \), the entry in row 2 and column 3, represents the following.
+
+    \[ A_{23} = 20\% \text{ of the tailor's production is used by the carpenter.} \]
+    \[ A_{33} = 50\% \text{ of the tailor's production is used by the tailor.} \]
+\end{solution}
+
+\begin{example}
+    In Example \ref{input_output_matrix} above, how much should each person get for his efforts?
+\end{example}
+
+\begin{solution}
+    We choose the following variables.
+    \[
+        \begin{aligned}
+            x & = \text{Farmer's pay}    \\
+            y & = \text{Carpenter's pay} \\
+            z & = \text{Tailor's pay}
+        \end{aligned}
+    \]
+    As we said earlier, in this model input must equal output. That is, the amount paid by each equals the amount received by each.
+
+    Let us say the farmer gets paid \( x \) dollars. Let us now look at the farmer's expenses. The farmer uses up \( 40\% \) of his own production, that is, of the \( x \) dollars he gets paid, he pays himself \( .40x \) dollars, he pays \( .40y \) dollars to the carpenter, and \( .30z \) to the tailor. Since the expenses equal the wages, we get the following equation.
+    \[ x = .40x + .40y + .30z \]
+
+    In the same manner, we get
+    \[ y = .40x + .30y + .20z \]
+    \[ z = .20x + .30y + .50z \]
+
+    The above system can be written as
+    \[ \begin{bmatrix}
+            x \\
+            y \\
+            z
+        \end{bmatrix} = \begin{bmatrix}
+            .40 & .40 & .30 \\
+            .40 & .30 & .20 \\
+            .20 & .30 & .50
+        \end{bmatrix} \begin{bmatrix}
+            x \\
+            y \\
+            z
+        \end{bmatrix} \]
+
+    This system is often referred to as \( X = AX \).
+
+    Simplification results in the system of equations \( (I - A)X = 0 \)
+    \[ \begin{bmatrix}
+            .60  & -.40 & -.30 \\
+            -.40 & .70  & -.20 \\
+            -.20 & -.30 & .50
+        \end{bmatrix} \begin{bmatrix}
+            x \\
+            y \\
+            z
+        \end{bmatrix} = \begin{bmatrix}
+            0 \\
+            0 \\
+            0
+        \end{bmatrix} \]
+    We put this into an augmented matrix
+    \[
+        \left[\begin{array}{ccc|c}
+                .60  & -.40 & -.30 & 0 \\
+                -.40 & .70  & -.20 & 0 \\
+                -.20 & -.30 & .50  & 0
+            \end{array}\right]
+    \]
+    Solving for \( x, y, \) and \( z \) using the Gauss-Jordan method, we get
+    \[
+        \left[\begin{array}{ccc|c}
+                1 & 0 & -\frac{29}{26} & 0 \\
+                0 & 1 & -\frac{12}{13} & 0 \\
+                0 & 0 & 0              & 0
+            \end{array}\right]
+    \]
+
+    This gives parametric equations:
+    \[ x = \frac{29}{26} t, \quad y = \frac{12}{13} t, \quad z = t \]
+
+    Since we are only trying to determine the proportions of the pay, we can choose \( t \) to be any value. Suppose we let \( t = \$2600 \), then we get
+    \[ x = \$2900, \quad y = \$2400, \quad z = \$2600 \]
+
+\end{solution}
+
+\begin{note}
+    The use of a graphing calculator or computer application in solving the systems of linear matrix equations in these problems is strongly recommended.
+\end{note}
+
+\subsection{The Open Model}
+The open model is more realistic as it deals with the economy where sectors of the economy not only satisfy each other’s needs but also satisfy some outside demands. In this case, the outside demands are put on by the consumer. But the basic assumption is still the same: whatever is produced is consumed.
+
+Let us again look at a very simple scenario. Suppose the economy consists of three people: the farmer F, the carpenter C, and the tailor T. A part of the farmer's production is used by all three, and the rest is used by the consumer. In the same manner, a part of the carpenter's and the tailor's production is used by all three, and the rest is used by the consumer.
+
+Let us assume that whatever the farmer produces, 20\% is used by him, 15\% by the carpenter, 10\% by the tailor, and the consumer uses the other \$40 billion worth of food. Ten percent of the carpenter's production is used by him, 25\% by the farmer, 5\% by the tailor, and \$50 billion worth by the consumer. Fifteen percent of the clothing is used by the tailor, 10\% by the farmer, 5\% by the carpenter, and the remaining \$60 billion worth by the consumer. We write the internal consumption in the following table and express the demand as the matrix D.
+
+\[
+    \begin{array}{cccc}
+                       & F \text{ produces} & C \text{ produces} & T \text{ produces} \\
+        F \text{ uses} & 0.20               & 0.25               & 0.10               \\
+        C \text{ uses} & 0.15               & 0.10               & 0.05               \\
+        T \text{ uses} & 0.10               & 0.05               & 0.15               \\
+    \end{array}
+\]
+
+The consumer demand for each industry in billions of dollars is given by the matrix \( D = \begin{bmatrix} 40 \\ 50 \\ 60 \end{bmatrix} \).
+
+
+\begin{example}
+    In the example above, what should be, in billions of dollars, the required output by each industry to meet the demand given by the matrix \( D \)?
+\end{example}
+
+\begin{solution}
+    We choose the following variables.
+    \[
+        \begin{aligned}
+            x & = \text{Farmer's output}    \\
+            y & = \text{Carpenter's output} \\
+            z & = \text{Tailor's output}
+        \end{aligned}
+    \]
+
+    In the closed model, our equation was \( X = AX \), that is, the total input equals the total output. This time our equation is similar with the exception of the demand by the consumer.
+
+    So our equation for the open model should be \( X = AX + D \), where \( D \) represents the demand matrix.
+
+    We express it as follows:
+    \[ X = AX + D \]
+    \[ \begin{bmatrix}
+            x \\
+            y \\
+            z
+        \end{bmatrix} = \begin{bmatrix}
+            .20 & .25 & .10 \\
+            .15 & .10 & .05 \\
+            .10 & .05 & .15
+        \end{bmatrix} \begin{bmatrix}
+            x \\
+            y \\
+            z
+        \end{bmatrix} + \begin{bmatrix}
+            40 \\
+            50 \\
+            60
+        \end{bmatrix} \]
+
+    To solve this system, we write it as
+    \[ X = AX + D \]
+    \[ (I - A)X = D \]
+    \[ X = (I - A)^{-1} D \]
+    where \( I \) is a \( 3 \times 3 \) identity matrix.
+
+    \[ I - A = \begin{bmatrix}
+            .80  & -.25 & -.10 \\
+            -.15 & .90  & -.05 \\
+            -.10 & -.05 & .85
+        \end{bmatrix} \]
+
+    \[ (I - A)^{-1} = \begin{bmatrix}
+            1.3445 & .3835  & .1807  \\
+            .2336  & 1.1814 & .097   \\
+            .1719  & .1146  & 1.2034
+        \end{bmatrix} \]
+
+    \[ X = \begin{bmatrix}
+            1.3445 & .3835  & .1807  \\
+            .2336  & 1.1814 & .097   \\
+            .1719  & .1146  & 1.2034
+        \end{bmatrix} \begin{bmatrix}
+            40 \\
+            50 \\
+            60
+        \end{bmatrix} \]
+
+    \[ X = \begin{bmatrix}
+            83.7999 \\
+            74.2341 \\
+            84.8138
+        \end{bmatrix} \]
+
+    The three industries must produce the following amount of goods in billions of dollars.
+
+    \[
+        \begin{aligned}
+            \text{Farmer}    & = 83.7999 \\
+            \text{Carpenter} & = 74.2341 \\
+            \text{Tailor}    & = 84.8138
+        \end{aligned}
+    \]
+
+\end{solution}
+
+We will do one more problem like the one above, except this time we give the amount of internal and external consumption in dollars and ask for the proportion of the amounts consumed by each of the industries. In other words, we ask for the matrix \( A \).
+
+\begin{example}
+    Suppose an economy consists of three industries \( F \), \( C \), and \( T \). Each of the industries produces for internal consumption among themselves, as well as for external demand by the consumer. The table shows the use of each industry's production in dollars.
+
+    \[
+        \begin{array}{cccccc}
+            \textbf{ } & \textbf{F} & \textbf{C} & \textbf{T} & \textbf{Demand} & \textbf{Total} \\
+            \textbf{F} & 40         & 50         & 60         & 100             & 250            \\
+            \textbf{C} & 30         & 40         & 40         & 110             & 220            \\
+            \textbf{T} & 20         & 30         & 30         & 120             & 200            \\
+        \end{array}
+    \]
+
+    The first row says that of the \$250 dollars worth of production by the industry \( F \), \$40 is used by \( F \), \$50 is used by \( C \), \$60 is used by \( T \), and the remainder of \$100 is used by the consumer. The other rows are described in a similar manner.
+
+    Once again, the total input equals the total output. Find the proportion of the amounts consumed by each of the industries. In other words, find the matrix \( A \).
+\end{example}
+
+\begin{solution}
+    We are being asked to determine the following:
+
+    How much of the production of each of the three industries, \( F \), \( C \), and \( T \) is required to produce one unit of \( F \)? The same way, how much of the production of each of the three industries, \( F \), \( C \), and \( T \) is required to produce one unit of \( C \)? And finally, how much of the production of each of the three industries, \( F \), \( C \), and \( T \) is required to produce one unit of \( T \)?
+
+    Since we are looking for proportions, we need to divide the production of each industry by the total production for each industry.
+
+    We analyze as follows:
+    To produce 250 units of F, 30 units of C, and 20 units of T, the required units are 40, 30, and 20 respectively. Therefore, to produce 1 unit of each, we divide by 250:
+
+    \[
+        \text{For F: } \frac{40}{250}, \text{ For C: } \frac{30}{250}, \text{ For T: } \frac{20}{250}
+    \]
+
+    Similarly, for 220 units of C, the required units are 50, 40, and 30 respectively. To produce 1 unit of C, we divide by 220:
+
+    \[
+        \text{For F: } \frac{50}{220}, \text{ For C: } \frac{40}{220}, \text{ For T: } \frac{30}{220}
+    \]
+
+    And for 200 units of T, the required units are 60, 40, and 30 respectively. To produce 1 unit of T, we divide by 200:
+
+    \[
+        \text{For F: } \frac{60}{200}, \text{ For C: } \frac{40}{200}, \text{ For T: } \frac{30}{200}
+    \]
+
+    These fractions represent the units of F, C, and T required to produce 1 unit of each.
+
+
+    We obtain the following matrix:
+    \[ A = \begin{bmatrix}
+            \frac{40}{250} & \frac{50}{220} & \frac{60}{200} \\
+            \frac{30}{250} & \frac{40}{220} & \frac{40}{200} \\
+            \frac{20}{250} & \frac{30}{220} & \frac{30}{200}
+        \end{bmatrix} = \begin{bmatrix}
+            .1600 & .2273 & .3000 \\
+            .1200 & .1818 & .2000 \\
+            .0800 & .1364 & .1500
+        \end{bmatrix} \]
+
+    Clearly \( AX + D = X \)
+    \[ \begin{bmatrix}
+            .1600 & .2273 & .3000 \\
+            .1200 & .1818 & .2000 \\
+            .0800 & .1364 & .1500
+        \end{bmatrix} \begin{bmatrix}
+            250 \\
+            220 \\
+            200
+        \end{bmatrix} + \begin{bmatrix}
+            100 \\
+            110 \\
+            120
+        \end{bmatrix} = \begin{bmatrix}
+            250 \\
+            220 \\
+            200
+        \end{bmatrix} \]
+\end{solution}
+
+
+
+\begin{summarybox}{Leontief's Models}
+    \textbf{Leontief's Closed Model}
+    \begin{enumerate}
+        \item All consumption is within the industries. There is no external demand.
+        \item Input equals output.
+        \item $X = AX$ or $(I - A)X = 0$
+    \end{enumerate}
+
+    \textbf{Leontief's Open Model}
+    \begin{enumerate}
+        \item In addition to internal consumption, there is an outside demand by the consumer.
+        \item Input equals output.
+        \item $X = AX + D$ or $X = (I - A)^{-1} D$
+    \end{enumerate}
+\end{summarybox}

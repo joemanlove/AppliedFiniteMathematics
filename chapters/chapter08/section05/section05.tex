@@ -1,0 +1,298 @@
+\section{Independent Events}
+In this section, you will:
+\begin{enumerate}
+    \item Define independent events.
+    \item Identify whether two events are independent or dependent.
+\end{enumerate}
+
+In the last section, we considered conditional probabilities. In some examples, the probability of an event changed when additional information was provided. This is not always the case. The additional information may or may not alter the probability of the event.
+
+In Example \ref{example_conditional_proability_dependent_events} we revisit the discussion we started in Examples \ref{example_conditional_probability_cards_part_1} and \ref{example_conditional_probability_cards_part_2} at the beginning of Section \ref{section_conditional_probability} and then contrast that with Example \ref{example_conditional_proability_independent_events}.
+
+\begin{example}\label{example_conditional_proability_dependent_events}
+    A card is drawn from a deck. Find the following probabilities:
+    \begin{enumerate}
+        \item The card is a king.
+        \item The card is a king given that the card is a face card.
+    \end{enumerate}
+\end{example}
+
+\begin{solution}~
+
+    \begin{enumerate}
+        \item Clearly, \( P(\text{The card is a king}) = \frac{4}{52} = \frac{1}{13}. \)
+
+        \item To find \( P(\text{The card is a king} \mid \text{The card is a face card}), \) we reason as follows:
+              There are 12 face cards in a deck of cards. There are 4 kings in a deck of cards.
+              \[ P(\text{The card is a king} \mid \text{The card is a face card}) = \frac{4}{12} = \frac{1}{3}. \]
+    \end{enumerate}
+\end{solution}
+
+The reader should observe that in the above example,
+\[ P(\text{The card is a king} \mid \text{The card is a face card}) \neq P(\text{The card is a king}) \]
+In other words, the additional information, knowing that the card selected is a face card changed the probability of obtaining a king.
+
+\begin{example}\label{example_conditional_proability_independent_events}
+    A card is drawn from a deck. Find the following probabilities:
+    \begin{enumerate}
+        \item The card is a king.
+        \item The card is a king given that a red card has shown.
+    \end{enumerate}
+\end{example}
+
+\begin{solution}~
+
+    \begin{enumerate}
+        \item Clearly, \( P(\text{The card is a king}) = \frac{4}{52} = \frac{1}{13}. \)
+        \item To find \( P(\text{The card is a king} \mid \text{A red card has shown}), \) we reason as follows:
+              Since a red card has shown, there are only twenty-six possibilities. Of the 26 red cards, there are two kings. Therefore,
+              \[ P(\text{The card is a king} \mid \text{A red card has shown}) = \frac{2}{26} = \frac{1}{13}. \]
+
+
+    \end{enumerate}
+\end{solution}
+
+The reader should observe that in the above example,
+\[ P(\text{The card is a king} \mid \text{A red card has shown}) = P(\text{The card is a king}) \]
+In other words, the additional information, a red card has shown, did not affect the probability of obtaining a king.
+
+\begin{definition}
+    Whenever the probability of an event \(E\) is not affected by the occurrence of another event \(F\), and vice versa, we say that the two events \(E\) and \(F\) are \textbf{independent}.
+\end{definition}
+
+
+\begin{summarybox}{Independent Events}\label{summary_independent_events}
+    Two Events \(E\) and \(F\) are independent if and only if at least one of the following two conditions is true.
+    \begin{enumerate}
+        \item \(P(E \mid F) = P(E)\)
+        \item \(P(F \mid E) = P(F)\)
+    \end{enumerate}
+    If the events are not independent, then they are dependent.
+
+    If one of these conditions is true, then both are true.
+\end{summarybox}
+
+We can use the definition of independence to determine if two events are independent.
+
+We can use that definition to develop another way to test whether two events are independent.
+
+Recall the conditional probability formula:
+\[ P(E \mid F) = \frac{P(E \cap F)}{P(F)} \]
+
+Multiplying both sides by \(P(F)\), we get
+\[ P(E \cap F) = P(E \mid F) P(F) \]
+
+Now if the two events are independent, then by definition
+\[ P(E \mid F) = P(E) \]
+
+Substituting, \( P(E \cap F) = P(E) P(F) \)
+
+We state it formally as follows.
+\begin{summarybox}{Test For Independence}\label{summary_test_for_independence}
+
+    Two events \(E\) and \(F\) are independent if and only if
+    \[ P(E \cap F) = P(E)P(F) \]
+\end{summarybox}
+
+In the Examples \ref{example_independence_color_blindness} and \ref{example_independence_flights}, we'll examine how to check for independence using both methods:
+\begin{itemize}
+    \item Examine the probability of intersection of events to check whether \(P(E \cap F) = P(E)P(F)\)
+    \item Examine conditional probabilities to check whether \(P(E \mid F)=P(E)\) or \(P(F \mid E)=P(F)\)
+\end{itemize}
+
+We need to use only one of these methods. Both methods will always give the same results.
+
+Use the method that seems easier based on the information given in the problem.
+
+\begin{example}\label{example_independence_color_blindness}
+    The table below shows the distribution of color-blind people by chromosome type. It should be noted that chromosome type is not exactly determinative of sex and certainly is not determinative of gender. There is also a small portion ($\approx .2\%$) of the population that have $XXY$ or $X$ chromosome type. See \href{https://en.wikipedia.org/wiki/XY_sex-determination_system}{this wikipedia article} for some more information. Biology is really complicated because \href{https://youtu.be/kiVVzxoPTtg?si=AdO-PvNUPxFgz4sf}{life finds a way}. Thank any Biologists you come across for their efforts.
+    \begin{center}
+        \begin{tabular}{|l|cc|c|}
+            \hline
+                                  & $XY$ ($Y$) & $XX$ ($X$) & Total \\
+            \hline
+            Color-Blind ($C$)     & 6          & 1          & 7     \\
+            Not Color-Blind ($N$) & 46         & 47         & 93    \\
+            \hline
+            Total                 & 52         & 48         & 100   \\
+            \hline
+        \end{tabular}
+    \end{center}
+    Where $Y$ represents $XY$, $X$ represents $XX$, $C$ represents color-blind, and $N$ represents not color-blind. Are the events color-blind and $XY$ independent?
+\end{example}
+
+\begin{solution}
+    According to the Test for Independence \ref{summary_test_for_independence}, $C$ and $Y$ are independent if and only if \( P(C \cap Y) = P(C)P(Y) \).
+    From the table:
+    \[ P(C) = \frac{7}{100}, \quad P(Y) = \frac{52}{100} \quad \text{and} \quad P(C \cap Y) = \frac{6}{100} \]
+    So
+    \[ P(C)P(Y) = \left(\frac{7}{100}\right)\left(\frac{52}{100}\right) = 0.0364 \]
+    which is \textbf{not} equal to \( P(C \cap Y) = 0.06 \).
+    Therefore, the two events are not independent. We may say they are dependent.
+
+    Alternatively, using Summary \ref{summary_independent_events} $C$ and $Y$ are independent if and only if \( P(C|Y) = P(C) \).
+    From the total column \( P(C) = 0.07 \).
+    From the male column \( P(C|Y) = \frac{6}{52} = 0.1154 \)
+    Therefore \( P(C|Y) \neq P(C) \), indicating that the two events are not independent.
+
+    The reason for this dependence is known. The most common form of colorblindness (red-green) is associated to a misfunction of a gene on the $X$ chromosome, so because those with $XY$ chromosomes have only a single copy, they are much more likely to experience colorblindness.
+\end{solution}
+
+\begin{example}\label{example_independence_flights}
+    In a city with two airports, 100 flights were surveyed. 20 of those flights departed late. 45 flights in the survey departed from airport A; 9 of those flights departed late. 55 flights in the survey departed from airport B; 11 flights departed late. Are the events "depart from airport A" and "departed late" independent?
+\end{example}
+
+\begin{solution}
+    Let \( A \) be the event that a flight departs from airport A, and \( L \) the event that a flight departs late. We have
+    \begin{align*}
+        P(A \cap L) & = \frac{9}{100},  \\
+        P(A)        & = \frac{45}{100}, \\
+        P(L)        & = \frac{20}{100}.
+    \end{align*}
+
+    According to the Test for Independence \ref{summary_test_for_independence}, in order for $A$ and $L$ to be independent we must have \( P(A \cap L) = P(A)P(L) \).
+
+    Since \( P(A \cap L) = \frac{9}{100} = 0.09 \) and \( P(A)P(L) = \left(\frac{45}{100}\right)\left(\frac{20}{100}\right) = 900/10000 = 0.09 \), the two events "departing from airport A" and "departing late" are independent.
+
+    Alternatively, Summary \ref{summary_independent_events} states that two events are independent if \( P(E \mid F) = P(E) \).
+
+    In this problem we are given that
+    \[ P(L \mid A) = \frac{9}{45} = 0.2 \]
+    and
+    \[ P(L) = \frac{20}{100} = 0.2 \]
+
+    \( P(L \mid A) = P(L) \), so events ``departing from airport A'' and ``departing late'' are independent.
+
+\end{solution}
+
+
+\begin{example}
+    A coin is tossed three times, and the events E, F, and G are defined as follows: \\
+    E: The coin shows a head on the first toss. \\
+    F: At least two heads appear. \\
+    G: Heads appear in two successive tosses. \\
+    Determine whether the following events are independent: \\
+    \begin{enumerate}
+        \item E and F
+        \item F and G
+        \item E and G
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    We list the sample space, the events, their intersections, and the probabilities.
+
+    Sample space \( S = \{\text{HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}\} \)
+
+    \begin{align*}
+        E        & = \{\text{HHH, HHT, HTH, HTT}\}, & P(E)        & = \frac{4}{8} = \frac{1}{2} \\
+        F        & = \{\text{HHH, HHT, HTH, THH}\}, & P(F)        & = \frac{4}{8} = \frac{1}{2} \\
+        G        & = \{\text{HHT, THH}\},           & P(G)        & = \frac{2}{8} = \frac{1}{4} \\
+        E \cap F & = \{\text{HHH, HHT, HTH}\},      & P(E \cap F) & = \frac{3}{8}               \\
+        F \cap G & = \{\text{HHT, THH}\},           & P(F \cap G) & = \frac{2}{8} = \frac{1}{4} \\
+        E \cap G & = \{\text{HHT}\},                & P(E \cap G) & = \frac{1}{8}
+    \end{align*}
+
+    \begin{enumerate}
+        \item  E and F will be independent if and only if \( P(E \cap F) = P(E)P(F) \)
+
+              \begin{align*}
+                  P(E \cap F) & = \frac{3}{8} \text{ and } P(E)P(F) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}
+              \end{align*}
+
+              Since \( \frac{3}{8} \neq \frac{1}{4} \), we have \( P(E \cap F) \neq P(E)P(F) \).
+
+              Events E and F are not independent.
+        \item  F and G will be independent if and only if \( P(F \cap G) = P(F)P(G) \)
+
+              \begin{align*}
+                  P(F \cap G) & = \frac{1}{4} \text{ and } P(F)P(G) = \frac{1}{2} \cdot \frac{1}{4} = \frac{1}{8}
+              \end{align*}
+
+              Since \( \frac{1}{4} \neq \frac{1}{8} \), we have \( P(F \cap G) \neq P(F)P(G) \).
+
+              Events F and G are not independent.
+        \item E and G will be independent if \( P(E \cap G) = P(E)P(G) \)
+
+              \begin{align*}
+                  P(E \cap G) & = \frac{1}{8} \text{ and } P(E)P(G) = \frac{1}{2} \cdot \frac{1}{4} = \frac{1}{8}
+              \end{align*}
+
+              Events E and G are independent events because \( P(E \cap G) = P(E)P(G) \).
+    \end{enumerate}
+\end{solution}
+
+\begin{example}
+    The probability that Jaime will visit his aunt in Baltimore this year is 0.30, and the probability that he will go river rafting on the Colorado river is 0.50. If the two events are independent, what is the probability that Jaime will do both?
+\end{example}
+
+\begin{solution}
+    Let \( A \) be the event that Jaime will visit his aunt this year, and \( R \) be the event that he will go river rafting. We are given \( P(A) = 0.30 \) and \( P(R) = 0.50 \), and we want to find \( P(A \cap R) \). Since we are told that the events \( A \) and \( R \) are independent,
+    \[ P(A \cap R) = P(A)P(R) = (0.30)(0.50) = 0.15. \]
+\end{solution}
+
+
+\begin{example}
+    Given \( P(B \mid A) = 0.4 \). If \( A \) and \( B \) are independent, find \( P(B) \).
+\end{example}
+
+\begin{solution}
+    If \( A \) and \( B \) are independent, then by definition \( P(B \mid A) = P(B) \)
+
+    Therefore, \( P(B) = 0.4 \)
+\end{solution}
+
+\begin{example}\label{example_motivating_general_multiplication_rule}
+    Given \( P(A) = 0.7, P(B \mid A) = 0.5 \). Find \( P(A \cap B) \).
+\end{example}
+
+\begin{solution}
+    By definition, \( P(B \mid A) = \frac{P(A \cap B)}{P(A)} \)
+
+    Substituting, we have
+
+    \[
+        0.5 = \frac{P(A \cap B)}{0.7}
+    \]
+
+    Therefore, \( P(A \cap B) = 0.35 \)
+
+    Alternatively, starting with \( P(B \mid A) = \frac{P(A \cap B)}{P(A)} \)
+
+    Multiplying both sides by \( P(A) \) gives
+
+    \( P(A \cap B) = P(B \mid A) \cdot P(A) = (0.5)(0.7) = 0.35 \)
+\end{solution}
+
+Both solutions to Example \ref{example_motivating_general_multiplication_rule} are actually the same, except that the alternative approach we delayed substituting the values into the equation until after we solved the equation for \( P(A\cap B) \).  That gives the following result:
+
+\begin{summarybox}{Multiplication Rule}\label{summary_multiplication_rule_for_intersections}
+    For any events \(E\) and \(F\)
+
+    \[ P(E \cap F) = P(E | F)P(F) \quad \text{and} \quad P(E \cap F) = P(F| E)P(E) \]
+
+    In the special case that events \(E\) and \(F\) are \textbf{independent}
+
+    \[ P(E \cap F) = P(F)P(E) \]
+\end{summarybox}
+
+\begin{example}
+    Given \( P(A) = 0.5 \), \( P(A \cup B) = 0.7 \), if \( A \) and \( B \) are independent, find \( P(B) \).
+\end{example}
+
+\begin{solution}
+    The addition rule states that
+    \[ P(A \cup B) = P(A) + P(B) - P(A \cap B) \]
+    Since \( A \) and \( B \) are independent, \( P(A \cap B) = P(A)P(B) \)
+
+    We substitute for \( P(A \cap B) \) in the addition formula and get
+    \[ P(A \cup B) = P(A) + P(B) - P(A)P(B) \]
+    By letting \( P(B) = x \), and substituting values, we get
+    \begin{align*}
+        0.7 & = 0.5 + x - 0.5x \\
+        0.7 & = 0.5 + 0.5x     \\
+        0.2 & = 0.5x           \\
+        0.4 & = x
+    \end{align*}
+    Therefore, \( P(B) = 0.4 \)
+\end{solution}
