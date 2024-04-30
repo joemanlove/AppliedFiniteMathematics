@@ -1,0 +1,78 @@
+\section{Markov Chain Puzzles}
+
+\begin{puzzle}
+    Is the matrix given below a transition matrix for a Markov chain? Explain.
+    \begin{enumerate}
+        \item \[ \begin{bmatrix}
+                      .2 & .3  & .5 \\
+                      .3 & -.2 & .9 \\
+                      .3 & .3  & .5
+                  \end{bmatrix}\]
+        \item \[ \begin{bmatrix}
+                      .3 & .3 & .4 \\
+                      .3 & .4 & .4 \\
+                      0  & 0  & 0
+                  \end{bmatrix}\]
+    \end{enumerate}
+\end{puzzle}
+
+\begin{puzzle}
+    A survey of American car buyers indicates that if a person buys a Ford, there is a 60\% chance that their next purchase will be a Ford, while owners of a GM will buy a GM again with a probability of .80. The buying habits of these consumers are represented in the transition matrix below.
+
+    \begin{center}
+        \begin{tabular}{ll|cc}
+                    &      & Next &     \\
+                    &      & Ford & GM  \\
+            \hline
+            Present & Ford & .60  & .40 \\
+                    & GM   & .20  & .80 \\
+        \end{tabular}
+    \end{center}
+
+
+    Find the following probabilities:
+    \begin{enumerate}
+        \item The probability that a present owner of a Ford will buy a Ford as his next car.
+        \item The probability that a present owner of a GM will buy a GM as his next car.
+        \item The probability that a present owner of a Ford will buy a GM as his next car.
+        \item The probability that a present owner of a GM will buy a GM as his fourth car.
+    \end{enumerate}
+\end{puzzle}
+
+\begin{puzzle}
+    \item Professor Hay has breakfast at Hogee’s every morning. He either orders an Egg Scramble, or a Tofu Scramble. He never orders Eggs on two consecutive days, but if he does order Tofu one day, then the next day he can order Tofu or Eggs with equal probability.
+    \begin{enumerate}
+        \item Write a transition matrix for this problem.
+        \item If Professor Hay has Tofu on the first day, what is the probability he will have Tofu on the second day?
+        \item If Professor Hay has Eggs on the first day, what is the probability he will have Tofu on the third day?
+        \item If Professor Hay has Eggs on the first day, what is the probability he will have Tofu on the fourth day?
+    \end{enumerate}
+\end{puzzle}
+
+\begin{puzzle}\label{puzzle_markov_tennis}
+    \item A professional tennis player always hits cross-court or down the line. In order to give himself a tactical edge, he never hits down the line two consecutive times, but if he hits cross-court on one shot, on the next shot he can hit cross-court with .75 probability and down the line with .25 probability.
+    \begin{enumerate}
+        \item Write a transition matrix for this problem.
+        \item If the player hit the first shot cross-court, what is the probability that he will hit the third shot down the line?
+    \end{enumerate}
+\end{puzzle}
+
+\begin{puzzle}
+    \item The transition table for switching political parties in an election year is given below, where Democrats, Republicans, and Independents are denoted by the letters D, R, and I, respectively.
+    \[
+        \begin{tabular}{lc|ccc}
+                 &   &    & To &    \\
+                 &   & D  & R  & I  \\
+            \hline
+                 & D & .6 & .3 & .1 \\
+            From & R & .3 & .6 & .1 \\
+                 & I & .2 & .2 & .6 \\
+        \end{tabular}
+    \]
+    \begin{enumerate}
+        \item Find the probability of a Democrat voting Republican.
+        \item Find the probability of a Democrat voting Republican in the second election.
+        \item Find the probability of a Republican voting Independent in the second election.
+        \item Find the probability of a Democrat voting Independent in the third election.
+    \end{enumerate}
+\end{puzzle}
