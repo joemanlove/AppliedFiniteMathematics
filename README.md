@@ -1,4 +1,6 @@
 # AppliedFiniteMathematics
-This is a LaTeX port and update to Applied Finite Mathematics 3rd edition, 2016, Roberta Bloom and Rupinder Sekhon, which is licensed under CC-BY-4.0.
+This is the Fourth Edition of Applied Finite Mathematics, originally authored by Rupinder Sekhon, revised to the third edition by Roberta Bloom, and most recently revised by Joe Manlove.
 
-This is a work currently in progress. Significant errors or deviations from the original are likely the result of utilization of ChatGPT to convert from MS Word to Latex.
+This work is currently in testing. Significant errors may exist. If you're using this text please raise issues for errors. 
+
+This is a LaTeX port and update to Applied Finite Mathematics 3rd edition, 2016, Roberta Bloom and Rupinder Sekhon, which is licensed under CC-BY-4.0.
