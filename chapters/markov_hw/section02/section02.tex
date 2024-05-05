@@ -1,0 +1,103 @@
+\section{Regular Markov Chain Puzzles}
+
+\begin{puzzle}
+    Determine whether the following matrices are regular Markov chains.
+    \begin{enumerate}
+        \item \(
+              \begin{bmatrix}
+                  1  & 0  \\
+                  .5 & .5 \\
+              \end{bmatrix}
+              \)
+        \item \(
+              \begin{bmatrix}
+                  .6 & .4 \\
+                  0  & 1  \\
+              \end{bmatrix}
+              \)
+        \item \(
+              \begin{bmatrix}
+                  .2 & .4 & .4 \\
+                  0  & 0  & 0  \\
+              \end{bmatrix}
+              \)
+        \item \(
+              \begin{bmatrix}
+                  .6 & .4 & 0  \\
+                  .3 & .2 & .5 \\
+              \end{bmatrix}
+              \)
+    \end{enumerate}
+\end{puzzle}
+
+\begin{puzzle}
+    Company I and Company II compete against each other, and the transition table for people switching from Company I to Company II is given below.
+
+    \begin{center}
+        \begin{tabular}{ll|cc}
+                 &            & To        &            \\
+                 &            & Company I & Company II \\
+            \hline
+            From & Company I  & .3        & .7         \\
+                 & Company II & .8        & .2         \\
+        \end{tabular}
+    \end{center}
+
+    \begin{enumerate}
+        \item If the initial market share is 40\% for Company I and 60\% for Company II, what will the market share be after 3 steps?
+        \item If this trend continues, what is the long range expectation for the market?
+    \end{enumerate}
+\end{puzzle}
+
+\begin{puzzle}
+    Suppose the transition table for the tennis player in Puzzle \ref{puzzle_markov_tennis} is as follows, where C denotes the cross-court shots and D denotes down-the-line shots.
+
+    \begin{center}
+        \begin{tabular}{ll|cc}
+                     &   & Next &    \\
+                     &   & C    & D  \\
+            \hline
+            Previous & C & .9   & .1 \\
+                     & D & .7   & .3 \\
+        \end{tabular}
+    \end{center}
+
+    \begin{enumerate}
+        \item If the player hit the first shot cross-court, what is the probability he will hit the fourth shot
+              cross-court?
+        \item Determine the long term shot distribution
+    \end{enumerate}
+\end{puzzle}
+
+\begin{puzzle}
+    Professor Hay never orders eggs two days in a row, but if he orders tofu one day, then there is an equal probability that he will order tofu or eggs the next day. Find the following:
+    \begin{enumerate}
+        \item If Professor Hay had eggs on Monday, what is the probability that he will have tofu on Friday?
+        \item Find the long term distribution for breakfast choices for Professor Hay.
+    \end{enumerate}
+\end{puzzle}
+
+
+
+\begin{puzzle}
+    Many Russians have experienced a sharp decline in their living standards due to President Yeltsin’s reforms. As a result, in the parliamentary elections held in December 1995, Communists and Nationalists made significant gains, and a new pattern in switching political parties emerged. The transition matrix for such a change is given below, where Communists, Nationalists, and Reformists are denoted by the letters C, N, and R, respectively.
+
+    \[
+        \begin{array}{lc|ccc}
+                 &   &    & To &    \\
+                 &   & C  & N  & R  \\
+            \hline
+                 & C & .5 & .4 & .1 \\
+            From & N & .3 & .4 & .3 \\
+                 & R & .2 & .2 & .6 \\
+        \end{array}
+    \]
+
+    Find the following:
+    \begin{enumerate}
+        \item If in this election Communists received 25\% of the votes, Nationalists 30\%, and Reformists the rest 45\%, what will the distribution be in the next election?
+        \item What will the distribution be in the third election?
+        \item What will the distribution be in the fourth election?
+        \item Determine the long term distribution.
+    \end{enumerate}
+\end{puzzle}
