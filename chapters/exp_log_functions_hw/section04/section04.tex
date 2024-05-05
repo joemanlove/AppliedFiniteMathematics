@@ -1,0 +1,146 @@
+\section{Log Graphing Puzzles}
+
+\begin{puzzle} Consider the function \( y(x)= \ln(x)\)
+    \begin{enumerate}
+        \item Sketch a reasonably accurate graph showing the shape of the graph of the function
+        \item State the domain
+        \item State the range
+        \item State whether the graph has a vertical asymptote or a horizontal asymptote and write the equation of that asymptote
+        \item Does the graph have an x-intercept or a y-intercept asymptote? Write the coordinates of the x-intercept or the y-intercept.
+    \end{enumerate}
+\end{puzzle}
+
+\begin{puzzle} Consider the function \( h(x)= \log(x)\)
+    \begin{enumerate}
+        \item Sketch a reasonably accurate graph showing the shape of the graph of the function
+        \item State the domain
+        \item State the range
+        \item State whether the graph has a vertical asymptote or a horizontal asymptote and write the equation of that asymptote
+        \item Does the graph have an x-intercept or a y-intercept asymptote? Write the coordinates of the x-intercept or the y-intercept.
+    \end{enumerate}
+\end{puzzle}
+
+
+\begin{puzzle} Consider the function \( k(x)= \ln(2x)\)
+    \begin{enumerate}
+        \item Sketch a reasonably accurate graph showing the shape of the graph of the function
+        \item State the domain
+        \item State the range
+        \item State whether the graph has a vertical asymptote or a horizontal asymptote and write the equation of that asymptote
+        \item Does the graph have an x-intercept or a y-intercept asymptote? Write the coordinates of the x-intercept or the y-intercept.
+    \end{enumerate}
+\end{puzzle}
+
+\begin{puzzle} Consider the pair of inverse functions \(f(x) = e^x\) and  \( g(x)= \ln(x)\). For each of them:
+    \begin{enumerate}
+        \item Sketch a reasonably accurate graph showing the shape of the graph of the function
+        \item State the domain
+        \item State the range
+        \item State whether the graph has a vertical asymptote or a horizontal asymptote and write the equation of that asymptote
+        \item Does the graph have an x-intercept or a y-intercept asymptote? Write the coordinates of the x-intercept or the y-intercept.
+    \end{enumerate}
+\end{puzzle}
+
+\begin{puzzle}
+    Match the following functions with the graphs given below:
+    \begin{enumerate}
+        \item $y = 3(2^x)$
+        \item $y = 5(0.4^x)$
+        \item $y = \log_2(x)$
+        \item $y = \log_{1/2}(x)$
+        \item $y = 3e^{-.6x}$
+        \item $y = 5e^{.3*x}$
+    \end{enumerate}
+\end{puzzle}
+
+\begin{tikzpicture}[scale =.8]
+    \begin{axis}[
+            title={$I$},
+            domain=-2:2,
+            samples=100,
+            axis lines=middle,
+            xlabel=$x$,
+            ylabel=$y$,
+        ]
+        \addplot[black] {3*2^x};
+    \end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[scale =.8]
+    \begin{axis}[
+            title={$II$},
+            domain=-2:2,
+            samples=100,
+            axis lines=middle,
+            xlabel=$x$,
+            ylabel=$y$,
+        ]
+        \addplot[black] {5*0.4^x};
+    \end{axis}
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[scale =.8]
+    \begin{axis}[
+            title={$III$},
+            domain=0.1:10,
+            samples=100,
+            axis lines=middle,
+            xlabel=$x$,
+            ylabel=$y$,
+        ]
+        \addplot[black] {log2(x)};
+    \end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[scale =.8]
+    \begin{axis}[
+            title={$IV$},
+            domain=0.1:10,
+            samples=100,
+            axis lines=middle,
+            xlabel=$x$,
+            ylabel=$y$,
+        ]
+        \addplot[black] {log10(x)/log10(0.5)};
+    \end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale =.8]
+    \begin{axis}[
+            title={$V$},
+            domain=-4:4,
+            samples=100,
+            axis lines=middle,
+            xlabel=$x$,
+            ylabel=$y$,
+        ]
+        \addplot[black] {3*e^(-.6*x)};
+    \end{axis}
+\end{tikzpicture}
+\begin{tikzpicture}[scale =.8]
+    \begin{axis}[
+            title={$VI$},
+            domain=-4:4,
+            samples=100,
+            axis lines=middle,
+            xlabel=$x$,
+            ylabel=$y$,
+        ]
+        \addplot[black] {5*e^(.3*x)};
+    \end{axis}
+\end{tikzpicture}
+
+\begin{puzzle}
+    The function is given by \( y = 7900e^{0.472t} \). Write in the form \( y = ab^t \).
+\end{puzzle}
+
+\begin{puzzle}
+    The function is \( y = 4567(0.67^t) \). Write in the form \( y = ae^{kt} \).
+\end{puzzle}
+
+\begin{puzzle}
+    The function is \( y = 18720(1.47^t) \). Write in the form \( y = ae^{kt} \).
+\end{puzzle}
+
+\begin{puzzle}
+    The function is \( y = 1200e^{-0.078t} \). Write in the form \( y = ab^t \).
+\end{puzzle}

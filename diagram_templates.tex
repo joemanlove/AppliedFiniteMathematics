@@ -1,0 +1,178 @@
+%Venn Diagram with 2 sets
+
+\begin{center}
+    \begin{venndiagram2sets}[
+            labelA=\(A\),
+            labelB=\(B\),
+            labelAB={AB},
+            labelOnlyA={$A-B$},
+            labelOnlyB={$B-A$},
+            % showframe = false
+        ]
+        \setpostvennhook{
+            \node[below left] at (venn top right) {U};
+            \node[above left] at (venn bottom right) {more U};
+        }
+    \end{venndiagram2sets}
+\end{center}
+
+
+\begin{center}
+    \begin{tikzpicture}[scale= .8]
+        \tikzstyle{level 1}=[level distance=2cm, sibling distance=8cm]
+        \tikzstyle{level 2}=[level distance=2cm, sibling distance=4cm]
+        \tikzstyle{level 3}=[level distance=2cm, sibling distance=2cm]
+        \tikzstyle{level 4}=[level distance=2cm, sibling distance=1cm]
+        \node {Start}
+        child {
+                node {0}
+                child {
+                        node {0}
+                        child {
+                                node {0}
+                                child {
+                                        node {0}
+                                        edge from parent
+                                        node[left] {.7}
+                                    }
+                                child {
+                                        node {1}
+                                        edge from parent
+                                        node[right] {.3}
+                                    }
+                                edge from parent
+                                node[left] {.7}
+                            }
+                        child {
+                                node {1}
+                                child {
+                                        node {0}
+                                        edge from parent
+                                        node[left] {.7}
+                                    }
+                                child {
+                                        node {1}
+                                        edge from parent
+                                        node[right] {.3}
+                                    }
+                                edge from parent
+                                node[right] {.3}
+                            }
+                        edge from parent
+                        node[left] {.7}
+                    }
+                child {
+                        node {1}
+                        child {
+                                node {0}
+                                child {
+                                        node {0}
+                                        edge from parent
+                                        node[left] {.7}
+                                    }
+                                child {
+                                        node {1}
+                                        edge from parent
+                                        node[right] {.3}
+                                    }
+                                edge from parent
+                                node[left] {.7}
+                            }
+                        child {
+                                node {1}
+                                child {
+                                        node {0}
+                                        edge from parent
+                                        node[left] {.7}
+                                    }
+                                child {
+                                        node {1}
+                                        edge from parent
+                                        node[right] {.3}
+                                    }
+                                edge from parent
+                                node[right] {.3}
+                            }
+                        edge from parent
+                        node[right] {.3}
+                    }
+                edge from parent
+                node[left] {.7}
+            }
+        child {
+                node {1}
+                child {
+                        node {0}
+                        child {
+                                node {0}
+                                child {
+                                        node {0}
+                                        edge from parent
+                                        node[left] {.7}
+                                    }
+                                child {
+                                        node {1}
+                                        edge from parent
+                                        node[right] {.3}
+                                    }
+                                edge from parent
+                                node[left] {.7}
+                            }
+                        child {
+                                node {1}
+                                child {
+                                        node {0}
+                                        edge from parent
+                                        node[left] {.7}
+                                    }
+                                child {
+                                        node {1}
+                                        edge from parent
+                                        node[right] {.3}
+                                    }
+                                edge from parent
+                                node[right] {.3}
+                            }
+                        edge from parent
+                        node[left] {.7}
+                    }
+                child {
+                        node {1}
+                        child {
+                                node {0}
+                                child {
+                                        node {0}
+                                        edge from parent
+                                        node[left] {.7}
+                                    }
+                                child {
+                                        node {1}
+                                        edge from parent
+                                        node[right] {.3}
+                                    }
+                                edge from parent
+                                node[left] {.7}
+                            }
+                        child {
+                                node {1}
+                                child {
+                                        node {0}
+                                        edge from parent
+                                        node[left] {.7}
+                                    }
+                                child {
+                                        node {1}
+                                        edge from parent
+                                        node[right] {.3}
+                                    }
+                                edge from parent
+                                node[right] {.3}
+                            }
+                        edge from parent
+                        node[right] {.3}
+                    }
+                edge from parent
+                node[right] {.3}
+            };
+    \end{tikzpicture}
+\end{center}
