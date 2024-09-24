@@ -234,64 +234,54 @@ The consumer demand for each industry in billions of dollars is given by the mat
 
 We will do one more problem like the one above, except this time we give the amount of internal and external consumption in dollars and ask for the proportion of the amounts consumed by each of the industries. In other words, we ask for the matrix \( A \).
 
-\begin{example}
+\begin{example} \label{example_leontief_table}
     Suppose an economy consists of three industries \( F \), \( C \), and \( T \). Each of the industries produces for internal consumption among themselves, as well as for external demand by the consumer. The table shows the use of each industry's production in dollars.
 
     \[
         \begin{array}{cccccc}
-            \textbf{ } & \textbf{F} & \textbf{C} & \textbf{T} & \textbf{Demand} & \textbf{Total} \\
-            \textbf{F} & 40         & 50         & 60         & 100             & 250            \\
-            \textbf{C} & 30         & 40         & 40         & 110             & 220            \\
-            \textbf{T} & 20         & 30         & 30         & 120             & 200            \\
+            \textbf{ }      & \textbf{F produces} & \textbf{C produces} & \textbf{T produces} & \textbf{Demand} & \textbf{Total} \\
+            \textbf{F uses} & 40                  & 50                  & 60                  & 100             & 250            \\
+            \textbf{C uses} & 30                  & 40                  & 40                  & 110             & 220            \\
+            \textbf{T uses} & 20                  & 30                  & 30                  & 120             & 200            \\
         \end{array}
     \]
 
-    The first row says that of the \$250 dollars worth of production by the industry \( F \), \$40 is used by \( F \), \$50 is used by \( C \), \$60 is used by \( T \), and the remainder of \$100 is used by the consumer. The other rows are described in a similar manner.
+    The first row says that of the \$250 dollars consumed by industry \( F \), \$40 is produced by \( F \), \$50 is produced by \( C \), \$60 is produced by \( T \), and the remainder of \$100 is from the consumer. The other rows are described in a similar manner.
 
     Once again, the total input equals the total output. Find the proportion of the amounts consumed by each of the industries. In other words, find the matrix \( A \).
 \end{example}
 
 \begin{solution}
-    We are being asked to determine the following:
+    To find the first row of our table we need to determine the following:
 
-    How much of the production of each of the three industries, \( F \), \( C \), and \( T \) is required to produce one unit of \( F \)? The same way, how much of the production of each of the three industries, \( F \), \( C \), and \( T \) is required to produce one unit of \( C \)? And finally, how much of the production of each of the three industries, \( F \), \( C \), and \( T \) is required to produce one unit of \( T \)?
-
-    Since we are looking for proportions, we need to divide the production of each industry by the total production for each industry.
-
-    We analyze as follows:
-    To produce 250 units of F, 30 units of C, and 20 units of T, the required units are 40, 30, and 20 respectively. Therefore, to produce 1 unit of each, we divide by 250:
+    What fraction of the production of each industy is \( F \) consuming? Because we're making a Leontief model, we can assume that the total consumption of each sector is equal to the total utilization of each sector. So for example the \$50 is produced by \( C \) represents \$50 out of the total of \$220 production for that sector. Using similar reasoning for the other sectors, we can now produce our Leontief equation for the \( F\) sector:
 
     \[
-        \text{For F: } \frac{40}{250}, \text{ For C: } \frac{30}{250}, \text{ For T: } \frac{20}{250}
+        F = \frac{40}{250}F + \frac{50}{220}C + \frac{60}{200}T + 100
     \]
 
-    Similarly, for 220 units of C, the required units are 50, 40, and 30 respectively. To produce 1 unit of C, we divide by 220:
+    In a similar fashion we can see that:
 
     \[
-        \text{For F: } \frac{50}{220}, \text{ For C: } \frac{40}{220}, \text{ For T: } \frac{30}{220}
+        C = \frac{30}{250}F + \frac{40}{220}C + \frac{40}{200}T + 110
     \]
-
-    And for 200 units of T, the required units are 60, 40, and 30 respectively. To produce 1 unit of T, we divide by 200:
 
     \[
-        \text{For F: } \frac{60}{200}, \text{ For C: } \frac{40}{200}, \text{ For T: } \frac{30}{200}
+        T = \frac{20}{250}F + \frac{30}{220}C + \frac{30}{200}T + 120
     \]
 
-    These fractions represent the units of F, C, and T required to produce 1 unit of each.
-
-
-    We obtain the following matrix:
+    Therefore we obtain the following matrix:
     \[ A = \begin{bmatrix}
-            \frac{40}{250} & \frac{50}{220} & \frac{60}{200} \\
-            \frac{30}{250} & \frac{40}{220} & \frac{40}{200} \\
-            \frac{20}{250} & \frac{30}{220} & \frac{30}{200}
+            40/250 & 50/220 & 60/200 \\
+            30/250 & 40/220 & 40/200 \\
+            20/250 & 30/220 & 30/200
         \end{bmatrix} = \begin{bmatrix}
             .1600 & .2273 & .3000 \\
             .1200 & .1818 & .2000 \\
             .0800 & .1364 & .1500
         \end{bmatrix} \]
 
-    Clearly \( AX + D = X \)
+    And \( AX + D = X \)
     \[ \begin{bmatrix}
             .1600 & .2273 & .3000 \\
             .1200 & .1818 & .2000 \\
