@@ -12,7 +12,7 @@ As an example of the closed model, we look at a very simple economy, where there
 
 
 \begin{example} \label{input_output_matrix}
-    We assume that in a village there is a farmer, carpenter, and a tailor, who provide the three essential goods: food, shelter, and clothing. Suppose the farmer himself consumes \(40\%\) of the food he produces, and gives \(40\%\) to the carpenter, and \(20\%\) to the tailor. Thirty percent of the carpenter's production is consumed by himself, \(40\%\) by the farmer, and \(30\%\) by the carpenter. Fifty percent of the tailor's production is used by himself, \(30\%\) by the farmer, and \(20\%\) by the tailor. Write the matrix that describes this closed model.
+    We assume that in a village there is a farmer, carpenter, and a tailor, who provide the three essential goods: food, shelter, and clothing. Suppose the farmer himself consumes \(40\%\) of the food he produces, and gives \(40\%\) to the carpenter, and \(20\%\) to the tailor. Thirty percent of the carpenter's production is consumed by himself, \(40\%\) by the farmer, and \(30\%\) by the tailor. Fifty percent of the tailor's production is used by himself, \(30\%\) by the farmer, and \(20\%\) by the tailor. Write the matrix that describes this closed model.
 \end{example}
 
 \begin{solution}
@@ -33,6 +33,29 @@ As an example of the closed model, we look at a very simple economy, where there
             \hline
         \end{tabular}
     \end{center}
+
+    An important alternative to the tabular view is the exchange diagram. Most students find the exchange diagram to be an easier tool to work with.
+
+    \begin{center}
+        \label{fig:exchange_diagram_farmer_carpenter_tailor}
+        \begin{tikzpicture}[shorten >=2pt,node distance=6cm,on grid,auto, scale=.9]
+            \node[state] at (0,0) (F) {F};
+            \node[state] at (4,0) (C) {C};
+            \node[state] at (2,-3) (T) {T};
+
+            \path[thick, ->]
+            (F) edge [loop left] node {0.4} (F)
+            edge [bend right=50] node[below left] {0.2} (T)
+            edge [bend left=50] node {0.4} (C)
+            (C) edge [loop right=60] node {0.3} (C)
+            edge [bend left=50] node {0.3} (T)
+            edge [bend left=15] node [above] {0.4} (F)
+            (T) edge [loop below] node {0.5} (T)
+            edge [bend right=15] node[below left] {0.3} (F)
+            edge [bend left=15] node[below right] {0.2} (C);
+        \end{tikzpicture}
+    \end{center}
+
 
     In matrix form, it can be written as follows.
     \[ A = \begin{bmatrix}
@@ -65,7 +88,31 @@ As an example of the closed model, we look at a very simple economy, where there
     Let us say the farmer gets paid \( x \) dollars. Let us now look at the farmer's expenses. The farmer uses up \( 40\% \) of his own production, that is, of the \( x \) dollars he gets paid, he pays himself \( .40x \) dollars, he pays \( .40y \) dollars to the carpenter, and \( .30z \) to the tailor. Since the expenses equal the wages, we get the following equation.
     \[ x = .40x + .40y + .30z \]
 
-    In the same manner, we get
+    We could arrive at this result using the exchange diagram. We add up all the incoming edge weights multiplied by the values of the sectors they're coming from and set this equal to the value of the sector. In this exchange diagram the incoming edges for the farmer have been highlighted in red.
+
+    \begin{center}
+        % \label{fig:exchange_diagram_farmer_carpenter_tailor}
+        \begin{tikzpicture}[shorten >=2pt,node distance=6cm,on grid,auto, scale=.9]
+            \node[state] at (0,0) (F) {F};
+            \node[state] at (4,0) (C) {C};
+            \node[state] at (2,-3) (T) {T};
+
+            \path[thick, ->, red]
+            (F) edge [loop left] node {0.4} (F)
+            (C) edge [bend left=15] node [above] {0.4} (F)
+            (T) edge [bend right=15] node[below left] {0.3} (F);
+
+            \path[thick, ->]
+            (F) edge [bend right=50] node[below left] {0.2} (T)
+            edge [bend left=50] node {0.4} (C)
+            (C) edge [loop right=60] node {0.3} (C)
+            edge [bend left=50] node {0.3} (T)
+            (T) edge [loop below] node {0.5} (T)
+            edge [bend left=15] node[below right] {0.2} (C);
+        \end{tikzpicture}
+    \end{center}
+
+    Using either reasoning, in a similar fashion we get
     \[ y = .40x + .30y + .20z \]
     \[ z = .20x + .30y + .50z \]
 
